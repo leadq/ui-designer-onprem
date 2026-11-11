@@ -1,0 +1,71 @@
+@use './variables.scss' as *;
+@use './theme';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-md;
+  background-color: $bg-color;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; // Prevent body scroll as the editor has its own scroll areas
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(var(--text-primary-rgb), 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--text-muted-rgb), 0.35);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--text-muted-rgb), 0.55);
+}
+
+/* Layout Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass {
+  background: $glass-bg;
+  backdrop-filter: $glass-blur;
+  border: 1px solid $border-color;
+}

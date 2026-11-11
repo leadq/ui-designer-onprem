@@ -1,0 +1,93 @@
+@use '../../styles/variables.scss' as *;
+
+.layout {
+  display: grid;
+  grid-template-areas:
+    "navbar header aside"
+    "navbar main aside";
+  grid-template-columns: 260px minmax(0, 1fr) 320px;
+  grid-template-rows: 60px 1fr;
+  height: 100vh;
+  width: 100vw;
+  background-color: $bg-color;
+  color: $text-primary;
+  overflow: hidden;
+  transition: grid-template-columns 0.2s ease;
+
+  &--collapsed {
+    grid-template-columns: 60px minmax(0, 1fr) 320px;
+  }
+
+  &--rightCollapsed {
+    grid-template-columns: 260px minmax(0, 1fr) 48px;
+  }
+
+  &--collapsed#{&}--rightCollapsed {
+    grid-template-columns: 60px minmax(0, 1fr) 48px;
+  }
+}
+
+.header {
+  grid-area: header;
+  z-index: $z-header;
+  border-bottom: 1px solid var(--editor-region-border);
+  background-color: $bg-panel;
+}
+
+
+.navbar {
+  z-index: $z-header;
+  grid-area: navbar;
+  background-color: $bg-panel;
+  border-right: 1px solid var(--editor-region-border);
+  box-shadow: var(--editor-shadow-left-panel);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  transition: width 0.2s ease;
+
+  &--collapsed {
+    width: 60px;
+    overflow: visible;
+  }
+
+}
+
+.main {
+  // Keep authored z-index values and selection handles inside the canvas.
+  isolation: isolate;
+  z-index: 0;
+  grid-area: main;
+  background-color: var(--editor-canvas-surface);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.aside {
+  z-index: $z-header;
+  grid-area: aside;
+  position: relative;
+  background-color: $bg-panel;
+  border-left: 1px solid var(--editor-region-border);
+  box-shadow: var(--editor-shadow-right-panel);
+  overflow: visible;
+
+  // Scroll the inspector without clipping its protruding collapse button.
+  &__content {
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+.logo {
+  font-size: $font-size-md;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, $primary, $primary-hover);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

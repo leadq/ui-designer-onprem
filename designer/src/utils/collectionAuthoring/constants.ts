@@ -1,0 +1,1 @@
+export const COLLECTION_MAX_ITEMS = 100

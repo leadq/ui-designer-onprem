@@ -1,0 +1,12 @@
+ .iconPicker {
+  display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  &__viewport { height: 320px; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+  &__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  &__choice { height: 64px; display: flex; align-items: center; flex-direction: column; justify-content: center; gap: 4px; padding: 4px; border: 1px solid transparent; border-radius: 4px; min-width: 0;
+    &:hover { background: var(--bg-hover); }
+    &[aria-pressed='true'] { border-color: var(--primary); background: var(--bg-surface); }
+    &:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+  }
+  &__preview { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
+  &__name { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}

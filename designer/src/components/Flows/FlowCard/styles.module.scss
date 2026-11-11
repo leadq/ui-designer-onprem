@@ -1,0 +1,6 @@
+@use '../../../styles/variables.scss' as *;
+.flowCard {
+  min-width: 0;
+  & + & { border-top: 1px solid $border-color; padding-top: $spacing-lg; }
+  button { overflow-wrap: anywhere; }
+}

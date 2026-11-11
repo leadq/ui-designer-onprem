@@ -1,0 +1,10 @@
+@use '../../../../styles/variables.scss' as *;
+.treeNodeIdentity {
+  display: flex; align-items: center; gap: 6px; min-width: 0; flex: 1;
+  &__icon { display: flex; align-items: center; flex-shrink: 0; font-size: 14px; }
+  &__icon[data-tree-icon='frame'] { color: $primary; }
+  &__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: inherit; }
+  &__type { flex-shrink: 0; max-width: 85px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; color: $text-muted; background: $bg-card; border: 1px solid $border-color; border-radius: $radius-sm; padding: 1px 4px; }
+  &__status { flex-shrink: 0; color: $text-muted; }
+  &__input { flex: 1; min-width: 0; input { min-height: 26px; height: 26px; padding: 0 4px; } }
+}

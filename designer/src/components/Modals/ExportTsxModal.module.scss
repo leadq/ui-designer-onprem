@@ -1,0 +1,27 @@
+@use '../../styles/variables.scss' as *;
+
+.exportTsxModal {
+  &__preview {
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    font-size: $font-size-xs;
+    color: $text-secondary;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.6;
+  }
+
+  &__previewLabel {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    margin-bottom: $spacing-xs;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}

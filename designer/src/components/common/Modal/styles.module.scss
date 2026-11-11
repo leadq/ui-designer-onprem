@@ -1,0 +1,118 @@
+@use '../../../styles/variables.scss' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(var(--text-primary-rgb), 0.28);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-modal;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--motion-normal) ease;
+
+  &--canvas { z-index: $z-preview-modal; }
+
+  &--clear { background-color: transparent; backdrop-filter: none; }
+
+  &--hidden { display: none; }
+
+  &--opened {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal {
+  background-color: $bg-surface;
+  color: $text-primary;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-premium;
+  max-width: 90vw;
+  width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &--opened {
+    transform: translateY(0);
+  }
+
+  &--size-sm {
+    width: 400px;
+  }
+
+  &--size-md {
+    width: 600px;
+  }
+
+  &--size-lg {
+    width: 800px;
+  }
+
+  &--size-xl {
+    width: 1000px;
+  }
+
+  &--size-full {
+    width: 95vw;
+    height: 95vh;
+  }
+
+  &__header {
+    padding: $spacing-md;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: $text-secondary;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: $radius-sm;
+    transition: all var(--motion-normal) ease;
+
+    &:hover {
+      background-color: rgba(var(--text-primary-rgb), 0.05);
+      color: $text-primary;
+    }
+  }
+
+  &__body {
+    padding: $spacing-md;
+    overflow-y: auto;
+    flex: 1;
+
+    &--canvas {
+      background: $bg-workspace;
+      color: initial;
+    }
+  }
+
+  &__footer {
+    padding: $spacing-md;
+    border-top: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $spacing-sm;
+  }
+}

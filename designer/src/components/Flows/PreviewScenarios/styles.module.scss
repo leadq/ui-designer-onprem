@@ -1,0 +1,7 @@
+@use '../../../styles/variables.scss' as *;
+.previewScenarios {
+  padding: $spacing-sm $spacing-md;
+  border-bottom: 1px solid $border-color;
+  background: $bg-surface;
+  &__controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+}

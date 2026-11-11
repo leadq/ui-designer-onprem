@@ -1,0 +1,34 @@
+.outlineModeButton {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  flex-shrink: 0;
+
+  &__icon {
+    position: relative;
+    width: 26px;
+    height: 26px;
+  }
+
+  &__selection,
+  &__layout,
+  &__parent {
+    position: absolute;
+    border-radius: var(--radius-xs);
+  }
+
+  &__selection {
+    inset: 9px;
+    border: 1.5px solid var(--primary);
+  }
+
+  &__layout {
+    inset: 5px;
+    border: 1.5px dotted var(--text-muted);
+  }
+
+  &__parent {
+    inset: 1px;
+    border: 1.5px dotted var(--info);
+  }
+}

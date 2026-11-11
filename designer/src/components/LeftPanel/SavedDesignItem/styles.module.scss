@@ -1,0 +1,56 @@
+@use '../../../styles/variables.scss' as *;
+
+.savedDesignItem {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: $spacing-xs;
+  padding: $spacing-xs;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  background: $bg-surface;
+
+  &:hover,
+  &:focus-within {
+    border-color: $primary;
+    background: $bg-card;
+  }
+
+  &--dragging {
+    opacity: 0.5;
+  }
+
+  &__name {
+    font-size: $font-size-xs;
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+  }
+
+  &__insert {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    min-height: 36px;
+    gap: $spacing-xs;
+    padding: $spacing-xs;
+    border-radius: $radius-sm;
+    cursor: grab;
+    svg { flex-shrink: 0; color: $text-muted; }
+    &:active { cursor: grabbing; }
+    &:focus-visible { outline: 2px solid $primary; outline-offset: 1px; }
+  }
+
+  &__actions {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  &__action {
+    width: 28px;
+    height: 28px;
+    padding: $spacing-xs;
+  }
+}

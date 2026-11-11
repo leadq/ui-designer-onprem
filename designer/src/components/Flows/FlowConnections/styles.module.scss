@@ -1,0 +1,5 @@
+@use '../../../styles/variables.scss' as *;
+.flowConnections {
+  display: grid; gap: $spacing-sm; border-top: 1px solid $border-color; padding-top: $spacing-md;
+  &__item { justify-content: flex-start; text-align: left; width: 100%; min-width: 0; padding: 8px 4px; white-space: normal; overflow-wrap: anywhere; > svg { flex-shrink: 0; color: $text-muted; } p svg { vertical-align: middle; } }
+}

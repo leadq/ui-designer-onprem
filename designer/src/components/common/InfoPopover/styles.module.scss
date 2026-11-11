@@ -1,0 +1,44 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/popup-motion' as popup;
+
+.infoPopover {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: $text-muted;
+
+  &--labeled {
+    width: auto;
+    padding: 0 $spacing-sm;
+    gap: $spacing-xs;
+  }
+
+  &__content {
+    @include popup.presence(150ms);
+    z-index: var(--z-editor-tooltip);
+    outline: none;
+    border: 1px solid $border-color;
+    width: 280px;
+    max-width: calc(100vw - 32px);
+    padding: $spacing-md;
+    border-radius: $radius-md;
+    background: $bg-surface;
+    box-shadow: $shadow-md;
+  }
+  // Side arrow: a 7px square, 5px from the aligned edge.
+  &__content::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 7px;
+    height: 7px;
+    background: inherit;
+    border: 1px solid $border-color;
+    transform: rotate(45deg);
+  }
+  &__content[data-side='right']::before { top: 5px; left: -3.5px; border-right-color: transparent; border-top-color: transparent; }
+  &__content[data-side='left']::before { top: 5px; right: -3.5px; border-left-color: transparent; border-bottom-color: transparent; }
+  &__content[data-side='bottom']::before { left: 5px; top: -3.5px; border-right-color: transparent; border-bottom-color: transparent; }
+  &__content[data-side='top']::before { left: 5px; bottom: -3.5px; border-left-color: transparent; border-top-color: transparent; }
+}

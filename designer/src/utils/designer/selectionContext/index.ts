@@ -1,0 +1,1 @@
+export { getSelectionContext } from './getSelectionContext'

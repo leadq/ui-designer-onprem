@@ -1,0 +1,16 @@
+.advancedSizingControls {
+  &__field {
+    min-width: 0;
+
+    input {
+      padding-inline: var(--control-inset-sm);
+      font-size: var(--font-size-xs);
+    }
+
+    label {
+      left: var(--spacing-xs);
+      max-width: calc(100% - var(--spacing-sm));
+      font-size: var(--font-size-xs);
+    }
+  }
+}

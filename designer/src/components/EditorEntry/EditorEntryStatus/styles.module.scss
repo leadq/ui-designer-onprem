@@ -1,0 +1,16 @@
+@use '@root/styles/tokens' as *;
+
+.editorEntry {
+  display: grid;
+  min-height: 100dvh;
+  padding: 24px;
+  place-items: center;
+  background: $bg-workspace;
+
+  &__card {
+    display: flex;
+    width: min(100%, 480px);
+    flex-direction: column;
+    gap: 20px;
+  }
+}

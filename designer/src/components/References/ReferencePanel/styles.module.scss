@@ -1,0 +1,7 @@
+@use '../../../styles/tokens' as *;
+.referencePanel {
+  width: clamp(240px, 30%, 420px); flex-shrink: 0; min-height: 0;
+  display: flex; flex-direction: column; gap: 12px; padding: 16px;
+  background: $editor-toolbar-surface; border-right: 1px solid $editor-region-border;
+  overflow: auto;
+}

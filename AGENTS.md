@@ -1,0 +1,1 @@
+Designer işleri için [designer/AGENTS.md](designer/AGENTS.md), MCP kurulumu için [mcp/README.md](mcp/README.md) kullanın. Deployment kökleri kendi repo içerikleriyle çalışır. Designer kaynakları MCP’ye yalnız açık export komutuyla aktarılır.

@@ -1,0 +1,23 @@
+@use '../../../styles/variables.scss' as *;
+.canvasWorkspace {
+  flex: 1; min-height: 0; overflow: auto; position: relative; overscroll-behavior: contain;
+  background: radial-gradient($border-light 1px, transparent 1px) var(--editor-canvas-surface); background-size: 20px 20px;
+  scrollbar-width: none; &::-webkit-scrollbar { display: none; }
+  // The editor camera owns scrolling; chrome reflow must not move the browser's scroll anchor.
+  &[data-preview='false'] { overflow-anchor: none; }
+  &[data-preview='true'] { scrollbar-width: thin; &::-webkit-scrollbar { display: block; } }
+  // Only authored nodes receive the selection cursor; editor fields stay editable.
+  &[data-preview='false'] :where([data-node-id], [data-node-id] *) { cursor: default !important; }
+  &[data-dragging='true'], &[data-dragging='true'] * { cursor: grabbing !important; }
+  &[data-grab='true'], &[data-grab='true'] * { cursor: grab !important; user-select: none; }
+  &[data-panning='true'], &[data-panning='true'] * { cursor: grabbing !important; user-select: none; }
+  &__extent { position: relative; width: var(--workspace-width); min-width: 100%; height: var(--workspace-height); min-height: 100%; overflow: clip; }
+  &__references:has([data-selected='true']) { z-index: 1; }
+  &__references { position: absolute; top: var(--surface-y); left: var(--reference-origin-x); transform: scale(var(--canvas-scale)); transform-origin: top left; }
+  &__surface {
+    position: absolute; top: var(--surface-y); left: var(--surface-x); width: var(--surface-width); display: flex; flex-direction: column; align-items: flex-start; gap: 160px;
+    transform: scale(var(--canvas-scale)); transform-origin: top left; color: initial;
+    > [data-frame-surface] { width: var(--frame-width); }
+  }
+  &[data-preview='true'] &__surface { display: block; }
+}

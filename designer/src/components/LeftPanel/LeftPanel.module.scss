@@ -1,0 +1,184 @@
+@use '../../styles/variables.scss' as *;
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  background-color: $bg-panel;
+  user-select: none;
+  transition: width 0.2s ease;
+
+  &--collapsed {
+    align-items: center;
+  }
+
+  &__logoContainer {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 $spacing-md;
+    border-bottom: 1px solid var(--editor-region-border);
+    flex-shrink: 0;
+  }
+
+  &__logoIcon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, $primary, $primary-hover);
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: white;
+    font-size: 12px;
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.3);
+  }
+
+  &__logoText {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  &__logoTextPrimary {
+    color: $text-primary;
+  }
+
+  &__logoTextSecondary {
+    background: linear-gradient(135deg, $primary, $primary-hover);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__tabs {
+    display: flex;
+    padding: $spacing-sm;
+    gap: $spacing-xs;
+    border-bottom: 1px solid var(--editor-section-border);
+    background-color: var(--editor-toolbar-surface);
+    flex-shrink: 0;
+  }
+
+  &__tab {
+    flex: 1;
+    padding: $spacing-xs $spacing-sm;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-muted;
+    background: transparent;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: $font-family;
+    text-align: center;
+    position: relative;
+
+    &:hover {
+      color: $text-primary;
+      background-color: rgba(var(--text-primary-rgb), 0.05);
+    }
+  }
+
+  &__tab--active {
+    color: $text-primary;
+    background-color: $bg-card !important;
+    box-shadow: $shadow-sm;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2.5px;
+      background-color: $primary;
+      border-radius: 2px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+    padding: $spacing-md;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $border-color;
+      border-radius: $radius-xl;
+    }
+  }
+
+  &__categoryLabel {
+    font-size: 10px;
+    font-weight: 700;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: $spacing-md 0 $spacing-sm;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $border-light;
+      opacity: 0.5;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__categoryGroup {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__paletteGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-sm;
+  }
+
+  &__templatesSection {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__templateItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-sm;
+    background-color: rgba(var(--bg-surface-rgb), 0.5);
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $border-light;
+      background-color: rgba(var(--bg-surface-rgb), 0.8);
+    }
+  }
+}

@@ -1,0 +1,129 @@
+@use '../../../styles/variables.scss' as *;
+
+.header {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 $spacing-md;
+  background-color: $bg-surface;
+  container-type: inline-size;
+
+  &__leading {
+    flex: 0 1 auto;
+    min-width: 0;
+    gap: 8px;
+    > :first-child { min-width: 0; }
+    > button { flex-shrink: 0; }
+  }
+
+  &__actions {
+    flex: 0 0 auto;
+  }
+
+  &__separator {
+    color: $text-muted;
+    font-size: $font-size-sm;
+    opacity: 0.3;
+    user-select: none;
+  }
+}
+
+.logo {
+  font-size: $font-size-md;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, $primary, $primary-hover);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  filter: drop-shadow(0 2px 4px rgba(var(--shadow-color-rgb), 0.1));
+}
+
+@container (max-width: 700px) {
+  .header__separator {
+    display: none;
+  }
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  border: none;
+  background: transparent;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(var(--shadow-color-rgb), 0.05);
+    color: $text-primary;
+  }
+
+  &:active:not(:disabled) {
+    background-color: rgba(var(--shadow-color-rgb), 0.08);
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &--active {
+    background-color: rgba(var(--primary-rgb), 0.1);
+    color: $primary;
+
+    &:hover {
+      background-color: rgba(var(--primary-rgb), 0.15);
+    }
+  }
+}
+
+.actionButton {
+  font-weight: 600;
+  padding: 0 $spacing-md;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: $font-size-sm;
+
+  &--primary {
+    background: $primary;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+
+    &:hover {
+      background: $primary-hover;
+      box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.4);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &--secondary {
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    color: $text-primary;
+
+    &:hover {
+      background: var(--bg-card);
+      border-color: $border-light;
+    }
+  }
+}

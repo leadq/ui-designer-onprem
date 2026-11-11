@@ -1,0 +1,50 @@
+@use '../../../styles/variables.scss' as *;
+
+.card {
+  background-color: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: all var(--motion-normal) ease;
+
+  &--button {
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-align: inherit;
+    width: 100%;
+
+    &:focus-visible {
+      outline: 2px solid $primary;
+      outline-offset: 3px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &--withBorder {
+    border: 1px solid $border-color;
+  }
+
+  &--withShadow {
+    box-shadow: $shadow-md;
+  }
+
+  &--padding-xs {
+    padding: $spacing-xs;
+  }
+
+  &--padding-sm {
+    padding: $spacing-sm;
+  }
+
+  &--padding-md {
+    padding: $spacing-md;
+  }
+
+  &--padding-lg {
+    padding: $spacing-lg;
+  }
+}

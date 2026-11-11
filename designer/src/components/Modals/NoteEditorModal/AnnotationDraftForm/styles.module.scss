@@ -1,0 +1,8 @@
+.annotationDraftForm {
+  min-width: 0;
+
+  &__textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+}

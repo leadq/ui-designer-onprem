@@ -1,0 +1,17 @@
+@use '../../../styles/variables.scss' as *;
+.actionMarkers {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1003;
+  &__group {
+    position: absolute; left: var(--marker-x, -100px); top: var(--marker-y, -100px);
+    display: flex; gap: 4px; transform: scale(var(--marker-scale, 1)); transform-origin: top left;
+    &[hidden] { display: none; }
+  }
+  &__badge {
+    width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+    border: 2px solid $bg-surface; border-radius: 50%; background: $primary; color: $text-inverse;
+    box-shadow: $shadow-sm; pointer-events: auto; cursor: pointer; padding: 0;
+    &:hover { filter: brightness(0.94); }
+    &:focus-visible { outline: 2px solid $primary; outline-offset: 2px; }
+  }
+  &__badgeNote { background: var(--note-surface); color: var(--note-text); }
+}

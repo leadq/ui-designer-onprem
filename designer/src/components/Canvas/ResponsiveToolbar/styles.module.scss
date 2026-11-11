@@ -1,0 +1,65 @@
+@use '../../../styles/variables.scss' as *;
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-sm;
+  border-bottom: 1px solid var(--editor-section-border);
+  background-color: var(--editor-toolbar-surface);
+  z-index: 10;
+  gap: $spacing-md;
+  container-type: inline-size;
+
+  &__deviceSelect { width: 310px; max-width: 100%; }
+
+  &__controls {
+    justify-content: center;
+    min-width: 0;
+    width: 100%;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 24px;
+    background-color: $border-color;
+    margin: 0 $spacing-sm;
+  }
+
+  &__inputGroup {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__widthInput {
+    width: 64px;
+    text-align: center;
+  }
+
+  &__zoomText {
+    width: 36px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1280px) {
+    padding: $spacing-xs;
+
+    &__divider {
+      margin: 0;
+    }
+
+    &__presetButton,
+    &__actionButton {
+      padding-right: 8px;
+      padding-left: 8px;
+    }
+  }
+}
+
+@container (max-width: 650px) {
+  .toolbar__divider {
+    display: none;
+  }
+}

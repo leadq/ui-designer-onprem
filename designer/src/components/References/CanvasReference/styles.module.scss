@@ -1,0 +1,18 @@
+@use '../../../styles/tokens' as *;
+.canvasReference {
+  position: absolute; left: var(--reference-x); top: var(--reference-y); width: var(--reference-width); height: var(--reference-height);
+  display: flex; touch-action: none; user-select: none; cursor: move; outline: 1px solid $editor-region-border;
+  &[data-selected='true'] { outline: 2px solid $primary; }
+  &:focus-visible { outline: 3px solid $primary; }
+  &__title { position: absolute; bottom: 100%; left: 0; margin-bottom: calc(8px / var(--canvas-scale)); font-size: calc(12px * max(1, 0.75 / var(--canvas-scale) + 0.25)); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+  &__handle { position: absolute; width: calc(10px / var(--canvas-scale)); height: calc(10px / var(--canvas-scale)); border: 1px solid $primary; background: $editor-toolbar-surface; transform: translate(-50%, -50%); padding: 0;
+    &[data-handle='n'] { left: 50%; top: 0; cursor: ns-resize; }
+    &[data-handle='ne'] { left: 100%; top: 0; cursor: nesw-resize; }
+    &[data-handle='e'] { left: 100%; top: 50%; cursor: ew-resize; }
+    &[data-handle='se'] { left: 100%; top: 100%; cursor: nwse-resize; }
+    &[data-handle='s'] { left: 50%; top: 100%; cursor: ns-resize; }
+    &[data-handle='sw'] { left: 0; top: 100%; cursor: nesw-resize; }
+    &[data-handle='w'] { left: 0; top: 50%; cursor: ew-resize; }
+    &[data-handle='nw'] { left: 0; top: 0; cursor: nwse-resize; }
+  }
+}

@@ -1,0 +1,337 @@
+.dataTableBuilderModal {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+  }
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+
+    &Left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    &Right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    &Badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-color);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+
+    &:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(var(--primary-rgb), 0.04);
+    }
+
+    &--primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: var(--text-inverse);
+
+      &:hover {
+        background: var(--primary-hover);
+        color: var(--text-inverse);
+        box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+      }
+    }
+
+    &--danger {
+      &:hover {
+        border-color: var(--danger);
+        color: var(--danger);
+        background: rgba(var(--danger-rgb), 0.06);
+      }
+    }
+
+    &Icon {
+      font-size: 13px;
+    }
+  }
+
+  &__tableWrapper {
+    flex: 1;
+    overflow: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 12px;
+    min-width: max-content;
+    background: var(--bg-panel);
+  }
+
+  &__headerRow {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-surface);
+  }
+
+  &__headerCell {
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    white-space: nowrap;
+    min-width: 120px;
+    position: relative;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &--rowNum {
+      min-width: 44px;
+      width: 44px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 10px;
+      background: var(--bg-surface);
+    }
+
+    &--actions {
+      min-width: 44px;
+      width: 44px;
+    }
+
+    &Content {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    &Name {
+      flex: 1;
+    }
+
+    &Settings {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      opacity: 0.4;
+      transition: opacity 0.15s ease, background-color 0.15s ease;
+      padding: 0;
+
+      &:hover {
+        opacity: 1;
+        background: var(--bg-hover);
+      }
+    }
+
+    &DeleteCol {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 10px;
+      color: var(--text-muted);
+      opacity: 0;
+      transition: all 0.15s ease;
+      padding: 0;
+
+      &:hover {
+        opacity: 1;
+        background: rgba(var(--danger-rgb), 0.15);
+        color: var(--danger);
+      }
+    }
+  }
+
+  &__headerCell:hover &__headerCellDeleteCol {
+    opacity: 0.6;
+  }
+
+  &__bodyRow {
+    transition: background-color 0.1s ease;
+
+    &:hover {
+      background-color: rgba(var(--primary-rgb), 0.03);
+    }
+
+    &:nth-child(even) {
+      background-color: var(--bg-surface);
+
+      &:hover {
+        background-color: rgba(var(--primary-rgb), 0.05);
+      }
+    }
+  }
+
+  &__bodyCell {
+    padding: 0;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &--rowNum {
+      text-align: center;
+      padding: 6px;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      user-select: none;
+    }
+
+    &--actions {
+      text-align: center;
+      padding: 2px;
+    }
+  }
+
+  &__cellInput {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: background-color 0.15s ease;
+
+    &:focus {
+      background: rgba(var(--primary-rgb), 0.06);
+      box-shadow: inset 0 0 0 2px rgba(var(--primary-rgb), 0.25);
+    }
+  }
+
+  &__deleteRowBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+    transition: all 0.15s ease;
+    padding: 0;
+    margin: 0 auto;
+    opacity: 0;
+
+    &:hover {
+      background: rgba(var(--danger-rgb), 0.15);
+      color: var(--danger);
+    }
+  }
+
+  &__bodyRow:hover &__deleteRowBtn {
+    opacity: 1;
+  }
+
+  // Column settings popover
+  &__colSettings {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(var(--shadow-color-rgb), 0.3);
+    padding: 12px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &Field {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    &Label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    &Input {
+      width: 100%;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 5px 8px;
+      font-size: 11px;
+      color: var(--text-primary);
+      outline: none;
+      background: var(--bg-surface);
+      transition: border-color 0.15s ease;
+
+      &:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.15);
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+  }
+}

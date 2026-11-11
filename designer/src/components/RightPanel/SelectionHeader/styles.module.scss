@@ -1,0 +1,20 @@
+@use '../../../styles/variables.scss' as *;
+
+.selectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-sm;
+
+  &__identity { display: flex; align-items: center; gap: $spacing-sm; }
+  &__name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+  &__save { flex-shrink: 0; width: 32px; height: 32px; padding: $spacing-xs; }
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    button { padding: $spacing-xs $spacing-sm; font-size: var(--font-size-xs); }
+    button[data-has-note='true'] { color: var(--note-text); }
+    svg { flex-shrink: 0; }
+  }
+}

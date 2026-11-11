@@ -1,0 +1,6 @@
+@use '../../../styles/mixins/control' as control;
+.inputControl:where(:not([type='checkbox']):not([type='radio']):not([type='file'])) {
+  @include control.field;
+  &[type='color'] { height: 32px; padding: 4px; cursor: pointer; }
+}
+.inputControl { accent-color: var(--primary); }

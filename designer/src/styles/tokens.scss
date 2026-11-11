@@ -1,0 +1,108 @@
+// Design System Tokens - The UI Designer Theme
+
+// Colors - Light editor theme
+$bg-color: #f1f5f9;
+$bg-surface: #ffffff;
+$bg-card: #f8fafc;
+$bg-panel: #ffffff;
+$bg-workspace: #f8fafc;
+
+// Accent Colors
+$primary: #801d2d; // Burgundy
+$primary-hover: #681524;
+$primary-active: #52101c;
+$secondary: #0f766e; // Teal
+$secondary-hover: #115e59;
+$danger: #be123c; // Rose
+$danger-hover: #9f1239;
+$success: #047857; // Emerald
+$success-hover: #065f46;
+
+// Text Colors
+$text-primary: #1e293b;
+$text-secondary: #475569;
+$text-muted: #64748b;
+$text-workspace-muted: #64748b;
+$text-inverse: #ffffff;
+
+// Borders & Dividers
+$border-color: #dbe2ea;
+$border-light: #cbd5e1;
+
+// Shadows & Effects
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-premium: 0 20px 40px -12px rgba(15, 23, 42, 0.16), 0 8px 16px -8px rgba(15, 23, 42, 0.08);
+$glass-bg: rgba(255, 255, 255, 0.9);
+$glass-blur: blur(8px);
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 24px;
+
+// Typography
+$font-family: 'Inter', system-ui, -apple-system, sans-serif;
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+
+// Canvas content is isolated below editor chrome. Native library popups
+// and preview dialogs keep their own lower layer; editor portals sit above them.
+$z-preview-modal: 1000;
+// Viewport-local controls sit above artwork, badges and selection guides.
+$z-canvas-controls: 1100;
+$z-header: 2000;
+$z-menu: 3000;
+$z-modal: 4000;
+$z-tooltip: 5000;
+
+
+// Editor semantics (never applied to authored library components).
+$bg-card-hover: #eef1f5;
+$warning: #b77900;
+$info: #339af0;
+$note-surface: #dbeef7;
+$note-text: #31627b;
+$shadow-color: #000000;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+$motion-fast: 150ms;
+$motion-normal: 200ms;
+
+// Compact editor controls and floating labels.
+$font-size-caption: 11px;
+$font-size-micro: 10px;
+$control-inset: 12px;
+$control-inset-sm: 6px;
+$radius-xs: 2px;
+
+// Editor-only overlay mockup; native preview surfaces remain adapter-owned.
+$overlay-design-backdrop: rgb(0 0 0 / 40%);
+
+// Editor shell hierarchy: strong region edges, quiet internal dividers.
+$editor-region-border: #cbd3de;
+$editor-section-border: #e8edf3;
+$editor-toolbar-surface: #fbfcfd;
+$editor-selection-surface: #f0f3f7;
+$editor-canvas-surface: #f3f5f8;
+$editor-shadow-left-panel: 4px 0 10px -6px rgba(15, 23, 42, 0.18);
+$editor-shadow-right-panel: -4px 0 10px -6px rgba(15, 23, 42, 0.18);
+
+// Collapsible editor sections: distinct header, quiet content surface.
+$disclosure-border: $editor-region-border;
+$disclosure-header-surface: $bg-color;
+$disclosure-header-hover: $bg-card-hover;
+
+// Preserve the established menu item typography independently of native adapter themes.
+$font-family-menu: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";

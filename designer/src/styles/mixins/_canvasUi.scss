@@ -1,0 +1,10 @@
+// Canvas chrome stays readable at overview zoom, without a delayed size correction.
+// Apply readableScale to a zoomed UI scope, and instantGeometry to each control
+// that has a shared Button/Input transition. Portal menus remain outside this scope.
+@mixin readableScale {
+  --canvas-ui-scale: max(1, calc(0.75 / var(--canvas-scale, 1) + 0.25));
+}
+
+@mixin instantGeometry {
+  transition-property: color, background-color, border-color;
+}

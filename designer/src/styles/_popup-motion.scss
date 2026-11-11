@@ -1,0 +1,17 @@
+// Shared presence animation for editor portals; reduced motion keeps lifecycle behavior.
+@mixin presence($duration) {
+  &[data-state='open'], &[data-state='instant-open'], &[data-state='delayed-open'] {
+    animation: popupEnter $duration ease;
+  }
+  &[data-state='closed'] { animation: popupExit $duration ease; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) { animation: none !important; }
+}
+
+@keyframes popupEnter {
+  from { opacity: 0; transform: scale(var(--popup-scale, 1)); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes popupExit {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(var(--popup-scale, 1)); }
+}

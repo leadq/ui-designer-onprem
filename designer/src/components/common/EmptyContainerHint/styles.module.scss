@@ -1,0 +1,26 @@
+@use '../../../styles/variables.scss' as *;
+
+.emptyContainerHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  grid-column: 1 / -1;
+  min-width: 0;
+  min-height: 48px;
+  max-width: 100%;
+  gap: 4px;
+  padding: 8px;
+  color: $text-workspace-muted;
+  background: $bg-workspace;
+  border-radius: $radius-sm;
+  text-align: center;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  user-select: none;
+
+  & > &__text {
+    color: inherit;
+  }
+}

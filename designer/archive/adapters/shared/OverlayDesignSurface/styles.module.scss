@@ -1,0 +1,6 @@
+.overlayDesignSurface {
+  position: absolute; inset: 0; display: flex; justify-content: center; align-items: flex-start;
+  padding: 24px; box-sizing: border-box; pointer-events: none;
+  &[data-backdrop='true'] { background: var(--overlay-design-backdrop); }
+  &__content { width: min(100%, 460px); pointer-events: auto; }
+}

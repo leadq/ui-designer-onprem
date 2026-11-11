@@ -1,0 +1,9 @@
+ .positionedBox {
+  position: absolute;
+  transform: scale(var(--position-scale));
+  transform-origin: top left;
+  left: var(--position-x);
+  top: var(--position-y);
+  width: var(--position-width);
+  height: var(--position-height);
+}

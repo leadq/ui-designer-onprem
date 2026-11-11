@@ -1,0 +1,194 @@
+.arrayOfObjectsEditor {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &Label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    &Count {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 11px;
+    background: var(--bg-panel);
+  }
+
+  &__thead {
+    background: var(--bg-surface);
+  }
+
+  &__th {
+    padding: 6px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+
+    &--actions {
+      width: 60px;
+      text-align: center;
+    }
+  }
+
+  &__row {
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: var(--bg-hover);
+    }
+
+    &:not(:last-child) &__rowCell {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    &Cell {
+      padding: 2px 3px;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    &Input {
+      width: 100%;
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 4px 6px;
+      font-size: 11px;
+      border-radius: 4px;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+
+      &:hover {
+        border-color: var(--border-color);
+        background: var(--bg-surface);
+      }
+
+      &:focus {
+        border-color: var(--primary);
+        background: var(--bg-color);
+        box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.15);
+      }
+
+      &--number {
+        width: 50px;
+        text-align: center;
+      }
+    }
+
+    &Checkbox {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    &Actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+  }
+
+  &__row:hover &__rowActions {
+    opacity: 1;
+  }
+
+  &__actionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    padding: 0;
+
+    &:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    &--delete:hover {
+      background: rgba(var(--danger-rgb), 0.15);
+      color: var(--danger);
+    }
+
+    &--up,
+    &--down {
+      font-size: 10px;
+    }
+  }
+
+  &__addRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+    font-size: 11px;
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+
+    &:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(var(--primary-rgb), 0.04);
+    }
+
+    &Icon {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1;
+    }
+  }
+
+  &__empty {
+    padding: 16px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 11px;
+
+    &Text {
+      margin-bottom: 8px;
+    }
+  }
+}

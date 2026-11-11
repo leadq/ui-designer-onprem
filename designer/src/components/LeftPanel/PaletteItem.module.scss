@@ -1,0 +1,50 @@
+@use '../../styles/variables.scss' as *;
+
+.paletteItem {
+  background-color: $bg-surface;
+  border: 1px solid $border-color;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-md;
+  cursor: grab;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 0;
+  min-height: 44px;
+  height: 100%;
+  user-select: none;
+
+  &:hover {
+    background-color: $bg-card;
+    border-color: $primary;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+    
+    .paletteItem__label {
+      color: $text-primary;
+    }
+  }
+
+  &:active {
+    cursor: grabbing;
+    transform: translateY(0);
+  }
+
+  &--dragging {
+    opacity: 0.5;
+    border-style: dashed;
+    border-color: $primary;
+  }
+  &__label {
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-secondary;
+    transition: color 0.2s ease;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+  }
+}

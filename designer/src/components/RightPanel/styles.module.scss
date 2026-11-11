@@ -1,0 +1,117 @@
+@use '../../styles/variables.scss' as *;
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $bg-panel;
+  user-select: none;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--editor-section-border);
+    background-color: $bg-panel;
+    flex-shrink: 0;
+  }
+
+  &__stateSection {
+    margin-top: $spacing-sm;
+  }
+
+  &__selectionContext {
+    padding: $spacing-sm $spacing-md $spacing-md;
+    background-color: var(--editor-selection-surface);
+  }
+
+  &__tabs {
+    display: flex;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md $spacing-xs;
+  }
+
+  &__tab {
+    flex: 1;
+    padding: 6px $spacing-sm;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-muted;
+    background: transparent;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: $font-family;
+    text-align: center;
+    position: relative;
+
+    &:hover:not(:disabled) {
+      color: $text-primary;
+      background-color: rgba(var(--text-primary-rgb), 0.05);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  &__tab--active {
+    color: $text-primary;
+    background-color: $bg-card !important;
+    box-shadow: $shadow-sm;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2.5px;
+      background-color: $primary;
+      border-radius: 2px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__propertyGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: $spacing-md;
+    align-items: start;
+  }
+
+  &__scrollArea {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-md;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $border-color;
+      border-radius: $radius-xl;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use '../../../styles/variables.scss' as *;
+.flowToolbar {
+  container-type: inline-size;
+  display: flex; align-items: center; gap: $spacing-md; min-width: 0;
+  flex-shrink: 0; padding: 0 $spacing-md; background: $bg-panel; border-bottom: 1px solid var(--editor-region-border);
+  &__screens { display: flex; align-items: stretch; flex: 1; min-width: 0; overflow-x: auto; }
+  &__screen {
+    flex-shrink: 0; border-radius: 0; border-bottom: 2px solid transparent; min-height: 48px;
+    max-width: 240px; overflow: hidden; text-overflow: ellipsis; color: $text-muted;
+    &[aria-pressed='true'] { color: $primary; border-bottom-color: $primary; background: rgba(var(--primary-rgb), .04); }
+    svg { flex-shrink: 0; }
+  }
+  &__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: inherit; }
+  &__add { flex-shrink: 0; margin: 6px 0; }
+  &__actions { display: flex; align-items: center; gap: $spacing-sm; flex-shrink: 0; }
+  &__behaviors { flex-shrink: 0; }
+  &__actionLabel { font-size: inherit; white-space: nowrap; }
+  @container (max-width: 640px) {
+    &__actionLabel { display: none; }
+  }
+}

@@ -1,0 +1,52 @@
+@use '../../../styles/variables.scss' as *;
+
+.divider {
+  height: 1px;
+  background-color: $border-color;
+  width: 100%;
+  margin: $spacing-sm 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &--withLabel {
+    background-color: transparent;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: $border-color;
+    }
+  }
+
+  &__label {
+    padding: 0 $spacing-sm;
+    font-size: var(--font-size-micro);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: $text-muted;
+    white-space: nowrap;
+  }
+
+  &--heading {
+    height: auto;
+    margin: 0;
+    justify-content: flex-start;
+    background: transparent;
+
+    &::before, &::after { display: none; }
+
+    .divider__label {
+      padding: 0;
+      font-size: $font-size-xs;
+      color: $text-secondary;
+      text-transform: none;
+      letter-spacing: normal;
+      white-space: normal;
+    }
+  }
+}

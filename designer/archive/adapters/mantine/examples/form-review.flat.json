@@ -1,0 +1,719 @@
+{
+  "adapterId": "mantine",
+  "pageName": "Form review reference",
+  "pageNotes": "Dokümantasyon fixtureı; gerçek servis veya hedef uygulama implementasyonu değildir.",
+  "pageAnnotations": [],
+  "format": "ui-design/flat",
+  "version": 1,
+  "designVersion": 12,
+  "rootIds": [
+    "flow-main",
+    "details",
+    "review",
+    "confirm"
+  ],
+  "nodesById": {
+    "flow-main": {
+      "id": "flow-main",
+      "type": "designerFlow",
+      "props": {},
+      "style": {},
+      "flow": {
+        "layout": "root",
+        "startScreenId": "details",
+        "screens": [
+          {
+            "nodeId": "details",
+            "kind": "screen"
+          },
+          {
+            "nodeId": "review",
+            "kind": "screen"
+          },
+          {
+            "nodeId": "confirm",
+            "kind": "overlay"
+          }
+        ]
+      },
+      "parentId": null,
+      "slotKey": null,
+      "index": 0,
+      "childIds": []
+    },
+    "details": {
+      "id": "details",
+      "type": "designerFrame",
+      "props": {},
+      "style": {},
+      "parentId": null,
+      "slotKey": null,
+      "index": 1,
+      "childIds": [
+        "form-layout"
+      ]
+    },
+    "form-layout": {
+      "id": "form-layout",
+      "type": "box",
+      "props": {},
+      "style": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": 16,
+        "padding": 24,
+        "minHeight": 0
+      },
+      "responsiveStyles": {
+        "sm": {
+          "padding": 12
+        }
+      },
+      "parentId": "details",
+      "slotKey": null,
+      "index": 0,
+      "childIds": [
+        "name-field",
+        "next"
+      ]
+    },
+    "name-field": {
+      "id": "name-field",
+      "type": "textInput",
+      "props": {
+        "label": "Ad",
+        "defaultValue": "Ada"
+      },
+      "style": {},
+      "parentId": "form-layout",
+      "slotKey": null,
+      "index": 0,
+      "childIds": []
+    },
+    "next": {
+      "id": "next",
+      "type": "button",
+      "props": {
+        "children": "Devam"
+      },
+      "style": {},
+      "interactions": [
+        {
+          "id": "next-review",
+          "trigger": "click",
+          "action": "goTo",
+          "targetNodeId": "review",
+          "intent": "formStep"
+        }
+      ],
+      "stateRules": {
+        "enabledWhen": {
+          "match": "all",
+          "conditions": [
+            {
+              "source": {
+                "kind": "field",
+                "nodeId": "name-field"
+              },
+              "operator": "notEmpty"
+            }
+          ]
+        }
+      },
+      "parentId": "form-layout",
+      "slotKey": null,
+      "index": 1,
+      "childIds": []
+    },
+    "review": {
+      "id": "review",
+      "type": "designerFrame",
+      "props": {},
+      "style": {},
+      "parentId": null,
+      "slotKey": null,
+      "index": 2,
+      "childIds": [
+        "review-layout"
+      ]
+    },
+    "review-layout": {
+      "id": "review-layout",
+      "type": "box",
+      "props": {},
+      "style": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": 16,
+        "padding": 24,
+        "minHeight": 0
+      },
+      "parentId": "review",
+      "slotKey": null,
+      "index": 0,
+      "childIds": [
+        "review-name",
+        "review-back",
+        "confirm-open"
+      ]
+    },
+    "review-name": {
+      "id": "review-name",
+      "type": "typography",
+      "props": {
+        "children": "Ad girilmedi"
+      },
+      "style": {},
+      "textBinding": {
+        "sourceNodeId": "name-field",
+        "designText": "Örnek ad"
+      },
+      "parentId": "review-layout",
+      "slotKey": null,
+      "index": 0,
+      "childIds": []
+    },
+    "review-back": {
+      "id": "review-back",
+      "type": "button",
+      "props": {
+        "children": "Geri"
+      },
+      "style": {},
+      "interactions": [
+        {
+          "id": "back-details",
+          "trigger": "click",
+          "action": "goTo",
+          "targetNodeId": "details",
+          "intent": "formStep"
+        }
+      ],
+      "parentId": "review-layout",
+      "slotKey": null,
+      "index": 1,
+      "childIds": []
+    },
+    "confirm-open": {
+      "id": "confirm-open",
+      "type": "button",
+      "props": {
+        "children": "Onayı aç"
+      },
+      "style": {},
+      "interactions": [
+        {
+          "id": "open-confirm",
+          "trigger": "click",
+          "action": "openOverlay",
+          "targetNodeId": "confirm"
+        }
+      ],
+      "parentId": "review-layout",
+      "slotKey": null,
+      "index": 2,
+      "childIds": []
+    },
+    "confirm": {
+      "id": "confirm",
+      "type": "modal",
+      "props": {},
+      "style": {},
+      "overlay": {
+        "presentation": "modal",
+        "ownerFrameId": "review",
+        "kind": "confirmation",
+        "initiallyOpen": false,
+        "withBackdrop": true
+      },
+      "parentId": null,
+      "slotKey": null,
+      "index": 3,
+      "childIds": [
+        "confirm-text",
+        "confirm-close"
+      ]
+    },
+    "confirm-text": {
+      "id": "confirm-text",
+      "type": "typography",
+      "props": {
+        "children": "Bu bir arayüz örneğidir; servis çağrısı yapılmaz."
+      },
+      "style": {},
+      "parentId": "confirm",
+      "slotKey": null,
+      "index": 0,
+      "childIds": []
+    },
+    "confirm-close": {
+      "id": "confirm-close",
+      "type": "button",
+      "props": {
+        "children": "Kapat"
+      },
+      "style": {},
+      "interactions": [
+        {
+          "id": "close-confirm",
+          "trigger": "click",
+          "action": "closeOverlay",
+          "targetNodeId": "confirm"
+        }
+      ],
+      "parentId": "confirm",
+      "slotKey": null,
+      "index": 1,
+      "childIds": []
+    }
+  },
+  "behavior": {
+    "version": 5,
+    "execution": "declarative-preview",
+    "visibility": "keep-mounted",
+    "fieldBehaviors": {
+      "visibility": [],
+      "exclusions": [],
+      "precedence": "bound-visibility-overrides-direct-visibility-for-target",
+      "initialConflict": "first-enabled-in-tree-order-wins",
+      "implicitChanges": "do-not-dispatch-change-rules",
+      "initialVisibility": {}
+    },
+    "stateMachine": {
+      "model": "visibility-set",
+      "initial": {
+        "hiddenNodeIds": [
+          "review",
+          "confirm"
+        ]
+      },
+      "dispatch": "source-node-and-trigger",
+      "ruleOrder": "connection-order",
+      "effectOrder": "listed-order",
+      "guards": "typed-comparisons",
+      "evaluation": "once-per-interaction-before-effects",
+      "propagation": "native-react-bubbling",
+      "fieldUpdates": "value-then-exclusions-then-bound-visibility-before-change-rules"
+    },
+    "exampleResults": [],
+    "componentStates": [
+      {
+        "targetNodeId": "next",
+        "enabledWhen": {
+          "match": "all",
+          "conditions": [
+            {
+              "source": {
+                "kind": "field",
+                "nodeId": "name-field"
+              },
+              "operator": "notEmpty"
+            }
+          ]
+        },
+        "evaluation": "on-every-field-change",
+        "invalidInput": "hidden-or-disabled"
+      }
+    ],
+    "textBindings": [
+      {
+        "targetNodeId": "review-name",
+        "targetProp": "children",
+        "sourceNodeId": "name-field",
+        "emptyText": "Ad girilmedi"
+      }
+    ],
+    "fieldInputs": [
+      {
+        "nodeId": "name-field",
+        "prop": "value",
+        "defaultProp": "defaultValue",
+        "eventProp": "onChange",
+        "initialValue": "Ada"
+      }
+    ],
+    "flows": [
+      {
+        "id": "flow-main",
+        "name": "flow-main",
+        "startScreenId": "details",
+        "notes": "",
+        "annotations": [],
+        "screens": [
+          {
+            "nodeId": "details",
+            "kind": "screen",
+            "name": "details"
+          },
+          {
+            "nodeId": "review",
+            "kind": "screen",
+            "name": "review"
+          },
+          {
+            "nodeId": "confirm",
+            "kind": "overlay",
+            "name": "confirm"
+          }
+        ]
+      }
+    ],
+    "pages": [
+      {
+        "id": "page:details",
+        "frameIds": [
+          "details"
+        ]
+      },
+      {
+        "id": "page:review",
+        "frameIds": [
+          "review"
+        ]
+      }
+    ],
+    "states": [
+      {
+        "id": "details",
+        "kind": "screen",
+        "scopeId": "flow-main",
+        "name": "details",
+        "overlay": null,
+        "pageId": "page:details",
+        "baseScreenIds": [
+          "details"
+        ]
+      },
+      {
+        "id": "review",
+        "kind": "screen",
+        "scopeId": "flow-main",
+        "name": "review",
+        "overlay": null,
+        "pageId": "page:review",
+        "baseScreenIds": [
+          "review"
+        ]
+      },
+      {
+        "id": "confirm",
+        "kind": "overlay",
+        "scopeId": "flow-main",
+        "name": "confirm",
+        "overlay": {
+          "presentation": "modal",
+          "ownerFrameId": "review",
+          "kind": "confirmation",
+          "initiallyOpen": false,
+          "withBackdrop": true
+        },
+        "pageId": "page:review",
+        "baseScreenIds": [
+          "review"
+        ],
+        "dismiss": {
+          "triggers": [
+            "escape",
+            "backdrop",
+            "closeButton"
+          ],
+          "effects": [
+            {
+              "operation": "hide",
+              "nodeIds": [
+                "confirm"
+              ]
+            }
+          ],
+          "restoreFocusTo": "opening-node"
+        }
+      }
+    ],
+    "nodes": [
+      {
+        "id": "flow-main",
+        "parentId": null,
+        "type": "designerFlow",
+        "role": "flow-context",
+        "name": "flow-main",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "details",
+        "parentId": null,
+        "type": "designerFrame",
+        "role": "screen-context",
+        "contentNodeIds": [
+          "form-layout"
+        ],
+        "name": "details",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "form-layout",
+        "parentId": "details",
+        "type": "box",
+        "name": "form-layout",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "name-field",
+        "parentId": "form-layout",
+        "type": "textInput",
+        "name": "name-field",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "next",
+        "parentId": "form-layout",
+        "type": "button",
+        "name": "next",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "review",
+        "parentId": null,
+        "type": "designerFrame",
+        "role": "screen-context",
+        "contentNodeIds": [
+          "review-layout"
+        ],
+        "name": "review",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "review-layout",
+        "parentId": "review",
+        "type": "box",
+        "name": "review-layout",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "review-name",
+        "parentId": "review-layout",
+        "type": "typography",
+        "name": "review-name",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "review-back",
+        "parentId": "review-layout",
+        "type": "button",
+        "name": "review-back",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "confirm-open",
+        "parentId": "review-layout",
+        "type": "button",
+        "name": "confirm-open",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "confirm",
+        "parentId": null,
+        "type": "modal",
+        "name": "confirm",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "confirm-text",
+        "parentId": "confirm",
+        "type": "typography",
+        "name": "confirm-text",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      },
+      {
+        "id": "confirm-close",
+        "parentId": "confirm",
+        "type": "button",
+        "name": "confirm-close",
+        "notes": "",
+        "annotations": [],
+        "initiallyHidden": false
+      }
+    ],
+    "connections": [
+      {
+        "id": "next-review",
+        "trigger": "click",
+        "action": "goTo",
+        "targetNodeId": "review",
+        "intent": "formStep",
+        "branch": "always",
+        "interactionId": "next-review",
+        "sourceNodeId": "next",
+        "sourceStateId": "details",
+        "sourceScopeId": "flow-main",
+        "targetScopeId": "flow-main",
+        "order": 0,
+        "connectionKey": "[\"next\",\"next-review\",\"always\"]",
+        "effects": [
+          {
+            "operation": "hide",
+            "nodeIds": [
+              "details",
+              "review",
+              "confirm"
+            ]
+          },
+          {
+            "operation": "show",
+            "nodeIds": [
+              "review"
+            ]
+          }
+        ],
+        "guard": null,
+        "sourcePageIds": [
+          "page:details"
+        ],
+        "targetPageId": "page:review"
+      },
+      {
+        "id": "back-details",
+        "trigger": "click",
+        "action": "goTo",
+        "targetNodeId": "details",
+        "intent": "formStep",
+        "branch": "always",
+        "interactionId": "back-details",
+        "sourceNodeId": "review-back",
+        "sourceStateId": "review",
+        "sourceScopeId": "flow-main",
+        "targetScopeId": "flow-main",
+        "order": 0,
+        "connectionKey": "[\"review-back\",\"back-details\",\"always\"]",
+        "effects": [
+          {
+            "operation": "hide",
+            "nodeIds": [
+              "details",
+              "review",
+              "confirm"
+            ]
+          },
+          {
+            "operation": "show",
+            "nodeIds": [
+              "details"
+            ]
+          }
+        ],
+        "guard": null,
+        "sourcePageIds": [
+          "page:review"
+        ],
+        "targetPageId": "page:details"
+      },
+      {
+        "id": "open-confirm",
+        "trigger": "click",
+        "action": "openOverlay",
+        "targetNodeId": "confirm",
+        "branch": "always",
+        "interactionId": "open-confirm",
+        "intent": null,
+        "sourceNodeId": "confirm-open",
+        "sourceStateId": "review",
+        "sourceScopeId": "flow-main",
+        "targetScopeId": "flow-main",
+        "order": 0,
+        "connectionKey": "[\"confirm-open\",\"open-confirm\",\"always\"]",
+        "effects": [
+          {
+            "operation": "hide",
+            "nodeIds": [
+              "confirm"
+            ]
+          },
+          {
+            "operation": "show",
+            "nodeIds": [
+              "confirm"
+            ]
+          }
+        ],
+        "guard": null,
+        "sourcePageIds": [
+          "page:review"
+        ],
+        "targetPageId": null
+      },
+      {
+        "id": "close-confirm",
+        "trigger": "click",
+        "action": "closeOverlay",
+        "targetNodeId": "confirm",
+        "branch": "always",
+        "interactionId": "close-confirm",
+        "intent": null,
+        "sourceNodeId": "confirm-close",
+        "sourceStateId": "confirm",
+        "sourceScopeId": "flow-main",
+        "targetScopeId": "flow-main",
+        "order": 0,
+        "connectionKey": "[\"confirm-close\",\"close-confirm\",\"always\"]",
+        "effects": [
+          {
+            "operation": "hide",
+            "nodeIds": [
+              "confirm"
+            ]
+          }
+        ],
+        "guard": null,
+        "sourcePageIds": [
+          "page:review"
+        ],
+        "targetPageId": null
+      }
+    ],
+    "formScopes": [
+      {
+        "id": "form:page:details",
+        "pageIds": [
+          "page:details",
+          "page:review"
+        ],
+        "screenIds": [
+          "details",
+          "review"
+        ],
+        "stepCount": 2,
+        "connectionKeys": [
+          "[\"next\",\"next-review\",\"always\"]",
+          "[\"review-back\",\"back-details\",\"always\"]"
+        ],
+        "derivation": "connected-explicit-form-steps",
+        "order": "follow-connections",
+        "dataScope": "shared-across-steps"
+      }
+    ],
+    "issues": []
+  }
+}

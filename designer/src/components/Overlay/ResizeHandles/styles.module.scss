@@ -1,0 +1,40 @@
+@use '../../../styles/variables.scss' as *;
+
+.resizeHandles {
+  &__measurement {
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    transform: translateX(-50%);
+    padding: 3px 7px;
+    border-radius: $radius-sm;
+    background: var(--text-primary);
+    color: var(--text-inverse);
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  &__handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 2px solid var(--text-inverse);
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 1px 4px rgba(var(--shadow-color-rgb), 0.24);
+    pointer-events: auto;
+    z-index: 2;
+
+    &--n { top: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+    &--ne { top: -6px; right: -6px; cursor: nesw-resize; }
+    &--e { top: 50%; right: -6px; transform: translateY(-50%); cursor: ew-resize; }
+    &--se { right: -6px; bottom: -6px; cursor: nwse-resize; }
+    &--s { bottom: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+    &--sw { bottom: -6px; left: -6px; cursor: nesw-resize; }
+    &--w { top: 50%; left: -6px; transform: translateY(-50%); cursor: ew-resize; }
+    &--nw { top: -6px; left: -6px; cursor: nwse-resize; }
+  }
+}

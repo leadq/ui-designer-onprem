@@ -1,0 +1,18 @@
+@use '../../../styles/variables.scss' as *;
+
+.breakpointSelector {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: $spacing-sm;
+  padding: var(--control-inset);
+  background: var(--editor-selection-surface);
+  border-radius: $radius-md;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-xs;
+  }
+}

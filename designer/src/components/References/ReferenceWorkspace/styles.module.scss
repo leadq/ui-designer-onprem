@@ -1,0 +1,10 @@
+@use '../../../styles/tokens' as *;
+.referenceWorkspace {
+  display: flex; flex: 1; min-height: 0; min-width: 0; position: relative;
+  &__status { position: absolute; right: 16px; top: 12px; padding: 10px 16px; background: $editor-toolbar-surface; border: 1px solid $editor-region-border; border-radius: $radius-md; z-index: 2; }
+  &__drop {
+    pointer-events: none; position: absolute; inset: 12px; z-index: 1;
+    display: grid; place-items: center; background: $editor-selection-surface;
+    border: 2px dashed $primary; border-radius: $radius-md;
+  }
+}

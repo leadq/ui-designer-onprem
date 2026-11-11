@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+.env.local
+.export-*/
+designer/guides/execution-contract.md

@@ -1,0 +1,33 @@
+@use '../../../styles/variables.scss' as *;
+
+.table { &__container {
+  width: 100%;
+  overflow-x: auto;
+} }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+
+  th {
+    text-align: left;
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid $border-color;
+    color: $text-secondary;
+    font-weight: 600;
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid $border-color;
+    color: $text-primary;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}

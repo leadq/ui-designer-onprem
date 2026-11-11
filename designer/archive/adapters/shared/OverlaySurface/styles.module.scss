@@ -1,0 +1,8 @@
+.overlaySurface {
+  &__toast {
+    position: fixed; top: 24px; right: 24px; width: min(360px, calc(100% - 48px)); z-index: 1400;
+    &[data-design='true'] { position: absolute; z-index: 1; }
+    &[hidden] { display: none; }
+  }
+  &__title { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+}

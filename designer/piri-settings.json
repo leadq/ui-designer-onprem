@@ -1,0 +1,18 @@
+{
+  "appName": "__DESIGNER_APP__",
+  "envSpecific": {
+    "__NAMESPACE__": {
+      "routes": [
+        {
+          "host": "__DESIGNER_HOST__",
+          "path": "/"
+        }
+      ],
+      "envVariables": {
+        "__BACKEND_WS_KEY__": "wss://__MCP_HOST__/ws",
+        "__APP_TITLE_KEY__": "UI Designer",
+        "__BASE_PATH_KEY__": "/"
+      }
+    }
+  }
+}

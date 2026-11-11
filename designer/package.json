@@ -1,0 +1,56 @@
+{
+  "name": "ui-design",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "__TOOLCHAIN_CLI__ start --microfrontend false --autofix false",
+    "build": "__TOOLCHAIN_CLI__ build --microfrontend false --autofix false",
+    "preview": "node scripts/preview.mjs",
+    "export:mcp": "node scripts/export-mcp.mjs",
+    "build:int": "__TOOLCHAIN_CLI__ build --microfrontend=false --autofix=false --development --sourcemap --offline",
+    "build:uat": "__TOOLCHAIN_CLI__ build --microfrontend=false --autofix=false --development --sourcemap --offline",
+    "build:prep": "__TOOLCHAIN_CLI__ build --microfrontend=false --autofix=false --offline"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "__SHARED_TYPES_PACKAGE__": "__SHARED_TYPES_VERSION__",
+    "@radix-ui/react-collapsible": "1.2.1",
+    "@radix-ui/react-dropdown-menu": "2.2.1",
+    "@radix-ui/react-popover": "1.3.1",
+    "@radix-ui/react-tooltip": "1.4.1",
+    "@tabler/icons-react": "^3.41.1",
+    "immer": "^10.0.3",
+    "__TOOLCHAIN_PACKAGE__": "__TOOLCHAIN_VERSION__",
+    "react-hook-form": "^7.72.0",
+    "react-is": "18.3.1",
+    "use-sync-external-store": "1.6.0",
+    "uuid": "^9.0.1",
+    "zustand": "^4.4.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/use-sync-external-store": "^1.5.0",
+    "@types/uuid": "^9.0.7",
+    "eslint": "^8.57.1",
+    "esbuild": "0.21.5"
+  },
+  "overrides": {
+    "react-is": "$react-is",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1",
+    "typescript": "5.9.3",
+    "__SHARED_TYPES_PACKAGE__": "$__SHARED_TYPES_PACKAGE__"
+  },
+  "resolutions": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-is": "18.3.1",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1"
+  }
+}

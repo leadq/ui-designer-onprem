@@ -1,0 +1,17 @@
+@use '../../../styles/variables.scss' as *;
+
+.interactionEditor {
+  &__form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: $spacing-sm;
+    align-items: end;
+  }
+
+  &__item {
+    padding: $spacing-sm;
+    border: 1px solid $border-light;
+    border-radius: $radius-sm;
+    background: $bg-surface;
+  }
+}

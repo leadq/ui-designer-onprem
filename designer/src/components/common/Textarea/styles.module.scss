@@ -1,0 +1,2 @@
+@use '../../../styles/mixins/control' as control;
+.textarea { @include control.field; min-height: 120px; resize: vertical; }

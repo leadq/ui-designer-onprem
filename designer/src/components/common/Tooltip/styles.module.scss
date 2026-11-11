@@ -1,0 +1,44 @@
+@use '../../../styles/popup-motion' as popup;
+
+.tooltip {
+  @include popup.presence(100ms);
+  z-index: var(--z-editor-tooltip);
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  line-height: 1.55;
+  color: var(--text-inverse);
+  background: var(--text-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  pointer-events: none;
+
+  &--preview {
+    padding: 14px;
+    color: var(--text-primary);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    white-space: normal;
+
+    .tooltip__arrow::before { background: var(--bg-surface); }
+  }
+
+  // Radix positions an extra box around Content; it must also be transparent to canvas input.
+  :global([data-radix-popper-content-wrapper]):has(> &) { pointer-events: none; }
+
+  // Keep Radix collision-aware centering, with the established rotated-square silhouette.
+  &__arrow { position: relative; width: 4px; height: 2px; }
+  &__arrow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background: var(--text-primary);
+    transform: rotate(45deg);
+  }
+}

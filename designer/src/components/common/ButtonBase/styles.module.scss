@@ -1,0 +1,10 @@
+:where(.buttonBase) {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  &:disabled { cursor: not-allowed; }
+  &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+}

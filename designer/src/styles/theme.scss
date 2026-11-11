@@ -1,0 +1,17 @@
+@use 'sass:color';
+@use 'sass:meta';
+@use './tokens';
+
+// Only globals.scss loads this emitter. Adding a token exports it automatically.
+:root {
+  color-scheme: light;
+  @each $name, $value in meta.module-variables('tokens') {
+    --#{$name}: #{$value};
+    @if meta.type-of($value) == 'color' {
+      --#{$name}-rgb: #{color.channel($value, 'red', $space: rgb)}, #{color.channel($value, 'green', $space: rgb)}, #{color.channel($value, 'blue', $space: rgb)};
+    }
+  }
+  --bg-hover: rgba(var(--text-primary-rgb), 0.05);
+  --z-editor-menu: var(--z-menu);
+  --z-editor-tooltip: var(--z-tooltip);
+}

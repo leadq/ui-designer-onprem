@@ -1,0 +1,8 @@
+.designInteractionSurface {
+  position: relative;
+  cursor: default;
+  &__content {
+    display: contents;
+    &, *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}

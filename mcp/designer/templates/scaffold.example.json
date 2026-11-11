@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "pageName": "TransferPage",
+  "componentName": "Transfer",
+  "primitiveName": "Box",
+  "primitiveImport": "@components/common",
+  "styleFile": "styles.module.scss"
+}

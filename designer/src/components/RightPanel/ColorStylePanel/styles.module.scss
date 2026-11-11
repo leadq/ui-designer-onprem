@@ -1,0 +1,4 @@
+.colorStylePanel {
+  &__indicator { display: flex; align-items: center; gap: 6px; max-width: 120px; overflow: hidden; }
+  &__sample { width: 18px; height: 14px; flex-shrink: 0; border: 1px solid var(--border-color); border-radius: 3px; }
+}

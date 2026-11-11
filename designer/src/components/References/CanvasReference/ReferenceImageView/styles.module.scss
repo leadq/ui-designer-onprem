@@ -1,0 +1,7 @@
+@use '../../../../styles/tokens' as *;
+.referenceImageView {
+  min-height: 0; flex: 1; min-width: 0; overflow: hidden;
+  background: $editor-canvas-surface; border-radius: $radius-sm;
+  img { display: block; width: 100%; height: auto; }
+  &--actual img { width: auto; max-width: none; }
+}

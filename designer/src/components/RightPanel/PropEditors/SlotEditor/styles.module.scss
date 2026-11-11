@@ -1,0 +1,99 @@
+.slotEditor {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-panel);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08) 0%, rgba(var(--primary-rgb), 0.02) 100%);
+    border-bottom: 1px solid var(--border-color);
+
+    &Left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    &Icon {
+      font-size: 14px;
+    }
+
+    &Label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    &Badge {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
+  }
+
+  &__description {
+    padding: 6px 10px;
+    font-size: 10px;
+    color: var(--text-muted);
+    font-style: italic;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  &__body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__previewBox {
+    padding: 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 16px 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+    background: var(--bg-surface);
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+  }
+
+  &__designBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    background: rgba(var(--primary-rgb), 0.04);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(var(--primary-rgb), 0.1);
+      box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.15);
+    }
+
+    &Icon {
+      font-size: 13px;
+    }
+  }
+}

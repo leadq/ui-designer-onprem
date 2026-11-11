@@ -1,0 +1,9 @@
+.designWindow {
+  position: absolute; left: var(--window-x, 0); top: var(--window-y, 0); width: var(--window-width, 100%);
+  height: var(--window-height, 220px); min-height: 220px; box-sizing: border-box;
+  pointer-events: none; z-index: 5;
+  // Contains native fixed overlay surfaces and portals inside this frame only.
+  transform: translateZ(0);
+  > [data-design-interaction-surface] { width: 100%; height: 100%; pointer-events: auto; }
+  &[hidden] { display: none; }
+}

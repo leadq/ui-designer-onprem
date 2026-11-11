@@ -1,0 +1,100 @@
+@use '../../../styles/variables.scss' as *;
+
+.treeNode {
+  width: 100%;
+  padding: 4px 8px;
+  border-left: 3px solid transparent;
+  border-radius: 0 $radius-sm $radius-sm 0;
+  transition: all 0.2s ease;
+  color: $text-secondary;
+  position: relative;
+
+  &:hover {
+    background-color: rgba(var(--text-primary-rgb), 0.03);
+    color: $text-primary;
+  }
+
+  &--selected {
+    background-color: rgba(var(--primary-rgb), 0.1) !important;
+    border-left-color: $primary !important;
+    color: $primary !important;
+  }
+
+  &--dragging {
+    opacity: 0.4;
+  }
+
+  &--dropInside {
+    background-color: rgba(var(--info-rgb), 0.12) !important;
+    outline: 1px solid var(--primary);
+  }
+
+  &__grip {
+    cursor: grab;
+    color: $text-muted;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    margin-right: 4px;
+    opacity: 0.5;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__dropIndicatorBefore,
+  &__dropIndicatorAfter {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--primary);
+    box-shadow: 0 0 4px rgba(var(--info-rgb), 0.5);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  &__dropIndicatorBefore {
+    top: 0;
+  }
+
+  &__dropIndicatorAfter {
+    bottom: 0;
+  }
+}
+
+.label {
+  font-size: $font-size-sm;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  &--selected {
+    font-weight: 600;
+  }
+}
+
+.chevron {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-size: 10px;
+  display: inline-block;
+  color: $text-muted;
+
+  &--expanded {
+    transform: rotate(90deg);
+  }
+
+  &--dimmed {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}

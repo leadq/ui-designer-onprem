@@ -1,0 +1,68 @@
+@use '../../../styles/variables' as *;
+
+.visualSpacingEditor {
+  container-type: inline-size;
+
+  &__boxes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  @container (min-width: 460px) {
+    &__boxes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  &__box {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto repeat(3, 28px);
+    grid-template-areas:
+      'label label label'
+      '. top .'
+      'left center right'
+      '. bottom .';
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    border: 1px solid rgba(var(--primary-rgb), 0.35);
+    border-radius: $radius-md;
+    background: rgba(var(--primary-rgb), 0.05);
+  }
+
+  &__label {
+    grid-area: label;
+    margin-bottom: var(--spacing-xs);
+    color: $primary;
+  }
+
+  &__input {
+    min-width: 0;
+
+  }
+
+  &__input--top {
+    grid-area: top;
+  }
+
+  &__input--right {
+    grid-area: right;
+  }
+
+  &__input--bottom {
+    grid-area: bottom;
+  }
+
+  &__input--left {
+    grid-area: left;
+  }
+
+  &__center {
+    grid-area: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed $border-color;
+    border-radius: $radius-sm;
+    background: $bg-card;
+  }
+}

@@ -1,0 +1,41 @@
+.annotationList {
+  min-width: 0;
+  min-height: 0;
+
+  &__items {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  &__select {
+    flex: 1;
+    min-width: 0;
+    min-height: 40px;
+    height: auto;
+    justify-content: flex-start;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  &__delete {
+    flex: none;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 600px) {
+    &__items {
+      flex-basis: auto;
+      max-height: 150px;
+    }
+  }
+}

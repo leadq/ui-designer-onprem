@@ -1,0 +1,45 @@
+@use '../../../styles/mixins/canvasUi' as canvasUi;
+.responsiveViewRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--view-rail-width) max-content;
+  column-gap: var(--view-rail-gap);
+  align-items: start;
+  width: max-content;
+  border-radius: var(--radius-md);
+  transition: background-color var(--motion-normal), box-shadow var(--motion-normal);
+
+  // Keep the trailing space reserved so highlighting never moves the frames.
+  &[data-view-width='1440'] { padding-inline-end: calc(var(--frame-width) / 2); }
+
+  &:has(> [data-view-heading] button:hover),
+  &:has(> [data-view-heading] button:focus-visible) {
+    background-color: rgba(var(--primary-rgb), 0.045);
+    box-shadow: 0 0 0 calc(1px / var(--canvas-scale, 1)) rgba(var(--primary-rgb), 0.14);
+  }
+
+  // Move only editor chrome into the unused shell insets; content/arrow geometry stays fixed.
+  &[data-device-frames-visible='false'] {
+    > [data-view-heading], [data-frame-name] { transform: translateY(var(--device-top)); }
+    [data-frame-name] { position: relative; z-index: 1; margin-inline: var(--device-left); }
+  }
+
+  &__heading { min-width: 0; }
+  .responsiveViewRow &__label {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+    gap: calc(4px * var(--canvas-ui-scale));
+    width: 100%;
+    padding: calc(8px * var(--canvas-ui-scale)) calc(12px * var(--canvas-ui-scale));
+    text-align: left;
+    @include canvasUi.instantGeometry;
+  }
+  .responsiveViewRow &__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: inherit; font-size: calc(var(--font-size-sm) * var(--canvas-ui-scale)); }
+  .responsiveViewRow &__width { flex-shrink: 0; font-size: calc(var(--font-size-xs) * var(--canvas-ui-scale)); }
+  &__frames { display: flex; align-items: flex-start; gap: var(--frame-gap); }
+  &__frames > [data-frame-surface] { width: var(--frame-outer-width); }
+
+  @media (prefers-reduced-motion: reduce) { transition: none; }
+}

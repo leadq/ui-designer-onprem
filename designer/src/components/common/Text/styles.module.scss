@@ -1,0 +1,83 @@
+@use '../../../styles/variables.scss' as *;
+
+.text {
+  margin: 0;
+  color: inherit;
+
+  &--size-xs {
+    font-size: $font-size-xs;
+  }
+
+  &--size-sm {
+    font-size: $font-size-sm;
+  }
+
+  &--size-md {
+    font-size: $font-size-md;
+  }
+
+  &--size-lg {
+    font-size: $font-size-lg;
+  }
+
+  &--size-xl {
+    font-size: $font-size-xl;
+  }
+
+  &--weight-400 {
+    font-weight: 400;
+  }
+
+  &--weight-500 {
+    font-weight: 500;
+  }
+
+  &--weight-600 {
+    font-weight: 600;
+  }
+
+  &--weight-700 {
+    font-weight: 700;
+  }
+
+  &--color-inherit {
+    color: inherit;
+  }
+
+  &--color-primary {
+    color: $text-primary;
+  }
+
+  &--color-secondary {
+    color: $text-secondary;
+  }
+
+  &--color-muted {
+    color: $text-muted;
+  }
+
+  &--color-accent {
+    color: $primary;
+  }
+}
+
+.heading {
+  margin: 0;
+  line-height: 1.2;
+  color: $text-primary;
+
+  &--h1 {
+    font-size: $font-size-xl;
+    font-weight: 700;
+  }
+
+  &--h2 {
+    font-size: $font-size-lg;
+    font-weight: 600;
+  }
+
+  &--h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}

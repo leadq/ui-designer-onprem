@@ -1,0 +1,2 @@
+@use '../../../styles/mixins/control' as control;
+.selectControl { @include control.field; cursor: pointer; }

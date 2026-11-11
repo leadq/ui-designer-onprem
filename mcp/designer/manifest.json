@@ -1,0 +1,219 @@
+{
+  "version": "1.9.0",
+  "profile": "starter-react",
+  "guides": [
+    {
+      "id": "workflow",
+      "title": "Çalışma sırası",
+      "when": "always",
+      "status": "ready",
+      "file": "guides/workflow.md"
+    },
+    {
+      "id": "prompt-authoring",
+      "title": "Prompt ile üretim ve düzenleme",
+      "when": "always",
+      "status": "ready",
+      "file": "guides/prompt-authoring.md"
+    },
+    {
+      "id": "render-feedback",
+      "title": "Üretilmiş ekranı görme ve düzeltme",
+      "when": "render",
+      "status": "ready",
+      "file": "guides/render-feedback.md"
+    },
+    {
+      "id": "semantic-design",
+      "title": "Semantik tasarım ve tema",
+      "when": "always",
+      "status": "ready",
+      "file": "guides/semantic-design.md"
+    },
+    {
+      "id": "contract",
+      "title": "JSON kontratı",
+      "when": "always",
+      "status": "ready",
+      "file": "guides/contract.md"
+    },
+    {
+      "id": "layout",
+      "title": "Yerleşim ve responsive kuralları",
+      "when": "always",
+      "status": "ready",
+      "file": "guides/layout.md"
+    },
+    {
+      "id": "capability-gaps",
+      "title": "Destek sınırları ve eksik özellikler",
+      "when": "always",
+      "status": "ready",
+      "file": "guides/capability-gaps.md"
+    },
+    {
+      "id": "architecture",
+      "title": "Klasör ve dosya mimarisi",
+      "when": "react",
+      "status": "needs-project-input",
+      "file": "guides/architecture.md",
+      "summary": "Hedef kurum klasör/import/router/provider kararları; eksik alanları hazır kabul etme."
+    },
+    {
+      "id": "standards",
+      "title": "Kod standartları",
+      "when": "react",
+      "status": "needs-project-input",
+      "file": "guides/standards.md"
+    },
+    {
+      "id": "i18n",
+      "title": "Çeviri ve react-i18next",
+      "when": "react",
+      "status": "needs-project-input",
+      "file": "guides/i18n.md"
+    },
+    {
+      "id": "api-mocks",
+      "title": "RTK Query ve dev mock",
+      "when": "detailed-react",
+      "status": "needs-project-input",
+      "file": "guides/api-mocks.md"
+    },
+    {
+      "id": "unit-tests",
+      "title": "Unit test stratejisi",
+      "when": "after-implementation",
+      "status": "needs-project-input",
+      "file": "guides/unit-tests.md"
+    },
+    {
+      "id": "quality-checks",
+      "title": "Kalite kontrolü",
+      "when": "after-implementation",
+      "status": "needs-project-input",
+      "file": "guides/quality-checks.md"
+    },
+    {
+      "id": "forms",
+      "title": "Form alanları ve provider",
+      "when": "form",
+      "status": "needs-project-input",
+      "file": "guides/forms.md",
+      "summary": "Düzenlenebilir alanlar, form grupları ve kurumun provider/form-state yaklaşımı; wizard için de kullanılır."
+    },
+    {
+      "id": "wizard",
+      "title": "Adımlı form ve pencereler",
+      "when": "wizard",
+      "status": "needs-project-input",
+      "file": "guides/wizard.md",
+      "summary": "Aynı işi tamamlayan sıralı ekranlar; forms ile birlikte provider, stepper, ileri/geri ve ortak değerler."
+    },
+    {
+      "id": "data-display",
+      "title": "Tablo/liste",
+      "when": "data-display",
+      "status": "needs-project-input",
+      "file": "guides/data-display.md",
+      "summary": "Tablo, bağımsız List, Tabs, disclosure ve native compound içerik eşlemesi."
+    },
+    {
+      "id": "filtering",
+      "title": "Filtre ve sonuçlar",
+      "when": "filtering",
+      "status": "needs-project-input",
+      "file": "guides/filtering.md",
+      "summary": "Arama/filtre ile sonuç ilişkisi; Detailed iş mantığı ve doğrulanmış servis kuralları."
+    },
+    {
+      "id": "dashboard",
+      "title": "Dashboard/KPI",
+      "when": "dashboard",
+      "status": "needs-project-input",
+      "file": "guides/dashboard.md",
+      "summary": "KPI/özet, dönem/segment ve detay bölgeleri; tablo varsa data-display de seçilir."
+    },
+    {
+      "id": "execution-contract",
+      "title": "Akış, state ve slot yürütme kuralları",
+      "when": "behavior",
+      "status": "ready",
+      "file": "guides/execution-contract.md",
+      "summary": "Açık flow/state/interactions/overlay/slot anlamları; yalnız kullanılan alanların bölümlerini oku."
+    },
+    {
+      "id": "json-field-reference",
+      "title": "JSON alan sözlüğü ve kod karşılıkları",
+      "when": "react",
+      "status": "ready",
+      "file": "guides/json-field-reference.md",
+      "summary": "Ortak belge/node alan sözlüğü; adapter prop adlarından bağımsız semantik."
+    },
+    {
+      "id": "react-generation",
+      "title": "JSON’dan React üretim tarifi",
+      "when": "react",
+      "status": "ready",
+      "file": "guides/react-generation.md",
+      "summary": "Aynı JSON ağacını hedef React component/props/style/state/flow yapısına çevirme sırası."
+    },
+    {
+      "id": "reference-images",
+      "title": "Referans görseller ve editöre ekleme",
+      "when": "reference-images",
+      "status": "ready",
+      "file": "guides/reference-images.md"
+    },
+    {
+      "id": "screen-understanding",
+      "title": "Ekranın amacı ve eksik bilgi",
+      "when": "understand",
+      "status": "ready",
+      "file": "guides/screen-understanding.md"
+    },
+    {
+      "id": "data-inference",
+      "title": "Ekrandan veri ve mock içeriği",
+      "when": "detailed-react",
+      "status": "ready",
+      "file": "guides/data-inference.md"
+    },
+    {
+      "id": "template-completion",
+      "title": "Şablondan tamamlanmış ekrana",
+      "when": "react",
+      "status": "ready",
+      "file": "guides/template-completion.md"
+    },
+    {
+      "id": "authoring-modes",
+      "title": "Basic / Detailed ve ortak sorular",
+      "when": "understand",
+      "status": "ready",
+      "file": "guides/authoring-modes.md"
+    }
+  ],
+  "assets": [
+    {
+      "id": "designer-agent",
+      "file": "templates/Designer.agent.md",
+      "destination": ".github/agents/Designer.agent.md"
+    },
+    {
+      "id": "mcp-vscode",
+      "file": "templates/mcp.vscode.example.json",
+      "destination": ".vscode/mcp.json"
+    },
+    {
+      "id": "scaffold",
+      "file": "generator/scaffold.mjs",
+      "destination": ".designer/scaffold.mjs"
+    },
+    {
+      "id": "scaffold-config",
+      "file": "templates/scaffold.example.json",
+      "destination": ".designer/scaffold.json"
+    }
+  ]
+}

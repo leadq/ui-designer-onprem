@@ -1,0 +1,56 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins/floatingLabel' as floating;
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  width: 100%;
+
+  &--withHelp { flex-direction: row; align-items: center; gap: $spacing-sm; }
+  &--withHelp &__wrapper { flex: 1; min-width: 0; }
+
+  &--floating { padding-top: 6px; }
+
+  &__label {
+    @include floating.label;
+    max-width: calc(100% - 44px);
+    cursor: pointer;
+  }
+
+  &__field:focus + &__label,
+  &__field:not(:has(option:checked[value=''])) + &__label {
+    @include floating.raised;
+  }
+
+  &__field:focus + &__label { color: $primary; }
+  &--floating &__field:not(:focus):has(option:checked[value='']) { color: transparent; }
+  &__field:disabled { opacity: 0.5; cursor: not-allowed; }
+  &__field:disabled + &__label { color: $text-muted; cursor: not-allowed; }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__field { padding-right: 32px; appearance: none; }
+
+  &--compact &__field {
+    height: 28px;
+    min-height: 28px;
+    padding: 2px 16px 2px 4px;
+    font-size: var(--font-size-caption);
+  }
+
+  &--compact &__icon { right: 4px; }
+
+  &__icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: $text-muted;
+    font-size: var(--font-size-micro);
+  }
+}

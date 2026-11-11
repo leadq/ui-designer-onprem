@@ -1,0 +1,35 @@
+.slotContent {
+  min-height: 0;
+
+  &--design {
+    border: 1px dashed var(--primary);
+    padding: 8px;
+    border-radius: 6px;
+    margin: 4px 0;
+    min-height: 40px;
+    background: rgba(var(--primary-rgb), 0.05);
+  }
+
+  &__label {
+    font-size: 9px;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__children {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__empty {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: 8px 0;
+  }
+}

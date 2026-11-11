@@ -1,0 +1,214 @@
+{
+  "version": 12,
+  "adapterId": "mantine",
+  "pageName": "Form review reference",
+  "pageNotes": "Dokümantasyon fixtureı; gerçek servis veya hedef uygulama implementasyonu değildir.",
+  "pageAnnotations": [],
+  "nodes": [
+    {
+      "id": "flow-main",
+      "type": "designerFlow",
+      "props": {},
+      "style": {},
+      "children": [],
+      "flow": {
+        "layout": "root",
+        "startScreenId": "details",
+        "screens": [
+          {
+            "nodeId": "details",
+            "kind": "screen"
+          },
+          {
+            "nodeId": "review",
+            "kind": "screen"
+          },
+          {
+            "nodeId": "confirm",
+            "kind": "overlay"
+          }
+        ]
+      }
+    },
+    {
+      "id": "details",
+      "type": "designerFrame",
+      "props": {},
+      "style": {},
+      "children": [
+        {
+          "id": "form-layout",
+          "type": "box",
+          "props": {},
+          "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 16,
+            "padding": 24,
+            "minHeight": 0
+          },
+          "children": [
+            {
+              "id": "name-field",
+              "type": "textInput",
+              "props": {
+                "label": "Ad",
+                "defaultValue": "Ada"
+              },
+              "style": {},
+              "children": []
+            },
+            {
+              "id": "next",
+              "type": "button",
+              "props": {
+                "children": "Devam"
+              },
+              "style": {},
+              "children": [],
+              "stateRules": {
+                "enabledWhen": {
+                  "match": "all",
+                  "conditions": [
+                    {
+                      "source": {
+                        "kind": "field",
+                        "nodeId": "name-field"
+                      },
+                      "operator": "notEmpty"
+                    }
+                  ]
+                }
+              },
+              "interactions": [
+                {
+                  "id": "next-review",
+                  "trigger": "click",
+                  "action": "goTo",
+                  "targetNodeId": "review",
+                  "intent": "formStep"
+                }
+              ]
+            }
+          ],
+          "responsiveStyles": {
+            "sm": {
+              "padding": 12
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "type": "designerFrame",
+      "props": {},
+      "style": {},
+      "children": [
+        {
+          "id": "review-layout",
+          "type": "box",
+          "props": {},
+          "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 16,
+            "padding": 24,
+            "minHeight": 0
+          },
+          "children": [
+            {
+              "id": "review-name",
+              "type": "typography",
+              "props": {
+                "children": "Ad girilmedi"
+              },
+              "style": {},
+              "children": [],
+              "textBinding": {
+                "sourceNodeId": "name-field",
+                "designText": "Örnek ad"
+              }
+            },
+            {
+              "id": "review-back",
+              "type": "button",
+              "props": {
+                "children": "Geri"
+              },
+              "style": {},
+              "children": [],
+              "interactions": [
+                {
+                  "id": "back-details",
+                  "trigger": "click",
+                  "action": "goTo",
+                  "targetNodeId": "details",
+                  "intent": "formStep"
+                }
+              ]
+            },
+            {
+              "id": "confirm-open",
+              "type": "button",
+              "props": {
+                "children": "Onayı aç"
+              },
+              "style": {},
+              "children": [],
+              "interactions": [
+                {
+                  "id": "open-confirm",
+                  "trigger": "click",
+                  "action": "openOverlay",
+                  "targetNodeId": "confirm"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "confirm",
+      "type": "modal",
+      "props": {},
+      "style": {},
+      "children": [
+        {
+          "id": "confirm-text",
+          "type": "typography",
+          "props": {
+            "children": "Bu bir arayüz örneğidir; servis çağrısı yapılmaz."
+          },
+          "style": {},
+          "children": []
+        },
+        {
+          "id": "confirm-close",
+          "type": "button",
+          "props": {
+            "children": "Kapat"
+          },
+          "style": {},
+          "children": [],
+          "interactions": [
+            {
+              "id": "close-confirm",
+              "trigger": "click",
+              "action": "closeOverlay",
+              "targetNodeId": "confirm"
+            }
+          ]
+        }
+      ],
+      "overlay": {
+        "ownerFrameId": "review",
+        "presentation": "modal",
+        "kind": "confirmation",
+        "initiallyOpen": false,
+        "withBackdrop": true
+      }
+    }
+  ]
+}

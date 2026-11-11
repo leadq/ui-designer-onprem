@@ -1,0 +1,36 @@
+@use '../../../styles/variables.scss' as *;
+
+.startupModal {
+  &__intro {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &__choices {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &__choice {
+    text-align: center;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: $primary;
+      box-shadow: 0 10px 25px rgba(var(--shadow-color-rgb), 0.1);
+      transform: translateY(-4px);
+    }
+  }
+
+  &__icon {
+    font-size: 48px;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .startupModal__choices {
+    grid-template-columns: 1fr;
+  }
+}

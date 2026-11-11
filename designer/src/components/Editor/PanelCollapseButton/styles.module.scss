@@ -1,0 +1,33 @@
+@use '../../../styles/variables.scss' as *;
+
+.panelCollapseButton {
+  position: absolute;
+  top: 50%;
+  z-index: 20;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid $border-color;
+  border-radius: 50%;
+  background: $bg-surface;
+  box-shadow: $shadow-sm;
+  color: $text-muted;
+  font-size: 10px;
+  transform: translateY(-50%);
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+    background: $bg-card;
+    color: $text-primary;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &--left {
+    right: -12px;
+  }
+
+  &--right {
+    left: -12px;
+  }
+}

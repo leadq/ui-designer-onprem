@@ -1,0 +1,6 @@
+.frame {
+  display: flow-root;
+  background-color: var(--designer-frame-background, var(--bg-surface));
+  flex: 1 0 auto;
+  &[data-designing='true'] { min-height: 960px; }
+}

@@ -1,0 +1,44 @@
+@use '../../../styles/variables' as *;
+
+.behaviorListModal {
+  &__content {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(340px, 1.4fr);
+    gap: 16px;
+    min-height: 360px;
+  }
+
+  &__list {
+    max-height: 460px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  &__item {
+    height: auto;
+    min-height: 68px;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    white-space: normal;
+  }
+
+  &__detail {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid $border-light;
+    border-radius: $radius-md;
+    background: $bg-surface;
+  }
+
+  &__fullText {
+    flex: 1;
+    white-space: pre-wrap;
+    line-height: 1.65;
+  }
+
+  &__empty {
+    padding: 48px 16px;
+    text-align: center;
+  }
+}

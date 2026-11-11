@@ -1,0 +1,46 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins/floatingLabel' as floating;
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  width: 100%;
+
+  &__control { position: relative; min-width: 0; }
+
+  &--floating { padding-top: 6px; }
+
+  &__label { @include floating.label; }
+
+  &__field:focus + &__label,
+  &__field:not(:placeholder-shown) + &__label,
+  &__control[data-always-float='true'] &__label {
+    @include floating.raised;
+  }
+
+  &__field:autofill + &__label { @include floating.raised; }
+  &__field:-webkit-autofill + &__label { @include floating.raised; }
+  &__field:focus + &__label { color: $primary; }
+  &__field:disabled + &__label { color: $text-muted; cursor: not-allowed; }
+  &--floating &__field:not(:focus)::placeholder { color: transparent; }
+
+  &__field {
+    &[type="number"] {
+      &::-webkit-inner-spin-button, &::-webkit-outer-spin-button { opacity: 1; }
+    }
+  }
+
+  &--error {
+    .input__label { color: $danger; }
+
+    .input__field {
+      border-color: $danger;
+    }
+
+    .input__errorMessage {
+      font-size: var(--font-size-caption);
+      color: $danger;
+    }
+  }
+}
