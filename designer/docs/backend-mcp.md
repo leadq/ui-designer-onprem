@@ -2,7 +2,7 @@
 
 > Bu teslim branch’inde test runner yoktur; kurum adapterının gerçek browser/MCP kabulü [checklist](component-adapter-checklist.md) üzerinden yapılır.
 
-Bu belge merkezi modun bağlantı/persistence sözleşmesidir. Kanonik [tasarım JSON kontratı](contracts/README.md) değişmez. Lokal geliştirme ve kurum dağıtımı aynı HTTP MCP + WebSocket modelini kullanır; adres/Origin ayarları [kök dağıtım rehberindedir](../../README.md).
+Bu belge merkezi modun bağlantı/persistence sözleşmesidir. Kanonik [tasarım JSON kontratı](contracts/README.md) değişmez. Lokal geliştirme ve kurum dağıtımı aynı HTTP MCP + WebSocket modelini kullanır; adres/Origin ayarları [kök kurulum rehberindedir](../../README.md).
 
 ## Çalışma modeli
 
@@ -17,7 +17,7 @@ Browser kanonik belge, seçim, undo ve IndexedDB’nin sahibidir. Sunucu clientI
 
 ## Çalıştırma
 
-[Bağımsız proje kurulum ve deployment adımları](../DEPLOYMENT.md)
+[Kurum paketleri ve adapter kurulumu](../installation/README.md) · [MCP çalıştırma ve export](../../mcp/README.md)
 
 ## IDE istemci kurulumu
 
@@ -73,9 +73,9 @@ Browser bir kez `/ws` açar, ilk mesaj `{type:"register", protocol:1, clientId}`
 - Disconnect pending request’leri sonlandırır, sınırsız offline kuyruk yoktur. Browser aynı kimlikle 500ms→15s jitter/backoff ile reconnect olur.
 - Hatalar: CLIENT_OFFLINE, CLIENT_ALREADY_CONNECTED, CLIENT_TIMEOUT, CLIENT_DISCONNECTED, REQUEST_CANCELLED, SERVER_BUSY, SERVER_CLOSING, DESIGN_CONFLICT, EDITOR_BUSY ve doğrulama/depolama hataları. Offline ile bilinmeyen kimlik ayrıştırılarak client listesi sunulmaz.
 
-## Kurum içi deployment
+## Ortamın bağlantı gereksinimleri
 
-[Kurulum ve release](../DEPLOYMENT.md). Tek aktif Node podu /mcp, /ws ve /health yollarını sunar. WSS Upgrade ve MCP oturum headerları iletilmelidir.
+`/mcp`, `/ws` ve `/health` aynı aktif Node process’ine ulaşmalıdır. WebSocket Upgrade ve MCP oturum headerları iletilmelidir. CI/CD ve platform yapılandırmasını ekip kendi projelerine göre oluşturur; bu repo deployment şablonu sağlamaz.
 
 ## Kurum kabulü
 

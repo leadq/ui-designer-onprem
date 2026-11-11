@@ -1,3 +1,3 @@
-Designer işleri için [designer/AGENTS.md](designer/AGENTS.md), MCP kurulumu için [mcp/README.md](mcp/README.md) kullanın. Deployment kökleri kendi repo içerikleriyle çalışır. Designer kaynakları MCP’ye yalnız açık export komutuyla aktarılır.
+Designer işleri için [designer/AGENTS.md](designer/AGENTS.md), MCP kurulumu için [mcp/README.md](mcp/README.md) kullanın. Designer ve MCP kendi proje içerikleriyle çalışır. CI/CD ve deployment yapılandırmasını her ekip kendi projelerindeki süreçlere göre oluşturur; bu repo platform şablonu sağlamaz. Designer kaynakları MCP’ye yalnız açık export komutuyla aktarılır.
 
 Bu checkout'ta `delivery/sync-onprem.mjs` varsa, main'deki geliştirme ve doğrulama commit'lerinden sonra [teslim akışını](delivery/README.md) uygulayın. Onprem güncel main üzerine tek commit kalmalı; bilinen teslim reposunu `--output` ile güncelleyin. Çakışma veya tarama hatasını çözmeden teslimi güncel saymayın. Push yetkisini kullanıcı talimatından değerlendirin.

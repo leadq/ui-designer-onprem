@@ -1,9 +1,0 @@
-trigger: none
-resources:
-  repositories:
-    - repository: azure-pipelines
-      type: git
-      name: __PIPELINE_PROJECT__/__PIPELINE_REPOSITORY__
-      ref: refs/heads/main
-extends:
-  template: __PROJECT_PULLREQUEST_TEMPLATE__@azure-pipelines

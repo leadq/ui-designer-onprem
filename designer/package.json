@@ -4,13 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "__TOOLCHAIN_CLI__ start --microfrontend false --autofix false",
-    "build": "__TOOLCHAIN_CLI__ build --microfrontend false --autofix false",
+    "dev": "__TOOLCHAIN_DEV_COMMAND__",
+    "build": "__TOOLCHAIN_BUILD_COMMAND__",
     "preview": "node scripts/preview.mjs",
-    "export:mcp": "node scripts/export-mcp.mjs",
-    "build:int": "__TOOLCHAIN_CLI__ build --microfrontend=false --autofix=false --development --sourcemap --offline",
-    "build:uat": "__TOOLCHAIN_CLI__ build --microfrontend=false --autofix=false --development --sourcemap --offline",
-    "build:prep": "__TOOLCHAIN_CLI__ build --microfrontend=false --autofix=false --offline"
+    "export:mcp": "node scripts/export-mcp.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",

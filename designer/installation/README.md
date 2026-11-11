@@ -15,15 +15,16 @@ Kurulumda **iki kurum paketi zorunludur**: frontend'i geliştiren/derleyen araç
 | --- | --- | --- |
 | `__TOOLCHAIN_PACKAGE__` | Derleme aracı npm paketinin tam adı; varsa scope dahil | package.json dependencies anahtarı |
 | `__TOOLCHAIN_VERSION__` | Registry'de erişilebilir onaylı sürüm | package.json dependencies değeri |
-| `__TOOLCHAIN_CLI__` | Paketin bin alanında sunduğu gerçek CLI komutu | package.json dev/build komutları |
+| `__TOOLCHAIN_DEV_COMMAND__` | Ekibin bundle paketiyle kullandığı tam yerel geliştirme komutu | package.json scripts.dev |
+| `__TOOLCHAIN_BUILD_COMMAND__` | Ekibin bundle paketiyle kullandığı tam build komutu | package.json scripts.build |
 | `__SHARED_TYPES_PACKAGE__` | Ortak tip paketinin tam npm adı | package.json dependencies ve overrides; dolar işaretli referans dahil |
 | `__SHARED_TYPES_VERSION__` | Araç paketiyle uyumlu ortak tip sürümü | package.json dependencies değeri |
-| `__APP_TITLE_KEY__` | SDK'nın uygulama başlığı env anahtarı | .env.example, piri-settings.json |
-| `__BASE_PATH_KEY__` | SDK'nın route/public path env anahtarı | .env.example, piri-settings.json |
-| `__BACKEND_WS_KEY__` | SDK'nın frontend bundle'a aktaracağı WebSocket env anahtarı | .env.example, piri-settings.json, src/utils/backendBridge/config.ts |
+| `__APP_TITLE_KEY__` | SDK'nın uygulama başlığı env anahtarı | .env.example |
+| `__BASE_PATH_KEY__` | SDK'nın route/public path env anahtarı | .env.example |
+| `__BACKEND_WS_KEY__` | SDK'nın frontend bundle'a aktaracağı WebSocket env anahtarı | .env.example, src/utils/backendBridge/config.ts |
 
-5. Tablodaki yer tutucuları belirtilen dosyalarda **birebir metin değişimiyle** gerçek değerleriyle değiştirin. Ortak tip override referansının başındaki `$` işaretini koruyun. Env anahtarları geçerli JavaScript alan adı olmalı; SDK tarafından frontend'e aktarılmaları gerekir. WebSocket anahtarını yalnız env dosyasında değiştirmek yeterli değildir; tablodaki üç dosyada aynı ad kullanılmalı. Mevcut CLI seçenekleri kurum SDK'sıyla aynı olmalı; farklıysa onun public komut sözleşmesine göre uyarlayın.
-6. [Derleme config örneğini](../toolchain.config.example.js) SDK'nın beklediği gerçek config dosya adıyla kök dizine kopyalayın. Hedef adı SDK'nın çalışan örneğinden bulun; teslimde özel dosya adı verilmez. Bu örnek aynı bootstrap/module-federation sözleşmesini kullanan SDK içindir; yeni bir bundler veya SDK iç API sarmalayıcısı kurmayın.
+5. Tablodaki yer tutucuları belirtilen dosyalarda **birebir metin değişimiyle** gerçek değerleriyle değiştirin. Ortak tip override referansının başındaki `$` işaretini koruyun. Env anahtarları geçerli JavaScript alan adı olmalı; SDK tarafından frontend'e aktarılmaları gerekir. WebSocket anahtarını yalnız env dosyasında değiştirmek yeterli değildir; tablodaki iki dosyada aynı ad kullanılmalı. Dev/build komutlarını ve parametrelerini ekibin aynı bundle paketiyle çalışan projesinden alın; paket adından komut veya seçenek tahmin etmeyin.
+6. Bundle paketinin config dosyasını ekibin aynı paketle çalışan mevcut projesine bakarak oluşturun. Dosya adını, CLI seçeneklerini, bootstrap ve env aktarımını gerçek paket sözleşmesinden doğrulayın. Designer’ın `src/main.tsx` default App girişi, `@root` aliası ve React/tip sürüm uyumunu koruyun; bu teslim hazır toolchain veya deployment config örneği sağlamaz.
 7. Install öncesinde aşağıdaki kontrolü repo kökünde çalıştırın. Başarısızsa belirtilen dosyalardaki eşlemeyi tamamlayın; bilinçli olarak şablon bırakılan rehber metinlerini değiştirmeniz gerekmez.
 
 ```sh
@@ -36,10 +37,10 @@ node --input-type=module -e "import {readFileSync} from 'node:fs'; const files=[
 SDK ve gerçek UI kütüphanesi sürümlerini eşleyin, `npm install` ile lock üretip sabitleyin. İleride `npm ci` kullanın.
 
 ## 3. Ortam
-Önce mevcut .env dosyasını koruyun. Yoksa .env.example dosyasını .env olarak kopyalayın. SDK'nın gerçek frontend WS anahtarına yerelde ws://127.0.0.1:4854/ws, kurumda wss://<MCP host>/ws verin. Üretimde aynı anahtarı piri-settings.json içinde eşleyin.
+Önce mevcut .env dosyasını koruyun. Yoksa .env.example dosyasını .env olarak kopyalayın. SDK'nın gerçek frontend WS anahtarına yerelde ws://127.0.0.1:4854/ws, kurumda wss://<MCP host>/ws verin. Ekip, bu anahtarın kendi build/başlatma sürecinde tarayıcı paketine aktarılmasını sağlar.
 
-## 4. Deployment
-[Bağımsız repo ve pipeline adımları](../DEPLOYMENT.md). MCP repo yolunu export komutuna açıkça verin.
+## 4. Yerel build ve MCP export
+Adapter kurulumu tamamlanınca Designer kökünde `npm run build` ve `npm run export:mcp -- /tam/yol/mcp` çalıştırın. MCP kendi kökünde `npm ci && npm run build && npm start` ile açılır. [MCP rehberi](../../mcp/README.md) çalışma sözleşmesini açıklar. CI/CD ve deployment dosyalarını ekip kendi mevcut projelerine göre hazırlar.
 
 <a id="adim-3"></a>
 ## 5. IDE
@@ -89,7 +90,7 @@ MCP reposunda `npm ci && npm run build && npm run start:backend`; Designer'da `n
 
 ### Kurum adresinde son kabul
 
-Hedef kurum kabulü için [deployment adımlarını](../DEPLOYMENT.md) izleyin.
+Ekip kendi yayın sürecinden sonra gerçek kurum adresinde Designer bağlantısını, IDE üzerinden katalog/validate/import/readback akışını ve varsa render erişimini doğrular. Sadece build veya `/health` başarısı uçtan uca kabul değildir.
 
 <a id="adim-4"></a>
 
