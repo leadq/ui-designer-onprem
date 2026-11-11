@@ -103,7 +103,7 @@ export const DESIGN_AUTHORING_CONTRACT = {
   workspace:
     'Every frame/overlay must be a root sibling registered exactly once in a root-layout designerFlow, even for one screen. Flow children must be empty.',
   editorPresentation:
-    'Frame design surfaces have a 960px minimum height and grow with content. This is editor-only: keep structural props/style empty; preview uses its viewport and TSX emits no frame wrapper. Linked width rows reuse canonical node IDs; each flow starts at 1440px. Device frames reserve fixed gutters even when hidden. View rows, device chrome, panel labels, disclosure state, focus, zoom and shortcut hints are not design JSON fields.',
+    'Frame design surfaces have a 960px minimum height and grow with content. This is editor-only: keep structural props/style empty; preview uses its viewport and TSX emits no frame wrapper. Linked width rows reuse canonical node IDs; each flow starts at 1440px. View rows, panel labels, disclosure state, focus, zoom and shortcut hints are not design JSON fields.',
   styleResolution: {
     contextAlignment:
       'Selected-item left/right and horizontal/vertical centering write normal responsive layout styles in one undo transaction. Auto margins align the selected node within remaining flex space; grid aligns within its cell. Block parents become column flex, preserving sibling styles. Only the selected node is aligned, not its children. Absolute/fixed and named-slot roots are unsupported. Uniform margin edits replace alignment margins; no extra alignment JSON field.',

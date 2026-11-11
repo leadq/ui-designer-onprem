@@ -229,7 +229,7 @@ Mevcut native TSX export bir handoff'tur: style temel çözümünü ve data-desi
 
 `authoring.responsiveSemanticElement` varsa gerçek HTML etiketi temel props/default eşlemesinden seçilir. Görsel variant küçülünce başlık seviyesi değişmez. Her breakpoint için ayrı JSX/component/key oluşturma; state korunmalı. Üretim yolu [React tarifi](react-generation.md#responsive-propları-kurum-hookuna-çevir).
 
-Tuvaldeki satırlar aynı canonical frame/node'un bağlı görünümüdür. Satır/cihaz çerçevesi tercihi export edilmez; responsiveStyles ve responsiveProps aynı node'da export edilir. İlişkisiz eski kopyaları görsel benzerlikten birleştirme. MCP effectiveProps türetilmiş inceleme bilgisidir; kaynağa yazılmaz.
+Tuvaldeki satırlar aynı canonical frame/node'un bağlı görünümüdür. Satır tercihi export edilmez; responsiveStyles ve responsiveProps aynı node'da export edilir. İlişkisiz eski kopyaları görsel benzerlikten birleştirme. MCP effectiveProps türetilmiş inceleme bilgisidir; kaynağa yazılmaz.
 
 
 ### Çoklu davranış notu düzenleyicisi

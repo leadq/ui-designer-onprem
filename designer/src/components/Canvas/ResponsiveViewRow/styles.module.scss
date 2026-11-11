@@ -18,12 +18,6 @@
     box-shadow: 0 0 0 calc(1px / var(--canvas-scale, 1)) rgba(var(--primary-rgb), 0.14);
   }
 
-  // Move only editor chrome into the unused shell insets; content/arrow geometry stays fixed.
-  &[data-device-frames-visible='false'] {
-    > [data-view-heading], [data-frame-name] { transform: translateY(var(--device-top)); }
-    [data-frame-name] { position: relative; z-index: 1; margin-inline: var(--device-left); }
-  }
-
   &__heading { min-width: 0; }
   .responsiveViewRow &__label {
     flex-direction: row;
@@ -39,7 +33,14 @@
   .responsiveViewRow &__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: inherit; font-size: calc(var(--font-size-sm) * var(--canvas-ui-scale)); }
   .responsiveViewRow &__width { flex-shrink: 0; font-size: calc(var(--font-size-xs) * var(--canvas-ui-scale)); }
   &__frames { display: flex; align-items: flex-start; gap: var(--frame-gap); }
-  &__frames > [data-frame-surface] { width: var(--frame-outer-width); }
+  &__frames > [data-frame-surface] { width: var(--frame-width); }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    background: var(--designer-frame-background, var(--bg-surface));
+    outline: 1px solid var(--border-color);
+  }
 
   @media (prefers-reduced-motion: reduce) { transition: none; }
 }

@@ -1,4 +1,4 @@
-import { type PointerEvent, useMemo } from 'react'
+import { type CSSProperties, type PointerEvent, useMemo } from 'react'
 import { Box, Button, Text } from '@root/components/common'
 import { FrameSurface } from '@root/components/Flows/FrameSurface'
 import { VIEWPORT_PRESETS } from '@root/constants/canvas/viewportPresets'
@@ -6,12 +6,9 @@ import { CanvasViewContext } from '@root/contexts/CanvasViewContext/context'
 import { useBuilderI18n } from '@root/hooks/useBuilderI18n'
 import { useEditorStore } from '@root/stores/editor'
 import type { DesignNode } from '@root/types/document'
-import { getDeviceFrameLayout } from '@root/utils/canvas/deviceFrames/getDeviceFrameLayout'
 import { getBreakpointForWidth } from '@root/utils/layout/getBreakpointForWidth'
 
 import { DesignNodeWrapper } from '../DesignNodeWrapper'
-import { DeviceFrame } from '../DeviceFrame'
-import { useResponsiveViewStore } from '../stores/responsiveViewStore'
 
 import styles from './styles.module.scss'
 
@@ -29,7 +26,6 @@ export const ResponsiveViewRow = ({
   isFrameSelectionVisible,
 }: ResponsiveViewRowProps) => {
   const { translate } = useBuilderI18n()
-  const areDeviceFramesVisible = useResponsiveViewStore((state) => state.areDeviceFramesVisible)
   const activeWidth = useEditorStore((state) => state.canvasWidth)
   const setCanvasWidth = useEditorStore((state) => state.setCanvasWidth)
   const context = useMemo(() => ({ id: `${flowId}:${width}`, width }), [flowId, width])
@@ -89,11 +85,10 @@ export const ResponsiveViewRow = ({
     <CanvasViewContext.Provider value={context}>
       <Box
         className={styles.responsiveViewRow}
-        data-device-frames-visible={areDeviceFramesVisible}
         data-view-active={activeWidth === width}
         data-view-id={context.id}
         data-view-width={width}
-        style={getDeviceFrameLayout(width).style}
+        style={{ '--frame-width': `${width}px` } as CSSProperties}
         onFocusCapture={handleFocusCapture}
         onPointerDownCapture={handlePointerDownCapture}
       >
@@ -119,9 +114,9 @@ export const ResponsiveViewRow = ({
               <DesignNodeWrapper key={node.id} node={node} />
             ) : (
               <FrameSurface key={node.id} isSelectionVisible={isFrameSelectionVisible} node={node}>
-                <DeviceFrame width={width}>
+                <Box className={styles.responsiveViewRow__content}>
                   <DesignNodeWrapper node={node} />
-                </DeviceFrame>
+                </Box>
               </FrameSurface>
             ),
           )}

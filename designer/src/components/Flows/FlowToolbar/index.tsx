@@ -1,4 +1,3 @@
-import { DeviceFramesToggle } from '@root/components/Canvas/DeviceFramesToggle'
 import { Box, Button, Text } from '@root/components/common'
 import { EditorIcon } from '@root/components/common/EditorIcon'
 import { Tooltip as EditorTooltip } from '@root/components/common/Tooltip'
@@ -87,7 +86,6 @@ export const FlowToolbar = ({ onManageBehaviors }: FlowToolbarProps) => {
           })}
       </Box>
       <Box className={styles.flowToolbar__actions}>
-        <DeviceFramesToggle />
         <ReferenceButton />
         <EditorTooltip label={translate('header.allBehaviors')}>
           <Button

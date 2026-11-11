@@ -4,17 +4,21 @@ import { persist } from 'zustand/middleware'
 
 interface ResponsiveViewState {
   widthsByFlow: Record<string, number[]>
-  areDeviceFramesVisible: boolean
   addView: (flowId: string, width: number) => void
-  setDeviceFramesVisible: (visible: boolean) => void
 }
+
+const getPreferences = ({ widthsByFlow }: ResponsiveViewState) => ({ widthsByFlow })
+
+const getMergedPreferences = (persisted: unknown, current: ResponsiveViewState) => ({
+  ...current,
+  widthsByFlow: (persisted as Partial<ResponsiveViewState>)?.widthsByFlow ?? current.widthsByFlow,
+})
 
 /** Editor preferences only: never duplicate or mutate the canonical design tree. */
 export const useResponsiveViewStore = create<ResponsiveViewState>()(
   persist(
     (set) => ({
       widthsByFlow: {},
-      areDeviceFramesVisible: false,
       addView: (flowId, width) =>
         set((state) => ({
           widthsByFlow: {
@@ -24,8 +28,11 @@ export const useResponsiveViewStore = create<ResponsiveViewState>()(
             ],
           },
         })),
-      setDeviceFramesVisible: (visible) => set({ areDeviceFramesVisible: visible }),
     }),
-    { name: 'designer-responsive-views-v1' },
+    {
+      name: 'designer-responsive-views-v1',
+      partialize: getPreferences,
+      merge: getMergedPreferences,
+    },
   ),
 )

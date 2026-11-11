@@ -709,8 +709,6 @@
   "disclosure.editContent": "İçeriği düzenle",
   "disclosure.contentHint": "Bu bölüme Bileşenler panelinden içerik ekleyin. İçindeki bir bileşeni seçerek özelliklerini düzenleyin.",
   "responsive.addView": "Responsive görünüm ekle",
-  "responsive.deviceFrames": "Cihaz çerçevelerini göster",
-  "responsive.deviceFramesHelp": "Cihaz çerçevelerini gösterir. Tasarımı ve dışa aktarılan içeriği değiştirmez.",
   "responsive.activeView": "Düzenlenen görünüm",
   "responsive.linkedView": "Aynı ekranlar · Bu genişlikte düzenle",
   "responsive.view": "Görünüm",

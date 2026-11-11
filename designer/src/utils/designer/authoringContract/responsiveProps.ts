@@ -13,5 +13,5 @@ export const RESPONSIVE_PROP_CONTRACT = {
   semantics:
     'Honor authoring.responsiveSemanticElement: resolve the HTML element from base props/defaults, never a responsive visual variant. Keep component identity and state stable.',
   generation:
-    'Read react-generation. CSS/SCSS module mixins and verified project viewport hook must use the same desktop-first ranges. Do not invent hook APIs. Linked canvas rows and device frames are editor preferences, not duplicate document nodes.',
+    'Read react-generation. CSS/SCSS module mixins and verified project viewport hook must use the same desktop-first ranges. Do not invent hook APIs. Linked canvas rows are editor preferences, not duplicate document nodes.',
 }

@@ -709,8 +709,6 @@
   "disclosure.editContent": "Edit section content",
   "disclosure.contentHint": "Add content from the Components panel. Select a component inside to edit its properties.",
   "responsive.addView": "Add responsive view",
-  "responsive.deviceFrames": "Show device frames",
-  "responsive.deviceFramesHelp": "Show device frames. Does not change the design or exported content.",
   "responsive.activeView": "Editing view",
   "responsive.linkedView": "Linked screens · Edit at this width",
   "responsive.view": "View",
