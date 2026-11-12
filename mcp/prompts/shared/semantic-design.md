@@ -34,6 +34,8 @@
 
 Varsayılan seçili UI kütüphanesi temasıdır; tema sorusu sorma. Kullanıcı açıkça tema uyarlaması isterse aşağıdaki destek sınırları uygulanır. Kart padding, kardeş gap, hizalama ve ölçü oranları tema değildir; referansın yerleşimine yaklaştırılır.
 
+Kaynak aynı kütüphaneden geliyorsa önce gerçek komponenti ve görünür durumuna uygun kayıtlı prop/slot/recipe'yi bul. Başka kütüphaneden geliyorsa rolü ve yapısı en yakın desteklenen komponenti seç; benzer silüet uğruna input'u Box/Text ile taklit etme. İki durumda da içerik, hiyerarşi, hizalar ve oranlar korunur. Kaynağın font/radius/gölgesini kopyalamak için ek tema üretme; katalogdaki native seçenekler yetmiyorsa kalan farkı bildir. Tema farkı, yanlış parent veya eksik label için gerekçe değildir.
+
 - **Mevcut tema:** renkleri kopyalama; primary/secondary, Card ve native boyut/varyantları kullan.
 - **Görsele yaklaş:** yine gerçek komponentleri kullan. Önce katalogdaki izinli seçenekleri ve hedef projenin mevcut tema/token API'sini incele. Gerekli tema ayarını ortak provider/token katmanında, kullanıcının istediği kapsamda öner; component başına rastgele renk/style ekleme. Global temayı etkileyecek kapsam belirsizse sor.
 - Designer JSON'da keyfi renk/font/radius stilleri ve tema yapılandırma alanı desteklenmez; validate_design sınırları aynen geçerlidir. İstenen eşleşme katalogla mümkün değilse farkı bildir ve kullanıcıyla mevcut temalı taslak veya hedef React projesinde tema uyarlaması yolunu netleştir. Yeni JSON alanı uydurma, validator'ı atlama.

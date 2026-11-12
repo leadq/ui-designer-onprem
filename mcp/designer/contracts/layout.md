@@ -8,6 +8,15 @@
 - Kart/form içi düzenlerde Grid kullanma. Gerçek iki boyutlu büyük sayfa ihtiyacı veya açık kullanıcı talebi dışında Grid seçme; ihtiyaç varsa gerekçesini açıkla. Mevcut Grid belgeleri desteklenmeye devam eder.
 - calc() ve karmaşık iç içe ölçü ifadeleri başlangıç çözümü değildir. Sade Flex/spacing ile çözülemeyen gerçek zorunlulukta gerekçesini belirt.
 
+## Hizalamanın sahibi ve ekseni
+
+Önce etkin parent yönünü çöz. Flex row'da ana eksen yatay, column'da dikeydir; reverse yönlerde başlangıç/bitiş tersine döner. `justifyContent` ana eksende çocuk grubunu, `alignItems` çapraz eksende çocukları hizalar. Bunlar container'ın kendi parent'ındaki konumunu belirlemez.
+
+- Bütün kardeşlerin ortak hizası parent'a aittir. Tek çocuğun çapraz eksen istisnası `alignSelf` olabilir; fill dönüşümü ve auto margin önceliğini aşağıdaki boyutlandırma kurallarından denetle.
+- Tek çocuğun ana eksen yerleşimi için `alignSelf` kullanma; uygun eksendeki auto margin kalan alanı paylaşır. Auto margin varken parent hizalaması aynı boşluğu ikinci kez dağıtmaz. Kardeşler varsa referans tüm parent'ın geometrik merkezi değil kalan alandır; bütün bir grubu ortalamak gerekiyorsa grubu temsil eden kapsayıcıyı hizala.
+- Komponent kutusunun konumu ile içindeki metin/ikonun hizası ayrıdır. Native içerik hizasını yalnız katalogda sunulan prop/slot tarifiyle ayarla; dış Flex hizasının label veya başlık metnini de ortalayacağını varsayma.
+- Named-slot kökü, native header/label ve yapısal frame sıradan layout parent'ı değildir. Slot için component kontratı geçerlidir; frame props/style alanlarını boş tut, gerektiğinde içine gerçek bir layout container ekle.
+
 ## Boyutlandırma
 `defaultStyle` → `node.style` sırasıyla birleşir; style boşsa varsayılanlar kaybolmaz.
 Box'ın varsayılan minHeight/padding değerleri küçük buton gruplarını da büyütebilir.
@@ -86,7 +95,7 @@ Bu örnek 768 ve üzeri iki kolon, 768 altı tek kolondur. `responsiveStyles` ya
 çocukların boyutlarını ayrıca içerik veya alan paylaşımı niyetine göre belirle. Gerektiğinde flexWrap kullan.
 
 ## Kontrol
-- Bir ekranı maxWidth içerik grubu içinde ortala; ilişkilere göre iç içe Flex kur.
+- Referans veya istek ortalanmış içerik gerektiriyorsa maxWidth içerik grubunu uygun hizalama kuralıyla ortala. Sola yaslı ekranı kendiliğinden ortalama; ilişkilere göre iç içe Flex kur.
 - Daralması gereken flex/grid çocuklarına minWidth: 0 ver. Geniş tabloyu overflowX: auto olan
   ayrı grupta tut; sayfanın tamamını yatay taşırma.
 - Yalnız desktop görüntüsünden mobil kuralları kesinmiş gibi çıkarma; varsayım olarak not et.

@@ -57,11 +57,14 @@ Mod seçimi ve ortak sorular dahil Basic en fazla 3; Detailed genellikle 5 civar
 
 ## Görsel okuma ve eksiksizlik
 
+Screenshot verildiğinde hedef, görünür ekranı aktif komponent sistemiyle mümkün olduğunca sadık kurmaktır. Okuma sırasını, grupları, yoğunluğu ve oranları tasarım kanıtı olarak kullan; bunları kendi estetik tercihinle değiştirme. Kullanıcı ayrıca istemedikçe başlık taşıma, yeni kart/ayırıcı ekleme, boşlukları genişletme veya ekranı yeniden tasarlama. Farklı kütüphaneden gelen görselde de aynı yapı hedeflenir; native tema sınırı semantic-design rehberindedir.
+
 1. Önce tüm ekranı gör; sonra yalnız okunamayan/yoğun bölgeye yakınlaş. Bir kırpımı bütün sayfa sanma. Metin okunamıyorsa uydurma; daha net kaynak veya gerekli metni iste.
-2. Header, içerik, yan panel, footer/modal sınırları → semantik iç içe gruplar. Tekrarlanan kart/alanların ortak kenar ve aralıklarını bul.
-3. Dış boşluk padding, kardeş mesafesi gap, hizalama Flex olarak ifade edilir. Kaynak pikseli CSS px değildir. İçeriğe göre, sabit, doldur ve max-width niyetlerini ayır; aynı ölçüyü hem parent hem child'a iki kez uygulama.
+2. Header, içerik, yan panel, footer/modal sınırları → semantik iç içe gruplar. Başlığın hangi bölüme, label/açıklama/hatanın hangi alana, aksiyonun hangi gruba ait olduğunu belirle. Görselde yakın olmaları tek başına aynı parent kanıtı değildir; ortak kenar, arka plan sınırı, tekrar ve içerik ilişkisini birlikte değerlendir.
+3. Her grubun ortak sol/sağ kenarını, merkezini, satır/kolon yönünü ve kardeş aralıklarını çıkar. İç padding, kardeş gap ve gruplar arası boşluğu ayır; aynı boşluğu parent ve child'a iki kez verme. Başlık ile açıklaması arasındaki aralığı bölüm aralığıyla eşitleme. Kaynak pikseli CSS px değildir; içeriğe göre, sabit, doldur ve max-width niyetlerini bilinen ölçekle belirle.
 4. Boş alan bazen eksik component değil nefes alanıdır. Placeholder'ı değer, başlığı input, tabloyu bağımsız kartlar veya tüm tabları ayrı sayfalar sanma.
-5. Görünen bütün alan/metin/kolon/aksiyonları planlanan bileşenlere eşleştir. Yalnız kullanıcı görsel inceleme istediyse taşma, kesilmiş yazı, hizalar, satır yüksekliği ve sıralama üzerinden render sonucunu kontrol et. Kanıtsız içerik veya gizli ekran ekleme.
+5. Görünen bütün alan/metin/kolon/aksiyonları kayıtlı bileşen, native prop/slot veya anlamlı içerik grubuyla eşleştir. Native label/description/header/action sahipliği varsa onu kullan; aynı metni ayrıca kardeş Text olarak çoğaltma. Bu eşlemeler mevcut kısa ekran özetine aittir, yeni JSON alanları değildir. Eşlenemeyen veya belirsiz öğeleri belirt; sessizce atlama.
+6. JSON/kod üretmeden önce görünür içerik, sıra, parent sahipliği, kolon oranları, ortak kenarlar ve boşlukları kaynakla karşılaştır. Teknik olarak geçerli ama farklı gruplanmış ekranı tamamlandı sayma. Yalnız kullanıcı görsel inceleme istediyse taşma, kesilmiş yazı, hizalar, satır yüksekliği ve sıralama üzerinden render sonucunu kontrol et. Kanıtsız içerik veya gizli ekran ekleme.
 
 Az token için aynı özeti güncelle; uzun düşünce dökümü üretme. Tüm katalog/rehberleri yükleme. Genel görünümü kaybetmeden yalnız sorunlu bölgeyi tekrar incele. Daha pahalı modelin her sorunu çözdüğünü varsayma; gerçek görsel ve davranış kabulü gerekir.
 

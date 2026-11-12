@@ -20,3 +20,12 @@
 
 ## Form başlangıçları
 Adapter previewValue.defaultProp bilgisini kullan; defaultValue/defaultChecked yalnız gerçek metadata öyle diyorsa yazılır. Placeholder doldurulmuş veri değildir; false ve 0 korunur. Save/Cancel etiketleri kendiliğinden submit/reset anlamı kazanmaz. Designer davranışı yalnız desteklenen JSON ilişkileriyle anlatılır; kaynak kod fonksiyonları JSON'a yazılmaz.
+
+## Yerleşimi JSON'a çevirme
+
+Her grup için dıştan içe ilerle: gerçek parent/slot → parent yönü → çocukların boyut niyeti → hizalanacak öğe veya grup → boşluk. Teknik alanları ve öncelikleri zorunlu `layout` rehberi ile `authoringContract.styleResolution.sizingRules` belirler; bu prompt yeni CSS/JSON yeteneği tanımlamaz.
+
+- “Ortala” kararında neyin nereye göre ortalandığını belirle: parent'ın tüm çocukları mı, tek bir çocuk mu, native komponentin kendi metni mi? Başlığı ortalamak için bütün form alanlarını ortalama; sağdaki aksiyon için bütün parent'ı sağa yaslama.
+- Native label/header/action slotunun iç düzenini keyfi wrapper'larla yeniden kurma. Komponent detayındaki sahiplik ve tarifleri uygula; bağımsız layout grubu yalnız gerçek bir ilişkiyi temsil etsin.
+- Üretimi bitirmeden her değişen node için parent, etkin breakpoint, fill/auto/sabit boyut, min/max, margin ve adapter varsayılanlarının birlikte amaçlanan hizayı verdiğini denetle. `width:100% + maxWidth + alignItems:center` tek başına ortalama değildir; teknik rehberdeki niyete uygun örneği kullan.
+- Aynı kontrolü kardeşlere de uygula: yalnız hedefe odaklanıp başlığı, diğer alanları veya aksiyon sırasını kaydırma. Validator sonucu bu görsel niyet kontrolünün yerine geçmez.
