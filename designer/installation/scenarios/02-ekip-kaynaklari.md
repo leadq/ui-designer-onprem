@@ -52,4 +52,4 @@ Aşağıdaki üç kaynak kaydını ve örnek rezervasyon akışını tasarla. S�
 
 R07–R12 geçici bozma denemelerinden sonra undo ile fixture'ı geri getir; final exportun hangi revizyonu anlattığını kaydet. Katalogda olup senaryoda kullanılmayan seçilmiş componentler için anlamlı ek kabul durumu ekle; kullanılmayan hedefi doğrulandı sayma.
 
-[Tablo rehberi](../../docs/table-adapter-guide.md), data-display (MCP reposunda `designer/guides/data-display.md`), [checklist](../../docs/component-adapter-checklist.md) native ve model sınırlarının sahibidir. Sonuçta her Rxx adımının geçti/başarısız/engelli durumunu ve kanıtını kısa raporla; hatalara beklenen/gözlenen sonuç ve tekrar adımları ekle.
+[Tablo rehberi](../../docs/table-adapter-guide.md), data-display (MCP reposunda `designer/contracts/data-display.md`), [checklist](../../docs/component-adapter-checklist.md) native ve model sınırlarının sahibidir. Sonuçta her Rxx adımının geçti/başarısız/engelli durumunu ve kanıtını kısa raporla; hatalara beklenen/gözlenen sonuç ve tekrar adımları ekle.

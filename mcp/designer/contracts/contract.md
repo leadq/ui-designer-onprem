@@ -74,3 +74,7 @@ Bilinmeyen prop, slot veya bileşen bütün importu hata ile reddeder; açık ta
 Örnek: Mantine Typography için `props: {children: "ADIM 2 / 3", c: "black", fw: 400}` geçerlidir. Aynı node’da `props.color` veya `style.color: "#801d2d"` reddedilir. `style.gap: 32` ve `responsiveStyles.sm.padding: 8` geçerlidir. Diğer adapter için aynı prop isimlerini varsayma; kendi kataloğunu oku.
 
 Bu sınır dosya/nested/flat, savedDesigns, yerel şablon/kayıt, preview, MCP import/update ve TSX çıkışında geçerlidir. Eski sürümler muaf değildir; güncel şema sürümü katalogdan alınır. Geçersiz yerel kayıt uygulanmaz. Özgün JSON `designer-rejected-json:` altında yedeklenir ve kurtarma penceresinden indirilir; yedek yazılamazsa autosave özgün anahtarı ezmez. Bu otomatik bir görünüm dönüşümü değildir: kullanıcı/agent bildirilen alanları kayıtlı prop’lara taşıyıp yeniden import eder. Yeni tasarım mevcut dosyanın görünümünü sessizce taklit etmez.
+
+## Başlangıç değeri sözleşmesi
+
+Metin/input başlangıcını adapter previewValue.defaultProp alanıyla ifade et; boolean defaultChecked değeri false/true kalır. Placeholder başlangıç verisi değildir. Runtime value/checked yerine katalogda izin verilen başlangıç prop'unu kullan; preview değişiklikleri runtime yönetir. Save/Cancel adı otomatik submit/reset bağı oluşturmaz.

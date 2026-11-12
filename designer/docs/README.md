@@ -11,7 +11,7 @@
 | IDE ve hedef React uygulaması | [Kurulum adımları](../installation/README.md), [Designer agent](designer-agent.md), [JSON alanları](agent-handoff/json-fields.md), [React üretimi](agent-handoff/react-generation.md) |
 | Bu teslimin kapsamı ve kanıtı | [DELIVERY](DELIVERY.md) |
 
-Geliştirme testlerine ilişkin tarihsel atıflar bu branch’te o dosya veya komutun bulunduğu anlamına gelmez. Çalışan MCP rehberleri ../mcp/designer altındadır; hedef proje mimarisi orada tamamlanır.
+Geliştirme testlerine ilişkin tarihsel atıflar bu branch’te o dosya veya komutun bulunduğu anlamına gelmez. Düzenlenebilir MCP rehberleri ../mcp/prompts, teknik kontratlar ../mcp/designer/contracts altındadır. [Prompt düzeni ve otomatik keşif](../../mcp/prompts/README.md).
 
 
 - [Kurum tasarım ikon kaynağı](../src/adapters/iconLibrary/README.md): tek aktif kurum kaydı, gerçek native yükleme/export ve pasif arşiv örnekleri; editör kontrol ikonları ayrıdır.

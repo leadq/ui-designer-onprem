@@ -1,3 +1,18 @@
+<!-- rule
+{
+  "id": "unit-tests",
+  "title": "Unit test stratejisi",
+  "when": "after-implementation",
+  "status": "needs-project-input",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "verify"
+  ]
+}
+-->
+
 # Unit test rehberi — implementasyondan sonra
 
 Durum: needs-project-input. UI/bileşenler ve davranışlar oturmadan test kodu üretme.

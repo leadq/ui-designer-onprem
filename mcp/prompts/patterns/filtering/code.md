@@ -1,3 +1,22 @@
+<!-- rule
+{
+  "id": "filtering",
+  "title": "Filtre ve sonuçlar",
+  "when": "filtering",
+  "status": "needs-project-input",
+  "summary": "Arama/filtre ile sonuç ilişkisi; Detailed iş mantığı ve doğrulanmış servis kuralları.",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ],
+  "modes": [
+    "detailed"
+  ]
+}
+-->
+
 # Filtreleme
 
 Kapsam: domain/ilişki/servis uygulaması yalnız Detailed modda, kullanıcı cevabı veya doğrulanmış proje kuralıyla yapılır. Bu rehberin servis/iş kuralları Basic kapsamını genişletmez; Basic yapısal form/wizard altyapısı için forms/wizard kullanır. authoring-modes önceliklidir.

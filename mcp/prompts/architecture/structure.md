@@ -1,3 +1,19 @@
+<!-- rule
+{
+  "id": "architecture",
+  "title": "Klasör ve dosya mimarisi",
+  "when": "react",
+  "status": "needs-project-input",
+  "summary": "Hedef kurum klasör/import/router/provider kararları; eksik alanları hazır kabul etme.",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ]
+}
+-->
+
 # Hedef proje mimarisi
 
 Durum: needs-project-input. Bu dosya ekip tarafından doldurulacak başlangıç profilidir.

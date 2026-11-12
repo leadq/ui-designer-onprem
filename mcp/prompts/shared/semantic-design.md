@@ -1,3 +1,19 @@
+<!-- rule
+{
+  "id": "semantic-design",
+  "title": "Semantik tasarım ve tema",
+  "when": "always",
+  "status": "ready",
+  "targets": [
+    "design",
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ]
+}
+-->
+
 # Görseli bileşenlerle yorumlama
 
 - Önce sayfanın işini bul: bilgi girişi, filtre/arama, veri gösterimi, dashboard veya adımlı işlem.

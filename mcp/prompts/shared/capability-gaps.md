@@ -1,3 +1,19 @@
+<!-- rule
+{
+  "id": "capability-gaps",
+  "title": "Destek sınırları ve eksik özellikler",
+  "when": "always",
+  "status": "ready",
+  "targets": [
+    "design",
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ]
+}
+-->
+
 # Destek sınırları ve eksik bilgi
 
 MCP kataloğu upstream UI kütüphanesinin bütün API'si değildir. Özet listedeki type'ları keşfet,

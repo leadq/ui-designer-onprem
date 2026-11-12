@@ -2,6 +2,7 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 import { getDesignTaskPlan } from './getDesignTaskPlan.js';
+import { getTaskGuidance } from '../taskGuidance.js';
 import { getResult } from './getResult.js';
 
 import { MAX_STARTER_PATTERNS, patternSchema, readOnly } from '../constants/toolOptions.js';
@@ -12,14 +13,14 @@ export const registerStartDesignTaskTool = (server: McpServer): void => {
     'start_design_task',
     {
       description:
-        'Legacy progressive discovery for prompt/screenshot/design → JSON or React. Prefer get_design_contract for a batched contract-first path. Returns a small guide index and ordered next steps, NOT all instructions. Discover first, read only required guides using the returned bundleRevision. No browser session needed.',
+        'Legacy progressive discovery for prompt/screenshot/design → JSON or React. Prefer get_design_contract for a batched contract-first path. Returns a guide index, ordered next steps and applicable required guidance bodies. Discover first, read only required guides using the returned bundleRevision. No browser session needed.',
       annotations: readOnly,
       inputSchema: {
         goal: z.enum(['design', 'react']),
         mode: z.enum(['basic', 'detailed']).optional(),
         phase: z.enum(['understand', 'implement']).default('implement'),
         source: z.enum(['auto', 'editor', 'image', 'prompt']).default('auto'),
-        patterns: z.array(patternSchema).max(MAX_STARTER_PATTERNS).default([]),
+        patterns: z.array(z.string().regex(/^[a-z][a-z0-9-]*$/)).max(MAX_STARTER_PATTERNS).default([]),
         expectedVersion: z.string().optional(),
       },
     },
@@ -30,15 +31,15 @@ export const registerStartDesignTaskTool = (server: McpServer): void => {
         assertBundleVersion(bundle, expectedVersion);
 
         const effectivePhase = mode ? phase : 'understand';
-        const { needed, needsEditor, steps } = getDesignTaskPlan({
+        const { needsEditor, steps } = getDesignTaskPlan({
           goal, patterns, phase: effectivePhase, source, mode,
         });
-        const requiredGuides = bundle.manifest.guides.filter(
-          (guide) => needed.has(guide.when) || guide.id === 'workflow',
-        );
+        const guidance = getTaskGuidance(bundle, { goal, source, mode, phase: effectivePhase, patterns });
+        const requiredGuides = bundle.manifest.guides.filter(guide => guidance.required.some(required => required.id === guide.id));
         const requiredIds = new Set(requiredGuides.map((guide) => guide.id));
 
         return {
+          guidance,
           version: bundle.manifest.version,
           profile: bundle.manifest.profile,
           phase: effectivePhase,
@@ -64,7 +65,7 @@ export const registerStartDesignTaskTool = (server: McpServer): void => {
             : source === 'auto'
               ? 'conditional'
               : 'optional-for-editor-output',
-          patternOptions: patternSchema.options,
+          patternOptions: [...new Set([...patternSchema.options, ...bundle.manifest.guides.filter(guide => guide.origin === 'prompt' && guide.file.startsWith('patterns/')).map(guide => guide.when)])],
           bundleRevision: bundle.revision,
           requiredGuides: requiredGuides.map((guide) => getGuideSummary(bundle, guide)),
           laterGuides:

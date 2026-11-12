@@ -1,3 +1,20 @@
+<!-- rule
+{
+  "id": "authoring-modes",
+  "title": "Basic / Detailed ve ortak sorular",
+  "when": "understand",
+  "status": "ready",
+  "targets": [
+    "design",
+    "react"
+  ],
+  "phases": [
+    "understand",
+    "implement"
+  ]
+}
+-->
+
 # Basic / Detailed
 
 Bu rehber mod kapsamı ve soru bütçesinde yetkilidir. Mod, phase (anla/uygula) ve goal (tasarım/React) birbirinden bağımsızdır. Kullanıcı birini söylemediyse önce sor: “Basic: tasarım ve yapısal form akışı mı; Detailed: ayrıca iş kurallarını birlikte netleştirerek mi ilerleyelim?” Yanıt gelmeden mod seçme veya implementasyona geçme. Verilmiş tercihi tekrar sorma; sonraki start_design_task çağrılarına mode: basic|detailed taşı. Mod seçimi bu MCP sürecinde saklanmaz; agent kısa görev özetinde tutar.
@@ -50,3 +67,7 @@ Detailed: belirsizliği kısa aday tespitiyle belirt: “Kartın sağ üstündek
 3. Servis gerekiyorsa önce proje kontratını/örneklerini ara; eksikse mevcut servis tanımı veya sözleşme bağlantısını iste. Yalnız gerçek kapsamda gereken payload, loading/error veya yetki belirsizliğini sor.
 
 Bu sıra zorunlu anket değildir; cevaplananları atla, aynı CardAction ailesi için ortak cevabı yeniden sorma, kart bazındaki istisnayı koru. Servis yoksa API sorusuna geçme. Bütçe biterse bilinmeyen davranışı tamamlanmış sayma; bağımsız UI'ı bitir ve kalanları bildir. API bağlantısı bilinmiyorsa tahmini production endpoint üretme. Kullanıcı kararı/proje örneği kadar uygula; kaydetme/silme/onay gibi ek kuralları kendiliğinden büyütme.
+
+## Çıktı hedefi
+
+Form/provider/stepper uygulamasıyla ilgili kodlama beklentileri yalnız goal=react için geçerlidir. goal=design ekran yapısını, UX tarifini ve Designer'ın desteklediği JSON ilişkilerini kurar; hedef projenin provider/router/API importları çizim önkoşulu değildir. Aynı pattern'ın design tarifi iki hedefte, code tarifi yalnız kaynak kodda kullanılır.

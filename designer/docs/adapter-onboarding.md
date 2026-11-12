@@ -43,3 +43,5 @@ Ortam dosyaları hazırken `npm run build` ve ardından ayrı terminallerde MCP 
 Teslimde kaynak revizyonu, kurulu paket/sürüm, adapter kimliği, çalışan/kapsam dışı componentler ve kanıt/eksikleri kaydedin. Build başarısını görsel veya IDE/model kabulü saymayın.
 
 Eski belgelerin adapterId’sini kurum kimliğiyle değiştirerek dönüştürme yapılmaz. LEGACY_ADAPTER_ID geçmiş kimliksiz belgeleri ayırt eder. Bağımsız ikon kaydı ve editörün Radix UI’si authored native library’den ayrıdır.
+
+Prompt/kod üretim kuralları ve teknik kontrat ayrımı: [MCP prompt rehberi](../../mcp/prompts/README.md).

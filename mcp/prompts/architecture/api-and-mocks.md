@@ -1,3 +1,21 @@
+<!-- rule
+{
+  "id": "api-mocks",
+  "title": "RTK Query ve dev mock",
+  "when": "detailed-react",
+  "status": "needs-project-input",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ],
+  "modes": [
+    "detailed"
+  ]
+}
+-->
+
 # API ve geliştirme mock'ları
 
 Kapsam: domain/ilişki/servis uygulaması yalnız Detailed modda, kullanıcı cevabı veya doğrulanmış proje kuralıyla yapılır. Bu rehberin servis/iş kuralları Basic kapsamını genişletmez; Basic yapısal form/wizard altyapısı için forms/wizard kullanır. authoring-modes önceliklidir.

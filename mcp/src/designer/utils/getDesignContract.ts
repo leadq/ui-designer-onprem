@@ -4,8 +4,14 @@ import { getGuideSections } from './getGuideSections.js';
 
 import { getGuideSummary, getKnowledgeBundle, getSha256 } from '../knowledge.js';
 import { getDesignerRuntime } from '../runtime.js';
+import { getTaskGuidance, type GuidanceContext } from '../taskGuidance.js';
 
 interface ContractRequest {
+  goal?: GuidanceContext['goal'];
+  source?: GuidanceContext['source'];
+  mode?: GuidanceContext['mode'];
+  taskPhase?: GuidanceContext['phase'];
+  patterns?: string[];
   adapterId: string;
   phase: 'overview' | 'details';
   contractRevision?: string;
@@ -44,6 +50,11 @@ export const getDesignContract = async (request: ContractRequest) => {
   );
   const identity = { format: 'ui-designer/contract-v1', adapterId, schemaVersion,
     bundleVersion: bundle.manifest.version, bundleRevision: bundle.revision, contractRevision };
+  const guidance = getTaskGuidance(bundle, {
+    goal: request.goal ?? 'design', source: request.source ?? 'auto', mode: request.mode,
+    phase: request.taskPhase ?? (phase === 'overview' ? 'understand' : 'implement'),
+    patterns: request.patterns ?? [],
+  }, guides.map(guide => guide.id));
   if (phase === 'details') {
     const selectedGuides = guides.map(({ id, sectionIds }) => {
       const guide = bundle.manifest.guides.find((entry) => entry.id === id);
@@ -58,7 +69,7 @@ export const getDesignContract = async (request: ContractRequest) => {
         }) } : { content }),
       };
     });
-    return { ...identity, phase,
+    return { ...identity, phase, guidance,
       catalog: allComponents ? getComponentPacket(fullCatalog) : componentTypes
         ? getComponentPacket(runtime.getDesignCatalog(adapterId, [...new Set(componentTypes)])) : undefined,
       guides: selectedGuides,
@@ -68,24 +79,17 @@ export const getDesignContract = async (request: ContractRequest) => {
   const fieldGuide = bundle.contents.get('json-field-reference');
   if (!fieldGuide) throw new Error('Profile must provide json-field-reference for contract-first authoring.');
   const fieldSections = getGuideSections(fieldGuide.content);
-  return { ...identity, phase, catalog: summary,
+  return { ...identity, phase, guidance, catalog: summary,
     // Existing authoritative field dictionary, not a second hand-maintained JSON model.
     fields: fieldSections.slice(0, 3),
     guideIndex: bundle.manifest.guides.map((guide) => ({ ...getGuideSummary(bundle, guide),
       sections: getGuideSections(bundle.contents.get(guide.id)!.content)
         .map(({ id, title }) => ({ id, title })),
     })),
-    scalePolicy: {
-      reference: 'Prefer a clearly bounded region roughly half the screenshot width (modal/card/content panel) whose CSS width the user can easily estimate. Width is preferred to height; reuse any already known measurement rather than asking again. Otherwise use known CSS viewport width OR a known card/modal width in the SAME image plane. If neither is known, ask once for an approximate reference; do not require browser inspect. Reuse given answers. If unknown to the user, explicitly label the agreed approximation.',
-      browserFallback: 'If no region width is known, ask for the original screenshot browser viewport width in CSS px (window.innerWidth or document.documentElement.clientWidth), from the same capture size/zoom. Body width can be capped or scrollable and is not automatically the viewport. A screenshot file alone cannot reveal that value; do not inspect an unrelated current tab or claim the old capture dimensions were measured.',
-      calculation: 'cssLength = observedImageLength * referenceCssWidth / observedReferenceImageWidth. E.g. modal is 600 image px and about 480 CSS px: a 30 image px gap is about 24 CSS px. Do not mix cropped/scaled screenshots or infer unseen height.',
-      layout: 'Interpret ratios as parent/child grouping, row/column, alignment, fill/auto, maxWidth, gap and padding. Use catalog layout keys/native size props; never serialize measured x/y rectangles, screenshot pixels or editor chrome as layout.',
-    },
     workflow: [
-      'Understand screen purpose, requested scope and scale from the supplied image/prompt/current JSON. Ask only unknown material facts; Basic/Detailed policy remains in authoring-modes.',
-      'Choose candidate types by overview names, short descriptions and brief visualHints about visible shape. Hints are recognition clues, not proof of hidden behavior. Request details for components you will use or candidates you are unsure about; recipes are returned only in those selected details. Preserve native slot/compound ownership. Choose strategies by guideIndex title/summary/when/status and observed screen needs; form and dashboard may coexist. Request selected componentTypes and strategy guides/sections together in phase details. Do not load every strategy. allComponents is available only when the full library is actually needed.',
-      'For JSON authoring follow catalog.authoringContract.jsonGeneration.steps and styleResolution.sizingRules, then read layout and relevant field sections. Resolve sizing intent and alignment at each target breakpoint before validation; component recipes cannot change shared layout semantics. For React also read react-generation and actual project strategy; custom export renderers/callbacks are not equivalent to spreading JSON props. Do not invent missing native mappings or institution rules.',
-      'Construct semantic JSON directly; validate_design is structural validation without rendering. Append/patch only if requested; use fresh live identity/revision and applied/persisted receipt. Existing selections/parents/responsive context and one undo remain mandatory.',
+      'Apply guidance.required before proceeding. Set goal/source/mode and observed patterns; the editable rules define understanding, Designer and codegen behavior.',
+      'Request details for selected componentTypes and patterns using this contractRevision. Newly requested guide topics also include matching mandatory rules. Use taskPhase=verify before completion.',
+      'Technical contract and registry semantics remain authoritative. Required content delivery does not prove model comprehension or successful application.',
     ],
     visualReview: { default: 'none', activation: 'explicit-user-request',
       rule: 'Reading a supplied reference image is allowed. Do not capture/render the produced UI or start a visual refinement loop by default. Only when the user requests visual comparison/refinement, read render-feedback and use render_design_frame within that scope. Never claim visual matching from JSON validation.',

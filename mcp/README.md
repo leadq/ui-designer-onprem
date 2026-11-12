@@ -19,3 +19,7 @@ CI/CD, container imajı, registry, sunucu/platform ve release yapılandırması 
 Uygulamanın bağlantı sözleşmesini koruyun: `/mcp`, `/ws` ve `/health` aynı aktif Node process'ine ulaşır; WebSocket Upgrade ve MCP oturum headerları iletilir. Browser origin'i `DESIGNER_ALLOWED_ORIGINS` içinde olmalıdır. Canlı oturum kayıtları process belleğindedir; tasarımlar tarayıcı IndexedDB'sinde tutulur. Bu sürüm tek aktif MCP process'iyle doğrulanmıştır.
 
 İsteğe bağlı render için kurulu Playwright sürümüyle uyumlu Chromium/sistem kütüphaneleri ve MCP'den Designer adresine erişim gerekir. Gerçek kurum ortamının ağ, erişim ve uçtan uca kabulünü ekip tamamlar.
+
+## Promptlar ve teknik kontratlar
+
+[Prompt rehberi](prompts/README.md) Designer/kod üretimi ayrımını, otomatik Markdown keşfini, zorunlu içerik sunumunu ve eski profil geçişini anlatır. Düzenlenebilir kurallar `prompts/`; ürün kontratları `designer/contracts/` altındadır. Yeni kural için manifest veya agent dosyasına referans eklenmez.

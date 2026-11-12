@@ -66,7 +66,7 @@ Guide'lar ayrıca `designer://guides/<id>` MCP resource olarak keşfedilebilir. 
 isteğe bağlı kısa başlangıçtır. Otomatik iş sırası agent dosyasında ve start aracındadır; prompt çağrısı zorunlu değil.
 Discovery tam rehberleri dökmez. Token sayısı `length / 4` yaklaşımıdır, tokenizer ölçümü değildir.
 `import_design` yeni ekran ekler; `update_design` mevcut node'ları değiştirir. İkisi de sürüm ve tarayıcı ACK kontrolü kullanır. Generator metnini almak onu çalıştırmaz.
-Görsel aktarımı/ekleme ayrıntıları reference-images rehberinde (MCP reposunda `designer/guides/reference-images.md`).
+Görsel aktarımı/ekleme ayrıntıları reference-images rehberinde (MCP reposunda `designer/contracts/reference-images.md`).
 Agent bootstrap sürümünü güncel manifest ile eşleyin (18 Ekim 2026: 1.9.0); eski agent dosyası sürüm uyuşmazlığı verirse yeniden indirin.
 
 ## Yazım ve karar stratejisi
@@ -85,44 +85,17 @@ Görsel istek anında browser’dan WebSocket ile okunur; backend görsel veya b
 
 Import aktif adapter’la doğrulanır; savedDesigns kabul edilmez, mevcut sayfa metadata’sı değişmez. Browser designId/editorId/expectedVersion kontrolünden sonra eklemeyi tek undo adımında yapar ve ID/iç referansları yeniden eşler. Başarı `applied` + `isPersisted=true` ile doğrulanır. Ağ hatası uygulanmadığı anlamına gelmez: aynı requestId receipt’i ve güncel belge okunur. Boyut, timeout, receipt ve erişim sınırları [merkezi sözleşmededir](backend-mcp.md#ws-protokolü-ve-sınırlar).
 
-## Ekip hangi dosyaları dolduracak?
+## Prompt düzeni ve zorunlu içerik (2.0.0)
 
-| Dosya (`../mcp/designer/guides/`) | Sorumluluk |
-| --- | --- |
-| `workflow.md` | Agent'ın çalışma sırası, belirsizlik yönetimi, doğrulama ve teslim |
-| `reference-images.md` | Yüklenen görseli okuma, session, yeni ekran ekleme, retry ve tarayıcı ACK |
-| `semantic-design.md` | Görseli anlamlandırma, native bileşen ve tema kullanımı |
-| `architecture.md` | Klasör/dosya/import/BEM, provider ve ortak UI yolları |
-| `standards.md` | Kod yazım kuralları, isimlendirme, React/TypeScript/CSS, hook ve sorumluluk ayrımı |
-| `i18n.md` | react-i18next, namespace/dosya ve translation anahtarı adlandırması |
-| `quality-checks.md` | Kod tamamlandıktan sonra mevcut lint/ESLint, tip/test/build ve kalite kontrolleri |
-| `api-mocks.md` | RTK Query base API, URL, dev-only interceptor ve fixture şeması |
-| `unit-tests.md` | Test runner/helper, konum, mock ve coverage; implementasyondan sonra okunur |
-| `forms.md` | Form provider, alan ve validation kuralları |
-| `wizard.md` | Adım/context, veri ömrü, modal/OTP ve geri dönüş |
-| `data-display.md` | Tablo/list, slot, pagination ve load more |
-| `filtering.md` | Filtre/query/reset/debounce |
-| `dashboard.md` | KPI/grafik/veri yerleşimi |
-| `contract.md` | Mevcut JSON formatı için kısa giriş |
+Düzenlenebilir kurallar MCP reposunda `prompts/shared`, `prompts/designer`, `prompts/codegen`, `prompts/patterns`, `prompts/architecture` altındadır. Teknik kontratlar ayrı `designer/contracts` dizinindedir; prompt override yolu bu kontratlara erişmez. Yeni Markdown otomatik keşfedilir; manifest/agent referansı gerekmez. Dosyanın isteğe bağlı metadata'sı kendi koşullarını taşır.
 
-`execution-contract` var olan `docs/contracts/README.md` dosyasını okur; kopya kontrat tutulmaz.
-Rehber seçimi bir strateji sınıfı hiyerarşisi değildir: manifestteki `when` etiketleri yeterlidir.
-Wizard form+behavior'ı, filtering data-display'i de ister. Kod üretiminde mimari/standards/api-mocks
-zorunlu; unit-tests `laterGuides` altında gelir. Yeni örüntü fark edilince start tekrar çağrılır.
-`needs-project-input` gerekli yerlerde ekip bilgisinin eksik olabileceğini bildirir. Dosyayı doldurup
-inceledikten sonra manifest durumunu `ready` yapın. Agent eksik bilgiyi projeden kanıtlar veya sorar.
+[Prompt rehberi](../../mcp/prompts/README.md) varsayılanları, örneği, hata davranışını ve migration'ı açıklar. `get_design_contract` goal/source/mode/patterns bağlamına göre zorunlu gövdeleri `guidance.required` ile verir; tamamlamadan taskPhase=verify kullanılır. İndeks okumak içerik okumak değildir; eksik proje bilgisi guidance.needsProjectInput içinde görünür. Modellerin anlaması/uygulaması teslim edilmiş içerikten kanıtlanamaz.
 
-## Sürümleme ve ayrı profil
+## Sürümleme ve ayrı prompt dizini
 
-`manifest.json` sürümü + bütün rehber/asset SHA-256 değerleri tek bundleRevision oluşturur.
-Aynı sürüm numarasıyla MD değişse bile revizyon değişir; eski read/asset isteği reddedilir.
-Anlamlı profil değişimlerinde manifest.version ve Designer.agent.md expectedVersion birlikte güncellenir.
+Bilgi paketi 2.0.0; tasarım JSON şeması değişmedi. İçerik, metadata ve türetilen yönlendirme değişince revision değişir. Eski read/details revizyonu reddedilir. Dosya ekleme/silme ve resource listesi yeniden başlatma istemez.
 
-Başka kurum profili için `../mcp/designer` klasörünü kopyala; execution-contract dosyasını da profilin
-`guides/execution-contract.md` yoluna kopyalayıp manifestte file alanını bu yerel yola değiştir.
-MCP env `DESIGNER_PROFILE_DIR=/absolute/profile` ile bu profili seçer. Profil manifest'i server sahibi
-konfigürasyonudur; tool girdisinden keyfi dosya yolu kabul edilmez. Yeni resource listesi için restart gerekir.
-Bu bir sandbox veya model itaat garantisi değildir; kod inceleme ve proje kalite kapıları yine gereklidir.
+Ayrı konum için prompts düzeninin tamamını DESIGNER_PROMPTS_DIR ile seçin. Teknik kontratlar ve assetler ürün kökünde kalır. Eski DESIGNER_PROFILE_DIR tam profil seçimi migration hatası verir; eski çalışma rehberleri yeni kategorilere taşınmalıdır. Kontrat/asset manifestini prompt dizinine kopyalamayın.
 
 ## Generator
 
@@ -177,7 +150,7 @@ frontmatter'ı otomatik uyguluyor varsayılmaz. Öncelikle tek Designer rolü va
 
 ## Prompt ve mevcut node düzenleme
 
-Görsel zorunlu değil. prompt-authoring (MCP reposunda `designer/guides/prompt-authoring.md`) kapsam soruları, aktif adapter, yeni frame üretimi ve node ID hedefli update_design sözleşmesini açıklar. update_design için get_design cevabındaki editorId ve version kullanılır; get_design_import applied ACK beklenir. Nesneler merge, null silme, diziler değiştirme anlamındadır. Tek undo ve mevcut ID'ler korunur.
+Görsel zorunlu değil. prompt-authoring (MCP reposunda `designer/contracts/prompt-authoring.md`) kapsam soruları, aktif adapter, yeni frame üretimi ve node ID hedefli update_design sözleşmesini açıklar. update_design için get_design cevabındaki editorId ve version kullanılır; get_design_import applied ACK beklenir. Nesneler merge, null silme, diziler değiştirme anlamındadır. Tek undo ve mevcut ID'ler korunur.
 
 ## Editor selection contract (1.4.0)
 
@@ -185,7 +158,7 @@ Use get_editor_context({clientId}), wait for ready=true, then get_design({client
 
 ## Frame render geri bildirimi (1.5.0)
 
-`render_design_frame` editorId/version/frameId ve açık viewport ile izole ilk-durum Chromium önizlemesi üretir; PNG ve DOM ölçülerini döndürür. Canlı kullanıcı sekmesi, input değerleri veya history kopyalanmaz. Araç kontratı ve düzeltme döngüsü (MCP reposunda `designer/guides/render-feedback.md`).
+`render_design_frame` editorId/version/frameId ve açık viewport ile izole ilk-durum Chromium önizlemesi üretir; PNG ve DOM ölçülerini döndürür. Canlı kullanıcı sekmesi, input değerleri veya history kopyalanmaz. Araç kontratı ve düzeltme döngüsü (MCP reposunda `prompts/designer/render-feedback.md`).
 
 VS Code örnek ayarlarında `DESIGNER_RENDER_URL=http://127.0.0.1:5173` bulunur. Yerel uygulamayı bu adreste açın veya gerçek yerel portu yazın; sonra MCP sürecini yeniden başlatın. Mevcut repository Playwright/Chromium kurulumu kullanılır. Dev bağımlılıkları veya Chromium bulunmayan dağıtımlarda render kullanılamaz; diğer MCP araçları çalışmaya devam eder. Araç otomatik kurulum yapmaz. Bu sürüm uzak/hosted Designer render’ını desteklemez. Agent şablonunu güncel manifest sürümüyle eşleyin.
 
@@ -216,7 +189,7 @@ Kaynak CSS viewport veya aynı düzlemde kart/modal referans genişliği iki mod
 
 Mode zaten biliniyorsa ilk çağrıda ekle; bilinmiyorsa kullanıcı seçimini bekle. Sonra örneğin `mode: "detailed"`, `patterns: ["wizard", "data-display"]`, aynı source/goal ve `phase: "implement"`. Bootstrap/manifest 1.9.0; eski expectedVersion açık mismatch alır. Mode alanını hiç vermeyen istemciler artık implement rehberleri yerine seçim bekleyen anlama cevabı alır; bu kasıtlı kapsam korumasıdır. Bundle revision değişirse rehberleri yeniden keşfet.
 
-Basic yeni iş kuralı/bağımlı alan/iş handlerı/API üretmez; tanımlı form/wizard altyapısı ve yapısal ileri/geri handlerlarını kurar. Mevcut Designer kaydındaki açık ilişkileri silmez; Basic React'te domain davranışı uygulanmadığını bildirir. Detailed cevap/proje kanıtıyla kuralları uygular, eksik backend bilgisini uydurmaz. Yetkili mod/soru rehberi (MCP reposunda `designer/guides/authoring-modes.md`).
+Basic yeni iş kuralı/bağımlı alan/iş handlerı/API üretmez; tanımlı form/wizard altyapısı ve yapısal ileri/geri handlerlarını kurar. Mevcut Designer kaydındaki açık ilişkileri silmez; Basic React'te domain davranışı uygulanmadığını bildirir. Detailed cevap/proje kanıtıyla kuralları uygular, eksik backend bilgisini uydurmaz. Yetkili mod/soru rehberi (MCP reposunda `prompts/shared/authoring-modes.md`).
 
 screenScope bir agent çalışma politikasıdır; filtrelenmiş veri veya yeni belge alanı değildir. default=all-current-document-frames-or-supplied-images; explicitSelection=requested-screens-only; documentRead=full-document-not-filtered-package; selectedElementEdit=requested-element-only; grouping=explicit-relations-then-visual-evidence-and-project-strategy. Ekran üretiminde açık istek/seçim yoksa güncel belgenin tüm frame'leri incelenir. Açık seçim varsa selectedNodes.frameId ile kapsam çözülür; sıradan input seçimi genel görevi daraltmaz. get_design tam belgeyi döndürmeye devam eder. Bağımlılıkları kapalı seçili ekran paketi henüz yok; seçim dışı hedefler bildirilir. Seçili öğe düzenleme görevi ekran üretimine genişletilmez.
 
@@ -247,9 +220,9 @@ Kullanıcı özel UI library componentlerinin adapterlarını ve desteklenen pro
 
 ## Kontrat önce, seçici strateji sonra — 20 Ekim 2026
 
-Tercih edilen yol `get_design_contract` aracıdır; HTTP backend statik kontratı sunar. Açık browser veya clientId gerekmez. Aktif adapter kimliği mevcut belgeden/context'ten öğrenilir; dış görselde bilinmiyorsa `get_design_catalog` library listesi kullanılır. Kimlik tahmin edilmez. Bu ek araç nested/flat şemasını değiştirmez; yanıt formatı `ui-designer/contract-v1`, bilgi paketi 1.9.0 ile geriye uyumludur.
+Tercih edilen yol `get_design_contract` aracıdır; HTTP backend statik kontratı sunar. Açık browser veya clientId gerekmez. Aktif adapter kimliği mevcut belgeden/context'ten öğrenilir; dış görselde bilinmiyorsa `get_design_catalog` library listesi kullanılır. Kimlik tahmin edilmez. Bu ek araç nested/flat şemasını değiştirmez; yanıt formatı `ui-designer/contract-v1`, bilgi paketi 2.0.0 prompt/kontrat ayrımını kullanır; eski profil yolu için migration gerekir.
 
-1. `get_design_contract({adapterId, phase: "overview"})`: güncel şema, ortak authoringContract (layout/varsayılan/öncelik), alan sözlüğünün belge ve node temeli, tüm component **özetleri**, guide/strateji özeti ve bölüm indeksi. Strateji içerikleri ve bütün component prop detayları bu çağrıda yüklenmez.
+1. `get_design_contract({adapterId, phase: "overview"})`: güncel şema, ortak authoringContract (layout/varsayılan/öncelik), alan sözlüğünün belge ve node temeli, tüm component **özetleri**, guide/strateji özeti ve bölüm indeksi. Görev bağlamına uyan zorunlu anlama rehberleri guidance.required içinde gelir; bütün pattern içerikleri veya component prop detayları yüklenmez.
 2. Agent amacı, ekran kapsamını ve ölçek referansını belirler. Bilinen CSS viewport **veya aynı görsel düzlemindeki kart/modal genişliği** yeterlidir. İkisi de bilinmiyorsa bir kez yaklaşık ölçüyü sorar; kullanıcı bilmiyorsa açık yaklaşık referansla ilerler. Örneğin 600 görüntü pikseli genişliğindeki modal yaklaşık 480 CSS px ise 30 görüntü pikseli boşluk yaklaşık 24 CSS px'tir. Kırpma/DPR/zoom nedeniyle dosya pikseli viewport değildir. Ölçü, doğal row/column, gap/padding, fill/auto ve native boyut seçeneklerine çevrilir; mutlak x/y çizimi yapılmaz. Bilinmeyen/scroll dışı yükseklik uydurulmaz.
 3. `get_design_contract({adapterId, phase: "details", contractRevision, componentTypes: ["card", "textInput", "button"], guides: [{id: "forms"}, {id: "layout"}]})`: gerekli bileşen propsSchema/defaultProps/defaultStyle/acceptedPropKeys/slots/previewValue/native export bilgisi ve seçilen rehberler **tek çağrıda**. Uzun rehberde `sectionIds: ["section-N"]` yalnız aynı overview indeksinden seçilir. Form/dashboard birlikte seçilebilir. Aynı revizyonda okunan çekirdek tekrar verilmez. Yeni ihtiyaçta yalnız yeni component/rehber bölümleri istenir. Tüm library detayları gerçekten gerekiyorsa `allComponents: true`; componentTypes ile birlikte kullanılamaz.
 4. Agent JSON'u doğrudan kurar, `validate_design` ile parser/registry/flow doğrulaması yapar. React yönünde aynı alan sözlüğünün ilgili state/event/flow/responsive/flat bölümleri ve `react-generation` + gerçek kurum stratejisi okunur. Custom export renderer/compound yapılar düz JSX prop spread değildir; callback kaynakları JSON içinde fonksiyon olarak taşınmaz. Bilgi eksikse API tahmin edilmez.
@@ -272,7 +245,7 @@ görsel doğruluğu veya LLM'nin her çalışmada aynı çıktıyı vereceğini 
 
 ### Ekip stratejisi ekleme
 
-Mevcut profilin `manifest.json` → `guides` listesine `id`, `title`, kısa `summary`, `when`, `status`, `file` girilir; strateji Markdown'ı aynı profil altında tutulur. Örneğin `id: "account-form"`, `when: "account-form"`, summary: "Hesap açılışı formunda kurum provider ve alan grupları". Yeni when değeri için tool koduna pattern eklemek gerekmez: overview bütün kayıtların kısa indeksini verir, agent ekran bağlamına göre ID seçer. `DESIGNER_PROFILE_DIR` mevcut özel profil yoludur; manifest tam profildir, gizli merge/overlay yapılmaz. `needs-project-input` sahibi tarafından doldurulmamış kuralları açık tutar; agent bunu hazır implementasyon standardı saymaz. Eksik provider/import/API kuralları uydurulmaz. Strateji değişince revision değişir.
+`prompts/patterns/<konu>/design.md` ve gerekiyorsa `code.md` ekleyin. Konu adı otomatik keşfedilir; code.md yalnız kaynak kod hedefindedir. İsteğe bağlı metadata aynı dosyada bulunur. Yeni dosyanın kaydı için sunucu kodu, manifest veya agent dosyası değişmez. Konu details.patterns ile bildirildiğinde hedefe uyan bütün kuralların içeriği guidance.required içinde gelir. Ayrıntılar ve örnek [prompt rehberinde](../../mcp/prompts/README.md).
 
 ### Görsel kontrol kullanıcı isteğine bağlıdır
 

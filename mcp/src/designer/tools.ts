@@ -1,4 +1,4 @@
-import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { ResourceTemplate, type McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 import { getKnowledgeBundle } from './knowledge.js';
@@ -25,37 +25,24 @@ export const registerDesignerTools = async (server: McpServer): Promise<void> =>
 
   registerGetDesignerAssetTool(server);
 
-  const initial = await getKnowledgeBundle();
-
-  for (const guide of initial.manifest.guides) {
-    server.registerResource(
-      guide.id,
-      `designer://guides/${guide.id}`,
-      {
-        title: guide.title,
-        description: `Read on demand: ${guide.when}; ${guide.status}`,
-        mimeType: 'text/markdown',
-      },
-      async (uri) => {
-        const bundle = await getKnowledgeBundle();
-        const entry = bundle.contents.get(guide.id);
-
-        if (!entry) {
-          throw new Error('Guide no longer exists; rediscover the bundle');
-        }
-
-        return {
-          contents: [
-            {
-              uri: uri.href,
-              mimeType: 'text/markdown',
-              text: `Bundle ${bundle.manifest.version}; revision ${bundle.revision}\n\n${entry.content}`,
-            },
-          ],
-        };
-      },
-    );
-  }
+  // Validate the bundle at startup; list/read also discover rules added without restarting.
+  await getKnowledgeBundle();
+  server.registerResource('design-guides', new ResourceTemplate('designer://guides/{id}', {
+    list: async () => {
+      const bundle = await getKnowledgeBundle();
+      return { resources: bundle.manifest.guides.map(guide => ({
+        uri: `designer://guides/${guide.id}`, name: guide.id, title: guide.title,
+        description: `Read on demand: ${guide.when}; ${guide.status}`, mimeType: 'text/markdown',
+      })) };
+    },
+  }), { mimeType: 'text/markdown' }, async (uri, { id }) => {
+    const bundle = await getKnowledgeBundle();
+    const entry = typeof id === 'string' && bundle.manifest.guides.some(guide => guide.id === id)
+      ? bundle.contents.get(id) : undefined;
+    if (!entry) throw new Error('Guide no longer exists; rediscover the bundle');
+    return { contents: [{ uri: uri.href, mimeType: 'text/markdown',
+      text: `Bundle ${bundle.manifest.version}; revision ${bundle.revision}\n\n${entry.content}` }] };
+  });
 
   server.registerPrompt(
     'design_from_image',
@@ -69,7 +56,7 @@ export const registerDesignerTools = async (server: McpServer): Promise<void> =>
           role: 'user',
           content: {
             type: 'text',
-            text: `Inspect my supplied screenshot/design. Prefer get_design_contract overview with the known adapter, then batch needed component and strategy details after understanding purpose and scale. Render only when I explicitly request visual review. For legacy discovery call start_design_task with goal ${goal ?? 'design'}, phase understand and source auto; ask Basic or Detailed if not already selected, ask once for an approximate CSS viewport or modal/card width if neither is known, then rediscover with the chosen mode, phase implement and observed patterns. For screen generation inspect requested/selected screens or all supplied/current-document screens if unspecified. In both modes recognize clear wizard structure from JSON and available images, even without arrows; read forms/wizard and project strategy for provider/stepper/next-back, excluding modal/state variants from steps. Read its required guides by revision, use the actual registry and preserve the selected theme. Do not invent project-specific rules or API behavior. Editor import is optional. Use validate_design before delivering JSON.`,
+            text: `Use the supplied image as source=image and goal=${goal ?? 'design'}. Discover the actual adapter, then call get_design_contract overview with goal/source/mode. Apply guidance.required; after understanding, request details with selected componentTypes and all relevant patterns. For direct React, Designer import/JSON is optional. Before completion request taskPhase=verify. start_design_task remains the alternative discovery entry.`,
           },
         },
       ],

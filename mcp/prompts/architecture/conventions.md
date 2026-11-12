@@ -1,3 +1,18 @@
+<!-- rule
+{
+  "id": "standards",
+  "title": "Kod standartları",
+  "when": "react",
+  "status": "needs-project-input",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ]
+}
+-->
+
 # Kod standartları
 
 Durum: needs-project-input. Bu rehber React/TypeScript/CSS yazarken uygulanır; kurum ayrıntılarını ekip doldurur. Tamamlanma kontrolleri ayrı quality-checks rehberindedir.

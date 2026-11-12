@@ -46,6 +46,6 @@ Her satıra **geçti / başarısız / engelli / kapsam dışı + kanıt yolu** y
 | W13 | 1440/768/375'te form, uzun metin, select portalı ve modalı incele | Üst üste binme, kırpılmış label/buton veya sayfa yatay taşması yok; mobilde sütunlar doğal akar, modal kullanılabilir |
 | W14 | Save/reload, nested/flat+behavior eşitliği ve güncel manifest türetimini kontrol et | Bağlantılar, kaynak ID'leri, ilk değerler ve modal sahipliği korunur; formScopes üç adım, başarı/modal fazladan form adımı değil |
 
-Raw TSX'te bu ilişkilerin taşınması ayrı, çalışan hedef React'te yürütülmesi ayrı kapıdır. Sadece export metnine bakıp form handlerları çalışıyor deme. İlgili kaynaklar: [flow authoring](../../docs/flow-authoring.md), [kontrat](../../docs/contracts/README.md), wizard guide (MCP reposunda `designer/guides/wizard.md`).
+Raw TSX'te bu ilişkilerin taşınması ayrı, çalışan hedef React'te yürütülmesi ayrı kapıdır. Sadece export metnine bakıp form handlerları çalışıyor deme. İlgili kaynaklar: [flow authoring](../../docs/flow-authoring.md), [kontrat](../../docs/contracts/README.md), wizard guide (MCP reposunda `prompts/patterns/wizard/design.md`).
 
 Sonra [senaryo 02](02-ekip-kaynaklari.md). Sonuçta her Wxx adımının geçti/başarısız/engelli durumunu ve kanıtını kısa raporla; hata varsa beklenen/gözlenen sonucu, tekrar adımlarını, adapter/library sürümünü ve screenshot/log bilgisini ekle. Test edilmemiş ölçütü geçmiş sayma.

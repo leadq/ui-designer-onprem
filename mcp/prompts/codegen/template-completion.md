@@ -1,3 +1,18 @@
+<!-- rule
+{
+  "id": "template-completion",
+  "title": "Şablondan tamamlanmış ekrana",
+  "when": "react",
+  "status": "ready",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ]
+}
+-->
+
 # Şablondan tamamlanmış ekrana
 
 Kullanıcı klasör, BEM, mock formatı, provider/stepper ve örnek kod kurallarının sahibidir. Agent bu kuralları ve ilgili çalışan örneği okuyup ekran içeriğini tamamlar. needs-project-input tüm işi durdurmaz; yalnız ihtiyaç duyulan eksik entegrasyonu ayır. Bu rehber o kuralları doldurmaz.

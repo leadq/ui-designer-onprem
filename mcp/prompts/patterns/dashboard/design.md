@@ -1,3 +1,20 @@
+<!-- rule
+{
+  "id": "dashboard",
+  "title": "Dashboard/KPI",
+  "when": "dashboard",
+  "status": "needs-project-input",
+  "summary": "KPI/özet, dönem/segment ve detay bölgeleri; tablo varsa data-display de seçilir.",
+  "targets": [
+    "design",
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ]
+}
+-->
+
 # Dashboard
 
 Özet KPI kartları, tarih/segment filtreleri ve detay bölümlerini ayır. Katalogdaki gerçek Card ve Typography'yi kullan.

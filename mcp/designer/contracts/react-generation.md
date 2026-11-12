@@ -15,7 +15,7 @@ Kısa çalışma kaydı sütunları: **node ID | rol | native eşleme kaynağı 
 
 ## 2. İskeletin parametrelerini doldur
 
-[Architecture](architecture.md), [standards](standards.md), [template-completion](template-completion.md) ve hedef repo örneğini izle. Üretici varsa:
+[Architecture](../../prompts/architecture/structure.md), [standards](../../prompts/architecture/conventions.md), [template-completion](../../prompts/codegen/template-completion.md) ve hedef repo örneğini izle. Üretici varsa:
 
 | Parametre / karar | Nereden gelir? |
 | --- | --- |
@@ -58,7 +58,7 @@ Kenar shorthand resetleri, birimsiz sayılar, min/max, overflow ve fill niyeti i
 6. formStep → kurumun stepper/form paylaşımı; navigation → teyit edilmiş route; stateChange → aynı sayfa görünüm durumu. Açık URL bulunmadığı için route üretimini hedef profille çöz. Aynı isimli inputları otomatik birleştirme; ortak form alanı kimliğini açık veri sözleşmesinden kur.
 7. Overlay kökte tanımlı olsa da ownerFrameId bağı korunur. Native modal/notification'da açık state, dismiss, focus dönüşü, başlangıç ve aynı presentation değişimini bağla. Modal etiketi “OTP” diye gerçek doğrulama servisi oluşturma.
 
-Basic görünür UI/native state ve kurum stratejisindeki yapısal form/wizard akışını kurar; iş kuralı/servis çıkarmaz. Detailed teyit edilen domain koşullarını da uygular. Kaynakta açık bulunan ama seçilen modda uygulanmayan bir davranış **tamamlandı diye işaretlenmez**; çalışma kaydında kalır. İhtiyaç varsa kullanıcı kapsamıyla çözülür. [Mod politikası](authoring-modes.md).
+Basic görünür UI/native state ve kurum stratejisindeki yapısal form/wizard akışını kurar; iş kuralı/servis çıkarmaz. Detailed teyit edilen domain koşullarını da uygular. Kaynakta açık bulunan ama seçilen modda uygulanmayan bir davranış **tamamlandı diye işaretlenmez**; çalışma kaydında kalır. İhtiyaç varsa kullanıcı kapsamıyla çözülür. [Mod politikası](../../prompts/shared/authoring-modes.md).
 
 ## 6. Küçük, somut okuma örneği
 

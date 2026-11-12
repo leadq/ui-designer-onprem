@@ -1,3 +1,18 @@
+<!-- rule
+{
+  "id": "render-feedback",
+  "title": "Üretilmiş ekranı görme ve düzeltme",
+  "when": "render",
+  "status": "ready",
+  "targets": [
+    "design"
+  ],
+  "phases": [
+    "implement"
+  ]
+}
+-->
+
 # Üretilmiş ekranı görme ve düzeltme
 
 Bu araç yalnız kullanıcının açık görsel karşılaştırma/iyileştirme isteğinde kullanılır. Normal JSON üretimi veya import sonrası zorunlu adım değildir; referans görseli okumak üretilmiş ekranı sürekli render etme izni sayılmaz. Bu agent politikasıdır, sunucu yetkilendirme kapısı değildir.

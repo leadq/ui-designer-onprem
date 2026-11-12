@@ -18,3 +18,5 @@ Bu branch kurulum/dağıtım ve kurum adapterı entegrasyonu içindir. Genel ür
 - Bu repo yalnız temiz teslim sürümlerini tutar. Ortak editör geliştirmeleri ana geliştirme reposunda yapılır; orada onprem-delivery güncel main üzerine tek teslim commit’i olarak üretilir. Buraya yalnız doğrulanmış dosya çıktısı aktarılır. Kurum adapterı, paket eşlemeleri ve ortam ayarları kurumun ayrı entegrasyon branch’inde tutulur; güncellemeler gözden geçirilerek birleştirilir.
 
 Kurulum, env ve yerel build sırası installation/README.md içindedir. Bundle config, CI/CD ve deployment dosyalarını ekibin çalışan projelerine göre oluşturun; dağıtılan kaynağa platform şablonu eklemeyin.
+
+Prompt/kod üretim kuralları ve teknik kontrat ayrımı: [MCP prompt rehberi](../mcp/prompts/README.md).

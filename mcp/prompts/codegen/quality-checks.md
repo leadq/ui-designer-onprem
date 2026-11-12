@@ -1,3 +1,18 @@
+<!-- rule
+{
+  "id": "quality-checks",
+  "title": "Kalite kontrolü",
+  "when": "after-implementation",
+  "status": "needs-project-input",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "verify"
+  ]
+}
+-->
+
 # Kalite kontrolü — implementasyondan sonra
 
 Durum: needs-project-input. UI, davranışlar ve gerekli test kodu tamamlandıktan sonra uygulanır.

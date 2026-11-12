@@ -15,4 +15,4 @@ const recipes = new URL('recipe-assets', dist);
 await rm(recipes, { recursive: true, force: true });
 try { await cp(new URL('recipe-assets', source), recipes, { recursive: true }); }
 catch (error) { if (error.code !== 'ENOENT') throw error; }
-await cp(new URL('execution-contract.md', source), new URL('../designer/guides/execution-contract.md', import.meta.url));
+await cp(new URL('execution-contract.md', source), new URL('../designer/contracts/execution-contract.md', import.meta.url));

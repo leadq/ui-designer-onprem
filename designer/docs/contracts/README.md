@@ -8,7 +8,7 @@ Alanların kod üretimindeki karşılığı: [JSON alan sözlüğü](../agent-ha
 
 ## Agent rehber keşfi ve template tamamlama (18 Ekim 2026)
 
-MCP mode=basic|detailed ile kapsamı, phase/source ile iki aşamalı ekran anlama ve uygulama keşfini sağlar; JSON belge şemasını değiştirmez. Basic stratejiye dayalı form/wizard altyapısını da kapsar; açık seçim yoksa tüm güncel ekranlar incelenir. Çıkarılan adım planı açık JSON ilişkilerinin yerine geçmez, belgeyi otomatik değiştirmez. Ekran özeti, geçici veri çıkarımı ve scaffold completionChecklist tasarım node alanları değildir. [MCP giriş/varsayılan/geri uyumluluk kontratı](../designer-agent.md#ekran-anlama-ve-şablon-tamamlama-kontratı-190), screen-understanding (MCP reposunda `designer/guides/screen-understanding.md`), data-inference (MCP reposunda `designer/guides/data-inference.md`), template-completion (MCP reposunda `designer/guides/template-completion.md`).
+MCP mode=basic|detailed ile kapsamı, phase/source ile iki aşamalı ekran anlama ve uygulama keşfini sağlar; JSON belge şemasını değiştirmez. Basic stratejiye dayalı form/wizard altyapısını da kapsar; açık seçim yoksa tüm güncel ekranlar incelenir. Çıkarılan adım planı açık JSON ilişkilerinin yerine geçmez, belgeyi otomatik değiştirmez. Ekran özeti, geçici veri çıkarımı ve scaffold completionChecklist tasarım node alanları değildir. [MCP giriş/varsayılan/geri uyumluluk kontratı](../designer-agent.md#ekran-anlama-ve-şablon-tamamlama-kontratı-190), screen-understanding (MCP reposunda `prompts/shared/screen-understanding.md`), data-inference (MCP reposunda `prompts/codegen/data-inference.md`), template-completion (MCP reposunda `prompts/codegen/template-completion.md`).
 
 ## Katalog keşfi
 
@@ -25,7 +25,7 @@ ID'ler yeniden eşlenir ve işlem tek undo adımıdır. JSON schema version ile 
 version farklıdır; değişmeyen içeriğin tekrar gönderilmesi snapshot version'ı artırmaz.
 Bekleyen istek uygulanmış sayılmaz; tarayıcı `applied` ACK'i gerekir.
 [Taşıma, limit, retry ve saklama sözleşmesi](../designer-agent.md#referans-saklama-ve-yazma-sınırı) ·
-Agent adımları (MCP reposunda `designer/guides/reference-images.md`).
+Agent adımları (MCP reposunda `designer/contracts/reference-images.md`).
 
 ## Boşluk yazımı ve editör sunumu (14 Ekim 2026)
 
@@ -43,7 +43,7 @@ Agent adımları (MCP reposunda `designer/guides/reference-images.md`).
   Tam JSON'da kaldırılmış alanlar atlanır; `undefined` geçerli JSON değildir.
 - Yeni şema alanı veya sürüm gerekmez. Panel açık/kapalı hali, focus/border, klavye yardımı,
   frame başlığının zoom telafisi ve editör yüzeyinin 960px minimumu tasarım JSON'una yazılmaz.
-- MCP kullanım örnekleri: layout rehberi (MCP reposunda `designer/guides/layout.md`).
+- MCP kullanım örnekleri: layout rehberi (MCP reposunda `designer/contracts/layout.md`).
   Makineye sunulan özet: [authoringContract](../../src/utils/designer/authoringContract/index.ts).
 
 8 Ekim 2026. Bu belge dosyaların anlamını ve preview yürütme kurallarını tanımlar. Uygulama mimarisi dönüştürme kuralları içermez.
@@ -512,7 +512,7 @@ Eski belgelerde alan yoktur; import sırasında güncel sürüme taşınır.
 
 ## MCP node düzenleme 15 Ekim 2026
 
-`update_design` mevcut belgeye node ID hedefli JSON merge patch uygular. Nesneler recursive merge edilir, null anahtarı siler, diziler tam değiştirilir. Node ID değiştirilemez. Bütün sonuç parser/katalog/flow doğrulamasından geçer; clientId/designId/editorId/expectedVersion ve browser içerik revizyonu kontrolü gerekir. Başarı `get_design_import` applied ACK'idir. Tek undo, node kimliği ve etkilenmeyen ağaç korunur. Yeni ekran ekleme `import_design` ile devam eder. Şema sürümü değişmez; seçim ve işlem durumu JSON'a yazılmaz. Agent akışı (MCP reposunda `designer/guides/prompt-authoring.md`).
+`update_design` mevcut belgeye node ID hedefli JSON merge patch uygular. Nesneler recursive merge edilir, null anahtarı siler, diziler tam değiştirilir. Node ID değiştirilemez. Bütün sonuç parser/katalog/flow doğrulamasından geçer; clientId/designId/editorId/expectedVersion ve browser içerik revizyonu kontrolü gerekir. Başarı `get_design_import` applied ACK'idir. Tek undo, node kimliği ve etkilenmeyen ağaç korunur. Yeni ekran ekleme `import_design` ile devam eder. Şema sürümü değişmez; seçim ve işlem durumu JSON'a yazılmaz. Agent akışı (MCP reposunda `designer/contracts/prompt-authoring.md`).
 
 ### Referans workspace metadata
 Referans kaydındaki isteğe bağlı `placement: {x,y,width}` yerel canvas koordinatlarıdır. Yükseklik her zaman `width * image.height / image.width` ile türetilir. Eski kayıtlarda deterministik başlangıç konumu kullanılır. Konum, seçim ve görünür boyut DesignDocument alanı değildir; export/preview ve tasarım undo geçmişine girmez. Resize orijinal normalize PNG baytlarını değiştirmez.
@@ -527,7 +527,7 @@ Selection exposes node/parent/sibling/path/frameId and authored/effective/resolv
 
 `render_design_frame` salt okunur MCP aracıdır: açık editorId, expectedVersion, normal root frameId, width ve height gerekir. Context belge hash’i ile eşleşmelidir. Frame’in flow başlangıcı yalnız parse edilmiş ayrı kopyada seçilir; kullanıcı belgesi/history/autosave değişmez. Kaynak sürüm/hash render sonunda yeniden kontrol edilir; değişmiş sonuç hata verir.
 
-PNG ve DOM ölçüleri aynı viewport bağlamında üretilir; çıktı ilk-durum native preview, canlı sekme görüntüsü değildir. Ölçüler/PNG tasarım JSON’una yazılmaz, şema sürümü değişmez. Node ID korunur; tekrar eden DOM örnekleri occurrence ile ayrılır. Detaylı limit, kurulum, kaynak yükleme ve düzeltme semantiği render-feedback (MCP reposunda `designer/guides/render-feedback.md`) rehberindedir. Agent ölçüleri absolute konumlara çevirmeden props/layout patch yapar; applied ACK ve yeni version sonrası yeniden render eder.
+PNG ve DOM ölçüleri aynı viewport bağlamında üretilir; çıktı ilk-durum native preview, canlı sekme görüntüsü değildir. Ölçüler/PNG tasarım JSON’una yazılmaz, şema sürümü değişmez. Node ID korunur; tekrar eden DOM örnekleri occurrence ile ayrılır. Detaylı limit, kurulum, kaynak yükleme ve düzeltme semantiği render-feedback (MCP reposunda `prompts/designer/render-feedback.md`) rehberindedir. Agent ölçüleri absolute konumlara çevirmeden props/layout patch yapar; applied ACK ve yeni version sonrası yeniden render eder.
 
 ## Katı adapter JSON sınırı — 15 Ekim 2026
 
@@ -553,7 +553,7 @@ Mantine, Material ve Ant `dataTable` için ortak temel authoring sözleşmesi:
 - Hücre seçiminin sağ panelindeki **Değer tipi** sütunun dolu hücrelerinden türetilir: hepsi sayıya çevrilebilir basit metin/sayı ise `Sayı`, hepsi metin ise `Metin`, hepsi rich bileşen ise `Özel`, farklı tipler varsa `Karma`. Boşlar atlanır, tamamı boş sütun `Metin` gösterir. Ondalık virgül ve nokta kabul edilir; binlik ayırıcı yorumu yapılmaz. Bilgi salt okunurdur, değer dönüştürmez ve JSON alanı üretmez.
 - Native Table yapısı adapter'a aittir. Hücreler tasarım ve preview'de gerçek native td/TableCell içinde ayrı seçilebilir ağaçlar olarak render olur. Satır numarası tutamacı gösterilmez; satır ekleme hücre menüsünde ve alttaki + kontrolündedir. Başlık hücresi gibi görünen kolon ekleme kontrolü başlıkla aynı hizada tablonun son başlığının hemen sağına bağlıdır. Her iki ekleme kontrolü de native tabloyla aynı gerçek canvas zoom oranında çizilir; sabit ekran boyutu uygulanmaz. + kontrolleri, menü odağı ve tip çıkarımı yalnız editördedir; bu görünüm kayıtlı veri/MCP authoringContract anlamını değiştirmez. TSX export hücre ağaçlarını native Table parçaları/Ant columns-render yapısına derler; editör yardımcılarını veya `cellContents` prop'unu export etmez.
 - Belge sürümü 12 ve flat sürümü 1 korunur: yeni üst seviye/node alanı yoktur; kayıtlı opsiyonel props/slot yeteneği eklenmiştir. Eski belgeler ileriye dönük veri kaybı olmadan açılır. Yeni bağımsız tablolar eski uygulama sürümlerine import edilemez; eski sürümün bilinmeyen slot reddi korunur.
-- Sticky/sorting/filtering/pagination veya uygulama verisi dönüşümü bu fazda eklenmez. Makine özeti katalog `authoring.tableContents`; tarif data-display (MCP reposunda `designer/guides/data-display.md`). Doğrulama: `npm test -- table-authoring.test.ts`, ilgili üç-adapter E2E ve JSON nested–flat–nested örnekleri.
+- Sticky/sorting/filtering/pagination veya uygulama verisi dönüşümü bu fazda eklenmez. Makine özeti katalog `authoring.tableContents`; tarif data-display (MCP reposunda `designer/contracts/data-display.md`). Doğrulama: `npm test -- table-authoring.test.ts`, ilgili üç-adapter E2E ve JSON nested–flat–nested örnekleri.
 
 ### Hücre işlemlerine görünür erişim — 18 Ekim 2026
 
@@ -572,7 +572,7 @@ Sağ panel, yapısal hücre seçiliyken mevcut metin düzenleme ve satır/sütun
 - Legacy `list` (data + renderItem) aynen kalır; otomatik dönüşüm yapılmaz. Nested 12 / flat 1 korunur; yeni registry türleri eski uygulama sürümlerince desteklenmez. Yeni üst seviye belge alanı yoktur.
 - TSX: Mantine gerçek List/Tabs compound parçaları; Ant List.renderItem ve Tabs.items; Material List/ListItem ve Tabs/Tab + ARIA panel yapısı. Material için üretilen küçük yerel state helper'ı sekme seçimini sürdürür. Native sekme değişimi ve form korunumu bağımsız export sayfasında test edilir. Genel uygulama olayları mevcut davranış manifesti/handoff sınırını korur; backend veya event handler uygulaması tamamlanmış sayılmaz.
 
-Katalog: `authoring.collection` / `authoring.collectionItem`; agent tarifi (MCP reposunda `designer/guides/data-display.md`). Bu ilk compound diliminde yalnız başlık, disabled, orientation, başlangıç ve içerik düzeni kayıtlıdır; tüm native Tabs.List/Tab API'si, yeni Accordion/Stepper/menü rolleri desteklenmiş değildir.
+Katalog: `authoring.collection` / `authoring.collectionItem`; agent tarifi (MCP reposunda `designer/contracts/data-display.md`). Bu ilk compound diliminde yalnız başlık, disabled, orientation, başlangıç ve içerik düzeni kayıtlıdır; tüm native Tabs.List/Tab API'si, yeni Accordion/Stepper/menü rolleri desteklenmiş değildir.
 
 ## Açılır bölüm / collapse-expand — 18 Ekim 2026
 
@@ -600,7 +600,7 @@ Adapter `responsiveSemanticElement` veriyorsa HTML elemanı açık temel prop ve
 
 Nested/flat, saved subtree, clone, autosave, undo, MCP patch aynı alanı korur. Seçim bağlamı authored responsiveProps yanında türetilmiş effectiveProps verir; türetilmiş alan JSON'a geri yazılmaz. Tasarım/preview çözümü gösterilen genişliği kullanır. Aynı browser içindeki native library medya sorguları ayrı iframe viewport'u kazanmaz; özel adapter'ın viewport bağımlı davranışı ayrıca eşlenip test edilmelidir.
 
-Native TSX handoff `data-designerprops` ile override niyetini taşır; bu attribute kendi başına runtime hook değildir. Üretim için React tarifi (MCP reposunda `designer/guides/react-generation.md`) ve alan sözlüğü (MCP reposunda `designer/guides/json-field-reference.md`) uygulanır. Kurum hook/mixin API'si profilde doğrulanmalıdır.
+Native TSX handoff `data-designerprops` ile override niyetini taşır; bu attribute kendi başına runtime hook değildir. Üretim için React tarifi (MCP reposunda `designer/contracts/react-generation.md`) ve alan sözlüğü (MCP reposunda `designer/contracts/json-field-reference.md`) uygulanır. Kurum hook/mixin API'si profilde doğrulanmalıdır.
 
 
 ### Çoklu davranış notu düzenleyicisi

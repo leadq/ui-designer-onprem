@@ -4,6 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
 
+import { readPromptFiles } from './promptFiles.js';
+
 const ESTIMATED_CHARACTERS_PER_TOKEN = 4;
 
 const bundleRoot = path.resolve(fileURLToPath(new URL('../../designer/', import.meta.url)));
@@ -18,6 +20,11 @@ const manifestSchema = z.object({
       summary: z.string().optional(),
       when: z.string(),
       status: z.enum(['ready', 'needs-project-input']),
+      targets: z.array(z.enum(['design', 'react'])).optional(),
+      phases: z.array(z.enum(['understand', 'implement', 'verify'])).optional(),
+      sources: z.array(z.enum(['prompt', 'image', 'editor'])).optional(),
+      modes: z.array(z.enum(['basic', 'detailed'])).optional(),
+      origin: z.enum(['contract', 'prompt']).optional(),
     }),
   ),
   assets: z.array(entrySchema.extend({ destination: z.string() })),
@@ -33,9 +40,10 @@ export const getSha256 = (value: string): string =>
 
 // Filenames are maintained by the server owner, never supplied by an MCP caller.
 export const getKnowledgeBundle = async () => {
-  const root = process.env.DESIGNER_PROFILE_DIR
-    ? path.resolve(process.env.DESIGNER_PROFILE_DIR)
-    : bundleRoot;
+  if (process.env.DESIGNER_PROFILE_DIR) {
+    throw new Error('DESIGNER_PROFILE_DIR is retired: move editable Markdown into prompts/ and use DESIGNER_PROMPTS_DIR. Technical contracts stay in designer/contracts; see prompts/README.md.');
+  }
+  const root = bundleRoot;
 
   const manifestText = await readFile(path.join(root, 'manifest.json'), 'utf8');
   const manifest = manifestSchema.parse(JSON.parse(manifestText));
@@ -63,10 +71,21 @@ export const getKnowledgeBundle = async () => {
     }),
   );
 
+  const promptRoot = process.env.DESIGNER_PROMPTS_DIR
+    ? path.resolve(process.env.DESIGNER_PROMPTS_DIR)
+    : path.resolve(bundleRoot, '../prompts');
+  const rules = await readPromptFiles(promptRoot);
+  for (const rule of rules) {
+    if (ids.includes(rule.guide.id)) throw new Error(`Reserved or duplicate guide/asset ID: ${rule.guide.id}`);
+    ids.push(rule.guide.id);
+    manifest.guides.push(manifestSchema.shape.guides.element.parse(rule.guide));
+    entries.push([rule.guide.id, { content: rule.content, sha256: getSha256(rule.content) }]);
+  }
   const contents = new Map<string, BundleContent>(entries);
 
   const revision = getSha256(
-    manifestText + [...contents].map(([id, entry]) => `${id}:${entry.sha256}`).join('\n'),
+    manifestText + [...contents].map(([id, entry]) => `${id}:${entry.sha256}`).join('\n')
+      + (rules.length ? JSON.stringify(rules.map(rule => rule.guide)) : ''),
   );
 
   return { manifest, contents, revision };
@@ -93,6 +112,11 @@ export const assertBundleVersion = (
 export const getGuideSummary = (bundle: KnowledgeBundle, guide: GuideEntry) => ({
   id: guide.id,
   title: guide.title,
+  origin: guide.origin ?? 'contract',
+  targets: guide.targets,
+  phases: guide.phases,
+  sources: guide.sources,
+  modes: guide.modes,
   summary: guide.summary,
   when: guide.when,
   status: guide.status,

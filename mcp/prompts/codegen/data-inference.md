@@ -1,3 +1,21 @@
+<!-- rule
+{
+  "id": "data-inference",
+  "title": "Ekrandan veri ve mock içeriği",
+  "when": "detailed-react",
+  "status": "ready",
+  "targets": [
+    "react"
+  ],
+  "phases": [
+    "implement"
+  ],
+  "modes": [
+    "detailed"
+  ]
+}
+-->
+
 # Ekrandan veri ve mock içeriği
 
 Kapsam: domain/ilişki/servis uygulaması yalnız Detailed modda, kullanıcı cevabı veya doğrulanmış proje kuralıyla yapılır. Bu rehberin servis/iş kuralları Basic kapsamını genişletmez; Basic yapısal form/wizard altyapısı için forms/wizard kullanır. authoring-modes önceliklidir.

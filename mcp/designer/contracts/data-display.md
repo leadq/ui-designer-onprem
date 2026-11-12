@@ -63,10 +63,6 @@ Sorting, filtreleme, pagination, sticky header/row ve seçim bu fazda eklenmez.
 Filtre inputları veya PDF/CSV düğmeleri tabloya kendiliğinden bağlanmaz. Screenshot'tan endpoint uydurma.
 Eksik yeteneği not et; native kütüphanenin bütün API'sinin katalogda bulunduğunu varsayma.
 
-## Ekip dolduracak
-- Üretim tablo wrapper/hook ve API veri eşleme örnekleri:
-- Pagination/cache/selection ve empty/error/loading kuralları:
-
 ## Tasarım-first liste ve sekmeler
 
 Bağımsız öğeler için `itemList`; eski veri + ortak `renderItem` şablonu için `list` kullan. Birini diğerine sessizce dönüştürme. Kullanıcı paletten **Item List** ekler, **İlk öğeyi oluştur** ile boş öğeyi açar; ortak paletten içerik ekler. **Son öğeden kopyala** son öğenin bağımsız kopyasını ekler. İkinci öğenin metni/props/olay hedefi birinciyi değiştirmez. Dört boş rehber satırı gerçek içerik değildir.

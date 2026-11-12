@@ -1,5 +1,5 @@
 # JSON’dan React üretimi
 
-Tam ve tek kaynak: MCP ile de sunulan rehber (MCP reposunda `designer/guides/react-generation.md`).
+Tam ve tek kaynak: MCP ile de sunulan rehber (MCP reposunda `designer/contracts/react-generation.md`).
 
 Bu giriş dosyası yalnız yönlendirmedir; içerik iki yerde kopyalanmaz. Kapalı ağ teslim başlangıcı (geliştirme reposundaki kaynak).
