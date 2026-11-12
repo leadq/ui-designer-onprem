@@ -15,7 +15,7 @@ Bu branch kurulum/dağıtım ve kurum adapterı entegrasyonu içindir. Genel ür
 - Kurum ikon kaynağı eklerken src/adapters/iconLibrary/README.md ve src/types/iconLibrary.ts oku. Editörün EditorIcon/Tabler kontrol ikonlarını koru; arşiv ikonlarını runtime’dan import etme. Tek aktif kaynak null başlar; gerçek kurum kaynağı bağlanmadan paket/kimlik uydurma.
 - Kullanıcının mevcut tasarımlarını ve kurum adapterını koru. Commit/push/deploy yetkisini görev talimatından değerlendir.
 
-- Bu repo yalnız temiz teslim sürümlerini tutar. Ortak editör geliştirmeleri ana geliştirme reposunda yapılır; orada onprem-delivery güncel main üzerine tek teslim commit’i olarak üretilir. Buraya yalnız doğrulanmış dosya çıktısı aktarılır. Kurum adapterı, paket eşlemeleri ve ortam ayarları kurumun ayrı entegrasyon branch’inde tutulur; güncellemeler gözden geçirilerek birleştirilir.
+- Bu repo yalnız temiz teslim sürümlerini tutar. Ortak editör geliştirmeleri ana geliştirme reposunda yapılır; orada onprem-delivery güncel main üzerine tek teslim commit’i olarak üretilir. Buraya yalnız doğrulanmış dosya çıktısı aktarılır. Ekip ZIP’i kendi projesi olarak uyarlar; yeni sürümde UPDATE.md içindeki taşıma aracını kullanır. Teslim üretim komutu ekip projesinde çalıştırılmaz.
 
 Kurulum, env ve yerel build sırası installation/README.md içindedir. Bundle config, CI/CD ve deployment dosyalarını ekibin çalışan projelerine göre oluşturun; dağıtılan kaynağa platform şablonu eklemeyin.
 

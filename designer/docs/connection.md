@@ -52,6 +52,6 @@ IDE HTTP MCP kaydı `https://design.example.com/mcp` veya ayrı hostun `/mcp` ad
 
 ## Güncellemede korunan yerler
 
-Paket/lock ve registry ayarları, build/ESLint/TypeScript configleri, env, deployment/CI ve IDE ayarları, yazılmış adapterlar/ikon kaynağı ve MCP promptları proje uyarlamalarıdır. Editör bağlantı kodu ve ürün teknik kontratları yeni sürümden gelir. Üretilmiş `designer-config.json` ve MCP runtime exportu kaynak ayarlarından yeniden oluşturulur; eski build/runtime klasörleri taşınmaz. ZIP güncelleme aracı henüz yoktur.
+Paket/lock ve registry ayarları, build/ESLint/TypeScript configleri, env, deployment/CI ve IDE ayarları, yazılmış adapterlar/ikon kaynağı ve MCP promptları proje uyarlamalarıdır. Editör bağlantı kodu ve ürün teknik kontratları yeni sürümden gelir. Üretilmiş `designer-config.json` ve MCP runtime exportu kaynak ayarlarından yeniden oluşturulur; eski build/runtime klasörleri taşınmaz. [ZIP taşıma aracı](../../UPDATE.md) mevcut uyarlamaları ayrı bir güncel proje klasöründe toplar.
 
 Paket kurulumu → Designer build → `npm run export:mcp -- /tam/yol/mcp` → MCP build sonrasında tarayıcı bağlantısını ve IDE katalog/validate/import/readback akışını doğrulayın. `/health` tek başına browser/IDE kabulü değildir.

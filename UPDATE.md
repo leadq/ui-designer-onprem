@@ -1,0 +1,73 @@
+# ZIP ile güncelleme
+
+Yeni ZIP’i ayrı bir klasöre açın. Node 20.12+ yeterlidir; taşıma aracı için npm install veya Git gerekmez. Aşağıdaki komutları **yeni ZIP’in kökünde**, `designer/` ve `mcp/` klasörlerinin yanında çalıştırın.
+
+## 1. Kontrol edin
+
+```sh
+node scripts/update.mjs --from /projeler/mevcut-proje --check
+```
+
+Raporda taşınacak yollar, yeni ZIP’ten farklı promptlar, paket gereksinimi farkları ve tanınmayan config yolları görünür. Dosya içerikleri/env değerleri yazdırılmaz. Bu adım dosya değiştirmez.
+
+## 2. Güncel projeyi hazırlayın
+
+```sh
+node scripts/update.mjs --from /projeler/mevcut-proje --output /projeler/guncel-proje
+```
+
+Çıktı klasörü henüz var olmamalı; üst klasörü var olmalı. Araç yeni ZIP’in üzerine eski projeden seçilen uyarlamaları koyarak ayrı bir proje hazırlar. Hem eski proje hem açılan ZIP değişmeden kalır. Eski projenin çalışıyor olması dosyalarının anlık tutarlı olduğu anlamına gelmez; taşıma sırasında dosya düzenlemeyi durdurun.
+
+| Yeni ZIP’ten | Mevcut projeden |
+| --- | --- |
+| Editör ve MCP uygulama kodu | `designer/src/adapters/`, ikon kaynağı ve adapter kayıtları dahil |
+| Teknik kontratlar, yeni araçlar ve ürün rehberleri | `mcp/prompts/` çalışma kuralları |
+| Yeni ürünün geri kalan dosyaları | İki projenin `package.json` ve mevcut lock dosyaları |
+| | Env, registry, ESLint/TypeScript/build configleri; deployment/CI ve IDE ayarları |
+
+`node_modules`, Git bilgisi, build/dist/cache/test çıktıları, `mcp/generated/` ve üretilmiş `designer-config.json` taşınmaz. Eksik eski lock dosyasının yerine yeni ZIP’in başka manifeste ait lock dosyası bırakılmaz.
+
+Adapter ve prompt klasörleri mevcut projenin tam içeriğini korur; kaldırılmış bir kural/adapter yeni ZIP’ten tekrar eklenmez. Prompt README’si yeni sürümden gelir. `promptDifferences`, iki prompt setinin farklı dosyalarını listeler; yeni genel prompt iyileştirmeleri yeni ZIP’te incelenip istenirse ayrıca alınır. Araç eski temiz ZIP’i istemez ve üç yönlü metin merge’ü yapmaz; hangi prompt farkının ekip değişikliği olduğunu tahmin etmez.
+
+## Standart config yolları ve özel dosyalar
+
+Repo kökü, `designer/` ve `mcp/` altında şu yollar otomatik tanınır:
+
+- `.env*`, `.npmrc`, paket/lock dosyaları, `.gitignore`, `.dockerignore`, `.editorconfig`.
+- `*config.*`, `.eslintrc*`, `.prettierrc*`, `.stylelintrc*`; örneğin `tsconfig.json`, `toolchain.config.js`.
+- Kök YAML dosyaları, `Dockerfile*` / `Containerfile*`.
+- `config/`, `deploy/`, `deployment/`, `k8s/`, `helm/`, `.azure-pipelines/`, `.github/workflows/`, `.github/actions/`, `.circleci/`, `.vscode/`.
+- `share/` ve `public/` statik kaynakları; üretilmiş bağlantı JSON’ı hariç.
+
+Farklı isimde bir config veya ek deployment scripti için **mevcut projenin köküne** bir kez `update.paths.json` ekleyin:
+
+```json
+{
+  "include": [
+    "designer/team-settings.json",
+    "designer/scripts/deploy.sh"
+  ]
+}
+```
+
+Liste dosya veya klasör yolu alır; glob kullanmaz. Kendisi de taşınır. Adapter/prompt altına yeni dosya eklemek için bu listeye kayıt gerekmez. Tanınmayan ve yeni ZIP’te bulunmayan üst düzey config/özel script yolları `unassigned` listesiyle işlemi durdurur. Ürün `src/` dosyaları, teknik kontratlar ve yeni ZIP’teki ürün scriptleri bu listeden ezilemez. Symlink takip edilmez.
+
+## Paket farkı varsa
+
+Ekibin ek paketleri ve dev/build komutları korunur. Yeni ZIP’in ortak dependencies/devDependencies/peerDependencies/optionalDependencies, overrides/resolutions, engines, paket türü veya zorunlu scriptleri mevcut manifestte karşılanmıyorsa araç hazırlamayı durdurur. Bu kontrol sürüm aralıklarının **metinsel karşılaştırmasıdır**, semver/peer uyumluluğu kanıtı değildir.
+
+Rapordaki alanları iki `package.json` arasında inceleyin. Gerekirse mevcut projenin bir çalışma kopyasında manifesti uzlaştırıp lock dosyasını yeniden üretin; aracı o kopyadan tekrar çalıştırın. Sıradan editör değişikliğinde paket gereksinimleri aynıysa bu adım yoktur. Araç paket kurmaz, npm lifecycle scripti çalıştırmaz.
+
+## 3. Kurun ve doğrulayın
+
+Hazırlanan projenin Designer ve MCP klasörlerinde mevcut lock uygunsa `npm ci`, lock yoksa `npm install` çalıştırın. Ardından:
+
+```sh
+cd /projeler/guncel-proje/designer
+npm run build
+npm run export:mcp -- ../mcp
+cd ../mcp
+npm run build
+```
+
+Bağlantı/deployment env’lerini [bağlantı rehberine](designer/docs/connection.md) göre verin. Tarayıcı ve IDE üzerinden katalog → validate → import → readback kabulünü tamamlayın. Dosyaların taşınmış olması gerçek adapter/paket uyumluluğu veya deployment kabulü değildir. Tarayıcı IndexedDB’sindeki tasarımlar proje dosyası değildir; bu araç onları taşımaz. Public origin değişirse mevcut tasarımları uygulamanın JSON export/import yolu ile taşıyın.

@@ -83,7 +83,7 @@ Bu ayrım işletim sistemi dosya kilidi değildir: kaynak reponun sahibi teknik 
 
 ## ZIP güncellemesi ve eski profil
 
-Mevcut adapter, proje config/deployment dosyalarıyla birlikte özelleştirdiğiniz `patterns/`, `architecture/` ve diğer prompt dosyalarını yeni sürüme taşıyın. Genel rehberlerin yeni sürümüyle yerel değişiklikleri karşılaştırın. Teknik kontrat klasörünü eski projeden taşımayın. Sonra yapılandırılmış Designer'dan MCP export/build ve gerçek kabul yapın. ZIP güncelleme scripti bu değişikliğin parçası değildir.
+Mevcut adapter, proje config/deployment dosyalarıyla birlikte özelleştirdiğiniz `patterns/`, `architecture/` ve diğer prompt dosyalarını yeni sürüme taşıyın. Genel rehberlerin yeni sürümüyle yerel değişiklikleri karşılaştırın. Teknik kontrat klasörünü eski projeden taşımayın. Sonra yapılandırılmış Designer'dan MCP export/build ve gerçek kabul yapın. Yeni ZIP içindeki [taşıma aracı](../../UPDATE.md) mevcut prompt setini korur; farklı yeni genel rehberleri raporda listeler. Otomatik metin merge’ü yapmaz.
 
 Varsayılan yer bu klasördür. Ayrı yerde tutmak gerekirse **aynı düzenin tamamını** kopyalayıp `DESIGNER_PROMPTS_DIR=/absolute/prompts` kullanın; bu varsayılan promptları tamamen değiştirir, gizli overlay yapmaz. Teknik kontrat ve asset kökü değişmez. Dosya ekleme/düzenleme/silme ve metadata/konum değişikliği revision'a girer; resource listesi de restart gerekmeden güncellenir.
 
