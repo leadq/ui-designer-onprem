@@ -8,7 +8,7 @@ Alanların kod üretimindeki karşılığı: [JSON alan sözlüğü](../agent-ha
 
 ## Agent rehber keşfi ve template tamamlama (18 Ekim 2026)
 
-MCP mode=basic|detailed ile kapsamı, phase/source ile iki aşamalı ekran anlama ve uygulama keşfini sağlar; JSON belge şemasını değiştirmez. Basic stratejiye dayalı form/wizard altyapısını da kapsar; açık seçim yoksa tüm güncel ekranlar incelenir. Çıkarılan adım planı açık JSON ilişkilerinin yerine geçmez, belgeyi otomatik değiştirmez. Ekran özeti, geçici veri çıkarımı ve scaffold completionChecklist tasarım node alanları değildir. [MCP giriş/varsayılan/geri uyumluluk kontratı](../designer-agent.md#ekran-anlama-ve-şablon-tamamlama-kontratı-190), screen-understanding (MCP reposunda `prompts/shared/screen-understanding.md`), data-inference (MCP reposunda `prompts/codegen/data-inference.md`), template-completion (MCP reposunda `prompts/codegen/template-completion.md`).
+MCP mode=basic|detailed ile kapsamı, phase/source ile iki aşamalı ekran anlama ve uygulama keşfini sağlar; JSON belge şemasını değiştirmez. Basic stratejiye dayalı form/wizard altyapısını da kapsar; açık seçim yoksa tüm güncel ekranlar incelenir. Çıkarılan adım planı açık JSON ilişkilerinin yerine geçmez, belgeyi otomatik değiştirmez. Ekran özeti, geçici veri çıkarımı ve scaffold completionChecklist tasarım node alanları değildir. [MCP giriş/varsayılan/geri uyumluluk kontratı](../designer-agent.md#ekran-anlama-ve-şablon-tamamlama-kontratı-190), screen-understanding (MCP reposunda `prompts/shared/screen-understanding.md`), data-inference (MCP reposunda `prompts/code-gen/data-inference.md`), template-completion (MCP reposunda `prompts/code-gen/template-completion.md`).
 
 ## Katalog keşfi
 

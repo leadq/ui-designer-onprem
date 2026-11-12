@@ -15,3 +15,5 @@ Geliştirme testlerine ilişkin tarihsel atıflar bu branch’te o dosya veya ko
 
 
 - [Kurum tasarım ikon kaynağı](../src/adapters/iconLibrary/README.md): tek aktif kurum kaydı, gerçek native yükleme/export ve pasif arşiv örnekleri; editör kontrol ikonları ayrıdır.
+
+Kod üretimi ve mimari kuralları `mcp/prompts/code-gen/` altında, `architecture.md` ve `coding-standards.md` gibi dosyalarda tutulur.

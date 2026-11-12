@@ -15,7 +15,7 @@ Kısa çalışma kaydı sütunları: **node ID | rol | native eşleme kaynağı 
 
 ## 2. İskeletin parametrelerini doldur
 
-[Architecture](../../prompts/architecture/structure.md), [standards](../../prompts/architecture/conventions.md), [template-completion](../../prompts/codegen/template-completion.md) ve hedef repo örneğini izle. Üretici varsa:
+[Architecture](../../prompts/code-gen/architecture.md), [standards](../../prompts/code-gen/coding-standards.md), [template-completion](../../prompts/code-gen/template-completion.md) ve hedef repo örneğini izle. Üretici varsa:
 
 | Parametre / karar | Nereden gelir? |
 | --- | --- |

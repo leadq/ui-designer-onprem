@@ -12,7 +12,9 @@ const ruleMetadata = z.object({
   modes: z.array(z.enum(['basic', 'detailed'])).min(1).optional(),
 }).strict();
 
-const folders = ['shared', 'designer', 'codegen', 'patterns', 'architecture'];
+const folders = ['shared', 'designer', 'code-gen', 'patterns'];
+// Previously delivered ZIPs retain their prompt trees during an update.
+const legacyFolders = ['codegen', 'architecture'];
 
 // A rule carries its own optional metadata; adding a Markdown file needs no registry edit.
 export const readPromptFiles = async (root: string) => {
@@ -28,7 +30,7 @@ export const readPromptFiles = async (root: string) => {
   if ((await lstat(root)).isSymbolicLink()) throw new Error('Prompt root must not be a symlink.');
   for (const entry of await readdir(root, { withFileTypes: true })) {
     if (entry.name === 'README.md') continue;
-    if (!folders.includes(entry.name) || !entry.isDirectory()) {
+    if (![...folders, ...legacyFolders].includes(entry.name) || !entry.isDirectory()) {
       throw new Error(`Unknown prompt entry ${entry.name}; use ${folders.join(', ')} (see prompts/README.md).`);
     }
     await walk(path.join(root, entry.name));
@@ -50,7 +52,7 @@ export const readPromptFiles = async (root: string) => {
     const ruleId = metadata.id ?? relative.replace(/\.md$/, '').replaceAll('/', '-');
     id.parse(ruleId);
     const targets: ('design' | 'react')[] = folder === 'designer' ? ['design']
-      : (['codegen', 'architecture'].includes(folder) || (folder === 'patterns' && path.basename(file) === 'code.md')) ? ['react'] : ['design', 'react'];
+      : (['code-gen', ...legacyFolders].includes(folder) || (folder === 'patterns' && path.basename(file) === 'code.md')) ? ['react'] : ['design', 'react'];
     if (metadata.targets?.some(target => !targets.includes(target))) {
       throw new Error(`Rule target conflicts with its folder: ${relative}`);
     }

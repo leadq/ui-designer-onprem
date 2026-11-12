@@ -6,16 +6,21 @@ Designer çizimi ve kaynak kod üretimi aynı ekran/bileşen bilgisini kullanır
 | --- | --- | --- |
 | `shared/` | Ekran anlama, kapsam, genel davranış | İki hedef / bütün aşamalar |
 | `designer/` | Designer oluşturma/düzenleme yaklaşımı | `design` / implement |
-| `codegen/` | Kaynak kod üretme ve doğrulama yaklaşımı | `react` / implement |
-| `architecture/` | Dosya/import, routing, API/mock, stil ve proje standartları | `react` / implement |
+| `code-gen/` | Kod üretimi; mimari, kod standartları, API/mock, i18n ve doğrulama kuralları | `react` / implement |
 | `patterns/<konu>/design.md` | Konunun ekran yapısı, yerleşimi ve UX yaklaşımı | İki hedef / implement, pattern=`<konu>` |
 | `patterns/<konu>/code.md` | Konunun gerçek provider, event, state ve uygulama örneği | `react` / implement, pattern=`<konu>` |
 
 Pattern klasöründe başka Markdown dosyaları da eklenebilir; varsayılan olarak iki hedefe uygulanır. `code.md` kod hedefini otomatik seçer. Designer'a özel bir pattern için dosyanın kendi metadata'sında `targets: ["design"]` kullanın. Dosya/klasör adlarında küçük harf, rakam ve tire kullanın. Bileşenin prop/slot/native kullanım tarifleri adapter recipes içinde kalır; burada ikinci bir bileşen kataloğu tutmayın.
 
+## Kod üretim kuralları
+
+`code-gen/architecture.md` hedef proje mimarisini; `code-gen/coding-standards.md` kodlama standartlarını anlatır. API/mock, i18n ve diğer kurallar da aynı klasörde bulunur. Ekip ihtiyacına göre bu klasör altında alt klasörler ve yeni Markdown dosyaları oluşturabilir; ayrıca referans kaydı gerekmez. Kurallar yalnız kaynak kod üretiminde kullanılır.
+
+Eski ZIP’lerden taşınan `codegen/` ve `architecture/` klasörleri uyumluluk için okunmaya devam eder. Yeni düzen `code-gen/` şeklindedir. Elle geçerken dosyaları kopyalamak yerine taşıyın; aynı kural kimliğini iki yerde bırakmayın. Mevcut örneklerin kural kimlikleri korunmuştur.
+
 ## En basit yeni kural
 
-`codegen/naming.md` oluşturun:
+`code-gen/naming.md` oluşturun:
 
 ```md
 # İsimlendirme
@@ -23,7 +28,7 @@ Pattern klasöründe başka Markdown dosyaları da eklenebilir; varsayılan olar
 Buraya projenizde doğrulanmış isimlendirme kuralını ve kısa çalışan örneği yazın.
 ```
 
-Başka dosyaya referans veya manifest kaydı eklemeyin. Sonraki MCP isteğinde keşfedilir; codegen hedefinin implement aşamasında **içeriğiyle** `guidance.required` içinde gelir. Kimliği `codegen-naming` olur. Bütün görevlere uygulanacak bir kuralı `shared/` altına koyun.
+Başka dosyaya referans veya manifest kaydı eklemeyin. Sonraki MCP isteğinde keşfedilir; codegen hedefinin implement aşamasında **içeriğiyle** `guidance.required` içinde gelir. Kimliği `code-gen-naming` olur. Bütün görevlere uygulanacak bir kuralı `shared/` altına koyun.
 
 Yeni pattern için `patterns/payment/design.md` ve gerekiyorsa `code.md` ekleyin. `payment`, `guideIndex` ve `start_design_task.patternOptions` içinde keşfedilir. Agent payment konusunu bildirdiğinde o klasördeki hedefe uyan kuralların tamamı birlikte gelir; sunucuya yeni pattern enum'u veya kural listesi yazılmaz.
 
@@ -79,11 +84,11 @@ Bu ayrım işletim sistemi dosya kilidi değildir: kaynak reponun sahibi teknik 
 
 - Prompt → Designer ve image → Designer: tasarım/UX + Designer rehberleri + teknik JSON/adapter kontratı. Editöre yazarken canlı bağlantı gerekir.
 - Prompt → React ve image → React: tasarım/UX + codegen + architecture + ilgili pattern kodu. Designer oturumu veya ara JSON zorunlu değildir.
-- Editor → React: canlı belge/seçili ekran okuma + JSON/native dönüşüm kontratı + codegen/architecture/pattern rehberleri. Kaynak belge yazılmaz.
+- Editor → React: canlı belge/seçili ekran okuma + JSON/native dönüşüm kontratı + code-gen/pattern rehberleri. Kaynak belge yazılmaz.
 
 ## ZIP güncellemesi ve eski profil
 
-Mevcut adapter, proje config/deployment dosyalarıyla birlikte özelleştirdiğiniz `patterns/`, `architecture/` ve diğer prompt dosyalarını yeni sürüme taşıyın. Genel rehberlerin yeni sürümüyle yerel değişiklikleri karşılaştırın. Teknik kontrat klasörünü eski projeden taşımayın. Sonra yapılandırılmış Designer'dan MCP export/build ve gerçek kabul yapın. Yeni ZIP içindeki [taşıma aracı](../../UPDATE.md) mevcut prompt setini korur; farklı yeni genel rehberleri raporda listeler. Otomatik metin merge’ü yapmaz.
+Mevcut adapter, proje config/deployment dosyalarıyla birlikte özelleştirdiğiniz `patterns/`, `code-gen/` ve diğer prompt dosyalarını yeni sürüme taşıyın. Genel rehberlerin yeni sürümüyle yerel değişiklikleri karşılaştırın. Teknik kontrat klasörünü eski projeden taşımayın. Sonra yapılandırılmış Designer'dan MCP export/build ve gerçek kabul yapın. Yeni ZIP içindeki [taşıma aracı](../../UPDATE.md) mevcut prompt setini korur; farklı yeni genel rehberleri raporda listeler. Otomatik metin merge’ü yapmaz.
 
 Varsayılan yer bu klasördür. Ayrı yerde tutmak gerekirse **aynı düzenin tamamını** kopyalayıp `DESIGNER_PROMPTS_DIR=/absolute/prompts` kullanın; bu varsayılan promptları tamamen değiştirir, gizli overlay yapmaz. Teknik kontrat ve asset kökü değişmez. Dosya ekleme/düzenleme/silme ve metadata/konum değişikliği revision'a girer; resource listesi de restart gerekmeden güncellenir.
 

@@ -87,7 +87,7 @@ Import aktif adapter’la doğrulanır; savedDesigns kabul edilmez, mevcut sayfa
 
 ## Prompt düzeni ve zorunlu içerik (2.0.0)
 
-Düzenlenebilir kurallar MCP reposunda `prompts/shared`, `prompts/designer`, `prompts/codegen`, `prompts/patterns`, `prompts/architecture` altındadır. Teknik kontratlar ayrı `designer/contracts` dizinindedir; prompt override yolu bu kontratlara erişmez. Yeni Markdown otomatik keşfedilir; manifest/agent referansı gerekmez. Dosyanın isteğe bağlı metadata'sı kendi koşullarını taşır.
+Düzenlenebilir kurallar MCP reposunda `prompts/shared`, `prompts/designer`, `prompts/code-gen`, `prompts/patterns` altındadır. Teknik kontratlar ayrı `designer/contracts` dizinindedir; prompt override yolu bu kontratlara erişmez. Yeni Markdown otomatik keşfedilir; manifest/agent referansı gerekmez. Dosyanın isteğe bağlı metadata'sı kendi koşullarını taşır.
 
 [Prompt rehberi](../../mcp/prompts/README.md) varsayılanları, örneği, hata davranışını ve migration'ı açıklar. `get_design_contract` goal/source/mode/patterns bağlamına göre zorunlu gövdeleri `guidance.required` ile verir; tamamlamadan taskPhase=verify kullanılır. İndeks okumak içerik okumak değildir; eksik proje bilgisi guidance.needsProjectInput içinde görünür. Modellerin anlaması/uygulaması teslim edilmiş içerikten kanıtlanamaz.
 
