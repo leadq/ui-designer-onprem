@@ -6,3 +6,6 @@ dist/
 .env.*.local
 .npmrc
 .DS_Store
+
+# Public connection configuration generated from the deployment environment
+/designer/share/designer-config.json

@@ -4,3 +4,7 @@ dist/
 .env.local
 .export-*/
 designer/contracts/execution-contract.md
+
+# Local service configuration
+.env
+.env.local

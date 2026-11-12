@@ -3,7 +3,8 @@ import { getWorkspace } from '@root/utils/workspacePersistence/state'
 
 import { getBridgeMutationResult } from './operations/getBridgeMutationResult'
 import { getBridgeOperationResult } from './operations/getBridgeOperationResult'
-import { BACKEND_WS_URL } from './config'
+import type { BridgeMessage } from './BridgeMessage'
+import { loadBackendWsUrl } from './loadBackendWsUrl'
 
 const RETRY_MULTIPLIER = 2
 const MAX_MESSAGE_SIZE = 16777216
@@ -13,31 +14,18 @@ const RETRY_JITTER_DIVISOR = 4
 const INITIAL_RETRY_MS = 500
 const MAX_RETRY_MS = 15000
 
-interface BridgeMessage {
-  type?: string
-  protocol?: number
-  code?: string
-  requestId?: string
-  operation?: string
-  args?: Record<string, unknown>
-}
-
 export const startBackendBridge = (onStatus: (status: McpConnectionStatus) => void) => {
   let isStopped = false
   let socket: WebSocket | undefined
   let timer = 0
   let retry = INITIAL_RETRY_MS
   let work = Promise.resolve()
+  let backendWsUrl: string
+  const configuration = new AbortController()
   const requests = new Map<string, { isCancelled: boolean; socket: WebSocket }>()
 
   const connect = () => {
     if (isStopped) {
-      return
-    }
-
-    if (!BACKEND_WS_URL) {
-      onStatus('disconnected')
-
       return
     }
 
@@ -46,7 +34,7 @@ export const startBackendBridge = (onStatus: (status: McpConnectionStatus) => vo
     let current: WebSocket
 
     try {
-      current = new WebSocket(BACKEND_WS_URL)
+      current = new WebSocket(backendWsUrl)
     } catch {
       onStatus('disconnected')
 
@@ -176,10 +164,24 @@ export const startBackendBridge = (onStatus: (status: McpConnectionStatus) => vo
     }
   }
 
-  connect()
+  onStatus('connecting')
+
+  void loadBackendWsUrl(configuration)
+    .then((url) => {
+      backendWsUrl = url
+
+      connect()
+    })
+    .catch(() => {
+      if (!isStopped) {
+        onStatus('disconnected')
+      }
+    })
 
   return () => {
     isStopped = true
+
+    configuration.abort()
 
     clearTimeout(timer)
 

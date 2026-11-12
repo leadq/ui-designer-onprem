@@ -98,3 +98,7 @@ Yanıt `{document, scope:{kind:'selected-frames',frameIds,overlayIds,omitted}}` 
 23 Ekim 0044 takip: UI library değişimi eski localStorage cache’ine dönmez; mevcut tam IDB belgesi korunur ve seçilen adapter için yeni boş designId açılır. Mevcut bileşenleri yeni library’ye dönüştürme yapılmaz. Üç adapter native kayıt/açma kabulü doğrulandı; önceki dönüşüm sınırı bu ayrımla okunmalıdır.
 
 23 Ekim kayıt takip: özel bileşen kitaplığı metadata/componentLibrary:<adapter> altında IndexedDB'dedir. Yeni akış, JSON dosya importu ve library değişimi taslak açar; Kaydet veya açık autosave ilk yazımı yapana kadar designs listesine boş kayıt eklenmez. Kaydedilmiş kaynaklar silinmez. Dirty geçişlerde kaydet/devam/iptal kararı sorulur; kayıt başarısızsa kaydederek geçiş durur. Liste okuması önceki yazım hatasına bağlı değildir. MCP açık mutation belge+receipt kalıcılığı autosave tercihinden bağımsızdır.
+
+## Environment ile bağlantı
+
+Designer adresi kaynak kodunda eşlenmez. Sabit `DESIGNER_BACKEND_WS_URL`, configure scriptiyle public runtime JSON’a aktarılır. Aynı origin ve ayrı sunucu kurulumu, deployment sırasında yeniden üretim ve kontroller [bağlantı rehberindedir](connection.md).

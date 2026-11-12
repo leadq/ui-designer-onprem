@@ -23,3 +23,7 @@ Uygulamanın bağlantı sözleşmesini koruyun: `/mcp`, `/ws` ve `/health` aynı
 ## Promptlar ve teknik kontratlar
 
 [Prompt rehberi](prompts/README.md) Designer/kod üretimi ayrımını, otomatik Markdown keşfini, zorunlu içerik sunumunu ve eski profil geçişini anlatır. Düzenlenebilir kurallar `prompts/`; ürün kontratları `designer/contracts/` altındadır. Yeni kural için manifest veya agent dosyasına referans eklenmez.
+
+## Designer bağlantı ayarı
+
+Designer kaynak kodunda env anahtarı veya adres değiştirilmez. Sabit `DESIGNER_BACKEND_WS_URL` ayarı, otomatik `configure` adımıyla public runtime JSON’a yazılır. Aynı public origin için `/ws`, ayrı sunucu için tam `wss://…/ws` adresi verin. [Designer/MCP bağlantı rehberi](../designer/docs/connection.md) env, reverse proxy ve deployment adımlarını açıklar. MCP process env örneği [.env.example](.env.example) içindedir.
