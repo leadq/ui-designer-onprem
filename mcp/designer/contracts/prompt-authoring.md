@@ -11,6 +11,8 @@ Görsel zorunlu değildir. Kullanıcının metni amaç, ekranlar, bileşenler, y
 
 ## Yeni tasarım
 
+Yeni bir ikon gerekiyorsa önce anlamını karşılayan 1–3 kısa İngilizce ad veya anahtar ifadeyle `search_icons` çağır. Örneğin yol tarifi için `{"queries":["navigation","map pin","route"]}`, yukarı ok için `{"queries":["arrow up"]}`. Dönen `matches` içinden uygun kimliği aynen `props.glyph` olarak yaz. Eşleşme yoksa daha genel bir ad veya eş anlamlı dene. `iconLibraries` boşsa kullanılabilir ikon kaynağı yoktur.
+
 1. Editörde çalışılacaksa önce get_design(section: document) oku; document.adapterId ve editorId/version değerlerini al. Katalog özeti aktif kütüphaneyi söylemez. Oturum yoksa kullanıcıdan Designer bağlantısını iste; sessizce library seçme.
 2. Önce get_design_contract overview ile ortak JSON kuralları ve strateji indeksini al; amaç/ölçek analizinden sonra details ile seçili componentTypes ve ilgili strateji rehberlerini toplu oku; yeni örüntü bulunursa ek rehberi al. Yalnız prompt için resim yüklenmesini isteme.
 3. Katalog özeti ve kullanılan bileşenlerin detayları → semantik frame/flow ağacı → validate_design. Bir form adımının verileri ortak scope'ta kalmalı.

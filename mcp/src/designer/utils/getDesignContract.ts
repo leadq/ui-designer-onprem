@@ -35,7 +35,8 @@ export const getDesignContract = async (request: ContractRequest) => {
   const runtime = getDesignerRuntime();
   const summary = runtime.getDesignCatalog(adapterId);
   const { schemaVersion, components } = catalogSchema.parse(summary);
-  const fullCatalog = runtime.getDesignCatalog(adapterId, components.map(({ type }) => type));
+  const allTypes = components.map(({ type }) => type);
+  const fullCatalog = runtime.getDesignCatalog(adapterId, allTypes, 'revision');
   // Includes actual adapter metadata, not just Markdown: a prop change invalidates old packets.
   const contractRevision = getSha256(JSON.stringify(fullCatalog) + bundle.revision);
   if (request.contractRevision && request.contractRevision !== contractRevision) {
@@ -56,6 +57,7 @@ export const getDesignContract = async (request: ContractRequest) => {
     patterns: request.patterns ?? [],
   }, guides.map(guide => guide.id));
   if (phase === 'details') {
+    const requestedTypes = allComponents ? allTypes : componentTypes;
     const selectedGuides = guides.map(({ id, sectionIds }) => {
       const guide = bundle.manifest.guides.find((entry) => entry.id === id);
       if (!guide) throw new Error(`Unknown guide: ${id}`);
@@ -70,8 +72,7 @@ export const getDesignContract = async (request: ContractRequest) => {
       };
     });
     return { ...identity, phase, guidance,
-      catalog: allComponents ? getComponentPacket(fullCatalog) : componentTypes
-        ? getComponentPacket(runtime.getDesignCatalog(adapterId, [...new Set(componentTypes)])) : undefined,
+      catalog: requestedTypes ? getComponentPacket(runtime.getDesignCatalog(adapterId, [...new Set(requestedTypes)])) : undefined,
       guides: selectedGuides,
       reuse: 'Keep this packet for this adapter and revision. Request only newly needed components/guide sections. Guide status needs-project-input is not a completed institution strategy.',
     };

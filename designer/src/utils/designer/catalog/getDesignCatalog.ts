@@ -7,7 +7,11 @@ import { DESIGN_SCHEMA_VERSION } from '@root/utils/designDocument'
 import { DESIGN_AUTHORING_CONTRACT, getComponentAuthoring } from '../authoringContract'
 import { validateComponentContract } from '../componentContract'
 
-export const getDesignCatalog = (adapterId?: string, componentTypes?: string[]) => {
+export const getDesignCatalog = (
+  adapterId?: string,
+  componentTypes?: string[],
+  purpose: 'authoring' | 'revision' = 'authoring',
+) => {
   if (!adapterId) {
     return {
       schemaVersion: DESIGN_SCHEMA_VERSION,
@@ -73,6 +77,18 @@ export const getDesignCatalog = (adapterId?: string, componentTypes?: string[]) 
 
     return {
       ...data,
+      propsSchema:
+        purpose === 'authoring' && type === 'icon'
+          ? data.propsSchema.map((field) => {
+              if (field.key !== 'glyph' || field.type !== 'icon') {
+                return field
+              }
+
+              const { options: _options, ...descriptor } = field
+
+              return { ...descriptor, searchTool: 'search_icons' }
+            })
+          : data.propsSchema,
       authoring: getComponentAuthoring(meta),
       overlay: overlay ? { presentation: overlay.presentation } : undefined,
       previewValue: previewValue ? valueBinding : undefined,

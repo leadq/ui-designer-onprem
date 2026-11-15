@@ -7,6 +7,7 @@ import { registerGetDesignContractTool } from './utils/registerGetDesignContract
 import { registerGetDesignCatalogTool } from './utils/registerGetDesignCatalogTool.js';
 import { registerGetDesignerAssetTool } from './utils/registerGetDesignerAssetTool.js';
 import { registerReadDesignGuideTool } from './utils/registerReadDesignGuideTool.js';
+import { registerSearchIconsTool } from './utils/registerSearchIconsTool.js';
 import { registerStartDesignTaskTool } from './utils/registerStartDesignTaskTool.js';
 import { registerValidateDesignTool } from './utils/registerValidateDesignTool.js';
 
@@ -14,6 +15,7 @@ export const registerDesignerTools = async (server: McpServer): Promise<void> =>
   registerStartDesignTaskTool(server);
 
   registerReadDesignGuideTool(server);
+  registerSearchIconsTool(server);
 
   registerGetDesignCatalogTool(server);
 

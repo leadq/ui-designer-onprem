@@ -643,6 +643,10 @@ Bağımsız tablo gövde hücresinde **Hücreyi tasarla** komutu yalıtılmış 
 
 `src/adapters/index.ts` içindeki UI_ADAPTERS kayıt sırası dropdown ve katalog sırasıdır; ilk kayıt yeni tasarımların varsayılanıdır. Görünen version adapter geliştiricisi tarafından manuel tutulur; bundler sürüm enjekte etmez. Kayıtlı adapterId korunur. Kimliksiz tarihsel belge ve eski storage anahtarları LEGACY_ADAPTER_ID ile yorumlanır; sıralama değişikliği eski veriyi yeni kütüphaneye dönüştürmez. Yeni JSON alanı veya şema değişikliği yoktur.
 
+## MCP ile ikon seçimi
+
+MCP ikon keşfi `search_icons` ile çalışır. Agent tek amaç için 1–3 ad veya anahtar ifadeyi `queries` olarak yollar. Yanıtta aktif kaynaktan sıralanmış `matches` kimlikleri ve benzersiz eşleşme sayısı `total` gelir. Varsayılan toplam sınır 20, üst sınır 30'dur. Bileşen ayrıntısında `glyph` alanı `searchTool` taşır. Belge doğrulaması kayıtlı glyph kümesine göre yapılır.
+
 ## Bağımsız ikon authoring — 22 Ekim 2026
 
 `type: "icon"` bütün aktif UI adapterlarında ortak kayıtlı bir yaprak bileşendir. `props.glyph` yalnız yapılandırılmış ikon kaynağının `libraryId:iconId` seçeneklerini veya açık boş stringi kabul eder; JSX, import yolu ve `item.*` bindingi değildir. `props.size` varsayılan 32 CSS piksel, 1–1024; `props.accessibleLabel` isteğe bağlıdır. Native görünüm `currentColor` mirasını kullanır; genel görünüm CSS’i açılmaz.

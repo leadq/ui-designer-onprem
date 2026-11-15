@@ -255,6 +255,10 @@ Adapter tarafında tarifler recipes/<componentType>/<recipeId>/recipe.ts, görse
 
 `src/adapters/index.ts` içindeki UI_ADAPTERS kayıt sırası dropdown ve katalog sırasıdır; ilk kayıt yeni tasarımların varsayılanıdır. Görünen version adapter geliştiricisi tarafından manuel tutulur; bundler sürüm enjekte etmez. Kayıtlı adapterId korunur. Kimliksiz tarihsel belge ve eski storage anahtarları LEGACY_ADAPTER_ID ile yorumlanır; sıralama değişikliği eski veriyi yeni kütüphaneye dönüştürmez. Yeni JSON alanı veya şema değişikliği yoktur.
 
+### MCP ile ikon seçimi
+
+MCP bileşen ayrıntısında `propsSchema` içindeki `glyph.searchTool` kullanılacak aracı bildirir. `search_icons({queries:["arrow up","chevron up"]})` aynı amaç için alternatif ifadeler alır. `matches` yalnız kayıtlı kimlikleri, `total` tüm benzersiz eşleşmelerin sayısını verir. Varsayılan 20, tek çağrıda en fazla 30 kimlik döner. Seçilen kimliği `props.glyph` alanına yaz.
+
 ### Bağımsız ikon
 
 `type: "icon"` için `props.glyph`, yapılandırılmış tek ikon kaynağının katalogda bildirdiği `libraryId:iconId` seçeneğidir; gerçek kimliği katalogdan okuyun. Teslimde kaynak `null`, MCP `iconLibraries` ve picker kataloğu boştur; yalnız açık boş glyph geçerlidir. Kurum kaynağı eklendikten sonra yeni ikon ilk aktif öğeyi kullanır. Arşivdeki Lucide/Tabler örnekleri kayıtlı seçenek değildir; eski glyph’i başka pakete dönüştürmeyin.

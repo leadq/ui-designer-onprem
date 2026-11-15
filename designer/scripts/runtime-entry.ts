@@ -7,5 +7,6 @@ export { DEFAULT_ADAPTER_ID as defaultAdapterId } from '../src/adapters';
 export { getRenderSnapshot } from '../src/utils/designer/renderSnapshot';
 export { getSelectionContext } from '../src/utils/designer/selectionContext';
 export { getDesignCatalog } from '../src/utils/designer/catalog';
+export { getIconSearchResults } from '../src/utils/designIcons/getIconSearchResults';
 export { getValidatedDesign as validateDesign } from '../src/utils/designer/getValidatedDesign';
 export { getDesignWithChanges as applyDesignChanges } from '../src/utils/designer/getDesignWithChanges';
