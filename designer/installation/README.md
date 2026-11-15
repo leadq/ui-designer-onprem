@@ -5,11 +5,11 @@ Bu teslim kurum paket adlarını içermez; **önce aşağıdaki paket/araç eşl
 ## 1. Makine, registry ve kurum paket eşlemesi
 
 1. UI Designer reposunu IDE’de açın; terminal package.json bulunan kökte olsun.
-2. `node --version` ve `npm --version` ile ortamı kontrol edin. Designer configure için Node20.12+ kullanın; SDK/native paketin engines ve peer koşulları da karşılanmalı.
+2. `node --version` ve `npm --version` ile ortamı kontrol edin. Designer configure için Node20.12+ kullanın; Ekip paketlerinin engines ve peer koşulları da karşılanmalı.
 3. Kurumun verdiği Nexus registry/auth ayarını kullanıcı veya CI npm yapılandırmasına uygulayın. `npm config get registry` ile adresi kontrol edin; tokenları repoya eklemeyin.
 4. Ekipten veya kurumun mevcut çalışan uygulamasından aşağıdaki gerçek değerleri alın. Derleme aracı paketinin public CLI/config/env sözleşmesini kontrol edin; isimleri tahmin etmeyin. [Paket rehberi](../docs/sdk-toolchain.md) araç sahipliğini açıklar.
 
-Kurulumda **iki kurum paketi zorunludur**: frontend'i geliştiren/derleyen araç paketi ve onun kullandığı ortak tip paketi. Bunlar aşağıdaki eşleme sonrası kök manifestin dependencies alanında gerçek adlarıyla yer alır ve 2. adımdaki `npm install` tarafından kurulur. Kurum UI library paketi ise adapter kapsamı belirlendiğinde 6. adımda eklenir. Genel bağımlılıklar manifestlerde hazırdır.
+Ekip paketleri için ekibin çalışan projesindeki derleme paketinin adını ve sürümünü aşağıdaki tabloda eşleyin. 2. adımda `npm install` bu paketi ve onun bildirdiği bağımlılıkları kurar. Adapterın kullanacağı UI kütüphanesini 6. adımda ekleyin.
 
 | Yer tutucu | Kurumdan alınacak değer | Değiştirilecek yer |
 | --- | --- | --- |
@@ -17,26 +17,24 @@ Kurulumda **iki kurum paketi zorunludur**: frontend'i geliştiren/derleyen araç
 | `__TOOLCHAIN_VERSION__` | Registry'de erişilebilir onaylı sürüm | package.json dependencies değeri |
 | `__TOOLCHAIN_DEV_COMMAND__` | Ekibin bundle paketiyle kullandığı tam yerel geliştirme komutu | package.json scripts.dev |
 | `__TOOLCHAIN_BUILD_COMMAND__` | Ekibin bundle paketiyle kullandığı tam build komutu | package.json scripts.build |
-| `__SHARED_TYPES_PACKAGE__` | Ortak tip paketinin tam npm adı | package.json dependencies ve overrides; dolar işaretli referans dahil |
-| `__SHARED_TYPES_VERSION__` | Araç paketiyle uyumlu ortak tip sürümü | package.json dependencies değeri |
-| `__APP_TITLE_KEY__` | SDK'nın uygulama başlığı env anahtarı | .env.example |
-| `__BASE_PATH_KEY__` | SDK'nın route/public path env anahtarı | .env.example |
+| `__APP_TITLE_KEY__` | Derleme aracının uygulama başlığı env anahtarı | .env.example |
+| `__BASE_PATH_KEY__` | Derleme aracının route/public path env anahtarı | .env.example |
 
-5. Tablodaki yer tutucuları belirtilen dosyalarda **birebir metin değişimiyle** gerçek değerleriyle değiştirin. Ortak tip override referansının başındaki `$` işaretini koruyun. Env anahtarları geçerli JavaScript alan adı olmalı; SDK tarafından frontend'e aktarılmaları gerekir. MCP bağlantısının `DESIGNER_BACKEND_WS_URL` anahtarı sabittir; kaynak dosyası değiştirilmez. Paket eşlemesinde `configure`, `predev`, `prebuild` scriptlerini koruyun. Dev/build komutlarını ve parametrelerini ekibin aynı bundle paketiyle çalışan projesinden alın; paket adından komut veya seçenek tahmin etmeyin.
+5. Tablodaki yer tutucuları belirtilen dosyalarda **birebir metin değişimiyle** gerçek değerleriyle değiştirin. Env anahtarları geçerli JavaScript alan adı olmalı; derleme aracı tarafından frontend'e aktarılmaları gerekir. MCP bağlantısının `DESIGNER_BACKEND_WS_URL` anahtarı sabittir; kaynak dosyası değiştirilmez. Paket eşlemesinde `configure`, `predev`, `prebuild` scriptlerini koruyun. Dev/build komutlarını ve parametrelerini ekibin aynı bundle paketiyle çalışan projesinden alın; paket adından komut veya seçenek tahmin etmeyin.
 6. Bundle paketinin config dosyasını ekibin aynı paketle çalışan mevcut projesine bakarak oluşturun. Dosya adını, CLI seçeneklerini, bootstrap ve env aktarımını gerçek paket sözleşmesinden doğrulayın. Designer’ın `src/main.tsx` default App girişi, `@root` aliası ve React/tip sürüm uyumunu koruyun; bu teslim hazır toolchain veya deployment config örneği sağlamaz.
-7. Install öncesinde aşağıdaki kontrolü repo kökünde çalıştırın. Başarısızsa belirtilen dosyalardaki eşlemeyi tamamlayın; bilinçli olarak şablon bırakılan rehber metinlerini değiştirmeniz gerekmez.
+7. Install öncesinde aşağıdaki kontrolü `designer/` klasöründe çalıştırın. Başarısızsa belirtilen dosyalardaki eşlemeyi tamamlayın; bilinçli olarak şablon bırakılan rehber metinlerini değiştirmeniz gerekmez.
 
 ```sh
 node --input-type=module -e "import {readFileSync} from 'node:fs'; const files=['package.json','.env.example']; const pending=files.filter(file=>/__[A-Z][A-Z0-9_]*__/.test(readFileSync(file,'utf8'))); if(pending.length) throw new Error('Doldurulmayan kurum ayarları: '+pending.join(', ')); console.log('Paket ve env yer tutucuları dolduruldu.');"
 ```
 
-**Tamamlanma:** kontrol başarılı, gerçek CLI/config adı doğrulanmış, gerekli iki kurum paketi registry'de erişilebilir. Bu kontrol yalnız eksik yer tutucuları bulur; doğru API/sürüm veya registry erişimini kanıtlamaz. Gerçek isimler ekibin yapılandırdığı kopyaya yazılır; dağıtılan şablonda bulunmaz.
+**Tamamlanma:** kontrol başarılı, gerçek CLI/config adı doğrulanmış, ekibin derleme paketi registry'de erişilebilir. Bu kontrol yalnız eksik yer tutucuları bulur; doğru API/sürüm veya registry erişimini kanıtlamaz. Gerçek isimler ekibin yapılandırdığı kopyaya yazılır; dağıtılan şablonda bulunmaz.
 
 ## 2. Designer paketlerini kurun
-SDK ve gerçek UI kütüphanesi sürümlerini eşleyin, `npm install` ile lock üretip sabitleyin. İleride `npm ci` kullanın.
+Ekip paketleri ve UI kütüphanesi sürümlerini eşleyin, `npm install` ile lock üretip sabitleyin. İleride `npm ci` kullanın.
 
 ## 3. Ortam
-Önce mevcut .env dosyasını koruyun; yoksa .env.example dosyasını .env olarak kopyalayın. Aynı public origin üzerinden yayın için `DESIGNER_BACKEND_WS_URL=/ws`; ayrı sunucu için `wss://<MCP host>/ws`, ayrı portlarda yerelde `ws://127.0.0.1:4854/ws` verin. Kaynak kodunda env anahtarı veya adres değiştirmeyin. `npm run dev/build` öncesinde configure otomatik çalışır; SDK'nın `share/` statik asset aktarımı üretilen JSON'ı yayınlar. Aynı build'in deployment env'sinden yeniden yapılandırılması, MCP/IDE ayarları ve kontroller için [bağlantı rehberini](../docs/connection.md) izleyin.
+Önce mevcut .env dosyasını koruyun; yoksa .env.example dosyasını .env olarak kopyalayın. Aynı public origin üzerinden yayın için `DESIGNER_BACKEND_WS_URL=/ws`; ayrı sunucu için `wss://<MCP host>/ws`, ayrı portlarda yerelde `ws://127.0.0.1:4854/ws` verin. Kaynak kodunda env anahtarı veya adres değiştirmeyin. `npm run dev/build` öncesinde configure otomatik çalışır; Derleme aracının `share/` statik asset aktarımı üretilen JSON'ı yayınlar. Aynı build'in deployment env'sinden yeniden yapılandırılması, MCP/IDE ayarları ve kontroller için [bağlantı rehberini](../docs/connection.md) izleyin.
 
 ## 4. Yerel build ve MCP export
 Adapter kurulumu tamamlanınca Designer kökünde `npm run build` ve `npm run export:mcp -- /tam/yol/mcp` çalıştırın. MCP kendi kökünde `npm ci && npm run build && npm start` ile açılır. [MCP rehberi](../../mcp/README.md) çalışma sözleşmesini açıklar. CI/CD ve deployment dosyalarını ekip kendi mevcut projelerine göre hazırlar.

@@ -1,6 +1,6 @@
-# Kurum paketleri ve derleme araçları
+# Ekip paketleri ve derleme araçları
 
-Teslim [kök manifestinde](../package.json) kurum paket adları/sürümleri yer tutucudur. Gerçek derleme aracı paketi, ortak tip paketi, CLI, başlık/route env anahtarları ve build config dosya adını [kurulumun ilk adımında](../installation/README.md) eşleyin. Sonraki npm install bu gerçek adları kurar; yer tutucularla install/build çalıştırmayın. MCP manifesti (MCP reposunda `package.json`) bağımsız araçlarını tanımlar. Derleme aracının ve UI library'sinin transitif/peer gereksinimlerini koruyun.
+Teslim [kök manifestinde](../package.json) kurum paket adları/sürümleri yer tutucudur. Ekibin derleme paketi, CLI, başlık/route env anahtarları ve build config dosya adını [kurulumun ilk adımında](../installation/README.md) eşleyin. Sonraki npm install bu gerçek adları kurar; yer tutucularla install/build çalıştırmayın. MCP manifesti (MCP reposunda `package.json`) bağımsız araçlarını tanımlar. Derleme aracının ve UI library'sinin transitif/peer gereksinimlerini koruyun.
 
 Kök lock dosyası eski yerel tarball referansları nedeniyle teslimde yoktur. Doğru registry ayarıyla ilk `npm install` sonrasında yeni lock oluşturup sabitleyin. MCP'nin bağımsız lock'u korunur. Her repoda bağımlılıkları ayrı kurun; sonraki aynı sürüm kurulumlarında `npm ci` kullanın.
 

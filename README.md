@@ -4,7 +4,7 @@
 
 ## Kurulum ve yerel çalıştırma
 
-1. [Designer kurulumundaki](designer/installation/README.md) bundle paketi, ortak tip paketi, CLI/env ve gerçek kurum adapterı eşlemelerini tamamlayın. Bundle config dosyasını ekibin mevcut projesinden uyarlayın. Aktif adapter kaydı olmadan çalışan teslim beklenmez.
+1. [Designer kurulumundaki](designer/installation/README.md) ekip paketleri, CLI/env ve gerçek kurum adapterı eşlemelerini tamamlayın. Bundle config dosyasını ekibin mevcut projesinden uyarlayın. Aktif adapter kaydı olmadan çalışan teslim beklenmez.
 2. Designer kökünde `npm run build` çalıştırın. Commitlenmiş kaynaklardan `npm run export:mcp -- /tam/yol/mcp` ile MCP runtime'ını üretin. Adapter, kontrat veya recipe değişince exportu yenileyin; `generated/export.json` kaynak commit/hash bilgisini içerir.
 3. MCP kökünde `npm ci && npm run build && npm start` çalıştırın. Node 20.3+ gerekir. Ayrıntılar [MCP rehberinde](mcp/README.md).
 4. Designer'da `DESIGNER_BACKEND_WS_URL` env ayarına `ws://127.0.0.1:4854/ws` verip `npm run dev` çalıştırın. IDE HTTP MCP adresi `http://127.0.0.1:4854/mcp` olur.
@@ -30,6 +30,6 @@ Render kullanılacaksa MCP ortamında kurulu Playwright sürümüyle uyumlu Chro
 
 Designer bağlantısı → IDE HTTP MCP bağlantısı → kurum bileşenini katalogdan okuma → `validate_design` → `import_design` sonucunda `applied` ve `isPersisted=true` → `get_design` ile aynı frame'i okuma. Render kullanılacaksa ayrıca görüntü alın. Gerçek kurum paketleri, adapterı ve ortamıyla bu kabulü tamamlayın.
 
-[Bundle ve ortak tip paketi eşlemesi](designer/docs/sdk-toolchain.md) · [Adapter kurulumu](designer/installation/README.md) · [MCP çalıştırma](mcp/README.md)
+[Ekip paketleri ve derleme araçları](designer/docs/sdk-toolchain.md) · [Adapter kurulumu](designer/installation/README.md) · [MCP çalıştırma](mcp/README.md)
 
 ZIP güncellemesinde mevcut adapter/prompt/paket/config dosyalarını taşıma: [güncelleme rehberi](UPDATE.md).
