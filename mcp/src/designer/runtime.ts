@@ -14,7 +14,7 @@ interface DesignerRuntime {
     changes: { nodeId: string; patch: Record<string, unknown> }[],
   ) => { document: unknown; changedNodeIds: string[] };
   getDesignCatalog: (adapterId?: string, componentTypes?: string[], purpose?: 'authoring' | 'revision') => unknown;
-  getIconSearchResults: (queries: string[], limit: number) => { matches: string[]; total: number };
+  getIconSearchResults: (queries: string[], limit: number) => { results: { query: string; matches: string[]; total: number }[] };
   validateDesign: (input: unknown, output?: 'summary' | 'nested' | 'flat') => unknown;
 }
 

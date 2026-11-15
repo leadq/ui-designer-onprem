@@ -257,7 +257,7 @@ Adapter tarafında tarifler recipes/<componentType>/<recipeId>/recipe.ts, görse
 
 ### MCP ile ikon seçimi
 
-MCP bileşen ayrıntısında `propsSchema` içindeki `glyph.searchTool` kullanılacak aracı bildirir. `search_icons({queries:["arrow up","chevron up"]})` aynı amaç için alternatif ifadeler alır. `matches` yalnız kayıtlı kimlikleri, `total` tüm benzersiz eşleşmelerin sayısını verir. Varsayılan 20, tek çağrıda en fazla 30 kimlik döner. Seçilen kimliği `props.glyph` alanına yaz.
+Bileşen ayrıntısındaki `glyph.searchTool` aracı gösterir. Ekrandaki farklı ikonları tek istekte ara. Örneğin `search_icons({queries:["navigation","arrow up","trash","settings"]})`. `results` girdi sırasını korur. Her grup `query`, `matches` ve kesilmeden önceki `total` değerini taşır. `total: 0` eşleşme bulunmadığını gösterir. Tam `libraryId:iconId` aynı kimliği kontrol eder. Normal ifadelerde ad, kimlik ve kayıtlı anahtar sözcükler üzerinde bütün kelimelerin geçmesi aranır. `limit` tüm grupların ortak bütçesidir. Varsayılan 20, 21–30 ifadede ifade sayısı, üst sınır 30 kimliktir. `props.glyph` için ilgili grubun döndürdüğü kimliği kullan.
 
 ### Bağımsız ikon
 

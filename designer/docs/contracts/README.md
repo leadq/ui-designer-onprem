@@ -645,7 +645,7 @@ Bağımsız tablo gövde hücresinde **Hücreyi tasarla** komutu yalıtılmış 
 
 ## MCP ile ikon seçimi
 
-MCP ikon keşfi `search_icons` ile çalışır. Agent tek amaç için 1–3 ad veya anahtar ifadeyi `queries` olarak yollar. Yanıtta aktif kaynaktan sıralanmış `matches` kimlikleri ve benzersiz eşleşme sayısı `total` gelir. Varsayılan toplam sınır 20, üst sınır 30'dur. Bileşen ayrıntısında `glyph` alanı `searchTool` taşır. Belge doğrulaması kayıtlı glyph kümesine göre yapılır.
+MCP ikon keşfi `search_icons` ile çalışır. `queries` aynı çağrıda en fazla 30 ikon adı veya kısa ifade alır. `results` her ifade için sırayla `query`, kayıtlı `matches` kimlikleri ve kesilmeden önceki `total` sayısını verir. Editördeki ikon seçici aynı kelime eşlemesini ve sıralamayı kullanır. `limit` bütün yanıt için geçerlidir. Varsayılan 20 kimliktir. 21–30 ifade gönderildiğinde varsayılan bütçe ifade sayısına çıkar. Her eşleşen ifade ilk adayını aldıktan sonra sonraki adaylar sırayla dağıtılır. Bileşen ayrıntısındaki `glyph.searchTool` keşif aracını gösterir. Belge doğrulaması kayıtlı glyph kümesine göre yapılır.
 
 ## Bağımsız ikon authoring — 22 Ekim 2026
 

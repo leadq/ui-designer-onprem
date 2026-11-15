@@ -1,45 +1,37 @@
 import { getFilteredIcons } from './getFilteredIcons'
-import { ICON_CATALOG } from './getIconEntry'
-import { getIconSearchText } from './getIconSearchText'
-
-const KEYWORD_MATCH_RANK = 2
-
-const getSearchRank = (name: string, phrase: string, isExact: boolean) => {
-  if (isExact || name === phrase) {
-    return 0
-  }
-
-  return name.startsWith(phrase) ? 1 : KEYWORD_MATCH_RANK
-}
 
 export const getIconSearchResults = (queries: string[], limit: number) => {
-  const hits = queries.flatMap((query) => {
-    const words = query.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[-_]+/g, ' ')
-    const phrase = getIconSearchText(words).replace(/\s+/g, ' ')
-    const compactName = phrase.replaceAll(' ', '')
-    const isQualified = query.includes(':')
+  const groups = queries.map((query) => ({
+    query,
+    entries: getFilteredIcons(query),
+    matches: [] as string[],
+  }))
 
-    const candidates = isQualified
-      ? ICON_CATALOG.filter((entry) => getIconSearchText(entry.key) === getIconSearchText(query))
-      : getFilteredIcons(phrase)
+  const depth = Math.max(...groups.map((group) => group.entries.length))
+  let remaining = limit
 
-    return candidates
-      .map((entry) => ({
-        key: entry.key,
-        rank: getSearchRank(
-          getIconSearchText(entry.name),
-          phrase,
-          isQualified || getIconSearchText(entry.id) === compactName,
-        ),
-      }))
-      .sort((left, right) => left.rank - right.rank)
-      .map((hit, index) => ({ ...hit, index }))
-  })
+  // Each nonempty query gets its first pick before the next round of candidates.
+  for (let index = 0; index < depth && remaining > 0; index++) {
+    for (const group of groups) {
+      const entry = group.entries[index]
 
-  // Interleave equally ranked alternatives so a broad first phrase cannot fill the entire page.
-  hits.sort((left, right) => left.rank - right.rank || left.index - right.index)
+      if (entry) {
+        group.matches.push(entry.key)
 
-  const keys = [...new Set(hits.map((hit) => hit.key))]
+        remaining--
+      }
 
-  return { matches: keys.slice(0, limit), total: keys.length }
+      if (remaining === 0) {
+        break
+      }
+    }
+  }
+
+  return {
+    results: groups.map(({ query, entries, matches }) => ({
+      query,
+      matches,
+      total: entries.length,
+    })),
+  }
 }
