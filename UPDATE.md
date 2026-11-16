@@ -8,7 +8,9 @@ Yeni ZIP’i ayrı bir klasöre açın. Node 20.12+ yeterlidir; taşıma aracı 
 node scripts/update.mjs --from /projeler/mevcut-proje --check
 ```
 
-Raporda taşınacak yollar, yeni ZIP’ten farklı promptlar, paket gereksinimi farkları ve tanınmayan config yolları görünür. Dosya içerikleri/env değerleri yazdırılmaz. Bu adım dosya değiştirmez.
+`carry` eski projeden alınacak dosyaları listeler. Burada özellikle iki manifest/lock, ESLint, registry/env, deployment, adapter kayıtları, promptlar ve kullandığınız MCP istemci JSON’ını kontrol edin.
+`replaced` aynı yolda içeriği değişen ve yeni ZIP’ten alınacak dosyaları, `omitted` eski projeye özgü olup atlanan dosyaları listeler (core veya açıkça hariç tutulan yollar).
+`packageChanges` ve `unassigned` boş olunca çıktı hazırlanabilir. Dosya içerikleri/env değerleri yazdırılmaz. Bu adım dosya değiştirmez.
 
 ## 2. Güncel projeyi hazırlayın
 
@@ -35,8 +37,9 @@ Repo kökü, `designer/` ve `mcp/` altında şu yollar otomatik tanınır:
 
 - `.env*`, `.npmrc`, paket/lock dosyaları, `.gitignore`, `.dockerignore`, `.editorconfig`.
 - `*config.*`, `.eslintrc*`, `.prettierrc*`, `.stylelintrc*`; örneğin `tsconfig.json`, `toolchain.config.js`.
-- Kök YAML dosyaları, `Dockerfile*` / `Containerfile*`.
-- `config/`, `deploy/`, `deployment/`, `k8s/`, `helm/`, `.azure-pipelines/`, `.github/workflows/`, `.github/actions/`, `.circleci/`, `.vscode/`.
+- Kök YAML dosyaları, `Dockerfile*` / `Containerfile*`, `Jenkinsfile*`, `.eslintignore`, `.prettierignore`.
+- MCP istemcisinin `mcp/mcp.json`, `.mcp.json`, `.cursor/mcp.json`, `.vscode/mcp.json` dosyaları. Proje dışındaki kişisel IDE ayarları bu dosya taşımasının kapsamı dışındadır.
+- `config/`, `deploy/`, `deployment/`, `deployments/`, `k8s/`, `helm/`, `openshift/`, `vendor/`, `.azure-pipelines/`, `.github/workflows/`, `.github/actions/`, `.circleci/`, `.vscode/`.
 - `share/` ve `public/` statik kaynakları; üretilmiş bağlantı JSON’ı hariç.
 
 Farklı isimde bir config veya ek deployment scripti için **mevcut projenin köküne** bir kez `update.paths.json` ekleyin:
@@ -50,7 +53,7 @@ Farklı isimde bir config veya ek deployment scripti için **mevcut projenin kö
 }
 ```
 
-Liste dosya veya klasör yolu alır; glob kullanmaz. Kendisi de taşınır. Adapter/prompt altına yeni dosya eklemek için bu listeye kayıt gerekmez. Tanınmayan ve yeni ZIP’te bulunmayan üst düzey config/özel script yolları `unassigned` listesiyle işlemi durdurur. Ürün `src/` dosyaları, teknik kontratlar ve yeni ZIP’teki ürün scriptleri bu listeden ezilemez. Symlink takip edilmez.
+Liste dosya veya klasör yolu alır; glob kullanmaz. Kendisi de taşınır. Adapter/prompt altına yeni dosya eklemek için bu listeye kayıt gerekmez. Tanınmayan ve yeni ZIP’te bulunmayan özel dosyalar, alt klasör ve uzantıdan bağımsız olarak `unassigned` listesiyle işlemi durdurur. Taşımak istediğiniz yolları `include` listesine alın. Bilerek bırakmak istediğiniz eski dosyalar için aynı JSON'a örneğin `"exclude": ["docs/eski-kurulum.md"]` ekleyin. `exclude` yalnızca tanınmayan eski dosyalar için kullanılır. Ürün `src/` dosyaları, teknik kontratlar ve yeni ZIP’teki ürün scriptleri bu listeden ezilemez. Symlink takip edilmez.
 
 ## Paket farkı varsa
 

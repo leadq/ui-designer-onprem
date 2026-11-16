@@ -32,15 +32,16 @@ const scan = async (root, directory = '') => {
 };
 const projectRoots = ['', 'designer/', 'mcp/'];
 const mutableTrees = ['designer/src/adapters', 'mcp/prompts'];
-const configTrees = ['config', 'deploy', 'deployment', 'k8s', 'helm', '.azure-pipelines', '.github/workflows', '.github/actions', '.circleci', '.vscode', 'share', 'public'];
-const configFile = name => /^(package\.json|package-lock\.json|npm-shrinkwrap\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lockb?|\.npmrc|\.yarnrc(?:\.yml)?|\.gitignore|\.dockerignore|\.editorconfig|update\.paths\.json)$/.test(name)
+const configTrees = ['config', 'deploy', 'deployment', 'deployments', 'k8s', 'helm', 'openshift', 'vendor', '.azure-pipelines', '.github/workflows', '.github/actions', '.circleci', '.vscode', 'share', 'public'];
+const clientFiles = new Set(['.mcp.json', 'mcp.json', '.cursor/mcp.json']);
+const configFile = name => /^(package\.json|package-lock\.json|npm-shrinkwrap\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lockb?|\.npmrc|\.yarnrc(?:\.yml)?|\.gitignore|\.dockerignore|\.editorconfig|\.eslintignore|\.prettierignore|Jenkinsfile(?:\.[^/]+)?|update\.paths\.json)$/.test(name)
   || /^\.env(?:\..+)?$/.test(name) || /^(?:Dockerfile|Containerfile)(?:\..+)?$/.test(name)
   || /(?:^\.?[^/]*config(?:\.[^/]+)?|^\.(?:eslint|prettier|stylelint)rc(?:\.[^/]+)?)$/.test(name)
   || /\.(?:yaml|yml)$/.test(name);
 const normal = file => mutableTrees.some(tree => inside(file, tree)) || projectRoots.some(prefix => {
   if (!file.startsWith(prefix)) return false;
   const relative = file.slice(prefix.length);
-  return (!relative.includes('/') && configFile(relative)) || configTrees.some(tree => inside(relative, tree));
+  return clientFiles.has(relative) || (!relative.includes('/') && configFile(relative)) || configTrees.some(tree => inside(relative, tree));
 });
 const protectedPath = file => (inside(file, 'designer/src') && !inside(file, 'designer/src/adapters'))
   || inside(file, 'mcp/src') || inside(file, 'mcp/designer') || skip(file);
@@ -67,24 +68,27 @@ try {
   const previous = await scan(source);
   const next = await scan(release);
   const extraConfig = previous.has('update.paths.json') ? await json(source, 'update.paths.json') : { include: [] };
-  if (Object.keys(extraConfig).some(key => key !== 'include') || !Array.isArray(extraConfig.include) || !extraConfig.include.every(safeExtra)) {
-    throw new Error('update.paths.json yalnız {"include":["göreli/yol"]} biçiminde olmalı.');
+  const { include = [], exclude = [] } = extraConfig;
+  if (Object.keys(extraConfig).some(key => !['include', 'exclude'].includes(key))
+    || ![include, exclude].every(list => Array.isArray(list) && list.every(safeExtra))) {
+    throw new Error('update.paths.json include/exclude listelerinde projeye göre dosya veya klasör yolu bekleniyor.');
   }
-  for (const prefix of extraConfig.include) {
+  for (const prefix of include) {
     const matches = [...previous.keys()].filter(file => inside(file, prefix));
     if (!matches.length || protectedPath(prefix) || matches.some(file => protectedPath(file) || (next.has(file) && !normal(file)))) {
       throw new Error(`Ek taşıma yolu yok, üretilmiş veya ürün dosyasını ezebilir: ${prefix}`);
     }
   }
-  const carry = [...previous.keys()].filter(file => file !== 'mcp/prompts/README.md' && (normal(file) || extraConfig.include.some(prefix => inside(file, prefix)))).sort();
+  const carry = [...previous.keys()].filter(file => file !== 'mcp/prompts/README.md' && (normal(file) || include.some(prefix => inside(file, prefix)))).sort();
   const selected = new Set(carry);
-  // Unknown top-level config must be named explicitly; old product source is never inferred as customization.
-  const productTrees = ['src', 'docs', 'archive', 'installation', 'tests', 'work', '.ai', '.agents', '.github', 'designer', 'mcp'];
-  const unassigned = [...previous.keys()].filter(file => !selected.has(file) && !next.has(file) && !protectedPath(file) && projectRoots.some(prefix => {
-    if (!file.startsWith(prefix)) return false;
-    const relative = file.slice(prefix.length);
-    return !relative.endsWith('.md') && !productTrees.some(tree => inside(relative, tree));
-  })).sort();
+  // Account for every old-only file outside product source, even nested CI files and Markdown.
+  const oldOnly = [...previous.keys()].filter(file => !next.has(file) && !selected.has(file));
+  const unassigned = oldOnly.filter(file => !protectedPath(file) && !exclude.some(prefix => inside(file, prefix))).sort();
+  const omitted = oldOnly.filter(file => protectedPath(file) || exclude.some(prefix => inside(file, prefix))).sort();
+  const replaced = [];
+  for (const file of previous.keys()) {
+    if (next.has(file) && !selected.has(file) && !(await readFile(path.join(source, file))).equals(await readFile(path.join(release, file)))) replaced.push(file);
+  }
   const packageChanges = [];
   for (const project of ['designer', 'mcp']) {
     const file = `${project}/package.json`;
@@ -118,7 +122,7 @@ try {
     if (await exists(destination)) throw new Error('Çıktı klasörü zaten var; mevcut proje ezilmez.');
   }
   const report = { mode: values.check || !values.output ? 'check' : 'prepare', from: source, release,
-    output: values.output ? path.resolve(values.output) : null, carry, promptDifferences: promptDifferences.sort(), packageChanges, unassigned };
+    output: values.output ? path.resolve(values.output) : null, carry, promptDifferences: promptDifferences.sort(), packageChanges, unassigned, omitted, replaced: replaced.sort() };
   console.log(JSON.stringify(report, null, 2));
   if (packageChanges.length || unassigned.length) throw new Error('Hazırlama durduruldu. Paket gereksinimlerini uzlaştırın; ek config/deployment yollarını update.paths.json include listesine ekleyin. Hiçbir proje değiştirilmedi.');
   if (values.check || !values.output) process.exit(0);
@@ -128,7 +132,7 @@ try {
   for (const tree of mutableTrees) {
     for (const file of assembled.keys()) if (inside(file, tree)) assembled.delete(file);
   }
-  for (const project of ['designer', 'mcp']) for (const lock of ['package-lock.json', 'npm-shrinkwrap.json', 'pnpm-lock.yaml', 'yarn.lock', 'bun.lock', 'bun.lockb']) assembled.delete(`${project}/${lock}`);
+  for (const prefix of projectRoots.filter(prefix => previous.has(prefix + 'package.json'))) for (const lock of ['package-lock.json', 'npm-shrinkwrap.json', 'pnpm-lock.yaml', 'yarn.lock', 'bun.lock', 'bun.lockb']) assembled.delete(prefix + lock);
   for (const file of carry) assembled.set(file, source);
   // Usage documentation follows the new product; executable prompt rules retain the team's complete set.
   if (next.has('mcp/prompts/README.md')) assembled.set('mcp/prompts/README.md', release);
