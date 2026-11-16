@@ -54,7 +54,7 @@ export const FlowToolbar = ({ onManageBehaviors }: FlowToolbarProps) => {
   const handleAddScreenClick = handleAddScreen
 
   return (
-    <Box aria-label={translate('flow.screens')} className={styles.flowToolbar}>
+    <Box data-designer-chrome aria-label={translate('flow.screens')} className={styles.flowToolbar}>
       <Box className={styles.flowToolbar__screens}>
         {flows
           .flatMap((flow) => flow.flow!.screens.filter((screen) => screen.kind === 'screen'))

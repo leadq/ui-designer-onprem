@@ -60,7 +60,7 @@ export const ResponsiveToolbar = () => {
   }
 
   return (
-    <Box className={styles.toolbar}>
+    <Box data-designer-chrome className={styles.toolbar}>
       <Group isWrapping className={styles.toolbar__controls} gap='xs'>
         <Box className={styles.toolbar__deviceSelect}>
           <ViewportSelect

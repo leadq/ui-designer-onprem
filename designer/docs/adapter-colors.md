@@ -111,3 +111,23 @@ kaydedilmez. Eski belgeler de aktif adapterın güncel varsayılanını kullanı
 MCP kataloğundaki `backgroundColor` izinli token ID'sini (yoksa `null`) bildirir.
 Hedef uygulamada preview ile aynı sayfa zemini isteniyorsa bu token sayfa yüzeyine
 uygulanır; node TSX exportu kendiliğinden bir sayfa arka planı eklemez.
+
+## Native font ve tema
+
+Paket fontu zaten `@font-face` ile yüklüyorsa adapter içinde o aileyi seçmek yeterlidir.
+Library'nin tema API'sini veya kendi bileşen sınıflarını kullanın. Örneğin adı
+`ekip-ui-` ile başlayan native sınıflar için adapterın `typography.module.scss` dosyası:
+
+```scss
+:global([class^='ekip-ui-']),
+:global([class*=' ekip-ui-']) {
+  font-family: 'EkipFontu', sans-serif;
+}
+```
+
+Bu dosyayı aktif adapterın `Provider.tsx` dosyasından import edin. Örnekteki öneki ve font adını
+paketin gerçek değerleriyle değiştirin. Library belirli bir input veya ikon için ayrı font
+kullanıyorsa seçiciyi ilgili metin sınıflarına daraltın. Native sınıfı doğrudan hedefleyen
+kural, dropdown içeriği body altına portal ile açıldığında da çalışır. Renkler için aynı
+kapsamda paketin kendi tema değişkenlerini kullanın. Editör aynı sayfada kendi kontrol ve
+portal köklerinde kendi tema değerlerini kullanır.

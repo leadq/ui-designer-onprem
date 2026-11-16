@@ -46,6 +46,7 @@ export const TableEditingLayer = () => {
     <>
       {table && bounds && model ? (
         <Box
+          data-designer-chrome
           data-table-editor
           className={styles.tableEditingLayer}
           onClick={handleStopClick}

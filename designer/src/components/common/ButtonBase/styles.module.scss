@@ -1,3 +1,5 @@
+.buttonBase { font-family: var(--font-family) !important; }
+
 :where(.buttonBase) {
   font: inherit;
   color: inherit;

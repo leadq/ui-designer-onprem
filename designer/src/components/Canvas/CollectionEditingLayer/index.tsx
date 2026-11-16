@@ -33,6 +33,7 @@ export const CollectionEditingLayer = () => {
   return (
     <Box
       data-collection-editor
+      data-designer-chrome
       className={styles.collectionEditingLayer}
       onClick={handleStopClick}
       onDoubleClick={handleStopDoubleClick}

@@ -66,7 +66,12 @@ export const ResponsiveFlowViews = ({ flow, nodes }: ResponsiveFlowViewsProps) =
             width={width}
           />
         ))}
-      <Box data-canvas-control data-view-add className={styles.responsiveFlowViews__add}>
+      <Box
+        data-canvas-control
+        data-designer-chrome
+        data-view-add
+        className={styles.responsiveFlowViews__add}
+      >
         <Menu position='bottom-start' width={236}>
           <Menu.Target>
             <Button

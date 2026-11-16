@@ -28,7 +28,7 @@
     outline: none;
     color: var(--text-primary);
     background: transparent;
-    font-family: var(--font-family-menu);
+    font-family: var(--font-family-menu) !important;
     font-size: var(--font-size-sm);
     line-height: normal;
     text-align: left;

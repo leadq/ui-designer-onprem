@@ -51,6 +51,7 @@ export const MenuDropdown = ({ className = '', style, ...props }: MenuDropdownPr
         {...props}
         {...getFloatingPosition(position)}
         ref={contentRef}
+        data-designer-chrome
         loop
         className={`${styles.menu} ${className}`}
         collisionPadding={8}

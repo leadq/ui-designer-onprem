@@ -22,7 +22,7 @@ export const CanvasZoomControls = ({ zoom, onZoomChange }: CanvasZoomControlsPro
   const handleFitToScreenClick = handleFitToScreen
 
   return (
-    <Box className={styles.canvasZoomControls}>
+    <Box data-designer-chrome className={styles.canvasZoomControls}>
       <EditorTooltip label={translate('toolbar.fit')} position='left'>
         <Button
           aria-label={translate('toolbar.fit')}

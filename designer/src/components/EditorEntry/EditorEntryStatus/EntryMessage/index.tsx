@@ -15,7 +15,7 @@ export const EntryMessage = ({ status }: EntryMessageProps) => {
   const handleRetryClick = () => window.location.reload()
 
   return (
-    <Box className={styles.editorEntry} role='status'>
+    <Box data-designer-chrome className={styles.editorEntry} role='status'>
       <Card className={styles.editorEntry__card} padding='lg'>
         <Text size='xl' weight={600}>
           {translate(`editorEntry.${status}.title`)}

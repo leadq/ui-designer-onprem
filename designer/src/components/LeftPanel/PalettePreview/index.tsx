@@ -43,7 +43,7 @@ export const PalettePreview = ({ type, adapterId, displayName }: PalettePreviewP
         className={styles.palettePreview__surface}
         style={{ backgroundColor }}
       >
-        <Box className={styles.palettePreview__content}>
+        <Box data-designer-library className={styles.palettePreview__content}>
           <Provider>
             <NativePreview node={node} registry={adapter.registry} />
           </Provider>

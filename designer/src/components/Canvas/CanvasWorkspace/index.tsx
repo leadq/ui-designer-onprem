@@ -138,6 +138,7 @@ export const CanvasWorkspace = ({
               onSurfaceRef(element)
             }}
             className={styles.canvasWorkspace__surface}
+            data-designer-library={previewMode || undefined}
             data-over={isOver}
             id='render-layer'
             onClickCapture={onCanvasClick}

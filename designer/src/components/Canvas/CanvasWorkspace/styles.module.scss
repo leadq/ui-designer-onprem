@@ -16,7 +16,7 @@
   &__references { position: absolute; top: var(--surface-y); left: var(--reference-origin-x); transform: scale(var(--canvas-scale)); transform-origin: top left; }
   &__surface {
     position: absolute; top: var(--surface-y); left: var(--surface-x); width: var(--surface-width); display: flex; flex-direction: column; align-items: flex-start; gap: 160px;
-    transform: scale(var(--canvas-scale)); transform-origin: top left; color: initial;
+    transform: scale(var(--canvas-scale)); transform-origin: top left;
     > [data-frame-surface] { width: var(--frame-width); }
   }
   &[data-preview='true'] &__surface { display: block; }

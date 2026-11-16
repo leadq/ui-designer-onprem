@@ -44,6 +44,7 @@ export const OverlayLayer = () => {
 
   return (
     <div
+      data-designer-chrome
       style={{
         position: 'absolute',
         top: 0,

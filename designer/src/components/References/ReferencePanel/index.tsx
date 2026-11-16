@@ -38,7 +38,11 @@ export const ReferencePanel = ({
   const selected = images.find((image) => image.id === selectedId)
 
   return (
-    <Box aria-label={translate('reference.title')} className={styles.referencePanel}>
+    <Box
+      data-designer-chrome
+      aria-label={translate('reference.title')}
+      className={styles.referencePanel}
+    >
       <Group gap='sm' justify='between'>
         <Text weight={600}>{translate('reference.title')}</Text>
         <Group gap='xs'>

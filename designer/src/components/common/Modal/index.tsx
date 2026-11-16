@@ -58,6 +58,7 @@ const Modal = ({
 
   return createPortal(
     <div
+      data-designer-chrome
       className={[
         styles.overlay,
         contentSurface === 'canvas' ? styles['overlay--canvas'] : '',

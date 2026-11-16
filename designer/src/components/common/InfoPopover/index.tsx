@@ -54,6 +54,7 @@ export const InfoPopover = ({
       <Popover.Portal>
         <Popover.Content
           ref={contentRef}
+          data-designer-chrome
           align='start'
           aria-label={label}
           className={styles.infoPopover__content}

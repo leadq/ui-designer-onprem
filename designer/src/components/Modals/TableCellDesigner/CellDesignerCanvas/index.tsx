@@ -19,6 +19,7 @@ export const CellDesignerCanvas = ({ draft }: CellDesignerCanvasProps) => {
     <Box data-editor-viewport className={styles.tableCellDesigner__center}>
       <Box
         data-cell-canvas
+        data-designer-library
         className={[
           styles.tableCellDesigner__canvas,
           draft.isOver ? styles['tableCellDesigner__canvas--over'] : '',

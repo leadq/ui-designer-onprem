@@ -37,6 +37,7 @@ export const EditorDragOverlay = ({
     >
       {activeItem ? (
         <Box
+          data-designer-chrome
           data-designer-drag-overlay
           style={{
             opacity: 0.8,

@@ -19,7 +19,7 @@ export const PreviewScenarios = () => {
   }
 
   return (
-    <Stack className={styles.previewScenarios} gap='xs'>
+    <Stack data-designer-chrome className={styles.previewScenarios} gap='xs'>
       {examples.length > 0 && (
         <Text color='muted' size='xs'>
           {translate('condition.simulationHint')}

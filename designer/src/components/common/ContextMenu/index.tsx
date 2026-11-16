@@ -26,6 +26,7 @@ export const ContextMenu = ({ position, label, groups, onClose }: ContextMenuPro
   return createPortal(
     <div
       ref={menuRef}
+      data-designer-chrome
       aria-label={label}
       className={styles.contextMenu}
       role='menu'

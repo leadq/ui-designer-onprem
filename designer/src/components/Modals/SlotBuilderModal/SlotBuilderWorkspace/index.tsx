@@ -39,7 +39,7 @@ export const SlotBuilderWorkspace = ({
         </span>
       </div>
 
-      <div className={styles.slotBuilderModal__previewContainer}>
+      <div data-designer-library className={styles.slotBuilderModal__previewContainer}>
         <AdapterProvider>
           {localNodes.length > 0 ? (
             <div className={styles.slotBuilderModal__previewWrapper}>

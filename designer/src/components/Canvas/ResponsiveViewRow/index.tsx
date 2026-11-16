@@ -92,7 +92,12 @@ export const ResponsiveViewRow = ({
         onFocusCapture={handleFocusCapture}
         onPointerDownCapture={handlePointerDownCapture}
       >
-        <Box data-canvas-control data-view-heading className={styles.responsiveViewRow__heading}>
+        <Box
+          data-canvas-control
+          data-designer-chrome
+          data-view-heading
+          className={styles.responsiveViewRow__heading}
+        >
           <Button
             aria-label={`${translate(preset?.label ?? 'responsive.view')} · ${width} px`}
             aria-pressed={activeWidth === width}
@@ -114,7 +119,7 @@ export const ResponsiveViewRow = ({
               <DesignNodeWrapper key={node.id} node={node} />
             ) : (
               <FrameSurface key={node.id} isSelectionVisible={isFrameSelectionVisible} node={node}>
-                <Box className={styles.responsiveViewRow__content}>
+                <Box data-designer-library className={styles.responsiveViewRow__content}>
                   <DesignNodeWrapper node={node} />
                 </Box>
               </FrameSurface>

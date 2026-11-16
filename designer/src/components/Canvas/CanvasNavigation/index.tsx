@@ -16,7 +16,7 @@ export const CanvasNavigation = ({ isHandTool, onHandToolChange }: CanvasNavigat
   const { translate } = useBuilderI18n()
 
   return (
-    <Box className={styles.canvasNavigation}>
+    <Box data-designer-chrome className={styles.canvasNavigation}>
       <EditorTooltip label={translate('canvas.selectToolHint')}>
         <Button
           aria-label={translate('canvas.selectTool')}

@@ -3,8 +3,7 @@
 @use './tokens';
 
 // Only globals.scss loads this emitter. Adding a token exports it automatically.
-:root {
-  color-scheme: light;
+@mixin editor-tokens {
   @each $name, $value in meta.module-variables('tokens') {
     --#{$name}: #{$value};
     @if meta.type-of($value) == 'color' {
@@ -14,4 +13,16 @@
   --bg-hover: rgba(var(--text-primary-rgb), 0.05);
   --z-editor-menu: var(--z-menu);
   --z-editor-tooltip: var(--z-tooltip);
+}
+
+// Layout outside the controls uses defaults. A library can supply its own root tokens.
+@layer designer-defaults {
+  :root {
+    @include editor-tokens;
+  }
+}
+
+[data-designer-chrome] {
+  color-scheme: light;
+  @include editor-tokens;
 }

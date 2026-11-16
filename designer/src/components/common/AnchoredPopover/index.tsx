@@ -41,6 +41,7 @@ export const AnchoredPopover = ({ anchor, label, children, onClose }: AnchoredPo
         <Popover.Content
           ref={contentRef}
           data-canvas-control
+          data-designer-chrome
           hideWhenDetached
           align='center'
           aria-label={label}

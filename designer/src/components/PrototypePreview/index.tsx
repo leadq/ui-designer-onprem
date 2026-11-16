@@ -109,7 +109,7 @@ export const PrototypePreview = ({ snapshot, isCaptureMode = false }: PrototypeP
       ].join(' ')}
     >
       {!isCaptureMode && (
-        <Box className={styles.prototypePreview__toolbar}>
+        <Box data-designer-chrome className={styles.prototypePreview__toolbar}>
           <Text weight={600}>{snapshot?.document.pageName ?? translate('preview.open')}</Text>
           <Text className={styles.prototypePreview__hint} color='muted' size='xs'>
             {translate('preview.snapshotHint')}
@@ -135,7 +135,11 @@ export const PrototypePreview = ({ snapshot, isCaptureMode = false }: PrototypeP
               { '--designer-frame-background': getAdapterBackgroundColor(adapter) } as CSSProperties
             }
           >
-            <Box className={styles.prototypePreview__content} id='render-layer'>
+            <Box
+              data-designer-library
+              className={styles.prototypePreview__content}
+              id='render-layer'
+            >
               <AdapterProvider key={`${adapterId}-${version}`}>
                 {getWorkspaceNodes(nodes).map((node) => (
                   <DesignNodeWrapper key={node.id} node={node} />
@@ -145,7 +149,7 @@ export const PrototypePreview = ({ snapshot, isCaptureMode = false }: PrototypeP
           </Box>
         </>
       ) : (
-        <Box className={styles.prototypePreview__error}>
+        <Box data-designer-chrome className={styles.prototypePreview__error}>
           <Text>{translate('preview.missing')}</Text>
         </Box>
       )}

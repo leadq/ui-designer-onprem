@@ -52,6 +52,7 @@ export const Tooltip = ({
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
             {...getFloatingPosition(position)}
+            data-designer-chrome
             data-editor-tooltip
             aria-label={accessibleLabel}
             collisionPadding={8}

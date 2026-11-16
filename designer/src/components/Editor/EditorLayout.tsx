@@ -81,6 +81,7 @@ export const EditorLayout = () => {
         ].join(' ')}
       >
         <nav
+          data-designer-chrome
           className={[styles.navbar, isLeftPanelCollapsed ? styles['navbar--collapsed'] : ''].join(
             ' ',
           )}
@@ -96,7 +97,7 @@ export const EditorLayout = () => {
           />
         </nav>
 
-        <header className={styles.header}>
+        <header data-designer-chrome className={styles.header}>
           <Header
             onExportTsx={() => setExportTsxModalOpened(true)}
             onOpenDesigns={() => setManageModalOpened(true)}
@@ -107,7 +108,7 @@ export const EditorLayout = () => {
           <Canvas onManageBehaviors={() => setBehaviorsModalOpened(true)} />
         </main>
 
-        <aside className={styles.aside}>
+        <aside data-designer-chrome className={styles.aside}>
           {!isRightPanelCollapsed && (
             <Box className={styles.aside__content}>
               <RightPanel />

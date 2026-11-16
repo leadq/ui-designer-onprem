@@ -53,7 +53,7 @@ export const FrameSurface = ({ node, children, isSelectionVisible = true }: Fram
       data-frame-selected={isFrameSelected}
       data-frame-surface={node.id}
     >
-      <Box className={styles.frameSurface__heading} data-frame-name={node.id}>
+      <Box data-designer-chrome className={styles.frameSurface__heading} data-frame-name={node.id}>
         {isEditing ? (
           <Input
             autoFocus
