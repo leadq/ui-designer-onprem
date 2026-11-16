@@ -1,5 +1,6 @@
 import { type CSSProperties, useEffect, useRef, useState } from 'react'
 import { getAdapter } from '@root/adapters'
+import { PreviewScenarios } from '@root/components/Flows/PreviewScenarios'
 import { useBuilderI18n } from '@root/hooks/useBuilderI18n'
 import { useEditorStore } from '@root/stores/editor'
 import { getAdapterBackgroundColor } from '@root/utils/colorTokens/getAdapterBackgroundColor'
@@ -9,7 +10,6 @@ import { type PreviewSnapshot, resetPreview } from '@root/utils/preview/previewS
 
 import { DesignNodeWrapper } from '../Canvas/DesignNodeWrapper'
 import { Box, Button, Text } from '../common'
-import { PreviewScenarios } from '../Flows/PreviewScenarios'
 
 import styles from './styles.module.scss'
 
