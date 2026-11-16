@@ -17,6 +17,7 @@ export const Frame = ({
 }: FrameProps) => (
   <Box
     ref={rootRef}
+    data-designer-library
     className={`${styles.frame} ${rootClassName ?? ''}`}
     data-designing={renderMode === 'design'}
     data-node-id={props['data-node-id']}

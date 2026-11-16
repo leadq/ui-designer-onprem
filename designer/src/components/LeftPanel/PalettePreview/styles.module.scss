@@ -23,10 +23,9 @@
     padding: 24px;
     overflow: clip;
     box-sizing: border-box;
-    background: var(--bg-card);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
+    background: var(--designer-bg-card);
+    border: 1px solid var(--designer-border-color);
+    border-radius: var(--designer-radius-md);
     contain: layout;
     pointer-events: none;
   }

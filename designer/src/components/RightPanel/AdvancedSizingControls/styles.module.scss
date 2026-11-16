@@ -3,14 +3,14 @@
     min-width: 0;
 
     input {
-      padding-inline: var(--control-inset-sm);
-      font-size: var(--font-size-xs);
+      padding-inline: var(--designer-control-inset-sm);
+      font-size: var(--designer-font-size-xs);
     }
 
     label {
-      left: var(--spacing-xs);
-      max-width: calc(100% - var(--spacing-sm));
-      font-size: var(--font-size-xs);
+      left: var(--designer-spacing-xs);
+      max-width: calc(100% - var(--designer-spacing-sm));
+      font-size: var(--designer-font-size-xs);
     }
   }
 }

@@ -40,7 +40,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
-  filter: drop-shadow(0 2px 4px rgba(var(--shadow-color-rgb), 0.1));
+  filter: drop-shadow(0 2px 4px rgba(var(--designer-shadow-color-rgb), 0.1));
 }
 
 @container (max-width: 700px) {
@@ -63,12 +63,12 @@
   transition: all 0.15s ease;
 
   &:hover:not(:disabled) {
-    background-color: rgba(var(--shadow-color-rgb), 0.05);
+    background-color: rgba(var(--designer-shadow-color-rgb), 0.05);
     color: $text-primary;
   }
 
   &:active:not(:disabled) {
-    background-color: rgba(var(--shadow-color-rgb), 0.08);
+    background-color: rgba(var(--designer-shadow-color-rgb), 0.08);
     transform: translateY(1px);
   }
 
@@ -78,11 +78,11 @@
   }
 
   &--active {
-    background-color: rgba(var(--primary-rgb), 0.1);
+    background-color: rgba(var(--designer-primary-rgb), 0.1);
     color: $primary;
 
     &:hover {
-      background-color: rgba(var(--primary-rgb), 0.15);
+      background-color: rgba(var(--designer-primary-rgb), 0.15);
     }
   }
 }
@@ -103,11 +103,11 @@
     background: $primary;
     color: white;
     border: none;
-    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+    box-shadow: 0 4px 12px rgba(var(--designer-primary-rgb), 0.3);
 
     &:hover {
       background: $primary-hover;
-      box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.4);
+      box-shadow: 0 6px 16px rgba(var(--designer-primary-rgb), 0.4);
       transform: translateY(-1px);
     }
 
@@ -122,7 +122,7 @@
     color: $text-primary;
 
     &:hover {
-      background: var(--bg-card);
+      background: var(--designer-bg-card);
       border-color: $border-light;
     }
   }

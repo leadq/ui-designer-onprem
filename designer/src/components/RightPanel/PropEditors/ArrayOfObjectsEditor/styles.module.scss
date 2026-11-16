@@ -8,7 +8,7 @@
     &Label {
       font-size: 11px;
       font-weight: 600;
-      color: var(--text-secondary);
+      color: var(--designer-text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -16,8 +16,8 @@
     &Count {
       font-size: 10px;
       font-weight: 500;
-      color: var(--text-secondary);
-      background: var(--bg-surface);
+      color: var(--designer-text-secondary);
+      background: var(--designer-bg-surface);
       padding: 1px 6px;
       border-radius: 8px;
     }
@@ -27,15 +27,15 @@
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--designer-border-color);
     border-radius: 6px;
     overflow: hidden;
     font-size: 11px;
-    background: var(--bg-panel);
+    background: var(--designer-bg-panel);
   }
 
   &__thead {
-    background: var(--bg-surface);
+    background: var(--designer-bg-surface);
   }
 
   &__th {
@@ -43,10 +43,10 @@
     text-align: left;
     font-weight: 600;
     font-size: 10px;
-    color: var(--text-secondary);
+    color: var(--designer-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--designer-border-color);
     white-space: nowrap;
 
     &--actions {
@@ -59,17 +59,17 @@
     transition: background-color 0.15s ease;
 
     &:hover {
-      background-color: var(--bg-hover);
+      background-color: var(--designer-bg-hover);
     }
 
     &:not(:last-child) &__rowCell {
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--designer-border-color);
     }
 
     &Cell {
       padding: 2px 3px;
       vertical-align: middle;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--designer-border-color);
     }
 
     &Input {
@@ -79,19 +79,19 @@
       padding: 4px 6px;
       font-size: 11px;
       border-radius: 4px;
-      color: var(--text-primary);
+      color: var(--designer-text-primary);
       outline: none;
       transition: border-color 0.15s ease, background-color 0.15s ease;
 
       &:hover {
-        border-color: var(--border-color);
-        background: var(--bg-surface);
+        border-color: var(--designer-border-color);
+        background: var(--designer-bg-surface);
       }
 
       &:focus {
-        border-color: var(--primary);
-        background: var(--bg-color);
-        box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.15);
+        border-color: var(--designer-primary);
+        background: var(--designer-bg-color);
+        box-shadow: 0 0 0 2px rgba(var(--designer-primary-rgb), 0.15);
       }
 
       &--number {
@@ -103,7 +103,7 @@
     &Checkbox {
       width: 14px;
       height: 14px;
-      accent-color: var(--primary);
+      accent-color: var(--designer-primary);
       cursor: pointer;
     }
 
@@ -132,18 +132,18 @@
     cursor: pointer;
     border-radius: 4px;
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--designer-text-secondary);
     transition: background-color 0.15s ease, color 0.15s ease;
     padding: 0;
 
     &:hover {
-      background: var(--bg-hover);
-      color: var(--text-primary);
+      background: var(--designer-bg-hover);
+      color: var(--designer-text-primary);
     }
 
     &--delete:hover {
-      background: rgba(var(--danger-rgb), 0.15);
-      color: var(--danger);
+      background: rgba(var(--designer-danger-rgb), 0.15);
+      color: var(--designer-danger);
     }
 
     &--up,
@@ -160,18 +160,18 @@
     width: 100%;
     padding: 8px;
     margin-top: 8px;
-    border: 1px dashed var(--border-color);
+    border: 1px dashed var(--designer-border-color);
     border-radius: 6px;
     background: none;
     cursor: pointer;
     font-size: 11px;
-    color: var(--text-secondary);
+    color: var(--designer-text-secondary);
     transition: all 0.15s ease;
 
     &:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: rgba(var(--primary-rgb), 0.04);
+      border-color: var(--designer-primary);
+      color: var(--designer-primary);
+      background: rgba(var(--designer-primary-rgb), 0.04);
     }
 
     &Icon {
@@ -184,7 +184,7 @@
   &__empty {
     padding: 16px;
     text-align: center;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
     font-size: 11px;
 
     &Text {

@@ -10,7 +10,7 @@
   font-weight: 500;
   border-radius: $radius-md;
   cursor: pointer;
-  transition: all var(--motion-normal) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--designer-motion-normal) cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   user-select: none;
   border: 1px solid transparent;
@@ -26,7 +26,7 @@
 
     &:hover:not(:disabled) {
       background: $primary-hover;
-      box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.4);
+      box-shadow: 0 4px 15px rgba(var(--designer-primary-rgb), 0.4);
       transform: translateY(-1px);
     }
 
@@ -52,7 +52,7 @@
     color: $text-primary;
 
     &:hover:not(:disabled) {
-      background-color: rgba(var(--text-primary-rgb), 0.05);
+      background-color: rgba(var(--designer-text-primary-rgb), 0.05);
       border-color: $border-light;
     }
   }
@@ -62,17 +62,17 @@
     color: $text-secondary;
 
     &:hover:not(:disabled) {
-      background-color: rgba(var(--text-primary-rgb), 0.05);
+      background-color: rgba(var(--designer-text-primary-rgb), 0.05);
       color: $text-primary;
     }
   }
 
   &--light {
-    background-color: rgba(var(--primary-rgb), 0.1);
+    background-color: rgba(var(--designer-primary-rgb), 0.1);
     color: $primary;
 
     &:hover:not(:disabled) {
-      background-color: rgba(var(--primary-rgb), 0.2);
+      background-color: rgba(var(--designer-primary-rgb), 0.2);
     }
   }
 
@@ -91,22 +91,22 @@
 
     &:hover:not(:disabled) {
       background-color: $success-hover;
-      box-shadow: 0 0 15px rgba(var(--success-rgb), 0.4);
+      box-shadow: 0 0 15px rgba(var(--designer-success-rgb), 0.4);
     }
   }
 
   &--sm {
-    padding: var(--control-inset-sm) var(--control-inset);
+    padding: var(--designer-control-inset-sm) var(--designer-control-inset);
     font-size: $font-size-xs;
   }
 
   &--md {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--designer-spacing-sm) var(--designer-spacing-md);
     font-size: $font-size-sm;
   }
 
   &--lg {
-    padding: var(--control-inset) var(--spacing-lg);
+    padding: var(--designer-control-inset) var(--designer-spacing-lg);
     font-size: $font-size-md;
   }
 

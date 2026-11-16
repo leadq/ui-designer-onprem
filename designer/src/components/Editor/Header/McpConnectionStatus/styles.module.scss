@@ -17,12 +17,12 @@
   }
 
   &--connected::before {
-    background-color: var(--success);
+    background-color: var(--designer-success);
   }
 
   &--conflict::before,
   &--disconnected::before {
-    background-color: var(--warning);
+    background-color: var(--designer-warning);
   }
 }
 

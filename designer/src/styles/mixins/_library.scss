@@ -1,0 +1,6 @@
+// Use from an adapter's plain SCSS entry for package-wide element selectors.
+@mixin surface {
+  @scope ([data-designer-library]) to ([data-designer-chrome]) {
+    @content;
+  }
+}

@@ -55,7 +55,7 @@ const SlotEditor = ({
       <div className={styles.slotEditor__body}>
         {/* Dropdown Selector */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 500 }}>
+          <span style={{ fontSize: '10px', color: 'var(--designer-text-muted)', fontWeight: 500 }}>
             {translate('slot.select')}
           </span>
           <SelectControl
@@ -65,9 +65,9 @@ const SlotEditor = ({
               width: '100%',
               padding: '6px 8px',
               borderRadius: '6px',
-              border: '1px solid var(--border-color)',
-              background: 'var(--bg-surface)',
-              color: 'var(--text-primary)',
+              border: '1px solid var(--designer-border-color)',
+              background: 'var(--designer-bg-surface)',
+              color: 'var(--designer-text-primary)',
               fontSize: '11px',
               outline: 'none',
               cursor: 'pointer',
@@ -90,9 +90,9 @@ const SlotEditor = ({
               style={{
                 fontSize: '10px',
                 fontWeight: 600,
-                color: 'var(--primary)',
+                color: 'var(--designer-primary)',
                 marginBottom: '8px',
-                borderBottom: '1px solid var(--border-color)',
+                borderBottom: '1px solid var(--designer-border-color)',
                 paddingBottom: '4px',
               }}
             >
@@ -124,8 +124,8 @@ const SlotEditor = ({
               flex: 1,
               borderStyle: boundComponent ? 'solid' : 'dashed',
               background: boundComponent
-                ? 'rgba(var(--primary-rgb), 0.02)'
-                : 'rgba(var(--primary-rgb), 0.05)',
+                ? 'rgba(var(--designer-primary-rgb), 0.02)'
+                : 'rgba(var(--designer-primary-rgb), 0.05)',
             }}
             onClick={handleOpenCreateClick}
           >

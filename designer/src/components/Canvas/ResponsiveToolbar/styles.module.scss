@@ -5,8 +5,8 @@
   justify-content: center;
   align-items: center;
   padding: $spacing-sm;
-  border-bottom: 1px solid var(--editor-section-border);
-  background-color: var(--editor-toolbar-surface);
+  border-bottom: 1px solid var(--designer-editor-section-border);
+  background-color: var(--designer-editor-toolbar-surface);
   z-index: 10;
   gap: $spacing-md;
   container-type: inline-size;

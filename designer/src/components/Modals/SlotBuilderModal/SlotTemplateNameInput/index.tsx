@@ -19,7 +19,7 @@ export const SlotTemplateNameInput = ({
         alignItems: 'center',
         gap: '8px',
         paddingBottom: '12px',
-        borderBottom: '1px solid var(--border-color)',
+        borderBottom: '1px solid var(--designer-border-color)',
         width: '100%',
       }}
     >
@@ -27,7 +27,7 @@ export const SlotTemplateNameInput = ({
         style={{
           fontSize: '11px',
           fontWeight: 600,
-          color: 'var(--text-secondary)',
+          color: 'var(--designer-text-secondary)',
           textTransform: 'uppercase',
           letterSpacing: '0.5px',
         }}
@@ -40,12 +40,12 @@ export const SlotTemplateNameInput = ({
         value={templateName}
         style={{
           flex: 1,
-          border: '1px solid var(--border-color)',
+          border: '1px solid var(--designer-border-color)',
           borderRadius: '4px',
           padding: '6px 10px',
           fontSize: '12px',
-          background: 'var(--bg-surface)',
-          color: 'var(--text-primary)',
+          background: 'var(--designer-bg-surface)',
+          color: 'var(--designer-text-primary)',
           outline: 'none',
         }}
         onChange={(event) => handleNameChange(event.target.value)}

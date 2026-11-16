@@ -21,12 +21,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--motion-normal) ease;
+    transition: all var(--designer-motion-normal) ease;
 
     &::after {
       content: '✓';
       color: $text-inverse;
-      font-size: var(--font-size-micro);
+      font-size: var(--designer-font-size-micro);
       display: none;
     }
   }

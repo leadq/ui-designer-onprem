@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     padding: 0 $spacing-md;
-    border-bottom: 1px solid var(--editor-region-border);
+    border-bottom: 1px solid var(--designer-editor-region-border);
     flex-shrink: 0;
   }
 
@@ -33,7 +33,7 @@
     font-weight: 800;
     color: white;
     font-size: 12px;
-    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.3);
+    box-shadow: 0 0 15px rgba(var(--designer-primary-rgb), 0.3);
   }
 
   &__logoText {
@@ -60,8 +60,8 @@
     display: flex;
     padding: $spacing-sm;
     gap: $spacing-xs;
-    border-bottom: 1px solid var(--editor-section-border);
-    background-color: var(--editor-toolbar-surface);
+    border-bottom: 1px solid var(--designer-editor-section-border);
+    background-color: var(--designer-editor-toolbar-surface);
     flex-shrink: 0;
   }
 
@@ -82,7 +82,7 @@
 
     &:hover {
       color: $text-primary;
-      background-color: rgba(var(--text-primary-rgb), 0.05);
+      background-color: rgba(var(--designer-text-primary-rgb), 0.05);
     }
   }
 
@@ -171,14 +171,14 @@
     align-items: center;
     justify-content: space-between;
     padding: $spacing-sm;
-    background-color: rgba(var(--bg-surface-rgb), 0.5);
+    background-color: rgba(var(--designer-bg-surface-rgb), 0.5);
     border: 1px solid $border-color;
     border-radius: $radius-md;
     transition: all 0.2s ease;
 
     &:hover {
       border-color: $border-light;
-      background-color: rgba(var(--bg-surface-rgb), 0.8);
+      background-color: rgba(var(--designer-bg-surface-rgb), 0.8);
     }
   }
 }

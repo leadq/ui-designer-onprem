@@ -18,7 +18,7 @@
 
     &:hover {
       border-color: $primary;
-      box-shadow: 0 10px 25px rgba(var(--shadow-color-rgb), 0.1);
+      box-shadow: 0 10px 25px rgba(var(--designer-shadow-color-rgb), 0.1);
       transform: translateY(-4px);
     }
   }

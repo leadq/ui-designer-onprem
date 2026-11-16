@@ -32,7 +32,7 @@ export const SlotBuilderWorkspace = ({
     <div data-editor-viewport className={styles.slotBuilderModal__workspace}>
       <div className={styles.slotBuilderModal__previewHeader}>
         <span>{translate('slotBuilder.preview')}</span>
-        <span style={{ fontSize: '10px', color: 'var(--primary)' }}>
+        <span style={{ fontSize: '10px', color: 'var(--designer-primary)' }}>
           {isMultiple
             ? translate('slotBuilder.multipleAllowed')
             : translate('slotBuilder.singleAllowed')}
@@ -76,7 +76,7 @@ export const SlotBuilderWorkspace = ({
         ) : (
           <div
             style={{
-              color: 'var(--text-muted)',
+              color: 'var(--designer-text-muted)',
               fontStyle: 'italic',
               fontSize: '11px',
               padding: '8px',

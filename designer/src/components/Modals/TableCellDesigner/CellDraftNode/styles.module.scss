@@ -1,7 +1,7 @@
  .cellDraftNode {
   cursor: grab;
-  outline: 1px dashed var(--border-color);
+  outline: 1px dashed var(--designer-border-color);
   outline-offset: -1px;
-  &--selected { outline: 2px solid var(--primary); }
+  &--selected { outline: 2px solid var(--designer-primary); }
   &--empty { min-height: 56px !important; }
 }

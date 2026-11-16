@@ -131,3 +131,25 @@ kullanıyorsa seçiciyi ilgili metin sınıflarına daraltın. Native sınıfı 
 kural, dropdown içeriği body altına portal ile açıldığında da çalışır. Renkler için aynı
 kapsamda paketin kendi tema değişkenlerini kullanın. Editör aynı sayfada kendi kontrol ve
 portal köklerinde kendi tema değerlerini kullanır.
+
+Core tema değişkenleri `--designer-*` adlarını kullanır. Kütüphanenin
+`--primary`, `--text-primary` veya `--font-family` gibi değişkenleri kendisine aittir.
+
+Paket geniş eleman seçicileri getiriyorsa düz SCSS girişinde ilgili kuralları
+native alanla sınırlayın. Örneğin `src/adapters/<ad>/theme.scss` içinde:
+
+```scss
+@use '../../styles/mixins/library';
+
+@include library.surface {
+  :scope { font-family: var(--font-family); }
+  button, input { color: var(--text-primary); }
+}
+```
+
+Bu giriş adapter Provider tarafından bir kez import edilir. İçinde yalnız eleman
+ve bileşen kuralları olan bir stil dosyasını aynı blokta Sass `meta.load-css`
+ile yükleyebilirsiniz. Paket aynı CSS'i ayrıca global olarak yüklüyorsa o kopya
+kapsam dışında kalır. `:root` ve `body` yerine yüzeyde `:scope` kullanın.
+Native menüsü body altına portal açan paketlerde, adapterın kendi portal
+container'ına da `data-designer-library` verin. `body` ortak kapsayıcıdır.

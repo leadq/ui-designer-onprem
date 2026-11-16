@@ -8,13 +8,13 @@
   align-items: flex-start;
   gap: max(96px, calc(32px / var(--canvas-scale, 1)));
 
-  .responsiveFlowViews &__title { color: var(--text-secondary); font-size: calc(var(--font-size-sm) * var(--canvas-ui-scale)); }
+  .responsiveFlowViews &__title { color: var(--designer-text-secondary); font-size: calc(var(--designer-font-size-sm) * var(--canvas-ui-scale)); }
   &__add { width: var(--view-rail-width); }
 
   .responsiveFlowViews &__addButton {
     @include canvasUi.instantGeometry;
     justify-content: space-between;
-    font-size: calc(var(--font-size-sm) * var(--canvas-ui-scale));
+    font-size: calc(var(--designer-font-size-sm) * var(--canvas-ui-scale));
     min-height: calc(40px * var(--canvas-ui-scale));
     padding: calc(8px * var(--canvas-ui-scale)) calc(12px * var(--canvas-ui-scale));
   }

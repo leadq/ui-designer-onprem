@@ -66,7 +66,7 @@ export const OverlayLayer = () => {
             left: rect.left,
             width: rect.width,
             height: rect.height,
-            border: '2px solid var(--primary)',
+            border: '2px solid var(--designer-primary)',
             boxSizing: 'border-box',
             pointerEvents: 'none',
           }}
@@ -82,15 +82,15 @@ export const OverlayLayer = () => {
                   width: 24,
                   height: 24,
                   borderRadius: '50%',
-                  backgroundColor: 'var(--danger)',
-                  color: 'var(--text-inverse)',
+                  backgroundColor: 'var(--designer-danger)',
+                  color: 'var(--designer-text-inverse)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '14px',
                   border: 'none',
                   pointerEvents: 'auto',
-                  boxShadow: 'var(--shadow-md)',
+                  boxShadow: 'var(--designer-shadow-md)',
                   cursor: 'pointer',
                 }}
                 onClick={(event) => {
@@ -138,15 +138,15 @@ export const OverlayLayer = () => {
                 : DROP_MARKER_WIDTH,
             backgroundColor:
               dropTarget.position === 'inside'
-                ? 'rgba(var(--primary-rgb), 0.15)'
-                : 'var(--primary)',
+                ? 'rgba(var(--designer-primary-rgb), 0.15)'
+                : 'var(--designer-primary)',
             borderRadius: '2px',
             pointerEvents: 'none',
             zIndex: 1001,
             boxShadow:
               dropTarget.position === 'inside'
-                ? 'inset 0 0 0 2px var(--primary)'
-                : '0 0 8px rgba(var(--primary-rgb), 0.5)',
+                ? 'inset 0 0 0 2px var(--designer-primary)'
+                : '0 0 8px rgba(var(--designer-primary-rgb), 0.5)',
           }}
         />
       ) : null}

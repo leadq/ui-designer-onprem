@@ -45,14 +45,14 @@ export const EditorDragOverlay = ({
             pointerEvents: 'none',
             width: isPalette && paletteWidth !== undefined ? `${paletteWidth}px` : '220px',
             padding: isPalette ? '0' : '12px',
-            backgroundColor: 'var(--bg-surface)',
-            border: '1px solid var(--border-color)',
+            backgroundColor: 'var(--designer-bg-surface)',
+            border: '1px solid var(--designer-border-color)',
             borderRadius: '8px',
-            color: 'var(--text-primary)',
+            color: 'var(--designer-text-primary)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: 'var(--shadow-md)',
+            boxShadow: 'var(--designer-shadow-md)',
             boxSizing: 'border-box',
           }}
         >

@@ -1,7 +1,7 @@
 @use '../../../styles/variables.scss' as *;
 .flowScreenItem {
   border: 1px solid transparent; border-radius: $radius-md; min-width: 0;
-  &[data-active='true'] { background: rgba(var(--primary-rgb), .045); border-color: rgba(var(--primary-rgb), .18); }
+  &[data-active='true'] { background: rgba(var(--designer-primary-rgb), .045); border-color: rgba(var(--designer-primary-rgb), .18); }
   &__row { display: flex; align-items: center; min-width: 0; }
   &__select { flex: 1; min-width: 0; justify-content: flex-start; text-align: left; padding: 10px 6px; gap: 8px; svg { flex-shrink: 0; color: $text-muted; } }
   &__text { min-width: 0; p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }

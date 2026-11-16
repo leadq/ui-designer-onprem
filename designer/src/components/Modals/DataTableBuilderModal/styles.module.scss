@@ -12,7 +12,7 @@
     justify-content: space-between;
     gap: 8px;
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--designer-border-color);
 
     &Left {
       display: flex;
@@ -29,8 +29,8 @@
     &Badge {
       font-size: 11px;
       font-weight: 500;
-      color: var(--text-secondary);
-      background: var(--bg-surface);
+      color: var(--designer-text-secondary);
+      background: var(--designer-bg-surface);
       padding: 3px 8px;
       border-radius: 8px;
     }
@@ -41,38 +41,38 @@
     align-items: center;
     gap: 4px;
     padding: 6px 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--designer-border-color);
     border-radius: 6px;
-    background: var(--bg-color);
+    background: var(--designer-bg-color);
     cursor: pointer;
     font-size: 11px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--designer-text-primary);
     transition: all 0.15s ease;
 
     &:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: rgba(var(--primary-rgb), 0.04);
+      border-color: var(--designer-primary);
+      color: var(--designer-primary);
+      background: rgba(var(--designer-primary-rgb), 0.04);
     }
 
     &--primary {
-      border-color: var(--primary);
-      background: var(--primary);
-      color: var(--text-inverse);
+      border-color: var(--designer-primary);
+      background: var(--designer-primary);
+      color: var(--designer-text-inverse);
 
       &:hover {
-        background: var(--primary-hover);
-        color: var(--text-inverse);
-        box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+        background: var(--designer-primary-hover);
+        color: var(--designer-text-inverse);
+        box-shadow: 0 2px 8px rgba(var(--designer-primary-rgb), 0.3);
       }
     }
 
     &--danger {
       &:hover {
-        border-color: var(--danger);
-        color: var(--danger);
-        background: rgba(var(--danger-rgb), 0.06);
+        border-color: var(--designer-danger);
+        color: var(--designer-danger);
+        background: rgba(var(--designer-danger-rgb), 0.06);
       }
     }
 
@@ -84,7 +84,7 @@
   &__tableWrapper {
     flex: 1;
     overflow: auto;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--designer-border-color);
     border-radius: 8px;
   }
 
@@ -94,14 +94,14 @@
     border-spacing: 0;
     font-size: 12px;
     min-width: max-content;
-    background: var(--bg-panel);
+    background: var(--designer-bg-panel);
   }
 
   &__headerRow {
     position: sticky;
     top: 0;
     z-index: 2;
-    background: var(--bg-surface);
+    background: var(--designer-bg-surface);
   }
 
   &__headerCell {
@@ -109,9 +109,9 @@
     text-align: left;
     font-weight: 600;
     font-size: 11px;
-    color: var(--text-secondary);
-    border-bottom: 2px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
+    color: var(--designer-text-secondary);
+    border-bottom: 2px solid var(--designer-border-color);
+    border-right: 1px solid var(--designer-border-color);
     white-space: nowrap;
     min-width: 120px;
     position: relative;
@@ -124,9 +124,9 @@
       min-width: 44px;
       width: 44px;
       text-align: center;
-      color: var(--text-muted);
+      color: var(--designer-text-muted);
       font-size: 10px;
-      background: var(--bg-surface);
+      background: var(--designer-bg-surface);
     }
 
     &--actions {
@@ -155,14 +155,14 @@
       cursor: pointer;
       border-radius: 4px;
       font-size: 11px;
-      color: var(--text-secondary);
+      color: var(--designer-text-secondary);
       opacity: 0.4;
       transition: opacity 0.15s ease, background-color 0.15s ease;
       padding: 0;
 
       &:hover {
         opacity: 1;
-        background: var(--bg-hover);
+        background: var(--designer-bg-hover);
       }
     }
 
@@ -177,15 +177,15 @@
       cursor: pointer;
       border-radius: 4px;
       font-size: 10px;
-      color: var(--text-muted);
+      color: var(--designer-text-muted);
       opacity: 0;
       transition: all 0.15s ease;
       padding: 0;
 
       &:hover {
         opacity: 1;
-        background: rgba(var(--danger-rgb), 0.15);
-        color: var(--danger);
+        background: rgba(var(--designer-danger-rgb), 0.15);
+        color: var(--designer-danger);
       }
     }
   }
@@ -198,22 +198,22 @@
     transition: background-color 0.1s ease;
 
     &:hover {
-      background-color: rgba(var(--primary-rgb), 0.03);
+      background-color: rgba(var(--designer-primary-rgb), 0.03);
     }
 
     &:nth-child(even) {
-      background-color: var(--bg-surface);
+      background-color: var(--designer-bg-surface);
 
       &:hover {
-        background-color: rgba(var(--primary-rgb), 0.05);
+        background-color: rgba(var(--designer-primary-rgb), 0.05);
       }
     }
   }
 
   &__bodyCell {
     padding: 0;
-    border-bottom: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--designer-border-color);
+    border-right: 1px solid var(--designer-border-color);
 
     &:last-child {
       border-right: none;
@@ -224,8 +224,8 @@
       padding: 6px;
       font-size: 10px;
       font-weight: 500;
-      color: var(--text-muted);
-      background: var(--bg-surface);
+      color: var(--designer-text-muted);
+      background: var(--designer-bg-surface);
       user-select: none;
     }
 
@@ -241,13 +241,13 @@
     background: transparent;
     padding: 8px 10px;
     font-size: 12px;
-    color: var(--text-primary);
+    color: var(--designer-text-primary);
     outline: none;
     transition: background-color 0.15s ease;
 
     &:focus {
-      background: rgba(var(--primary-rgb), 0.06);
-      box-shadow: inset 0 0 0 2px rgba(var(--primary-rgb), 0.25);
+      background: rgba(var(--designer-primary-rgb), 0.06);
+      box-shadow: inset 0 0 0 2px rgba(var(--designer-primary-rgb), 0.25);
     }
   }
 
@@ -262,15 +262,15 @@
     cursor: pointer;
     border-radius: 4px;
     font-size: 11px;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
     transition: all 0.15s ease;
     padding: 0;
     margin: 0 auto;
     opacity: 0;
 
     &:hover {
-      background: rgba(var(--danger-rgb), 0.15);
-      color: var(--danger);
+      background: rgba(var(--designer-danger-rgb), 0.15);
+      color: var(--designer-danger);
     }
   }
 
@@ -284,10 +284,10 @@
     top: 100%;
     left: 0;
     z-index: 10;
-    background: var(--bg-color);
-    border: 1px solid var(--border-color);
+    background: var(--designer-bg-color);
+    border: 1px solid var(--designer-border-color);
     border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(var(--shadow-color-rgb), 0.3);
+    box-shadow: 0 8px 24px rgba(var(--designer-shadow-color-rgb), 0.3);
     padding: 12px;
     min-width: 200px;
     display: flex;
@@ -303,25 +303,25 @@
     &Label {
       font-size: 10px;
       font-weight: 600;
-      color: var(--text-secondary);
+      color: var(--designer-text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
 
     &Input {
       width: 100%;
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--designer-border-color);
       border-radius: 4px;
       padding: 5px 8px;
       font-size: 11px;
-      color: var(--text-primary);
+      color: var(--designer-text-primary);
       outline: none;
-      background: var(--bg-surface);
+      background: var(--designer-bg-surface);
       transition: border-color 0.15s ease;
 
       &:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.15);
+        border-color: var(--designer-primary);
+        box-shadow: 0 0 0 2px rgba(var(--designer-primary-rgb), 0.15);
       }
     }
   }
@@ -332,6 +332,6 @@
     justify-content: flex-end;
     gap: 8px;
     padding-top: 12px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--designer-border-color);
   }
 }

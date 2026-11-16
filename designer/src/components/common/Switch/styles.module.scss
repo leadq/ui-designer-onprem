@@ -19,7 +19,7 @@
     background-color: $bg-card;
     border: 1px solid $border-color;
     border-radius: 10px;
-    transition: all var(--motion-normal) cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all var(--designer-motion-normal) cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &__thumb {
@@ -30,7 +30,7 @@
     height: 14px;
     background-color: $text-secondary;
     border-radius: 50%;
-    transition: all var(--motion-normal) cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all var(--designer-motion-normal) cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &--checked {

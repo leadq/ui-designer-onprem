@@ -25,8 +25,8 @@ export const PreviewNodeWrapper = ({ node, selectedId, onSelect }: PreviewNodeWr
       style={{
         position: 'relative',
         outline: isSelected
-          ? '2px solid var(--primary)'
-          : '1px dashed rgba(var(--primary-rgb), 0.25)',
+          ? '2px solid var(--designer-primary)'
+          : '1px dashed rgba(var(--designer-primary-rgb), 0.25)',
         outlineOffset: isSelected ? '-2px' : '0px',
         padding: meta?.isContainer ? '8px' : '2px',
         margin: '4px 0',

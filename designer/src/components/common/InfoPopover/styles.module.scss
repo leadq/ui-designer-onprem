@@ -16,7 +16,7 @@
 
   &__content {
     @include popup.presence(150ms);
-    z-index: var(--z-editor-tooltip);
+    z-index: var(--designer-z-editor-tooltip);
     outline: none;
     border: 1px solid $border-color;
     width: 280px;

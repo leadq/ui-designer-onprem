@@ -16,14 +16,14 @@
   text-overflow: ellipsis;
   overflow: hidden;
   cursor: text;
-  transition: top var(--motion-fast) ease, font-size var(--motion-fast) ease, color var(--motion-fast) ease;
+  transition: top var(--designer-motion-fast) ease, font-size var(--designer-motion-fast) ease, color var(--designer-motion-fast) ease;
   @media (prefers-reduced-motion: reduce) { transition: none; }
 }
 
 @mixin raised {
   top: 0;
-  font-size: var(--font-size-caption);
+  font-size: var(--designer-font-size-caption);
   font-weight: 500;
   background: $bg-card;
-  border-radius: var(--radius-xs);
+  border-radius: var(--designer-radius-xs);
 }

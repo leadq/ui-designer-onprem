@@ -3,4 +3,4 @@
   @include control.field;
   &[type='color'] { height: 32px; padding: 4px; cursor: pointer; }
 }
-.inputControl { accent-color: var(--primary); }
+.inputControl { accent-color: var(--designer-primary); }

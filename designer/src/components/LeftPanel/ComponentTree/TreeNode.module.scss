@@ -10,12 +10,12 @@
   position: relative;
 
   &:hover {
-    background-color: rgba(var(--text-primary-rgb), 0.03);
+    background-color: rgba(var(--designer-text-primary-rgb), 0.03);
     color: $text-primary;
   }
 
   &--selected {
-    background-color: rgba(var(--primary-rgb), 0.1) !important;
+    background-color: rgba(var(--designer-primary-rgb), 0.1) !important;
     border-left-color: $primary !important;
     color: $primary !important;
   }
@@ -25,8 +25,8 @@
   }
 
   &--dropInside {
-    background-color: rgba(var(--info-rgb), 0.12) !important;
-    outline: 1px solid var(--primary);
+    background-color: rgba(var(--designer-info-rgb), 0.12) !important;
+    outline: 1px solid var(--designer-primary);
   }
 
   &__grip {
@@ -50,8 +50,8 @@
     left: 0;
     right: 0;
     height: 3px;
-    background-color: var(--primary);
-    box-shadow: 0 0 4px rgba(var(--info-rgb), 0.5);
+    background-color: var(--designer-primary);
+    box-shadow: 0 0 4px rgba(var(--designer-info-rgb), 0.5);
     z-index: 10;
     pointer-events: none;
   }

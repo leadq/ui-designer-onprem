@@ -39,7 +39,7 @@
     height: 28px;
     min-height: 28px;
     padding: 2px 16px 2px 4px;
-    font-size: var(--font-size-caption);
+    font-size: var(--designer-font-size-caption);
   }
 
   &--compact &__icon { right: 4px; }
@@ -51,6 +51,6 @@
     transform: translateY(-50%);
     pointer-events: none;
     color: $text-muted;
-    font-size: var(--font-size-micro);
+    font-size: var(--designer-font-size-micro);
   }
 }

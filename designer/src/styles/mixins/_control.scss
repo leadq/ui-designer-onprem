@@ -1,16 +1,16 @@
 // Shared paint and interaction states for every editor text control.
 @mixin field {
   width: 100%;
-  padding: var(--spacing-sm) var(--control-inset);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
+  padding: var(--designer-spacing-sm) var(--designer-control-inset);
+  background: var(--designer-bg-card);
+  border: 1px solid var(--designer-border-color);
+  border-radius: var(--designer-radius-md);
+  color: var(--designer-text-primary);
   // Only native edit controls need priority over package-wide input rules.
-  font-family: var(--font-family) !important;
-  font-size: var(--font-size-sm);
-  transition: border-color var(--motion-normal), box-shadow var(--motion-normal);
-  &:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(var(--primary-rgb), .1); }
-  &::placeholder { color: var(--text-muted); }
+  font-family: var(--designer-font-family) !important;
+  font-size: var(--designer-font-size-sm);
+  transition: border-color var(--designer-motion-normal), box-shadow var(--designer-motion-normal);
+  &:focus { outline: none; border-color: var(--designer-primary); box-shadow: 0 0 0 2px rgba(var(--designer-primary-rgb), .1); }
+  &::placeholder { color: var(--designer-text-muted); }
   &:disabled { opacity: .5; cursor: not-allowed; }
 }

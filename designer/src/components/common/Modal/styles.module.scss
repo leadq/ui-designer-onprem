@@ -3,7 +3,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(var(--text-primary-rgb), 0.28);
+  background-color: rgba(var(--designer-text-primary-rgb), 0.28);
   backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
   z-index: $z-modal;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--motion-normal) ease;
+  transition: all var(--designer-motion-normal) ease;
 
   &--canvas { z-index: $z-preview-modal; }
 
@@ -27,7 +27,6 @@
 
 .modal {
   background-color: $bg-surface;
-  color: $text-primary;
   border: 1px solid $border-color;
   border-radius: $radius-lg;
   box-shadow: $shadow-premium;
@@ -88,10 +87,10 @@
     cursor: pointer;
     padding: 4px;
     border-radius: $radius-sm;
-    transition: all var(--motion-normal) ease;
+    transition: all var(--designer-motion-normal) ease;
 
     &:hover {
-      background-color: rgba(var(--text-primary-rgb), 0.05);
+      background-color: rgba(var(--designer-text-primary-rgb), 0.05);
       color: $text-primary;
     }
   }

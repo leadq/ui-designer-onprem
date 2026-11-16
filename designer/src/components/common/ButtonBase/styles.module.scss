@@ -1,4 +1,4 @@
-.buttonBase { font-family: var(--font-family) !important; }
+.buttonBase { font-family: var(--designer-font-family) !important; }
 
 :where(.buttonBase) {
   font: inherit;
@@ -8,5 +8,5 @@
   border: 0;
   cursor: pointer;
   &:disabled { cursor: not-allowed; }
-  &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  &:focus-visible { outline: 2px solid var(--designer-primary); outline-offset: 2px; }
 }

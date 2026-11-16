@@ -1,4 +1,4 @@
 .responsivePropEditor {
-  display: flex; flex-direction: column; gap: var(--spacing-xs);
-  &__scope { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-xs); }
+  display: flex; flex-direction: column; gap: var(--designer-spacing-xs);
+  &__scope { display: flex; align-items: center; justify-content: space-between; gap: var(--designer-spacing-xs); }
 }

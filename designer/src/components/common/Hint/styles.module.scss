@@ -1,11 +1,11 @@
 .hint {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
-  background: var(--editor-selection-surface);
-  color: var(--text-secondary);
+  gap: var(--designer-spacing-sm);
+  padding: var(--designer-spacing-md);
+  border-radius: var(--designer-radius-md);
+  background: var(--designer-editor-selection-surface);
+  color: var(--designer-text-secondary);
 
   > svg { flex-shrink: 0; margin-top: 2px; }
   &__text { color: inherit; }

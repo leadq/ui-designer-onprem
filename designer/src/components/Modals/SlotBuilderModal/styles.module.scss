@@ -8,7 +8,7 @@
 
   &__palette {
     width: 200px;
-    border-right: 1px solid var(--border-color);
+    border-right: 1px solid var(--designer-border-color);
     padding-right: 16px;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
     &Title {
       font-size: 11px;
       font-weight: 600;
-      color: var(--text-secondary);
+      color: var(--designer-text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 4px;
@@ -36,17 +36,17 @@
       gap: 8px;
       width: 100%;
       padding: 8px 10px;
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--designer-border-color);
       border-radius: 6px;
-      background: var(--bg-surface);
+      background: var(--designer-bg-surface);
       cursor: pointer;
       font-size: 11px;
-      color: var(--text-primary);
+      color: var(--designer-text-primary);
       transition: all 0.15s ease;
 
       &:hover {
-        border-color: var(--primary);
-        background: rgba(var(--primary-rgb), 0.04);
+        border-color: var(--designer-primary);
+        background: rgba(var(--designer-primary-rgb), 0.04);
       }
 
       &Icon {
@@ -70,16 +70,16 @@
     justify-content: space-between;
     font-size: 11px;
     font-weight: 600;
-    color: var(--text-secondary);
+    color: var(--designer-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   &__previewContainer {
     flex: 1;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--designer-border-color);
     border-radius: 8px;
-    background: var(--bg-color);
+    background: var(--designer-bg-color);
     padding: 16px;
     overflow: auto;
     display: flex;
@@ -96,9 +96,9 @@
 
   &__treeContainer {
     height: 180px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--designer-border-color);
     border-radius: 8px;
-    background: var(--bg-panel);
+    background: var(--designer-bg-panel);
     padding: 8px;
     overflow-y: auto;
   }
@@ -114,21 +114,21 @@
       justify-content: space-between;
       padding: 4px 8px;
       border-radius: 4px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      background: var(--designer-bg-surface);
+      border: 1px solid var(--designer-border-color);
       cursor: pointer;
       transition: all 0.15s ease;
 
       &:hover {
-        background: var(--bg-hover);
+        background: var(--designer-bg-hover);
       }
 
       &--selected {
-        border-color: var(--primary);
-        background: rgba(var(--primary-rgb), 0.08);
+        border-color: var(--designer-primary);
+        background: rgba(var(--designer-primary-rgb), 0.08);
 
         &:hover {
-          background: rgba(var(--primary-rgb), 0.1);
+          background: rgba(var(--designer-primary-rgb), 0.1);
         }
       }
     }
@@ -138,7 +138,7 @@
       align-items: center;
       gap: 6px;
       font-size: 11px;
-      color: var(--text-primary);
+      color: var(--designer-text-primary);
     }
 
     &Icon {
@@ -160,26 +160,26 @@
       font-size: 10px;
       border: none;
       background: none;
-      color: var(--text-muted);
+      color: var(--designer-text-muted);
       cursor: pointer;
       border-radius: 3px;
       padding: 0;
 
       &:hover {
-        background: var(--bg-hover);
-        color: var(--text-primary);
+        background: var(--designer-bg-hover);
+        color: var(--designer-text-primary);
       }
 
       &--delete:hover {
-        background: rgba(var(--danger-rgb), 0.15);
-        color: var(--danger);
+        background: rgba(var(--designer-danger-rgb), 0.15);
+        color: var(--designer-danger);
       }
     }
   }
 
   &__editorPanel {
     width: 250px;
-    border-left: 1px solid var(--border-color);
+    border-left: 1px solid var(--designer-border-color);
     padding-left: 16px;
     display: flex;
     flex-direction: column;
@@ -189,7 +189,7 @@
     &Title {
       font-size: 11px;
       font-weight: 600;
-      color: var(--text-secondary);
+      color: var(--designer-text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 4px;
@@ -205,7 +205,7 @@
   &__sectionTitle {
     font-size: 10px;
     font-weight: 700;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.3px;
     margin-bottom: 2px;
@@ -219,39 +219,39 @@
     &Label {
       font-size: 10px;
       font-weight: 600;
-      color: var(--text-secondary);
+      color: var(--designer-text-secondary);
     }
 
     &Input {
       width: 100%;
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--designer-border-color);
       border-radius: 4px;
       padding: 5px 8px;
       font-size: 11px;
-      color: var(--text-primary);
-      background: var(--bg-surface);
+      color: var(--designer-text-primary);
+      background: var(--designer-bg-surface);
       outline: none;
       transition: border-color 0.15s ease;
 
       &:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.15);
+        border-color: var(--designer-primary);
+        box-shadow: 0 0 0 2px rgba(var(--designer-primary-rgb), 0.15);
       }
     }
 
     &Select {
       width: 100%;
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--designer-border-color);
       border-radius: 4px;
       padding: 5px 8px;
       font-size: 11px;
-      color: var(--text-primary);
-      background: var(--bg-surface);
+      color: var(--designer-text-primary);
+      background: var(--designer-bg-surface);
       outline: none;
       cursor: pointer;
 
       &:focus {
-        border-color: var(--primary);
+        border-color: var(--designer-primary);
       }
     }
 
@@ -260,11 +260,11 @@
       align-items: center;
       gap: 6px;
       font-size: 11px;
-      color: var(--text-primary);
+      color: var(--designer-text-primary);
       cursor: pointer;
 
       input {
-        accent-color: var(--primary);
+        accent-color: var(--designer-primary);
       }
     }
   }
@@ -280,10 +280,10 @@
     align-items: center;
     justify-content: center;
     height: 100px;
-    border: 1px dashed var(--border-color);
+    border: 1px dashed var(--designer-border-color);
     border-radius: 6px;
     font-size: 11px;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
     text-align: center;
     padding: 16px;
   }
@@ -295,7 +295,7 @@
     justify-content: center;
     gap: 8px;
     padding: 32px 16px;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
     font-size: 11px;
     font-style: italic;
     text-align: center;
@@ -307,7 +307,7 @@
     justify-content: flex-end;
     gap: 8px;
     padding-top: 12px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--designer-border-color);
   }
 
   &__btn {
@@ -315,30 +315,30 @@
     align-items: center;
     gap: 4px;
     padding: 6px 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--designer-border-color);
     border-radius: 6px;
-    background: var(--bg-color);
+    background: var(--designer-bg-color);
     cursor: pointer;
     font-size: 11px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--designer-text-primary);
     transition: all 0.15s ease;
 
     &:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: rgba(var(--primary-rgb), 0.04);
+      border-color: var(--designer-primary);
+      color: var(--designer-primary);
+      background: rgba(var(--designer-primary-rgb), 0.04);
     }
 
     &--primary {
-      border-color: var(--primary);
-      background: var(--primary);
-      color: var(--text-inverse);
+      border-color: var(--designer-primary);
+      background: var(--designer-primary);
+      color: var(--designer-text-inverse);
 
       &:hover {
-        background: var(--primary-hover);
-        color: var(--text-inverse);
-        box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+        background: var(--designer-primary-hover);
+        color: var(--designer-text-inverse);
+        box-shadow: 0 2px 8px rgba(var(--designer-primary-rgb), 0.3);
       }
     }
   }

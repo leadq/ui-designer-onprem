@@ -1,6 +1,6 @@
 @use '../../../styles/variables.scss' as *;
 .canvasNavigation {
-  position: absolute; bottom: 16px; left: 16px; z-index: var(--z-canvas-controls); display: flex; align-items: center; gap: 4px;
+  position: absolute; bottom: 16px; left: 16px; z-index: var(--designer-z-canvas-controls); display: flex; align-items: center; gap: 4px;
   max-width: calc(100% - 100px); background: $bg-panel; border: 1px solid $border-color; border-radius: $radius-md; padding: 4px; box-shadow: $shadow-sm;
   flex-wrap: wrap;
 }

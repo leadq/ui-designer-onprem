@@ -1,31 +1,31 @@
 .contextMenu {
   position: fixed;
-  z-index: var(--z-editor-menu);
+  z-index: var(--designer-z-editor-menu);
   width: 272px;
   max-width: calc(100vw - 16px);
   max-height: calc(100dvh - 16px);
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 4px;
-  color: var(--text-primary);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  font-family: var(--font-family);
+  color: var(--designer-text-primary);
+  background: var(--designer-bg-surface);
+  border: 1px solid var(--designer-border-color);
+  border-radius: var(--designer-radius-md);
+  box-shadow: var(--designer-shadow-md);
+  font-family: var(--designer-font-family);
 
   &__group {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 4px 0;
-    & + & { border-top: 1px solid var(--border-color); }
+    & + & { border-top: 1px solid var(--designer-border-color); }
   }
   &__label {
     grid-column: 1 / -1;
     padding: 3px 10px 5px;
-    font-size: var(--font-size-xs);
+    font-size: var(--designer-font-size-xs);
     font-weight: 500;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
   }
   &__item {
     grid-column: 1 / -1;
@@ -36,18 +36,18 @@
     min-height: 32px;
     padding: 6px 10px;
     border: 0;
-    border-radius: var(--radius-sm);
+    border-radius: var(--designer-radius-sm);
     background: transparent;
     color: inherit;
     font-family: inherit;
-    font-size: var(--font-size-sm);
+    font-size: var(--designer-font-size-sm);
     line-height: 1.4;
     text-align: left;
     cursor: pointer;
-    &:hover:not(:disabled), &:focus-visible { background: var(--bg-hover); }
-    &:focus-visible { outline: 1px solid var(--primary); outline-offset: -1px; }
+    &:hover:not(:disabled), &:focus-visible { background: var(--designer-bg-hover); }
+    &:focus-visible { outline: 1px solid var(--designer-primary); outline-offset: -1px; }
     &:disabled { opacity: 0.4; cursor: not-allowed; }
-    &[data-danger='true'] { color: var(--danger); }
+    &[data-danger='true'] { color: var(--designer-danger); }
     &[data-inline='true'] {
       grid-column: auto;
       display: grid;
@@ -58,6 +58,6 @@
     }
     &Icon { display: flex; flex: 0 0 16px; }
     &Text { flex: 1; }
-    &Shortcut { color: var(--text-muted); font-size: var(--font-size-xs); white-space: nowrap; }
+    &Shortcut { color: var(--designer-text-muted); font-size: var(--designer-font-size-xs); white-space: nowrap; }
   }
 }

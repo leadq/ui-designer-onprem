@@ -89,6 +89,7 @@ export const DesignWindow = ({ node, children }: DesignWindowProps) => {
   return createPortal(
     <Box
       ref={ref}
+      data-designer-library
       className={styles.designWindow}
       data-backdrop={node.overlay?.withBackdrop !== false}
       data-design-modal={node.id}

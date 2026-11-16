@@ -13,5 +13,5 @@
     &:hover { filter: brightness(0.94); }
     &:focus-visible { outline: 2px solid $primary; outline-offset: 2px; }
   }
-  &__badgeNote { background: var(--note-surface); color: var(--note-text); }
+  &__badgeNote { background: var(--designer-note-surface); color: var(--designer-note-text); }
 }

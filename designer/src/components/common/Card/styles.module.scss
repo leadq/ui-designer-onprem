@@ -5,7 +5,7 @@
   border: 1px solid $border-color;
   border-radius: $radius-md;
   overflow: hidden;
-  transition: all var(--motion-normal) ease;
+  transition: all var(--designer-motion-normal) ease;
 
   &--button {
     color: inherit;

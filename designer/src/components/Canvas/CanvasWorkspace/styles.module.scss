@@ -1,7 +1,7 @@
 @use '../../../styles/variables.scss' as *;
 .canvasWorkspace {
   flex: 1; min-height: 0; overflow: auto; position: relative; overscroll-behavior: contain;
-  background: radial-gradient($border-light 1px, transparent 1px) var(--editor-canvas-surface); background-size: 20px 20px;
+  background: radial-gradient($border-light 1px, transparent 1px) var(--designer-editor-canvas-surface); background-size: 20px 20px;
   scrollbar-width: none; &::-webkit-scrollbar { display: none; }
   // The editor camera owns scrolling; chrome reflow must not move the browser's scroll anchor.
   &[data-preview='false'] { overflow-anchor: none; }

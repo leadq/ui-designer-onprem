@@ -5,20 +5,20 @@
   @include canvasUi.readableScale;
   margin-bottom: 32px; flex-shrink: 0; scroll-margin: 40px; min-width: 0;
   &[data-frame-selected='true'] {
-    outline: 3px solid var(--info);
+    outline: 3px solid var(--designer-info);
     outline-offset: 6px;
 
     [data-frame-selection-control] {
-      color: var(--info);
+      color: var(--designer-info);
 
-      &:hover, &:focus-visible { color: var(--info); }
+      &:hover, &:focus-visible { color: var(--designer-info); }
     }
   }
   &__heading { display: flex; align-items: center; margin-bottom: calc(8px * var(--canvas-ui-scale)); min-height: calc(32px * var(--canvas-ui-scale)); }
   .frameSurface &__name, .frameSurface &__note { @include canvasUi.instantGeometry; }
   .frameSurface &__name {
-    color: $text-secondary; padding: calc(var(--control-inset-sm) * var(--canvas-ui-scale)) calc(var(--control-inset) * var(--canvas-ui-scale)) calc(var(--control-inset-sm) * var(--canvas-ui-scale)) 0;
-    font-size: calc(var(--font-size-xs) * var(--canvas-ui-scale)); gap: calc(var(--spacing-sm) * var(--canvas-ui-scale));
+    color: $text-secondary; padding: calc(var(--designer-control-inset-sm) * var(--canvas-ui-scale)) calc(var(--designer-control-inset) * var(--canvas-ui-scale)) calc(var(--designer-control-inset-sm) * var(--canvas-ui-scale)) 0;
+    font-size: calc(var(--designer-font-size-xs) * var(--canvas-ui-scale)); gap: calc(var(--designer-spacing-sm) * var(--canvas-ui-scale));
     font-weight: 500; min-width: 0; flex: 0 1 auto; max-width: calc(100% - 64px * var(--canvas-ui-scale)); white-space: nowrap; text-align: left;
     svg { flex-shrink: 0; }
     svg:first-child { width: calc(15px * var(--canvas-ui-scale)); height: calc(15px * var(--canvas-ui-scale)); }
@@ -27,13 +27,13 @@
   .frameSurface &__nameText { font: inherit; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .frameSurface &__input {
     width: calc(280px * var(--canvas-ui-scale)); min-width: 0; max-width: 100%;
-    input { font-size: calc(var(--font-size-xs) * var(--canvas-ui-scale)); min-height: calc(32px * var(--canvas-ui-scale)); }
+    input { font-size: calc(var(--designer-font-size-xs) * var(--canvas-ui-scale)); min-height: calc(32px * var(--canvas-ui-scale)); }
   }
   .frameSurface &__note {
     flex-shrink: 0; padding: calc(4px * var(--canvas-ui-scale)); color: $text-secondary;
     svg { width: calc(16px * var(--canvas-ui-scale)); height: calc(16px * var(--canvas-ui-scale)); }
   }
-  .frameSurface &__note--filled { background: var(--note-surface); color: var(--note-text); }
+  .frameSurface &__note--filled { background: var(--designer-note-surface); color: var(--designer-note-text); }
   &__noteText { max-width: 320px; max-height: 240px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; color: inherit; }
   &__body { position: relative; }
 }

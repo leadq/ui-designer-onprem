@@ -2,28 +2,29 @@
 
 .tooltip {
   @include popup.presence(100ms);
-  z-index: var(--z-editor-tooltip);
+  z-index: var(--designer-z-editor-tooltip);
   padding: 5px 10px;
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs);
-  line-height: 1.55;
-  color: var(--text-inverse);
-  background: var(--text-primary);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
+  &:not(&--preview) {
+    font-family: var(--designer-font-family);
+    font-size: var(--designer-font-size-xs);
+    line-height: 1.55;
+    color: var(--designer-text-inverse);
+  }
+  background: var(--designer-text-primary);
+  border-radius: var(--designer-radius-sm);
+  box-shadow: var(--designer-shadow-sm);
   white-space: nowrap;
   pointer-events: none;
 
   &--preview {
     padding: 14px;
-    color: var(--text-primary);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    background: var(--designer-bg-surface);
+    border: 1px solid var(--designer-border-color);
+    border-radius: var(--designer-radius-lg);
+    box-shadow: var(--designer-shadow-lg);
     white-space: normal;
 
-    .tooltip__arrow::before { background: var(--bg-surface); }
+    .tooltip__arrow::before { background: var(--designer-bg-surface); }
   }
 
   // Radix positions an extra box around Content; it must also be transparent to canvas input.
@@ -38,7 +39,7 @@
     left: 0;
     width: 4px;
     height: 4px;
-    background: var(--text-primary);
+    background: var(--designer-text-primary);
     transform: rotate(45deg);
   }
 }

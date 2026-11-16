@@ -31,11 +31,15 @@ export const SlotBuilderInspector = ({
       </div>
       {selectedNode && selectedMeta ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '8px' }}>
-            <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-primary)' }}>
+          <div
+            style={{ borderBottom: '1px solid var(--designer-border-color)', paddingBottom: '8px' }}
+          >
+            <div
+              style={{ fontSize: '12px', fontWeight: 600, color: 'var(--designer-text-primary)' }}
+            >
               {selectedMeta.displayName}
             </div>
-            <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>
+            <div style={{ fontSize: '10px', color: 'var(--designer-text-muted)' }}>
               ID: {selectedNode.id.substring(0, NODE_ID_PREVIEW_LENGTH)}...
             </div>
           </div>

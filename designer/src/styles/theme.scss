@@ -2,27 +2,17 @@
 @use 'sass:meta';
 @use './tokens';
 
-// Only globals.scss loads this emitter. Adding a token exports it automatically.
-@mixin editor-tokens {
-  @each $name, $value in meta.module-variables('tokens') {
-    --#{$name}: #{$value};
-    @if meta.type-of($value) == 'color' {
-      --#{$name}-rgb: #{color.channel($value, 'red', $space: rgb)}, #{color.channel($value, 'green', $space: rgb)}, #{color.channel($value, 'blue', $space: rgb)};
-    }
-  }
-  --bg-hover: rgba(var(--text-primary-rgb), 0.05);
-  --z-editor-menu: var(--z-menu);
-  --z-editor-tooltip: var(--z-tooltip);
-}
-
-// Layout outside the controls uses defaults. A library can supply its own root tokens.
+// Shared by editor controls and portals. Adapter tokens inherit independently.
 @layer designer-defaults {
   :root {
-    @include editor-tokens;
+    @each $name, $value in meta.module-variables('tokens') {
+      --designer-#{$name}: #{$value};
+      @if meta.type-of($value) == 'color' {
+        --designer-#{$name}-rgb: #{color.channel($value, 'red', $space: rgb)}, #{color.channel($value, 'green', $space: rgb)}, #{color.channel($value, 'blue', $space: rgb)};
+      }
+    }
+    --designer-bg-hover: rgba(var(--designer-text-primary-rgb), 0.05);
+    --designer-z-editor-menu: var(--designer-z-menu);
+    --designer-z-editor-tooltip: var(--designer-z-tooltip);
   }
-}
-
-[data-designer-chrome] {
-  color-scheme: light;
-  @include editor-tokens;
 }

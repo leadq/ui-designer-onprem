@@ -13,8 +13,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-xs;
-    button { padding: $spacing-xs $spacing-sm; font-size: var(--font-size-xs); }
-    button[data-has-note='true'] { color: var(--note-text); }
+    button { padding: $spacing-xs $spacing-sm; font-size: var(--designer-font-size-xs); }
+    button[data-has-note='true'] { color: var(--designer-note-text); }
     svg { flex-shrink: 0; }
   }
 }

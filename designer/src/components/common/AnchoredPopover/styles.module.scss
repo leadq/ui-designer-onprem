@@ -1,4 +1,4 @@
- .anchoredPopover { width: min(320px, calc(100vw - 24px)); max-width: var(--radix-popover-content-available-width); max-height: var(--radix-popover-content-available-height); padding: 0; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-panel); color: var(--text-primary); box-shadow: var(--shadow-lg); z-index: 1200;
+ .anchoredPopover { width: min(320px, calc(100vw - 24px)); max-width: var(--radix-popover-content-available-width); max-height: var(--radix-popover-content-available-height); padding: 0; border: 1px solid var(--designer-border-color); border-radius: 8px; background: var(--designer-bg-panel); color: var(--designer-text-primary); box-shadow: var(--designer-shadow-lg); z-index: 1200;
   &__content { max-height: calc(var(--radix-popover-content-available-height) - 2px); overflow: auto; padding: 12px; }
-  &__arrow { fill: var(--bg-panel); }
+  &__arrow { fill: var(--designer-bg-panel); }
 }

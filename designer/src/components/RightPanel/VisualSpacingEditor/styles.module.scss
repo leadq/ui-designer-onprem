@@ -6,7 +6,7 @@
   &__boxes {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--spacing-sm);
+    gap: var(--designer-spacing-sm);
   }
 
   @container (min-width: 460px) {
@@ -22,16 +22,16 @@
       '. top .'
       'left center right'
       '. bottom .';
-    gap: var(--spacing-xs);
-    padding: var(--spacing-sm);
-    border: 1px solid rgba(var(--primary-rgb), 0.35);
+    gap: var(--designer-spacing-xs);
+    padding: var(--designer-spacing-sm);
+    border: 1px solid rgba(var(--designer-primary-rgb), 0.35);
     border-radius: $radius-md;
-    background: rgba(var(--primary-rgb), 0.05);
+    background: rgba(var(--designer-primary-rgb), 0.05);
   }
 
   &__label {
     grid-area: label;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--designer-spacing-xs);
     color: $primary;
   }
 

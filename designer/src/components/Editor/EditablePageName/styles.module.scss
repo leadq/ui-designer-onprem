@@ -40,7 +40,7 @@
     font-family: $font-family;
 
     &:focus {
-      box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.25);
+      box-shadow: 0 0 0 2px rgba(var(--designer-primary-rgb), 0.25);
     }
   }
 }

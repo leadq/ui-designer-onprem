@@ -12,7 +12,7 @@ interface SimpleGridProps {
 
 export const SimpleGrid = ({
   cols = 2,
-  spacing = 'var(--spacing-sm)',
+  spacing = 'var(--designer-spacing-sm)',
   children,
   className = '',
   style,

@@ -8,7 +8,7 @@ export const RightPanelEmptyState = () => {
     <Stack
       align='center'
       justify='center'
-      style={{ height: '100%', backgroundColor: 'var(--bg-panel)' }}
+      style={{ height: '100%', backgroundColor: 'var(--designer-bg-panel)' }}
     >
       <Text color='muted' size='sm'>
         {translate('rightPanel.empty')}

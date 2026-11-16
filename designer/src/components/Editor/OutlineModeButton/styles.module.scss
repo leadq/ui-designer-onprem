@@ -14,21 +14,21 @@
   &__layout,
   &__parent {
     position: absolute;
-    border-radius: var(--radius-xs);
+    border-radius: var(--designer-radius-xs);
   }
 
   &__selection {
     inset: 9px;
-    border: 1.5px solid var(--primary);
+    border: 1.5px solid var(--designer-primary);
   }
 
   &__layout {
     inset: 5px;
-    border: 1.5px dotted var(--text-muted);
+    border: 1.5px dotted var(--designer-text-muted);
   }
 
   &__parent {
     inset: 1px;
-    border: 1.5px dotted var(--info);
+    border: 1.5px dotted var(--designer-info);
   }
 }

@@ -11,8 +11,11 @@ body {
   overflow: hidden;
 }
 
-// Keep the SDK / adapter's body typography and controls available to authored content.
-:where([data-designer-chrome]) {
+// In mixed dialogs and palette popovers only the editor-only branches inherit these defaults.
+:where([data-designer-chrome]:not(:has([data-designer-library]))),
+:where([data-designer-chrome], [data-designer-chrome] *):where(:has([data-designer-library]))
+  > :where(:not([data-designer-library], [data-designer-library] *, :has([data-designer-library]))) {
+  color-scheme: light;
   color: $text-primary;
   font-family: $font-family;
   font-size: $font-size-md;
@@ -22,15 +25,17 @@ body {
 }
 
 @layer designer-defaults {
-  :where([data-designer-chrome], [data-designer-chrome] *):not(:where([data-designer-library], [data-designer-library] *)) {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  @scope ([data-designer-chrome]) to ([data-designer-library]) {
+    :where(:scope, *) {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :where([data-designer-chrome]) :where(button, input, select, textarea):not(:where([data-designer-library] *)) {
-    font-family: inherit;
-    font-size: inherit;
+    :where(button, input, select, textarea) {
+      font-family: inherit;
+      font-size: inherit;
+    }
   }
 }
 
@@ -39,14 +44,14 @@ body {
   height: 8px;
 }
 [data-designer-chrome]::-webkit-scrollbar-track {
-  background: rgba(var(--text-primary-rgb), 0.04);
+  background: rgba(var(--designer-text-primary-rgb), 0.04);
 }
 
 [data-designer-chrome]::-webkit-scrollbar-thumb {
-  background: rgba(var(--text-muted-rgb), 0.35);
+  background: rgba(var(--designer-text-muted-rgb), 0.35);
   border-radius: 4px;
 }
 
 [data-designer-chrome]::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--text-muted-rgb), 0.55);
+  background: rgba(var(--designer-text-muted-rgb), 0.55);
 }

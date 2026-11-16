@@ -29,7 +29,7 @@
 .header {
   grid-area: header;
   z-index: $z-header;
-  border-bottom: 1px solid var(--editor-region-border);
+  border-bottom: 1px solid var(--designer-editor-region-border);
   background-color: $bg-panel;
 }
 
@@ -38,8 +38,8 @@
   z-index: $z-header;
   grid-area: navbar;
   background-color: $bg-panel;
-  border-right: 1px solid var(--editor-region-border);
-  box-shadow: var(--editor-shadow-left-panel);
+  border-right: 1px solid var(--designer-editor-region-border);
+  box-shadow: var(--designer-editor-shadow-left-panel);
   overflow: visible;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@
   isolation: isolate;
   z-index: 0;
   grid-area: main;
-  background-color: var(--editor-canvas-surface);
+  background-color: var(--designer-editor-canvas-surface);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -70,8 +70,8 @@
   grid-area: aside;
   position: relative;
   background-color: $bg-panel;
-  border-left: 1px solid var(--editor-region-border);
-  box-shadow: var(--editor-shadow-right-panel);
+  border-left: 1px solid var(--designer-editor-region-border);
+  box-shadow: var(--designer-editor-shadow-right-panel);
   overflow: visible;
 
   // Scroll the inspector without clipping its protruding collapse button.

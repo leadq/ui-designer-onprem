@@ -5,8 +5,8 @@
   flex-direction: column;
   min-width: 0;
   gap: $spacing-sm;
-  padding: var(--control-inset);
-  background: var(--editor-selection-surface);
+  padding: var(--designer-control-inset);
+  background: var(--designer-editor-selection-surface);
   border-radius: $radius-md;
 
   &__heading {

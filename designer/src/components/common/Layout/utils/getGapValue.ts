@@ -5,5 +5,5 @@ export const getGapValue = (gap: StackProps['gap']) => {
     return `${gap}px`
   }
 
-  return gap ? `var(--spacing-${gap})` : '0'
+  return gap ? `var(--designer-spacing-${gap})` : '0'
 }

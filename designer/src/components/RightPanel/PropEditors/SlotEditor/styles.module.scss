@@ -1,16 +1,16 @@
 .slotEditor {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--designer-border-color);
   border-radius: 8px;
   overflow: hidden;
-  background: var(--bg-panel);
+  background: var(--designer-bg-panel);
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px 10px;
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08) 0%, rgba(var(--primary-rgb), 0.02) 100%);
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(135deg, rgba(var(--designer-primary-rgb), 0.08) 0%, rgba(var(--designer-primary-rgb), 0.02) 100%);
+    border-bottom: 1px solid var(--designer-border-color);
 
     &Left {
       display: flex;
@@ -25,14 +25,14 @@
     &Label {
       font-size: 11px;
       font-weight: 600;
-      color: var(--primary);
+      color: var(--designer-primary);
     }
 
     &Badge {
       font-size: 9px;
       font-weight: 500;
-      color: var(--text-secondary);
-      background: var(--bg-surface);
+      color: var(--designer-text-secondary);
+      background: var(--designer-bg-surface);
       padding: 1px 6px;
       border-radius: 8px;
     }
@@ -41,9 +41,9 @@
   &__description {
     padding: 6px 10px;
     font-size: 10px;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
     font-style: italic;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--designer-border-color);
   }
 
   &__body {
@@ -55,8 +55,8 @@
 
   &__previewBox {
     padding: 10px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
+    background: var(--designer-bg-surface);
+    border: 1px solid var(--designer-border-color);
     border-radius: 6px;
   }
 
@@ -64,10 +64,10 @@
     text-align: center;
     padding: 16px 8px;
     font-size: 11px;
-    color: var(--text-muted);
+    color: var(--designer-text-muted);
     font-style: italic;
-    background: var(--bg-surface);
-    border: 1px dashed var(--border-color);
+    background: var(--designer-bg-surface);
+    border: 1px dashed var(--designer-border-color);
     border-radius: 6px;
   }
 
@@ -78,18 +78,18 @@
     gap: 6px;
     width: 100%;
     padding: 8px;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--designer-primary);
     border-radius: 6px;
-    background: rgba(var(--primary-rgb), 0.04);
+    background: rgba(var(--designer-primary-rgb), 0.04);
     cursor: pointer;
     font-size: 11px;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--designer-primary);
     transition: all 0.2s ease;
 
     &:hover {
-      background: rgba(var(--primary-rgb), 0.1);
-      box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.15);
+      background: rgba(var(--designer-primary-rgb), 0.1);
+      box-shadow: 0 2px 8px rgba(var(--designer-primary-rgb), 0.15);
     }
 
     &Icon {

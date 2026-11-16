@@ -32,7 +32,7 @@ export const SimpleHierarchyPreview = ({
         flexDirection: 'column',
         gap: '4px',
         marginLeft: depth > 0 ? '12px' : '0',
-        borderLeft: depth > 0 ? '1px dashed var(--border-color)' : 'none',
+        borderLeft: depth > 0 ? '1px dashed var(--designer-border-color)' : 'none',
         paddingLeft: depth > 0 ? '8px' : '0',
       }}
     >
@@ -48,7 +48,7 @@ export const SimpleHierarchyPreview = ({
                 alignItems: 'center',
                 gap: '6px',
                 fontSize: '10px',
-                color: 'var(--text-secondary)',
+                color: 'var(--designer-text-secondary)',
               }}
             >
               <span style={{ fontSize: '11px' }}>{icon}</span>

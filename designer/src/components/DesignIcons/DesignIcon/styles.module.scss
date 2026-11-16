@@ -1,4 +1,4 @@
  .designIcon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
-  &[data-icon-editor]:empty { border: 1px dashed var(--border-color); border-radius: 4px; }
+  &[data-icon-editor]:empty { border: 1px dashed var(--designer-border-color); border-radius: 4px; }
   > svg { flex-shrink: 0; }
 }

@@ -99,9 +99,9 @@ export const useNodeRendererState = (
     ...getNodeSizingStyle(node, layoutParent, canvasWidth, registry),
     ...(!previewMode ? { userSelect: 'none' as const } : {}),
     ...(showContainerBorders && !previewMode && meta?.isContainer
-      ? { outline: '1px dashed var(--border-light)', outlineOffset: '-1px' }
+      ? { outline: '1px dashed var(--designer-border-light)', outlineOffset: '-1px' }
       : {}),
-    ...(isDragging ? { opacity: 0.3, outline: '2px dashed var(--info)' } : {}),
+    ...(isDragging ? { opacity: 0.3, outline: '2px dashed var(--designer-info)' } : {}),
     ...(isPrototypeHidden || isDesignHidden ? { display: 'none' } : {}),
   }
 

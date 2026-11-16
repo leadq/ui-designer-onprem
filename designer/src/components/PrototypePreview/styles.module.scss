@@ -4,7 +4,7 @@
   &--capture { &, & * { animation: none !important; transition: none !important; caret-color: transparent !important; } }
   &__toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: $spacing-sm; padding: 8px 16px; border-bottom: 1px solid $border-color; flex-shrink: 0; }
   &__hint { flex: 1; min-width: 120px; }
-  &__viewport { flex: 1; min-height: 0; overflow: auto; background: var(--designer-frame-background, var(--bg-surface)); }
+  &__viewport { flex: 1; min-height: 0; overflow: auto; background: var(--designer-frame-background, var(--designer-bg-surface)); }
   &__content { min-height: 100%; display: flex; flex-direction: column; }
   &__error { padding: 32px; }
   @media (max-width: 600px) { &__hint { display: none; } &__toolbar > p:first-child { flex: 1; } }

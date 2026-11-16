@@ -5,32 +5,32 @@
   align-items: center;
   padding: 2px 8px;
   border-radius: $radius-xl;
-  font-size: var(--font-size-micro);
+  font-size: var(--designer-font-size-micro);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 
   &--blue {
-    background-color: rgba(var(--primary-rgb), 0.1);
+    background-color: rgba(var(--designer-primary-rgb), 0.1);
     color: $primary;
   }
 
   &--note {
-    background: var(--note-surface); color: var(--note-text);
+    background: var(--designer-note-surface); color: var(--designer-note-text);
   }
 
   &--green {
-    background-color: rgba(var(--success-rgb), 0.1);
-    color: var(--success);
+    background-color: rgba(var(--designer-success-rgb), 0.1);
+    color: var(--designer-success);
   }
 
   &--red {
-    background-color: rgba(var(--danger-rgb), 0.1);
+    background-color: rgba(var(--designer-danger-rgb), 0.1);
     color: $danger;
   }
 
   &--gray {
-    background-color: rgba(var(--bg-surface-rgb), 0.05);
+    background-color: rgba(var(--designer-bg-surface-rgb), 0.05);
     color: $text-secondary;
   }
 }
