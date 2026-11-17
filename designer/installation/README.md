@@ -58,7 +58,7 @@ Library kaynak repo yolu: [tam yol]
 Kurulacak paket/sürüm veya kaynak revizyonu: [biliniyorsa yaz; yoksa kaynak manifestinden doğrula]
 Hedef componentler: [gerçek export isimleri veya “temel tasarım ve form componentlerini sen seç”]
 
-Önce AGENTS.md ve .github/skills/write-ui-adapter/SKILL.md oku; skill adımlarını ve kabul koşullarını uygula. Skill mekanizmasını desteklemeyen istemcide de bu dosyayı doğrudan okuyup izle. Kaynak library’nin public exportlarını, hedef componentlerin props tiplerini, implementasyonlarını, provider/CSS gereksinimlerini ve mevcut kullanım örneklerini incele. Kaynak ile kurulacak paketin aynı API’yi sunduğunu doğrula; ayrı extraction dosyası/JSONL kataloğu üretme.
+Önce .github/skills/write-ui-adapter/SKILL.md oku ve skill adımlarıyla kabul koşullarını uygula. Skill mekanizmasını desteklemeyen istemcide de bu dosyayı doğrudan okuyup izle. Kaynak library’nin public exportlarını, hedef componentlerin props tiplerini, implementasyonlarını, provider/CSS gereksinimlerini ve mevcut kullanım örneklerini incele. Kaynak ile kurulacak paketin aynı API’yi sunduğunu doğrula; ayrı extraction dosyası/JSONL kataloğu üretme.
 
 Library kaynaklarını değiştirmeden Designer tarafında adapterı uygula. Native paketi public girişlerinden kullan; makineye özel kaynak yolunu kalıcı import/dependency yapma. Paket veya zorunlu peer erişimi yoksa eksik bilgiyi belirt; başka UI library ile doldurma.
 

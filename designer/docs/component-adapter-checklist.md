@@ -9,7 +9,7 @@ Bu kaynak teslimi test runner içermez. Aşağıdaki davranışları gerçek kur
 - [ ] Props/defaults ve responsive değerler yalnız katalog şemasında. false/0/boş metin korunuyor. Native stiller adapter’a, ortak Flex/Grid/layout semantiği core’a ait.
 - [ ] Input native event/scalar dönüşümü metadata ile tanımlı; preview state/visibility/flow bağlantıları beklenen şekilde çalışıyor.
 - [ ] Kapsamda olan slot/renderItem/list/Tabs/disclosure/table aileleri native render, preview ve TSX exportta aynı yapıyı koruyor. Kullanıcıya teknik callback/compound ağacı kurdurulmuyor. [Tablo rehberi](table-adapter-guide.md).
-- [ ] Native component bilgisi get_design_catalog ve get_design_contract üzerinden doğru geliyor; recipe açıklamaları metadata’yla çelişmiyor.
+- [ ] Bileşen adı verilmeden tarif edilen görünüm için gerçek MCP overview yanıtındaki açıklama ve ipuçlarından adaylar bulunabiliyor. Adayların details yanıtında ilgili varyant, prop, slot veya bileşim doğrulanıyor. Varsa recipe örneği bu eşlemeyi kullanıyor.
 - [ ] Aynı revizyondan nested/flat/behavior dışa aktarımları kayıpsız. Geçersiz belge mevcut tasarımı/history’yi değiştirmiyor. Eski native belgenin adapterId’sini kurum kimliğiyle değiştirme kabul edilmiyor.
 - [ ] MCP gerçek browser hedefinde validate → import/update → applied/isPersisted → get_design readback akışı; tek undo ve aynı requestId tekrarının ikinci mutasyon yapmaması doğrulanmış.
 - [ ] Kaydet/yükle, iki bağımsız browser profiliyle clientId izolasyonu ve ayrı Designer/MCP adresleri gerçek kurum proxy’sinde doğrulanmış.

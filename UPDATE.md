@@ -1,5 +1,7 @@
 # ZIP ile güncelleme
 
+Önce bu teslimin [kısa değişiklik notunu](CHANGELOG.md) okuyun. Başlangıç sürümü, değişen dosyalar ve ekipte özelleştirilmiş dosyaları birleştirirken gereken bilgiler burada yer alır.
+
 Yeni ZIP’i ayrı bir klasöre açın. Node 20.12+ yeterlidir; taşıma aracı için npm install veya Git gerekmez. Aşağıdaki komutları **yeni ZIP’in kökünde**, `designer/` ve `mcp/` klasörlerinin yanında çalıştırın.
 
 ## 1. Kontrol edin
@@ -36,6 +38,7 @@ Adapter ve prompt klasörleri mevcut projenin tam içeriğini korur; kaldırılm
 Repo kökü, `designer/` ve `mcp/` altında şu yollar otomatik tanınır:
 
 - `.env*`, `.npmrc`, paket/lock dosyaları, `.gitignore`, `.dockerignore`, `.editorconfig`.
+- Mevcut projenin `AGENTS.md` ajan yönergeleri. Ekip bu dosyaların içeriğini kendi çalışma kurallarına göre yönetir.
 - `*config.*`, `.eslintrc*`, `.prettierrc*`, `.stylelintrc*`; örneğin `tsconfig.json`, `toolchain.config.js`.
 - Kök YAML dosyaları, `Dockerfile*` / `Containerfile*`, `Jenkinsfile*`, `.eslintignore`, `.prettierignore`.
 - MCP istemcisinin `mcp/mcp.json`, `.mcp.json`, `.cursor/mcp.json`, `.vscode/mcp.json` dosyaları. Proje dışındaki kişisel IDE ayarları bu dosya taşımasının kapsamı dışındadır.

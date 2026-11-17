@@ -38,16 +38,16 @@ Her native prop'u aşağıdaki gruplardan birine ayır. Bu çalışma ayrı kata
 
 | Alan | Yazılacak içerik | Gönderildiği yer |
 | --- | --- | --- |
-| ComponentMeta.description | Bileşenin amacı ve desteklediği temel iş; kısa açıklama | Overview |
-| ComponentMeta.visualHints | Görüntüden ayırt etmeyi sağlayan birkaç kısa şekil/yerleşim ipucu | Overview |
-| PropSchema.description | Bu prop neyi değiştirir, değerler ne anlama gelir, başlangıç/önkoşul nedir | Seçilen component details |
+| ComponentMeta.description | Bileşenin karşıladığı iş. Özelleşmiş bir türse genel bileşenden ayrılan kullanımını söyle. | Overview |
+| ComponentMeta.visualHints | Farklı içeriklerde sabit kalan yapıyı ve benzerinden ayrılan işareti anlatan birkaç kısa gözlem | Overview |
+| PropSchema.description | Prop'un yönettiği parça, değerlerin görünür etkisi, başlangıç ve varsa önkoşul | Seçilen component details |
 | ComponentMeta.recipes | Gerekliyse belirli görünümün gerçek props/slot/children ile kurulma tarifi | Seçilen component details |
 
-Hint içine props listesi, JSX/JSON veya uygulama adımları koyma. Örneğin ButtonGroup hint'i: “Bitişik butonlar; aralarda tek ayırıcı; yuvarlatma grubun dış köşelerinde; seçili öğe farklı görünebilir.” Bu yalnız aday tanımaya yardım eder; görünmeyen event/state veya kesin component kimliği kanıtı değildir. Gerçek library bu görünümü sağlamıyorsa bu ipucunu ekleme.
+Kaynak veya çalışan örneklerde içerik, varyant ya da durum değiştiğinde neyin sabit kaldığına bak. İpucunu bileşenin adını bilmeyen birinin ekranda görebileceği dille yaz. Örneğin “Çizgi iki içerik grubu arasında uzanır, ortasında kısa bir metin olabilir” ayrı bir ayırıcıyı tarif eder. Bir yüzeyin dış kenarını takip eden çizgi ise o yüzeyin ipucuna aittir. Yalnız doğrulayabildiğin işareti yaz. Prop seçeneklerini ve kurulum adımlarını bileşen ayrıntılarında tut. Aynı görünüm birden fazla davranışa uyuyorsa tarifi hangi kanıtın geçerli kıldığını `when` alanında belirt.
 
 Recipe, prop açıklamasının kopyası değildir. Native slot/compound yerleşimi veya birden çok prop'un birlikte kullanımı yanlış anlaşılabilecekse yaz. Sadece ihtiyaç olan tarifleri ekle. Alanlar: id, title, when, instructions, isteğe bağlı avoid/images ve geçerli DesignNode example. Example aynı component type'ının kendi alt ağacı olmalı; desteklenen props/slots kullanmalı. ReactNode/JSX/fonksiyon/PNG/base64 tasarım JSON'u değildir. Görsel dosya eklenecekse [recipe görsel sözleşmesini](../../../docs/designer-agent.md#recipe-referans-görselleri) izle; görsel zorunlu değildir.
 
-**Geçiş koşulu:** Overview kısa bir tanıma listesi; details prop etkileri ve gerekiyorsa uygulama tarifi. description/hint/recipe birbirinin yerine kullanılmıyor. Kaynağa dayanmayan vaat yok.
+**Geçiş koşulu:** Görsel olarak karışabilecek bir kullanımı bileşenin adını vermeden tarif et. Gerçek overview yanıtındaki ipuçlarıyla adayları bul. Yalnız bu adayların details yanıtında görünümü sağlayan varyantı, prop'u, slotu veya bileşimi gösterebilmelisin. Ayrım desteğin dışındaysa bu sınırı tarifte açık bırak.
 
 ## 4. Önce küçük bir çalışan adapter, sonra kapsamı büyüt
 

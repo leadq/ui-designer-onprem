@@ -241,13 +241,14 @@ Eski `notes`/`pageNotes` girdisi açıkça kaydedilirse başlık ve metni tek ye
 
 ## Bileşen kullanım tarifleri
 
-Katalogdaki description/visualHints/recipeIndex kısa tanıma bilgisidir; component details içindeki recipes kullanım tarifidir. Recipe, seçilen component'in props/slot bilgisiyle birlikte okunur; DesignNode'a recipes veya visualHints alanı yazılmaz. Tarifin when koşulunu görünür kullanımla eşleştir, instructions ve avoid ile prop/slot/compound/kardeş ayrımını koru. Örnekteki ID'leri yeni tasarıma uyarlarken yenile.
+Katalog özetindeki `description` ve `visualHints` bileşeni tanımaya yardım eder. Seçilen bileşenin ayrıntılarında `recipes` ile prop ve slot bilgisi birlikte gelir. Tarifin `when` koşulunu gözlenen kullanımla eşleştir. `instructions` ve `avoid` ile hangi içeriğin bileşene ait olduğunu doğrula. Örnekteki ID'leri yeni tasarıma uyarlarken yenile. `recipes` ve `visualHints` tasarım node'una yazılmaz.
 
 ReactNode prop'u varsa JSON'a JSX/fonksiyon/string olarak React kodu koyma: o adapter'ın gerçek kayıtlı slot adı ve slots altındaki node ağacı kullanılmalıdır. Label/description/error gibi metinler ancak o component'in propsSchema/acceptedPropKeys sınırında yazılır. Native API'de olması adapter desteği sayılmaz. Card.Header gibi compound adını tarif/registry doğrulamadan üretme; kurumun native header slotu ile düz Typography çocuğu aynı şey değildir. Tarif bulunmaması sahte bir tarif türetme izni vermez. Ekip formatı: component recipes (Designer reposunda `docs/designer-agent.md`).
 
 
 ### Recipe görsellerini seçerek okuma
-Önce visualHints/recipeIndex ile aday bileşeni seç; component details içindeki recipe when/instructions/example ve images metadata'sını oku. Görünüm ayrımı için gerekiyorsa get_recipe_image(adapterId, componentType, recipeId, imageId, contractRevision) ile yalnız aday görseli getir. Bu hazırlanmış referanstır, mevcut tasarımın screenshot'ı değildir; otomatik render döngüsü başlatmaz. Görseldeki eşleşmeyi native prop/slot/compound tarifiyle birlikte kullan; input'a ait action/label için tarif bunu söylüyorsa ayrı anchor üretme. Kayıtlı slot yoksa icat etme. Görsel yoksa metin tarifiyle devam et; belirsizlik önemliyse sor. Görsel gizli event/state davranışını kanıtlamaz. PNG/base64/images alanlarını tasarım JSON'una yazma.
+
+Seçilen bileşenin ayrıntılarında `recipes[].images` varsa ilgili referansı `get_recipe_image` ile aynı `contractRevision` üzerinden al. Görselin hangi kayıtlı prop veya slot kullanımını gösterdiğini tarifinden doğrula. Görsel dosyası ve metadata'sı tasarım belgesine girmez.
 
 Adapter tarafında tarifler recipes/<componentType>/<recipeId>/recipe.ts, görseller aynı tarifin screenshots klasöründe tutulur. Mevcut component dosyası recipes alanına isteğe bağlı import ekler; renderer/component dosya adları değişmez. Recipes olmayan adapter geçerlidir. Bu disk düzeni DesignNode alanı değildir; MCP görseli aynı recipe kimliğiyle ister.
 

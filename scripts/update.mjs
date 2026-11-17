@@ -34,7 +34,7 @@ const projectRoots = ['', 'designer/', 'mcp/'];
 const mutableTrees = ['designer/src/adapters', 'mcp/prompts'];
 const configTrees = ['config', 'deploy', 'deployment', 'deployments', 'k8s', 'helm', 'openshift', 'vendor', '.azure-pipelines', '.github/workflows', '.github/actions', '.circleci', '.vscode', 'share', 'public'];
 const clientFiles = new Set(['.mcp.json', 'mcp.json', '.cursor/mcp.json']);
-const configFile = name => /^(package\.json|package-lock\.json|npm-shrinkwrap\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lockb?|\.npmrc|\.yarnrc(?:\.yml)?|\.gitignore|\.dockerignore|\.editorconfig|\.eslintignore|\.prettierignore|Jenkinsfile(?:\.[^/]+)?|update\.paths\.json)$/.test(name)
+const configFile = name => /^(AGENTS\.md|package\.json|package-lock\.json|npm-shrinkwrap\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lockb?|\.npmrc|\.yarnrc(?:\.yml)?|\.gitignore|\.dockerignore|\.editorconfig|\.eslintignore|\.prettierignore|Jenkinsfile(?:\.[^/]+)?|update\.paths\.json)$/.test(name)
   || /^\.env(?:\..+)?$/.test(name) || /^(?:Dockerfile|Containerfile)(?:\..+)?$/.test(name)
   || /(?:^\.?[^/]*config(?:\.[^/]+)?|^\.(?:eslint|prettier|stylelint)rc(?:\.[^/]+)?)$/.test(name)
   || /\.(?:yaml|yml)$/.test(name);

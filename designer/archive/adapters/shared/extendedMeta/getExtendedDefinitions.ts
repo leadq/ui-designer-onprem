@@ -1,6 +1,7 @@
 import type { ComponentMeta } from '@root/types/componentContract';
 import type { PropSchema } from '@root/types/propSchema';
 
+import { singleChoiceRecipe } from '../recipes/segmented/single-choice/recipe';
 import {
   DEFAULT_PROGRESS_VALUE,
   DEFAULT_RATING_COUNT,
@@ -32,6 +33,7 @@ export const getExtendedDefinitions = () => {
     Pick<
       ComponentMeta,
       'displayName' | 'category' | 'defaultProps' | 'propsSchema' | 'searchKeywords'
+      | 'description' | 'visualHints' | 'recipes'
     >
   > = {
     slider: {
@@ -64,13 +66,17 @@ export const getExtendedDefinitions = () => {
       displayName: 'Segmented Control',
       category: 'form',
       searchKeywords: ['seçenek grubu', 'toggle button'],
+      description: 'Aynı alanın alternatiflerini bir arada gösterir ve tek bir değer seçtirir.',
+      visualHints: ['Kısa seçenek etiketleri bitişik bölmelerde sıralanır. Seçili bölme farklı vurgulanabilir.'],
+      recipes: [singleChoiceRecipe],
       defaultProps: { label: 'Period', data: OPTIONS, defaultValue: 'daily' },
       propsSchema: [
-        getText('label', 'Label', 'Period'),
+        { ...getText('label', 'Label', 'Period'), description: 'Kontrolün erişilebilir adı. Görünen seçenek metinleri data içinden gelir.' },
         getText('defaultValue', 'Initial value', 'daily'),
         {
           key: 'data',
           label: 'Options',
+          description: 'Her öğenin label metni bir bölmede görünür. value o seçenek seçildiğinde alanın aldığı değerdir.',
           type: 'arrayOfObjects',
           defaultValue: OPTIONS,
           itemSchema: [
@@ -133,8 +139,12 @@ export const getExtendedDefinitions = () => {
       displayName: 'Divider',
       category: 'layout',
       searchKeywords: ['ayırıcı', 'çizgi'],
+      description: 'İki içerik grubunu bağımsız bir çizgiyle ayırır.',
+      visualHints: ['Çizgi içerik bölgelerinin arasında uzanır. İsteğe bağlı kısa bir metin çizginin üzerinde yer alabilir.'],
       defaultProps: { label: 'Section' },
-      propsSchema: [getText('label', 'Label', 'Section')],
+      propsSchema: [
+        { ...getText('label', 'Label', 'Section'), description: 'Çizgiyle birlikte gösterilen metin. Yalnız çizgi için boş metin ver.' },
+      ],
     },
   };
 

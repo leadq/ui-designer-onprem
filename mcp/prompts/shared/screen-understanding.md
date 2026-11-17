@@ -29,6 +29,15 @@ Tek kısa çalışma notunda tut; JSON tasarımına yeni alan olarak ekleme:
 - Basic: görünür değer/seçenekler ve ekranlar arası yapısal adım planı (step / modal / aynı adımın state görünümü). Detailed: veri/akış bağımlılıkları ve aday kurallar; gözlenen / proje kuralı / teyit edilmiş cevap / bilinmeyen ayrımı.
 - Yalnız sonucu değiştiren açık sorular. Açıkça görünen bilgiyi kullanıcıya onaylatma.
 
+### Bileşeni tanımadan önce yapıyı incele
+
+1. Tek ekranda tekrarlanan bölgeleri karşılaştır. Birden fazla ekran görüntüsü verilmişse aynı düzenin diğer ekranlardaki örneklerine de bak. İçerik değiştiğinde hangi sınır, hizalama ve parça sırası korunuyor? Hangi metin, ikon veya görünür durum değişiyor? Örneğin farklı alanlarda etiketin hep giriş kutusuyla aynı hizada başlaması, etiketin alanla birlikte üretildiğini düşündürür. Tek örnekte de parçaların anlamını ve ortak sınırlarını kullan. Yazılı istekte aynı incelemeyi tarif edilen roller ve ilişkiler üzerinden yap.
+2. Belirsiz bölge için görünümü açıklayabilecek adayları karşılaştır. Tekrarlanan bir yüzey, özel bir bileşen, genel bir bileşenin varyantı veya birkaç kayıtlı bileşenin birlikte kullanımı olabilir. Bir çizginin aynı öğeyi çevrelemesiyle iki bağımsız içerik grubunun arasından geçmesi farklı sahipliklere işaret eder. Bitişik kontrollerde etiketlerin ayrı eylemler mi, aynı sorunun seçenekleri mi anlattığına bak. Görsel tekrar araştırılacak bir aday verir. Seçim davranışı, doğrulama koşulu veya ekranlar arası geçiş için ayrıca kanıt gerekir.
+3. Aktif adapter için `get_design_contract` overview yanıtındaki `catalog.components` listesini tara. Bileşen adını bilmeden, gözlediğin rolü ve ayırt edici işaretleri `description` ve `visualHints` ile eşleştir. Özel tür ile genel tür ikisi de uygunsa ikisini de aday tut. Aynı `contractRevision` ile tek bir details çağrısında yalnız bu adayların gerçek `type` değerlerini `componentTypes` olarak iste. `propsSchema` seçenekleri ve varsayılanları, `authoring.acceptedPropKeys`, `authoring.slotKeys` ve varsa `recipes` içindeki koşul ve örneği karşılaştır. İpuçları boşsa türün rolünden aday seçip ayrıntısına bak.
+4. Gözlenen yapıyı hangi adayın nasıl sağladığını doğrula. Metin, ikon veya kenarlığı sahibi olan bileşenin kayıtlı prop, slot veya `children` tarifiyle bir kez göster. Alanın etiketi, yardımı ve görünen hatası ortak bir alan kapsayıcısına da ait olabilir. Sıralama özelliği kayıtlıysa gerektiğinde kullan, yoksa doğal düzeni koru. Bağımsız bir notu veya eylemi ait olduğu grupta tut. Aynı rolü diğer ekranlarda da aynı şekilde eşleştir. Bir örnek farklıysa önce değişen değeri veya varyantı sınayarak eşlemeyi gözden geçir.
+
+Birden fazla aday uyuyorsa rolü ve parçalarını kendi standart sunumuyla karşılayanı kullan. Kayıtlı tür veya varyant uymuyorsa mevcut tasarımda veya hedef projede aynı rolün hangi kayıtlı parçalarla kurulduğuna bak. Yeni bir özel bileşen önermeden önce bu yollarla karşılanamayan ihtiyacı `capability-gaps` uyarınca belirt. İki yorum arasında seçim kullanıcının yapabileceği işi değiştiriyorsa belirsiz kalan davranışı sor. Yalnız sonucu etkileyen eşlemeyi kısa ekran özetinde tut.
+
 ## Ekran kapsamı ve birlikte okuma
 
 Ekran üretiminde kullanıcı belirli ekranları istemiş/seçmişse onları ele al; belirtmemişse güncel belgenin TÜM frame'lerini (IDE girdisinde tüm verilen görselleri) incele. get_editor_context ready sonrası get_design(section: document, editorId) tam belgeyi döndürür; seçim filtreli paket üretmez. Seçim hedefliyse selectedNodes.frameId ile ekranları çöz; rastgele seçili bir input nedeniyle genel üretim talebini tek ekrana daraltma. Seçili öğeyi düzenle görevi ise yalnız o öğeyle sınırlı kalır. Başka editör/belgeleri kendiliğinden dahil etme.
@@ -60,17 +69,17 @@ Mod seçimi ve ortak sorular dahil Basic en fazla 3; Detailed genellikle 5 civar
 Screenshot verildiğinde hedef, görünür ekranı aktif komponent sistemiyle mümkün olduğunca sadık kurmaktır. Okuma sırasını, grupları, yoğunluğu ve oranları tasarım kanıtı olarak kullan; bunları kendi estetik tercihinle değiştirme. Kullanıcı ayrıca istemedikçe başlık taşıma, yeni kart/ayırıcı ekleme, boşlukları genişletme veya ekranı yeniden tasarlama. Farklı kütüphaneden gelen görselde de aynı yapı hedeflenir; native tema sınırı semantic-design rehberindedir.
 
 1. Önce tüm ekranı gör; sonra yalnız okunamayan/yoğun bölgeye yakınlaş. Bir kırpımı bütün sayfa sanma. Metin okunamıyorsa uydurma; daha net kaynak veya gerekli metni iste.
-2. Header, içerik, yan panel, footer/modal sınırları → semantik iç içe gruplar. Başlığın hangi bölüme, label/açıklama/hatanın hangi alana, aksiyonun hangi gruba ait olduğunu belirle. Görselde yakın olmaları tek başına aynı parent kanıtı değildir; ortak kenar, arka plan sınırı, tekrar ve içerik ilişkisini birlikte değerlendir.
+2. Header, içerik, yan panel ve footer/modal sınırlarından semantik iç içe grupları çıkar.
 3. Her grubun ortak sol/sağ kenarını, merkezini, satır/kolon yönünü ve kardeş aralıklarını çıkar. İç padding, kardeş gap ve gruplar arası boşluğu ayır; aynı boşluğu parent ve child'a iki kez verme. Başlık ile açıklaması arasındaki aralığı bölüm aralığıyla eşitleme. Kaynak pikseli CSS px değildir; içeriğe göre, sabit, doldur ve max-width niyetlerini bilinen ölçekle belirle.
 4. Boş alan bazen eksik component değil nefes alanıdır. Placeholder'ı değer, başlığı input, tabloyu bağımsız kartlar veya tüm tabları ayrı sayfalar sanma.
-5. Görünen bütün alan/metin/kolon/aksiyonları kayıtlı bileşen, native prop/slot veya anlamlı içerik grubuyla eşleştir. Native label/description/header/action sahipliği varsa onu kullan; aynı metni ayrıca kardeş Text olarak çoğaltma. Bu eşlemeler mevcut kısa ekran özetine aittir, yeni JSON alanları değildir. Eşlenemeyen veya belirsiz öğeleri belirt; sessizce atlama.
+5. Görünen bütün alan, metin, kolon ve aksiyonları kısa ekran özetindeki eşlemelerle karşılaştır. Eşlenemeyen veya sahipliği belirsiz kalan öğeleri belirt.
 6. JSON/kod üretmeden önce görünür içerik, sıra, parent sahipliği, kolon oranları, ortak kenarlar ve boşlukları kaynakla karşılaştır. Teknik olarak geçerli ama farklı gruplanmış ekranı tamamlandı sayma. Yalnız kullanıcı görsel inceleme istediyse taşma, kesilmiş yazı, hizalar, satır yüksekliği ve sıralama üzerinden render sonucunu kontrol et. Kanıtsız içerik veya gizli ekran ekleme.
 
 Az token için aynı özeti güncelle; uzun düşünce dökümü üretme. Tüm katalog/rehberleri yükleme. Genel görünümü kaybetmeden yalnız sorunlu bölgeyi tekrar incele. Daha pahalı modelin her sorunu çözdüğünü varsayma; gerçek görsel ve davranış kabulü gerekir.
 
 ## Kuruma özgü bileşenleri tanıma
 
-Kanıt sırası: mevcut Designer JSON type/slot/props ve doğrulanmış katalog → kurumun görsel eşleme brief'i ve çalışan örneği → screenshot ipuçları. Görsel benzerlik tek başına kesin component kimliği değildir. Üç yan yana ikon bağımsız IconButton, ButtonGroup veya tek seçimli kontrol olabilir; ortak çerçeve/boşluk aday gösterir, seçim davranışını kanıtlamaz. Katalogda olmayan type/prop veya hedef projede olmayan import üretme.
+Mevcut Designer JSON'unda type, slot veya prop açıkça verilmişse bu eşlemeyi koru. Kurumun çalışan örneği ve görsel eşleme brief'i benzer adayları ayırmaya yardımcı olur. Üretimde kullanılan type ve prop'u aktif katalogdan, React importunu hedef projedeki gerçek eşlemeden al.
 
 Bileşeni tanıma, görünmeyen içeriği tamamlama yetkisi vermez. CardAction olduğu bilinse bile menünün öğeleri, izinleri ve veri kaynağı ayrı bilinmeyenlerdir. Önce kapsamdaki diğer ekran/görseller ve proje örneklerinde açık hali/ilişkili tanımı ara. Basic yalnız kanıtlı görünümü kurar; Detailed eksik görünüm ve davranış için authoring-modes soru sırasını kullanır. Görünmeyen popover'ı var sayma; normal bir ikon veya dekorasyon olma ihtimalini brief ile ayır.
 
@@ -78,7 +87,7 @@ Bileşeni tanıma, görünmeyen içeriği tamamlama yetkisi vermez. CardAction o
 
 Bu brief opsiyoneldir ve yalnız screenshot'taki öğeyi kayıtlı component ile eşleştirmeyi kolaylaştırır. Kullanım/props dokümanının ikinci kopyası değildir. Ana kaynak adapter'ın MCP'ye açılan component kontratıdır.
 
-Agent önce get_design_catalog ile library özetini, sonra yalnız ilgili componentTypes detaylarını okur: propsSchema, defaultProps, slot/callback bilgileri, authoring kuralları, previewValue ve exportConfig. Burada cevaplanan teknik kullanım bilgisini kullanıcıya tekrar sormaz. Native renderer kodundaki yorum veya implementasyon ayrıntısı otomatik olarak MCP bilgisi değildir; agent'ın bilmesi gereken açıklama katalog metadata'sı veya katalogdan yönlendirilen yetkili rehberde bulunmalıdır.
+Kurum bileşeninin ayırt edici ipuçları adapter'ın `visualHints` alanından, doğrulanmış kullanım tarifleri varsa `recipes` alanından okunur. Bu brief ekibin bunlara ekleyebileceği projeye özgü görsel bağlam içindir.
 
 | İsteğe bağlı görsel bilgi | Örnek |
 | --- | --- |
@@ -86,7 +95,7 @@ Agent önce get_design_catalog ile library özetini, sonra yalnız ilgili compon
 | Ayırt edici görünüm | Kartın sağ üstünde yuvarlak üç nokta tetikleyicisi |
 | Benzerlerinden ayrımı | Genel sayfa menüsünden kart içindeki konumuyla ayrılır; varsa küçük referans görsel |
 
-CardAction burada temsili addır, yeni component/type tanımı değildir. Kapalı/açık native kullanım ve zorunlu props adapter/MCP kontratından gelir. Katalog “menü öğeleri bu prop'a verilir” bilgisini sağlar; bu tasarımda hangi öğelerin bulunacağı ayrı ekran gereksinimidir. Basic/Detailed eksik içerik ayrımı korunur. Katalog bilgisinin yetersiz kaldığı durumlar için bu takipte yeni fallback stratejisi belirlenmez; kullanıcıyla daha sonra ele alınacaktır.
+CardAction burada temsili addır. Kapalı/açık native kullanım ve zorunlu props adapter/MCP kontratından gelir. Bu tasarımda menüde hangi öğelerin bulunacağı için Basic/Detailed kapsamındaki ekran kanıtını kullan.
 
 ## Çıktı hedefi
 

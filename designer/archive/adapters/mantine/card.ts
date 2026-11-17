@@ -11,7 +11,9 @@ export const mantineCardMeta: ComponentMeta = {
   displayName: 'Card',
   searchKeywords: ['kart', 'panel', 'container', 'kapsayıcı'],
   description: 'İçeriği gruplamak için native kart kapsayıcısı.',
-  visualHints: ['Başlık ve içerik bir kart içinde bulunabilir; ayrı header bölgesi görünümden kesinleşmez.'],
+  visualHints: [
+    'Başlık ve içerik aynı yüzeyin iç boşluğunu paylaşabilir. Kenarlık varsa yüzeyin dış çevresini izler.',
+  ],
   recipes: [titleInContentRecipe],
   category: 'layout',
   isContainer: true,
@@ -42,7 +44,10 @@ export const mantineCardMeta: ComponentMeta = {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
       defaultValue: 'md',
     },
-    { key: 'withBorder', label: 'With Border', type: 'boolean', defaultValue: true },
+    {
+      key: 'withBorder', label: 'With Border', type: 'boolean', defaultValue: true,
+      description: 'Kartın dış çevresindeki kenarlığı açar veya kapatır. İçeriği bölümlere ayırmak için kullanılmaz.',
+    },
   ],
   renderer: CardRenderer,
   exportConfig: {
