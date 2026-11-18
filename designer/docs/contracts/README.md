@@ -649,6 +649,8 @@ MCP ikon keşfi `search_icons` ile çalışır. `queries` aynı çağrıda en fa
 
 ## Bağımsız ikon authoring — 22 Ekim 2026
 
+İkonun kullanım açıklaması, görsel ipuçları ve tarifleri aktif `IconLibrary.componentMeta` alanından ortak `icon` kaydına gelir. `description`, `visualHints` ve `recipes` mevcut katalog alanlarıdır; kaydedilen tasarımın alanlarını, varsayılanlarını veya native export anlamını değiştirmez. Kurum tanımları ve ilk taşıma için [ikon metadata rehberi](../icon-library-metadata.md) geçerlidir.
+
 `type: "icon"` bütün aktif UI adapterlarında ortak kayıtlı bir yaprak bileşendir. `props.glyph` yalnız yapılandırılmış ikon kaynağının `libraryId:iconId` seçeneklerini veya açık boş stringi kabul eder; JSX, import yolu ve `item.*` bindingi değildir. `props.size` varsayılan 32 CSS piksel, 1–1024; `props.accessibleLabel` isteğe bağlıdır. Native görünüm `currentColor` mirasını kullanır; genel görünüm CSS’i açılmaz.
 
 `src/adapters/iconLibrary/index.ts` içindeki tek `DESIGN_ICON_LIBRARY` teslimde `null` başlar. Böyleyken `ICON_CATALOG` ve MCP `iconLibraries` dizisi boştur, `ICON_GLYPH_OPTIONS` yalnız boş string içerir. Kurum kaynağı eklendiğinde katalog/arama/picker yalnız bu kaynağın öğelerini sunar; yeni varsayılan ilk kayıtlı öğedir. MCP alanının dizi biçimi korunur ve sıfır veya bir kaynak metadata’sı taşır. Kurulum [ikon kaynağı rehberindedir](../../src/adapters/iconLibrary/README.md).

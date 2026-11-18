@@ -6,6 +6,8 @@ Bu görevi kurumun Designer reposunda uygula. Amaç, bir ekranı inceleyen ajan�
 
 Yollar Designer proje köküne göredir. `src/adapters/index.ts` içindeki `UI_ADAPTERS` kaydından kurumun `adapterId` değerini ve kullandığı registry'yi bul. Her `type` için mevcut `ComponentMeta` tanımının geldiği dosyayı takip et. Tanımları o dosyada veya ilgili ailenin zaten kullandığı ortak tanımda güncelle. Yerel tipler `src/types/componentContract.ts` ve `src/types/propSchema.ts` içindedir.
 
+**Ortak `icon` bileşeninde** tanımları aktif `IconLibrary.componentMeta` alanında yap. Bu alan `src/adapters/iconLibrary/<kurum>/` altında `description`, `visualHints` ve `recipes` taşır; ortak registry bunları okur. Eski kurum bilgisi `src/registry/designIconRegistry.ts` içindeyse [ikon metadata taşıma rehberini](icon-library-metadata.md) uygula. Böylece bu bilgiler ZIP güncellemesinde korunan adapter ağacında kalır.
+
 Her bileşenin kurulu sürümdeki native prop tiplerini, renderer'ını, export eşlemesini ve varsa çalışan kullanım örneğini karşılaştır. Tekrarlanan düzenlerde hangi parça sabit, hangisi içerik, varyant veya durumla değişiyor? Bu parçayı özel bir bileşenin mi, genel bileşenin bir varyantının mı, yoksa birden fazla kayıtlı bileşenin mi sağladığını kaynaktan doğrula. Mevcut doğru tanımları, kimlikleri, prop/slot adlarını ve varsayılanları koruyarak eksik bilgiyi tamamla.
 
 ## Her bileşende hangi alanı dolduracaksın?

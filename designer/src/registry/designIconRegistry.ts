@@ -1,3 +1,4 @@
+import { DESIGN_ICON_LIBRARY } from '@root/adapters/iconLibrary'
 import { DesignIcon } from '@root/components/DesignIcons/DesignIcon'
 import type { Registry } from '@root/types/componentContract'
 import { getDefaultIconGlyph } from '@root/utils/designIcons/getDefaultIconGlyph'
@@ -14,7 +15,10 @@ export const iconRegistry: Registry = {
     category: 'icons',
     isContainer: false,
     description:
+      DESIGN_ICON_LIBRARY?.componentMeta?.description ??
       'Independent icon. Select a registered namespaced glyph; empty glyph is an unchosen placeholder.',
+    visualHints: DESIGN_ICON_LIBRARY?.componentMeta?.visualHints,
+    recipes: DESIGN_ICON_LIBRARY?.componentMeta?.recipes,
     searchKeywords: ['ikon', 'icon', 'symbol', 'simge'],
     defaultProps: { glyph: getDefaultIconGlyph(), size: 32, accessibleLabel: '' },
     defaultStyle: {

@@ -12,3 +12,5 @@ Teslimde `index.ts` içindeki tek `DESIGN_ICON_LIBRARY` kaydı `null` başlar. B
 Lucide ve eski Tabler tasarım kaynakları [archive/iconLibrary](../../../archive/iconLibrary) altında yalnız örnektir. Aktif runtime onları import etmez; bu kimlikler kurum kaynağına sessizce dönüştürülmez. Kayıtlı olmayan bir glyph strict importta reddedilir. Eski kaynağı desteklemek ayrıca açık bir kapsam kararı gerektirir.
 
 Picker/render yüzeyi [components/DesignIcons](../../components/DesignIcons), ortak arama/lookup/default/export [utils/designIcons](../../utils/designIcons), JSON/MCP anlamı [ikon kontratı](../../../docs/contracts/README.md#bağımsız-ikon-authoring--22-ekim-2026) içindedir.
+
+İkonun `description`, `visualHints` ve `recipes` bilgisini `IconLibrary.componentMeta` içinde tanımlayın. Ortak registry'ye yazılmış kurum bilgisini taşımak için [ikon metadata rehberini](../../../docs/icon-library-metadata.md) izleyin.
