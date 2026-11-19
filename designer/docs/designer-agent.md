@@ -26,10 +26,10 @@ Hedef React uygulamasını otomatik tamamlayan bir runtime yoktur; agent bu işi
 
 ## Kurulum — HTTP MCP
 
-Lokal geliştirme ve kurum dağıtımı aynı [HTTP MCP + WebSocket sözleşmesini](backend-mcp.md) kullanır. IDE merkezi `/mcp` URL’ine bağlanır; kullanıcı bilgisayarında MCP process’i başlatmaz.
+Lokal geliştirme ve kurum dağıtımı aynı [HTTP MCP + WebSocket sözleşmesini](backend-mcp.md) kullanır. IDE `/mcp` URL’ine bağlanır. Uzak MCP kullanılıyorsa kullanıcı bilgisayarında ayrıca MCP süreci başlatılmaz.
 
-1. Paket/CLI/env/adapter eşlemesini tamamlayıp Designer’da `npm run dev` çalıştırın. WS anahtarı lokal MCP için `ws://127.0.0.1:4854/ws` olmalıdır. Bağımsız MCP reposunda `npm ci && npm run build && npm start` sunucuyu açar. Kurumda [kurulum](../installation/README.md) adımlarını uygulayın; deployment sürecini ekibin mevcut projelerine göre hazırlayın.
-2. `../mcp/designer/templates/Designer.agent.md` dosyasını hedef projenin `.github/agents/Designer.agent.md` yoluna kopyalayın. HTTP istemci şablonunu mevcut IDE config’ine birleştirip `/mcp` URL’ini ayarlayın; mevcut server kayıtlarını ezmeyin.
+1. [Proje kurulumu](../../SETUP.md) içindeki paket → yerel/sunucu env → Designer build/export → MCP build/başlatma sırasını tamamlayın. MCP `.env` dosyası kullanılıyorsa rehberdeki `--env-file` komutuyla başlatın.
+2. HTTP istemci şablonunu IDE’nin aktif MCP config’ine mevcut kayıtları koruyarak birleştirin. Özel Designer ajanı destekleyen istemcide `../mcp/designer/templates/Designer.agent.md` şablonunu hedef projenin `.github/agents/Designer.agent.md` yoluna kopyalayabilirsiniz; bu dosya HTTP sunucu kaydının yerine geçmez.
 3. Designer’da **Gelişmiş → MCP bağlantısı** altından bağlantı kimliğini alın. Her canlı tool çağrısında `clientId` olarak geçirin; URL/env/log içine koymayın. Yazmadan önce `get_editor_context` ile `designId`, `editorId`, içerik `version` değerlerini okuyun.
 4. Katalog → validate → import → `applied` + `isPersisted=true` → get_design readback kabulünü yapın. Gerçek IDE/model kabulü otomatik transport testlerinden ayrıdır.
 

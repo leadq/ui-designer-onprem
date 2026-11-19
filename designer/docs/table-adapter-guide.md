@@ -126,7 +126,7 @@ Yeni adapter implementasyonunda ilgili kabul kontrolleri:
 7. TSX importları/sözdizimi ve native prop eşlemesi. Çalışan çıktı iddiası verilecekse **ayrı React sayfasında** exportu render et; TSX string assertion'ını runtime testi diye sunma.
 8. Gerçek uygulamada 3 tablo/180 hücre ile hücre/sütun seçimi ve metin düzenleme. Seçim belgeyi/autosave'ı veya kapalı exportu tetiklememeli; düzenleme yalnız hedef hücreyi etkilemeli. Başlangıç MCP eşitlemesinin bitişini yanıtla ayır; sabit bekleme ile sayıları maskeleme.
 
-Mevcut komutlar (yeni adapter kapsama alındıktan sonra):
+Aşağıdaki komutlar yalnız test altyapısı olan kaynak geliştirme reposu içindir. Kurum tesliminde build/export/MCP başlangıcı için [Proje kurulumu](../../SETUP.md), gerçek adapter kabulü için [checklist](component-adapter-checklist.md) kullanılır. Kaynak repoda yeni adapter kapsama alındıktan sonra:
 
 ```sh
 npm test -- table-authoring.test.ts

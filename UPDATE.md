@@ -66,14 +66,6 @@ Rapordaki alanları iki `package.json` arasında inceleyin. Gerekirse mevcut pro
 
 ## 3. Kurun ve doğrulayın
 
-Hazırlanan projenin Designer ve MCP klasörlerinde mevcut lock uygunsa `npm ci`, lock yoksa `npm install` çalıştırın. Ardından:
+Hazırlanan **çıktı klasöründe** [Proje kurulumu](SETUP.md) sırasını izleyin: paketler → uygun yerel/sunucu env ayarları → Designer build/export → MCP build/başlatma → IDE ve son kabul. Taşınan kurum paket/adapter/config eşlemelerini kullanın. Export ve üretilmiş bağlantı JSON'ını yeni kaynaklardan yeniden oluşturun.
 
-```sh
-cd /projeler/guncel-proje/designer
-npm run build
-npm run export:mcp -- ../mcp
-cd ../mcp
-npm run build
-```
-
-Bağlantı/deployment env’lerini [bağlantı rehberine](designer/docs/connection.md) göre verin. Tarayıcı ve IDE üzerinden katalog → validate → import → readback kabulünü tamamlayın. Dosyaların taşınmış olması gerçek adapter/paket uyumluluğu veya deployment kabulü değildir. Tarayıcı IndexedDB’sindeki tasarımlar proje dosyası değildir; bu araç onları taşımaz. Public origin değişirse mevcut tasarımları uygulamanın JSON export/import yolu ile taşıyın.
+Dosyaların taşınmış olması gerçek adapter/paket uyumluluğu veya deployment kabulü değildir; [yazma/geri okuma/kayıt kontrolünü](SETUP.md#kabul) tamamlayın. Tarayıcı IndexedDB’sindeki tasarımlar proje dosyası değildir; bu araç onları taşımaz. Public origin değişirse mevcut tasarımları uygulamanın JSON export/import yolu ile taşıyın.

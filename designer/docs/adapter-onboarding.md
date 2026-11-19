@@ -38,7 +38,7 @@ Kullanıcının hedef component listesini uygulayın. Liste yoksa temel containe
 
 MCP katalog/validator bundle’ı adapter registry/provider importlarını Node içinde de yükler (`../mcp/dist/designerRuntime.cjs`). Modül yüklenirken koşulsuz window/document erişimi veya Node tarafından çözülemeyen native paket girişleri browser çalışsa bile MCP’yi bozabilir. Adapter importlarının sunucuda yüklenebilirliğini gerçek `get_design_catalog`/`get_design_contract` ve validate çağrılarıyla doğrulayın; build ve `/health` başarısı tek başına yeterli değildir.
 
-Ortam dosyaları hazırken `npm run build` ve ardından ayrı terminallerde MCP reposunda `npm run start:backend` ve Designer reposunda `npm run dev` ile [kabul checklistinin](component-adapter-checklist.md) yerel browser/JSON kontrollerini uygulayın. Hazırlanan IDE config’iyle MCP katalog/validate/import/readback kabulünü [son kurulum adımında](../installation/README.md#adim-2) tamamlayın. Bu branch test runner içermez; mevcut olmayan test komutları veya yeni test altyapısı entegrasyon önkoşulu değildir. Gerçek native/browser doğrulaması yine gereklidir.
+[Proje kurulumu](../../SETUP.md) içindeki env → Designer build/export → MCP build/başlatma → IDE ve son kabul sırasını izleyin; MCP `.env` dosyasını yükleyen komutu kullanın. [Kabul checklistinin](component-adapter-checklist.md) yerel browser/JSON kontrollerini kurum adapterıyla tamamlayın. Bu branch test runner içermez; mevcut olmayan test komutları veya yeni test altyapısı entegrasyon önkoşulu değildir. Gerçek native/browser doğrulaması yine gereklidir.
 
 Teslimde kaynak revizyonu, kurulu paket/sürüm, adapter kimliği, çalışan/kapsam dışı componentler ve kanıt/eksikleri kaydedin. Build başarısını görsel veya IDE/model kabulü saymayın.
 
