@@ -11,14 +11,14 @@ Satırlar yeni dosyaya aittir; yalnız silinen bölümler “silinen eski” ola
 | Dosya | Durum | Satır | Kısa değişiklik |
 | --- | --- | --- | --- |
 | `SETUP.md` | Yeni | 1–182 | Paketler, yerel/sunucu env ve IDE adımları; gerçek tasarım kabulü, MCP dağıtım içeriği ve hata çözümü tek rehberde toplandı. |
-| `README.md` | Yeni | 1–15 | Kurulumun ana girişi SETUP oldu; tekrarlanan bağlantı açıklamaları yönlendirildi. |
-| `UPDATE.md` | Yeni | 1–71 | Taşıma sonrası env/build/export/IDE kabulü aynı SETUP sırasına bağlandı. |
-| `designer/README.md` | Yeni | 1–7 | Yeni proje kurulum rehberine doğrudan bağlantı eklendi. |
-| `designer/docs/README.md` | Yeni | 1–21 | Doküman haritasının kurulum satırı yeni rehbere yönlendirildi. |
-| `designer/docs/connection.md` | Yeni | 1–59 | Sıralı kurulum ile teknik bağlantı ayrıntılarının ayrımı açıklandı. |
-| `designer/docs/adapter-onboarding.md` | Yeni | 1–47 | MCP env yükleme ve build/export sırası kurulum rehberine yönlendirildi. |
-| `designer/docs/designer-agent.md` | Yeni | 1–297 | Yerel/uzak MCP ve isteğe bağlı ajan şablonu ayrımı netleştirildi; eski başlatma tarifi düzeltildi. |
-| `designer/docs/table-adapter-guide.md` | Yeni | 1–178 | Test komutlarının kaynak geliştirme reposuna ait olduğu açıklandı; kurum kurulumu/kabulü yönlendirildi. |
-| `designer/installation/README.md` | Yeni | 1–88 | Paket/adapter hazırlık sırası düzeltildi; env/build/IDE tekrarları yeni rehbere yönlendirildi. |
-| `mcp/README.md` | Yeni | 1–27 | MCP .env yükleme davranışı ve bağımsız repo başlatma komutu belirtildi. |
+| `README.md` | Değişti | 5, 7, 9–11, silinen eski 32–35 | Kurulumun ana girişi SETUP oldu; tekrarlanan bağlantı açıklamaları yönlendirildi. |
+| `UPDATE.md` | Değişti | 69, 71 | Taşıma sonrası env/build/export/IDE kabulü aynı SETUP sırasına bağlandı. |
+| `designer/README.md` | Değişti | 3 | Yeni proje kurulum rehberine doğrudan bağlantı eklendi. |
+| `designer/docs/README.md` | Değişti | 5 | Doküman haritasının kurulum satırı yeni rehbere yönlendirildi. |
+| `designer/docs/connection.md` | Değişti | 3–4 | Sıralı kurulum ile teknik bağlantı ayrıntılarının ayrımı açıklandı. |
+| `designer/docs/adapter-onboarding.md` | Değişti | 41 | MCP env yükleme ve build/export sırası kurulum rehberine yönlendirildi. |
+| `designer/docs/designer-agent.md` | Değişti | 29, 31–32 | Yerel/uzak MCP ve isteğe bağlı ajan şablonu ayrımı netleştirildi; eski başlatma tarifi düzeltildi. |
+| `designer/docs/table-adapter-guide.md` | Değişti | 129 | Test komutlarının kaynak geliştirme reposuna ait olduğu açıklandı; kurum kurulumu/kabulü yönlendirildi. |
+| `designer/installation/README.md` | Değişti | 1, 3–5, 14, silinen eski 36–45, 40, 59, 70, 72, 74 | Paket/adapter hazırlık sırası düzeltildi; env/build/IDE tekrarları yeni rehbere yönlendirildi. |
+| `mcp/README.md` | Değişti | 3–4, 7, 9, 11 | MCP .env yükleme davranışı ve bağımsız repo başlatma komutu belirtildi. |
 | `CHANGELOG.md` | Değişti | Tamamı | Son uygulanan başlangıç korunarak kurulum tamamlamaları dahil dosya özeti yenilendi. |
