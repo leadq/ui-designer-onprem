@@ -1,5 +1,7 @@
 # Designer ve MCP bağlantısı
 
+İlk kurulum, yerel/sunucu komutları ve troubleshooting için [Proje kurulumu](../../SETUP.md) ile başlayın. Bu belge bağlantının teknik ayrıntılarını açıklar.
+
 Bağlantı adresi için kaynak dosyası veya env anahtar adı değiştirilmez. Designer ve MCP ayrı sunucularda çalışabilir. Önerilen yayın: tek public HTTPS origin; `/` Designer'a, `/ws`, `/mcp`, `/health` aynı aktif MCP process'ine yönlendirilir. İki servisin aynı makinede olması gerekmez.
 
 ## Designer

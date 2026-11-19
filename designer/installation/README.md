@@ -1,6 +1,8 @@
-# Kurum kurulumu — sırayla uygulayın
+# Kurum paketleri ve adapter hazırlığı
 
-Bu teslim kurum paket adlarını içermez; **önce aşağıdaki paket/araç eşlemesini doldurun, sonra install çalıştırın.** Ardından env ve bağlantı dosyaları hazırlanır. **Adapter yazımı ve çalışan sistem kabulü en sondaki büyük adımdır.** Kurum adapterı eklenmeden Designer’ın açılmaması beklenir; config veya build başarısı çalışan sistem kabulü değildir.
+Paket kurulumu → yerel/sunucu ayarları → IDE bağlantısı → troubleshooting sırası [Proje kurulumu](../../SETUP.md) içindedir. Bu belge ilk kurum paket/CLI eşlemesini ve adapter hazırlığını açıklar. Mevcut kurum projesinde tamamlanmış eşlemeleri koruyun.
+
+Bu teslim kurum paket adlarını içermez; **önce aşağıdaki paket/araç eşlemesini doldurun, sonra install çalıştırın.** Aktif adapter kaydı, Designer build ve MCP exportundan önce tamamlanmalıdır; config veya build başarısı çalışan sistem kabulü değildir.
 
 ## 1. Makine, registry ve kurum paket eşlemesi
 
@@ -9,7 +11,7 @@ Bu teslim kurum paket adlarını içermez; **önce aşağıdaki paket/araç eşl
 3. Kurumun verdiği Nexus registry/auth ayarını kullanıcı veya CI npm yapılandırmasına uygulayın. `npm config get registry` ile adresi kontrol edin; tokenları repoya eklemeyin.
 4. Ekipten veya kurumun mevcut çalışan uygulamasından aşağıdaki gerçek değerleri alın. Derleme aracı paketinin public CLI/config/env sözleşmesini kontrol edin; isimleri tahmin etmeyin. [Paket rehberi](../docs/sdk-toolchain.md) araç sahipliğini açıklar.
 
-Ekip paketleri için ekibin çalışan projesindeki derleme paketinin adını ve sürümünü aşağıdaki tabloda eşleyin. 2. adımda `npm install` bu paketi ve onun bildirdiği bağımlılıkları kurar. Adapterın kullanacağı UI kütüphanesini 6. adımda ekleyin.
+Ekip paketleri için ekibin çalışan projesindeki derleme paketinin adını ve sürümünü aşağıdaki tabloda eşleyin. 2. adımda `npm install` bu paketi ve onun bildirdiği bağımlılıkları kurar. Adapterın kullanacağı UI kütüphanesini 3. adımda ekleyin.
 
 | Yer tutucu | Kurumdan alınacak değer | Değiştirilecek yer |
 | --- | --- | --- |
@@ -33,19 +35,9 @@ node --input-type=module -e "import {readFileSync} from 'node:fs'; const files=[
 ## 2. Designer paketlerini kurun
 Ekip paketleri ve UI kütüphanesi sürümlerini eşleyin, `npm install` ile lock üretip sabitleyin. İleride `npm ci` kullanın.
 
-## 3. Ortam
-Önce mevcut .env dosyasını koruyun; yoksa .env.example dosyasını .env olarak kopyalayın. Aynı public origin üzerinden yayın için `DESIGNER_BACKEND_WS_URL=/ws`; ayrı sunucu için `wss://<MCP host>/ws`, ayrı portlarda yerelde `ws://127.0.0.1:4854/ws` verin. Kaynak kodunda env anahtarı veya adres değiştirmeyin. `npm run dev/build` öncesinde configure otomatik çalışır; Derleme aracının `share/` statik asset aktarımı üretilen JSON'ı yayınlar. Aynı build'in deployment env'sinden yeniden yapılandırılması, MCP/IDE ayarları ve kontroller için [bağlantı rehberini](../docs/connection.md) izleyin.
-
-## 4. Yerel build ve MCP export
-Adapter kurulumu tamamlanınca Designer kökünde `npm run build` ve `npm run export:mcp -- /tam/yol/mcp` çalıştırın. MCP kendi kökünde `npm ci && npm run build && npm start` ile açılır. [MCP rehberi](../../mcp/README.md) çalışma sözleşmesini açıklar. CI/CD ve deployment dosyalarını ekip kendi mevcut projelerine göre hazırlar.
-
-<a id="adim-3"></a>
-## 5. IDE
-HTTP MCP adresi yerelde http://127.0.0.1:4854/mcp, kurumda https://<MCP host>/mcp. MCP repo içindeki designer/templates/mcp.vscode.example.json ve Designer.agent.md şablonlarını kullanın.
-
 <a id="adim-2"></a>
 
-## 6. Kaynak koddan adapterı yazdırın ve kurulumu tamamlayın
+## 3. Kaynak koddan adapterı yazdırın ve kurulumu tamamlayın
 
 Library kaynak reposunu Designer’da çalışan agent’ın okuyabileceği şekilde ekleyin. Kaynak incelemek runtime paketi kurmak değildir; public export, tip, implementasyon, CSS ve peer gereksinimleri birlikte doğrulanır. Ayrı extraction/JSONL veya bilgi formu yoktur.
 
@@ -64,7 +56,7 @@ Library kaynaklarını değiştirmeden Designer tarafında adapterı uygula. Nat
 
 src/adapters/<kurum> altında registry/provider/props/defaults/ref/style/value-event/slot/compound/preview/export eşlemelerini tamamla ve UI_ADAPTERS içine kaydet. Arşivdeki örneklerden fikir al; eski library prop/event isimlerini kurum API’sine varsayma. Ortak core ve editörü library adına göre dallandırma. Yalnız gerçekten desteklenen özellikleri katalogda bildir.
 
-.env dosyaları hazırken Designer’da npm run build ve npm run export:mcp -- /tam/yol/mcp çalıştır. MCP reposunda npm ci, npm run build ve npm run start:backend çalıştır. Designer’da npm run dev başlat; gerçek browser’da palet, özellik düzenleme, input/preview, undo, kayıt ve JSON round-trip’i doğrula. Table/list/Tabs/modal varsa ilgili aile kabulünü de yap. Bu branch’te olmayan test komutlarını çalıştırmaya veya test altyapısı kurmaya girişme; doğrulanan ve eksik kalan kontrolleri ayır. Hazırlanan HTTP MCP kaydıyla gerçek katalog/kontrat/rehber okuması, validate/import, applied/isPersisted, readback ve küçük update/undo kabulünü de tamamla. Araç etkinleştirme veya erişim eksikse açık kalan adımı bildir.
+Adapter kaydından sonra ZIP kökündeki SETUP.md dosyasının uygun yerel/sunucu dalını izle: env, Designer build/export, MCP build/başlatma ve IDE kontrolünü sırayla tamamla. MCP .env dosyasını yükleyen başlatma komutunu kullan. Gerçek browser’da palet, özellik düzenleme, input/preview, undo, kayıt ve JSON round-trip’i doğrula. Table/list/Tabs/modal varsa ilgili aile kabulünü de yap. Bu branch’te olmayan test komutlarını çalıştırmaya veya test altyapısı kurmaya girişme; doğrulanan ve eksik kalan kontrolleri ayır. Hazırlanan HTTP MCP kaydıyla gerçek katalog/kontrat/rehber okuması, validate/import, applied/isPersisted, readback ve küçük update/undo kabulünü de tamamla. Araç etkinleştirme veya erişim eksikse açık kalan adımı bildir.
 
 Sonuçta adapter kimliğini, kullanılan paket/sürüm ve kaynak revizyonunu, çalışan componentleri, yerel adresi, kontrol sonuçlarını ve kalan engelleri kısa ver. Commit/push/deploy yapma.
 ```
@@ -75,15 +67,11 @@ Tasarım ikonları da tek ayrı kayıtla bağlanır. [İkon kaynağı rehberini]
 
 Gerçek katalog/picker ve native TSX importu, 32px/açık boş/erişilebilirlik/layout önceliği, JSON/MCP readback ve undo kabulünü kurum paketiyle tamamlayın. Build başarısını gerçek kurum ikon kabulü saymayın.
 
-### Yerel kabul
+<a id="adim-3"></a>
 
-Adapter kaydedildikten sonra:
+### Çalıştırma ve IDE kabulü
 
-```sh
-npm run build
-npm run export:mcp -- /tam/yol/mcp
-```
-MCP reposunda `npm ci && npm run build && npm run start:backend`; Designer'da `npm run dev`. IDE ile katalog/validate/import/readback ve undo kabulünü tamamlayın.
+Adapter kaydedildikten sonra [yerel kurulum](../../SETUP.md#lokal) veya [sunucu kurulumu](../../SETUP.md#sunucu), ardından [IDE bağlantısı](../../SETUP.md#ide) adımlarını uygulayın. IDE ile katalog/validate/import/readback ve undo kabulünü tamamlayın.
 
 ### Kurum adresinde son kabul
 

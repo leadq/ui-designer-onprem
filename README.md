@@ -2,34 +2,14 @@
 
 `designer/` ve `mcp/` bağımsız proje kökleridir. Her ekip bundle/config, CI/CD ve deployment düzenini kendi çalışan projelerine göre hazırlar. Bu teslim uygulama kaynaklarını, adapter kontratını ve MCP çalışma sözleşmesini içerir.
 
-## Kurulum ve yerel çalıştırma
+## Buradan başlayın
 
-1. [Designer kurulumundaki](designer/installation/README.md) ekip paketleri, CLI/env ve gerçek kurum adapterı eşlemelerini tamamlayın. Bundle config dosyasını ekibin mevcut projesinden uyarlayın. Aktif adapter kaydı olmadan çalışan teslim beklenmez.
-2. Designer kökünde `npm run build` çalıştırın. Commitlenmiş kaynaklardan `npm run export:mcp -- /tam/yol/mcp` ile MCP runtime'ını üretin. Adapter, kontrat veya recipe değişince exportu yenileyin; `generated/export.json` kaynak commit/hash bilgisini içerir.
-3. MCP kökünde `npm ci && npm run build && npm start` çalıştırın. Node 20.3+ gerekir. Ayrıntılar [MCP rehberinde](mcp/README.md).
-4. Designer'da `DESIGNER_BACKEND_WS_URL` env ayarına `ws://127.0.0.1:4854/ws` verip `npm run dev` çalıştırın. IDE HTTP MCP adresi `http://127.0.0.1:4854/mcp` olur.
+**[Proje kurulumu — SETUP.md](SETUP.md):** paket kurulumu, yerel ve sunucu ayarları, IDE bağlantısı, kopyalanan kimliğin kullanımı ve troubleshooting. Her adımın sonunda kontrol edilecek sonuç bulunur.
 
-## Bağlantı sözleşmesi
-
-| Nerede? | Ayar | Anlamı |
-| --- | --- | --- |
-| Designer | `DESIGNER_BACKEND_WS_URL` | Aynı public origin için `/ws`; ayrı sunucu için tam `wss://host/ws` adresi. Kaynak kodu değiştirilmez. |
-| MCP | `DESIGNER_ALLOWED_ORIGINS` | Tarayıcıdaki Designer origin'i; birden fazlaysa virgülle ayrılır. |
-| MCP | `DESIGNER_BIND_HOST`, `PORT` | Servisin dinleyeceği adres ve port. |
-| MCP, isteğe bağlı | `DESIGNER_RENDER_URL` | MCP'nin erişebildiği, allowlist'te bulunan Designer adresi. |
-
-Designer configure adımı (Node20.12+) yalnız public bağlantı adresini runtime JSON’a yazar. `npm run dev/build` öncesinde otomatik çalışır; [bağlantı rehberi](designer/docs/connection.md) deployment adımını açıklar. `clientId` ve registry kimlik bilgileri frontend env veya Git'e yazılmaz.
-
-`/mcp`, `/ws` ve `/health` aynı aktif Node process'ine ulaşmalıdır. MCP metot/headerları ve WebSocket Upgrade korunur. Bu sürüm tek aktif MCP process'iyle doğrulanmıştır. Tasarımlar tarayıcı IndexedDB'sindedir; Designer origin'i değişince kayıtlar otomatik taşınmaz.
-
-Canlı tasarım işlemleri için Designer tarayıcıda açık ve bağlı olmalıdır. Gizli `clientId` uygulamanın MCP bağlantısı alanından alınır. Origin allowlist kimlik doğrulama yerine geçmez; erişim politikasını ekip kendi ortamında uygular.
-
-Render kullanılacaksa MCP ortamında kurulu Playwright sürümüyle uyumlu Chromium/sistem kütüphaneleri ve Designer'a erişim gerekir. İzole render tarayıcısı kullanıcının SSO oturumunu devralmaz.
+- İlk kurum paket/CLI eşlemesi ve adapter yazımı: [Designer hazırlığı](designer/installation/README.md).
+- Teknik bağlantı/deployment ayrıntıları: [bağlantı sözleşmesi](designer/docs/connection.md), [MCP rehberi](mcp/README.md).
+- Yeni ZIP'e mevcut projeyi taşıma: [UPDATE.md](UPDATE.md). Bu teslimde değişen dosyalar: [CHANGELOG.md](CHANGELOG.md).
 
 ## Uçtan uca kabul
 
 Designer bağlantısı → IDE HTTP MCP bağlantısı → kurum bileşenini katalogdan okuma → `validate_design` → `import_design` sonucunda `applied` ve `isPersisted=true` → `get_design` ile aynı frame'i okuma. Render kullanılacaksa ayrıca görüntü alın. Gerçek kurum paketleri, adapterı ve ortamıyla bu kabulü tamamlayın.
-
-[Ekip paketleri ve derleme araçları](designer/docs/sdk-toolchain.md) · [Adapter kurulumu](designer/installation/README.md) · [MCP çalıştırma](mcp/README.md)
-
-ZIP güncellemesinde mevcut adapter/prompt/paket/config dosyalarını taşıma: [güncelleme rehberi](UPDATE.md).

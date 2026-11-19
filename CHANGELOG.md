@@ -1,23 +1,20 @@
-# Değişiklik notu — 18 Kasım 2026 · ikon metadata
+# Değişiklik notu — 19 Kasım 2026 · kurulum rehberi
 
-**Başlangıç:** `0a457b7` · kullanıcının uyguladığı 18 Kasım teslimi / migrated kopyası esas alındı.
+**Başlangıç:** `8f11800` · son paylaşılan 18 Kasım ikon metadata teslimi esas alındı; kullanıcı kurum bağlantısının çalıştığını doğruladı.
 
-İkonun `description`, `visualHints` ve `recipes` bilgileri artık `IconLibrary.componentMeta` alanından okunuyor. Böylece kurum bilgisi ZIP güncellemesinde korunan adapter klasöründe tutulabiliyor. **Core tarafında ikon tipi ve ortak registry değişti.** İkon seçimi, boyutu, native exportu ve tasarım JSON alanları aynı kaldı; güncelleme scriptinin davranışı değişmedi.
+**Yalnız dokümantasyon değişti.** Paket kurulumu, yerel/sunucu ayarları, IDE bağlantısı ve troubleshooting [SETUP.md](SETUP.md) içinde adım adım toplandı. MCP'nin `.env` dosyasını otomatik okumadığı ve kopyalanan kimliğin nasıl kullanılacağı açıklandı. Editör/core, adapterlar, MCP çalışma kodu, prompt klasörü ve güncelleme scripti değişmedi.
 
-**Ekipte gereken ilk işlem:** Eski kurum projesindeki `designIconRegistry.ts` içine yazılmış bu üç alanı, tarif dosyaları/importlarıyla birlikte aktif ikon adapterının `componentMeta` alanına bir kez taşıyın. Yeni teslimin ortak registry dosyasını kullanın. Script eski registry içindeki serbest kodu otomatik birleştirmez. [Kurum ajanına verilecek taşıma rehberi](designer/docs/icon-library-metadata.md).
+**7 mevcut dosya değişti, 1 dosya eklendi.** Mevcut yollar ekipte özelleştirildiyse birleştirin; yeni `SETUP.md` yolu da ekipte kullanılmış olabilir. Kurum kopyası burada bulunmadığından gerçek içerik çakışması doğrulanmadı.
 
-**8 mevcut dosya değişti, 1 dosya eklendi.** Aşağıdaki mevcut yollar ekipte özelleştirilmişse içeriklerini karşılaştırın. Yeni rehberin yolu da ekipte kullanılmış olabilir. Kurum dosyaları bu repoda bulunmadığından gerçek içerik çakışmaları burada doğrulanmadı.
-
-Yollar ZIP köküne, satırlar bu teslimdeki yeni dosyaya aittir.
+Satırlar yeni dosyaya aittir; yalnız silinen bölümler “silinen eski” olarak işaretlendi.
 
 | Dosya | Durum | Satır | Kısa değişiklik |
 | --- | --- | --- | --- |
-| `designer/src/types/iconLibrary.ts` | Değişti | 2, 20–21 | İkon adapterına isteğe bağlı componentMeta alanı eklendi. |
-| `designer/src/registry/designIconRegistry.ts` | Değişti | 1, 18, 20–21 | Ortak icon kaydı açıklama, görsel ipucu ve tarifleri aktif ikon adapterından okuyor. |
-| `designer/docs/icon-library-metadata.md` | Yeni | 1–50 | Kurumun metadata tanımı, eski registry bilgisini taşıma ve MCP doğrulaması anlatılıyor. |
-| `designer/docs/adapter-catalog-metadata.md` | Değişti | 8–9 | Ortak icon için doğru tanım yeri ve taşıma rehberi belirtildi. |
-| `designer/src/adapters/iconLibrary/README.md` | Değişti | 15–16 | Yeni componentMeta alanına ve ilk taşıma rehberine bağlantı eklendi. |
-| `designer/docs/contracts/README.md` | Değişti | 652–653 | İkon metadata sahipliği açıklandı; tasarım JSON alanları aynı kaldı. |
-| `designer/docs/README.md` | Değişti | 10 | İkon metadata rehberi başlangıç haritasına eklendi. |
-| `designer/archive/iconLibrary/lucide/index.ts` | Değişti | 10–32 | Pasif örnek ikon adapterına açıklama, görsel ipuçları ve bağımsız simge tarifi eklendi. |
-| `CHANGELOG.md` | Değişti | Tamamı | Başlangıç son uygulanan 18 Kasım teslimine alındı; bu düzeltmenin dosya özeti yazıldı. |
+| `SETUP.md` | Yeni | 1–131 | Paketler, yerel/sunucu ayarları, IDE/clientId kontrolleri ve kısa hata çözüm tablosu tek rehberde toplandı. |
+| `README.md` | Değişti | 5, 7, 9–11, silinen eski 32–35 | Kurulumun ana girişi SETUP oldu; tekrarlanan çalıştırma ve bağlantı açıklamaları ilgili rehberlere yönlendirildi. |
+| `designer/README.md` | Değişti | 3 | Yeni proje kurulum rehberine doğrudan bağlantı eklendi. |
+| `designer/docs/README.md` | Değişti | 5 | Doküman haritasının kurulum satırı yeni rehbere yönlendirildi. |
+| `designer/docs/connection.md` | Değişti | 3–4 | Sıralı kurulum rehberi ile teknik bağlantı ayrıntılarının ayrımı açıklandı. |
+| `designer/installation/README.md` | Değişti | 1, 3–5, 14, silinen eski 36–45, 40, 59, 70, 72, 74 | Paket/adapter hazırlık sırası düzeltildi; env/build/IDE tekrarları yeni rehbere yönlendirildi. |
+| `mcp/README.md` | Değişti | 3–4, 7, 9, 11 | MCP .env yükleme davranışı açıklandı; yerel/sunucu rehberi ve bağımsız repo başlatma komutu belirtildi. |
+| `CHANGELOG.md` | Değişti | Tamamı | Başlangıç 8f11800 alındı; bu dokümantasyon tesliminin özeti yazıldı. |

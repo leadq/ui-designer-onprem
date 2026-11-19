@@ -1,16 +1,14 @@
 # UI Designer MCP
 
+**Paket kurulumu → yerel/sunucu ayarları → IDE bağlantısı → troubleshooting:** [Proje kurulumu](../SETUP.md). Designer ve MCP birlikte kurulurken Node 20.12+ kullanın.
+
 Bu klasör bağımsız Node projesidir. Kurum tesliminde önce Designer reposunda adapterı kaydedip `npm run export:mcp -- /tam/yol/mcp` çalıştırın. Oluşan `generated/` dizinini bu repo ile commit edin. Dosyalar katalog, doğrulama, tasarım değişikliği ve dışa aktarma kodunu, recipe görsellerini ve yürütme sözleşmesini içerir. Bir sonraki export eski adapter çıktılarını kaldırır. `generated/export.json` export girdilerinin son commitini ve açılmış runtime dosyasının SHA-256 özetini içerir. Tekrarlanabilir bir teslim için temiz ve commitlenmiş Designer kaynaklarını kullanın.
 
-Node 20.3+ kullanın. Bu repo kökünde:
+`npm start` ve `npm run start:backend` aynı HTTP sunucusunu başlatır; **MCP `.env` dosyasını otomatik yüklemezler.** Dosyadan ayar yükleyen yerel komut [2A adımında](../SETUP.md#lokal), deployment env ile başlatma [2B adımında](../SETUP.md#sunucu) bulunur.
 
-```sh
-npm ci
-npm run build
-DESIGNER_ALLOWED_ORIGINS=http://127.0.0.1:5173 DESIGNER_RENDER_URL=http://127.0.0.1:5173 npm run start:backend
-```
+Bu klasörü ayrı repo olarak kullanıyorsanız: `.env` yoksa [.env.example](.env.example) dosyasından oluşturun; port ve Designer origin'ini kendi ortamınıza göre düzenleyin. Yukarıdaki Designer exportu hazırken bu proje kökünde sırayla `npm ci`, `npm run build`, `node --env-file=.env dist/backend/index.js` çalıştırın.
 
-Merkezi HTTP MCP `/mcp`, WebSocket `/ws` ve readiness `/health` aynı porttadır (yerelde 4854). IDE yapılandırmaları `designer/templates/` altında. Browser açıkken IDE'den katalog → validate → import → applied → get_design akışını doğrulayın. `npm start` ve `npm run start:backend` aynı HTTP sunucusunu başlatır; IDE bu sunucunun `/mcp` adresine bağlanır.
+HTTP MCP `/mcp`, WebSocket `/ws` ve readiness `/health` aynı porttadır. IDE `/mcp` adresine bağlanır; yapılandırma örnekleri `designer/templates/` altında. Browser açıkken IDE'den katalog → validate → import → applied → get_design akışını doğrulayın.
 
 ## Ortama uyarlama
 

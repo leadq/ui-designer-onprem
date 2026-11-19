@@ -2,7 +2,7 @@
 
 | İş | Başlangıç |
 | --- | --- |
-| Kurulum ve ayrı sunucu dağıtımı | [Ana README](../README.md), [backend](backend-mcp.md) |
+| Paketler, yerel/sunucu bağlantısı ve troubleshooting | [Adım adım proje kurulumu](../../SETUP.md) |
 | Nexus/SDK farkları | [Paket rehberi](sdk-toolchain.md) |
 | Kurum library’sini bağlamak | [Adapter](adapter-onboarding.md), [kabul](component-adapter-checklist.md) |
 | Mevcut adapterın açıklamalarını, görsel ipuçlarını ve kullanım tariflerini güncellemek | [Kurum içi ajana verilecek katalog rehberi](adapter-catalog-metadata.md) |
