@@ -2,7 +2,7 @@
 
 > Bu teslim branch’inde test runner yoktur; kurum adapterının gerçek browser/MCP kabulü [checklist](component-adapter-checklist.md) üzerinden yapılır.
 
-Bu belge merkezi modun bağlantı/persistence sözleşmesidir. Kanonik [tasarım JSON kontratı](contracts/README.md) değişmez. Lokal geliştirme ve kurum dağıtımı aynı HTTP MCP + WebSocket modelini kullanır; adres/Origin ayarları [kök kurulum rehberindedir](../../README.md).
+Bu belge merkezi modun bağlantı/persistence sözleşmesidir. Kanonik [tasarım JSON kontratı](contracts/README.md) değişmez. Lokal geliştirme ve kurum dağıtımı aynı HTTP MCP + WebSocket modelini kullanır; adres/Origin ayarları [proje kurulum rehberindedir](../../SETUP.md).
 
 ## Çalışma modeli
 
@@ -17,7 +17,7 @@ Browser kanonik belge, seçim, undo ve IndexedDB’nin sahibidir. Sunucu clientI
 
 ## Çalıştırma
 
-[Kurum paketleri ve adapter kurulumu](../installation/README.md) · [MCP çalıştırma ve export](../../mcp/README.md)
+[Proje kurulumu ve troubleshooting](../../SETUP.md) · [Kurum paketleri ve adapter hazırlığı](../installation/README.md) · [MCP çalıştırma ve export](../../mcp/README.md)
 
 ## IDE istemci kurulumu
 

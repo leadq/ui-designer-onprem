@@ -7,7 +7,7 @@
 ## Sözleşme
 
 - Mevcut `style.width/height: "100%"` ve responsive karşılığı inspector'ın fill temsilidir. Yeni bir belge alanı/sürümü eklenmedi. Keyfi yüzde değerleri aynen kalır.
-- Render sırasında `core/fillLayout.ts` parent'ın güncel breakpoint düzenine göre CSS üretir. Kaydedilen stil değiştirilmez; parent yönü veya hiyerarşi değişince tekrar çözülür.
+- Render sırasında `src/utils/layout/getNodeSizingStyle.ts` parent'ın güncel breakpoint düzenine göre CSS üretir. Kaydedilen stil değiştirilmez; parent yönü veya hiyerarşi değişince tekrar çözülür.
 - Flex ana ekseni grow ile kalan alanı paylaşır; çapraz eksen stretch kullanır. Dikeyde içerik tabanı korunur, böylece minimum yüksekliği olan frame uzun içerikle büyür.
 - Grid modunda öğe kendi hücresini doldurur. Normal akışta yatay fill auto block genişlik kullanır; dikey fill çocuğu olan normal kapsayıcı column Flex dağıtım bağlamı sağlar.
 - Native container varsayılanları adapter'da belirtilir. Prop'a bağlı varsayılanlar `ComponentMeta.getDefaultLayoutStyle` üzerinden gelir; çekirdek library adını bilmez.
